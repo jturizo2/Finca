@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context="domain.fincas.com.fincas.ingresoTipoAnimal"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:text="Registro de animales por concepto de:"
+        android:gravity="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="24dp"/>
+
+    <Button
+        android:id="@+id/animales"
+        android:layout_width="243dp"
+        android:layout_height="wrap_content"
+        android:onClick="anima_exis"
+        android:text="Existente" />
+
+    <Button
+        android:id="@+id/button11"
+        android:layout_width="242dp"
+        android:layout_height="wrap_content"
+        android:onClick="parto"
+        android:text="cria" />
+
+    <Button
+        android:id="@+id/button16"
+        android:layout_width="242dp"
+        android:layout_height="wrap_content"
+        android:onClick="naci"
+        android:text="COMPRADO" />
+
+
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="242dp"
+        android:layout_height="wrap_content"
+        android:onClick="atras"
+        android:text="atras" />
+</LinearLayout>

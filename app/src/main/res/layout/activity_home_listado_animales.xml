@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context="domain.fincas.com.fincas.home_listado_animales">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="319dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Listado total de Animales"
+                android:gravity="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="24dp"/>
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/button"
+                android:layout_width="207dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="listado_animales_codigo"
+                android:text="busqueda por codigo" />
+
+            <Button
+                android:id="@+id/button31"
+                android:layout_width="207dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="listado_animales_existentes"
+                android:text="existentes" />
+
+            <Button
+                android:id="@+id/button29"
+                android:layout_width="206dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="listado_animales_parto"
+                android:text="en cria" />
+
+            <Button
+                android:id="@+id/button30"
+                android:layout_width="207dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="listado_animales_compra"
+                android:text="comprados" />
+
+
+
+
+
+            <Button
+                android:id="@+id/button32"
+                android:layout_width="208dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="atras"
+                android:text="atras" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

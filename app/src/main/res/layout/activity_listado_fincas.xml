@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context="domain.fincas.com.fincas.listado_fincas">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="364dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Finca"
+                android:textColor="@android:color/background_dark"
+                android:textSize="24dp" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="310dp"
+                android:layout_height="182dp"
+                android:text=""
+                android:layout_gravity="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button26"
+                    android:layout_width="154dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.06"
+                    android:gravity="center"
+                    android:onClick="atras"
+                    android:text="ATRAS" />
+
+                <Button
+                    android:id="@+id/button28"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.73"
+                    android:onClick="detalle_fincas"
+                    android:text="Detalle" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

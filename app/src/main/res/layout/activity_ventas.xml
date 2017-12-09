@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="domain.fincas.com.fincas.ventas">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/animal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="VENTAS DE ANIMALES "
+                android:textColor="@android:color/background_dark"
+                android:textSize="24dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/cod1"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="Código del animal:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/cod2"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/peso"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="Peso [Kg]:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/peso2"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:ems="10"
+                    android:inputType="number|numberSigned|numberDecimal" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/detalle"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="Detalle:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/detalle1"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/comprador"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="Comprador:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/comprador1"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/Valor"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="Valor [$]:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/Valor1"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:ems="10"
+                    android:inputType="number|numberSigned|numberDecimal" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="save"
+                android:text="registrar" />
+
+            <Button
+                android:id="@+id/atras"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="back"
+                android:text="atras" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="domain.fincas.com.fincas.ingreso_animales_existentes">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/animal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="REGISTRO DE ANIMAL EXISTENTE"
+                android:textColor="@android:color/background_dark"
+                android:textSize="24dp"
+                android:layout_weight="0.06" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/cod1"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="Código:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/cod2"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/nombre1"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="Nombre:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/nombre2"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/Genero1"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Genero:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <Spinner
+                    android:id="@+id/Genero2"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/Etapa_Produc1"
+                    android:layout_width="150dp"
+                    android:layout_height="73dp"
+                    android:gravity="center"
+                    android:text="Etapa de Producción:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <Spinner
+                    android:id="@+id/etapap"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/Raza1"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Raza:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <Spinner
+                    android:id="@+id/Raza2"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/Propietario1"
+                    android:layout_width="150dp"
+                    android:layout_height="66dp"
+                    android:gravity="center"
+                    android:text="Propietario:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <Spinner
+                    android:id="@+id/Propietario2"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/Hierro1"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Hierro:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <Spinner
+                    android:id="@+id/Hierro2"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/Proposito1"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Proposito:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <Spinner
+                    android:id="@+id/Proposito2"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/cod_mama1"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Código mama:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/Cod_MAMA2"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/cod_papa1"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Código papa:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/cod_papa2"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/Peso1"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Peso [Kg]:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/Peso2"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:ems="10"
+                    android:inputType="number|numberSigned|numberDecimal" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/Peso_destete1"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Peso Destete [Kg]:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/Peso_destete2"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:ems="10"
+                    android:inputType="number|numberSigned|numberDecimal" />
+
+            </LinearLayout>
+
+
+
+            <Button
+                android:id="@+id/guardar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.06"
+                android:onClick="guardar"
+                android:text="guardar" />
+
+            <Button
+                android:id="@+id/atras"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.06"
+                android:onClick="atras"
+                android:text="ATRAS" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

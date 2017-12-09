@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="domain.fincas.com.fincas.home_consultas"
+    android:orientation="horizontal"
+    android:gravity="center">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="340dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:gravity="center"
+                android:text="CONSULTAS"
+                android:textColor="@android:color/background_dark"
+                android:textSize="24dp" />
+
+            <Button
+                android:id="@+id/button22"
+                android:layout_width="242dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="listado_fincas"
+                android:text="Resumen de Fincas" />
+
+            <Button
+                android:id="@+id/button23"
+                android:layout_width="242dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="home_listado_animales"
+                android:text="Animales registrados" />
+
+            <Button
+                android:id="@+id/button21"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:onClick="consulta_medicamento"
+                android:text="Medicamentos aplicados"
+                android:layout_gravity="center"/>
+
+
+
+            <Button
+                android:id="@+id/ventas"
+                android:layout_width="242dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="listado_ventas"
+                android:text="ventas realizadas" />
+
+
+
+            <Button
+                android:id="@+id/button25"
+                android:layout_width="243dp"
+                android:layout_height="wrap_content"
+                android:onClick="atras"
+                android:text="ATRAS"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

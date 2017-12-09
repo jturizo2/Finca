@@ -1,0 +1,65 @@
+package domain.fincas.com.fincas;
+
+import android.content.ContentValues;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.database.sqlite.SQLiteDatabase;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+public class propietario extends AppCompatActivity {
+    private EditText nombre1,apellido1;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_propietario);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        nombre1=(EditText)findViewById(R.id.nombre1);
+        apellido1=(EditText)findViewById(R.id.apellido1);
+
+    }
+    @Override
+    public void  onBackPressed(){
+    }
+
+
+    public void atras(View view) {
+        Intent i = new Intent(propietario.this, home_configuracion.class);
+        startActivity(i);
+        finish();
+    }
+    public void guardar(View view) {
+
+        if ("".equals(nombre1.getText().toString())) {
+            Toast.makeText(this, "Asigne un nombre!!", Toast.LENGTH_LONG).show();
+        } else{
+            if ("".equals(apellido1.getText().toString())) {
+                Toast.makeText(this, "Asigne un Apellido!!", Toast.LENGTH_LONG).show();
+            } else{
+                        String name = nombre1.getText().toString();
+                        String lname = apellido1.getText().toString();
+
+                        //Base de datos
+                        UsersSQLiteHelper admine = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+                        SQLiteDatabase db = admine.getWritableDatabase();
+
+                        ContentValues registro = new ContentValues();
+                        registro.put("NOMBRE", name);
+                        registro.put("APELLIDO", lname);
+                        db.insert("PROPIETARIOS", null, registro);
+                        db.close();
+                        Toast.makeText(this, "Propietario Guardado!", Toast.LENGTH_LONG).show();
+
+                        Intent i = new Intent(propietario.this, home_configuracion.class);
+                        startActivity(i);
+                        finish();
+                }
+            }
+    }
+}

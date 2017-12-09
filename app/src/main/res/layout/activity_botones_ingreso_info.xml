@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context="domain.fincas.com.fincas.botones_ingreso_info">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.06"
+                android:gravity="center"
+                android:text="REGISTRAR"
+                android:textColor="@android:color/background_dark"
+                android:textSize="24dp" />
+
+            <Button
+                android:id="@+id/button9"
+                android:layout_width="222dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:onClick="animales"
+                android:text="ANIMALES" />
+
+            <Button
+                android:id="@+id/button10"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:onClick="medicamentos"
+                android:text="MEDICAMENTOS" />
+
+
+
+            <Button
+                android:id="@+id/button17"
+                android:layout_width="222dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:onClick="ventas"
+                android:text="ventas" />
+
+
+            <Button
+                android:id="@+id/button13"
+                android:layout_width="226dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:onClick="devolver"
+                android:text="ATRAS" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
