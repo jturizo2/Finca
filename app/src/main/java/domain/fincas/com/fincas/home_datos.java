@@ -44,10 +44,12 @@ public class home_datos extends AppCompatActivity {
 
 
     public void descargar_datos (View view) {
+
         List<String[]> data = new ArrayList<String[]>();
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         Date date = new Date();
-        String NameFile = "Report_Equipo_Fecha: " + dateFormat.format(date).toString()+ ".csv";
+        //String NameFile = "Report_Equipo_Fecha: " + dateFormat.format(date).toString()+ ".csv";
+        String NameFile = "Reporte_Datos"+".csv";
 
 
         //-----------------Tabla tratamientos------------------------------------
@@ -174,7 +176,7 @@ public class home_datos extends AppCompatActivity {
         String filePath = baseDir + File.separator + NameFile;
         File f = new File(filePath );
         CSVWriter writer;
-
+        f.delete();
         try {
             // File exist
             if (f.exists() && !f.isDirectory()) {
@@ -199,6 +201,7 @@ public class home_datos extends AppCompatActivity {
 
     public void crear_dir(){
         File f = new File(Environment.getExternalStorageDirectory() + "/Datos");
+
         // Comprobamos si la carpeta está ya creada
 
         // Si la carpeta no está creada, la creamos.
@@ -211,6 +214,10 @@ public class home_datos extends AppCompatActivity {
             // Toast.makeText(this,"La carpeta ya estaba creada.", Toast.LENGTH_LONG).show();
 
         }
+
+    }
+
+    public void carga_datos(View view) {
 
     }
 
