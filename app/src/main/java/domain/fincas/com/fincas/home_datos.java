@@ -53,7 +53,6 @@ public class home_datos extends AppCompatActivity {
 
         List<String[]> data = new ArrayList<String[]>();
         String NameFile1 = "Medicamentos"+".csv";
-
         //-----------------Tabla tratamientos------------------------------------
         UsersSQLiteHelper admine1 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
         SQLiteDatabase db1 = admine1.getWritableDatabase();
@@ -124,6 +123,57 @@ public class home_datos extends AppCompatActivity {
         }
         db2.close();
 
+        //--------------- Tabla Fincas---------------------------------
+        List<String[]> data3 = new ArrayList<String[]>();
+        String NameFile4 = "Finca"+".csv";
+        UsersSQLiteHelper admine5 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+        SQLiteDatabase db5 = admine5.getWritableDatabase();
+        Cursor fila5 = db5.rawQuery("SELECT * FROM NFINCAS", null);
+        //Se guardaran los elementos de cada fila
+        while (fila5.moveToNext()) {
+            data3.add(new String[]{
+                    fila5.getString(0),
+                    fila5.getString(1),
+                    fila5.getString(2),
+                    fila5.getString(3),
+                    fila5.getString(4),
+                    fila5.getString(5)
+            });
+        }
+        db5.close();
+
+        //--------------- Tabla Propietarios---------------------------------
+        List<String[]> data4 = new ArrayList<String[]>();
+        String NameFile5 = "Propietarios"+".csv";
+        UsersSQLiteHelper admine3 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+        SQLiteDatabase db3 = admine3.getWritableDatabase();
+        Cursor fila3 = db3.rawQuery("SELECT * FROM PROPIETARIOS", null);
+        //Se guardaran los elementos de cada fila
+        while (fila3.moveToNext()) {
+            data4.add(new String[]{
+                    fila3.getString(0),
+                    fila3.getString(1),
+                    fila3.getString(2)
+
+            });
+        }
+        db3.close();
+
+        //--------------- Tabla Hierros---------------------------------
+        List<String[]> data5 = new ArrayList<String[]>();
+        String NameFile6 = "Hierro"+".csv";
+        UsersSQLiteHelper admine7 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+        SQLiteDatabase db6 = admine7.getWritableDatabase();
+        Cursor fila7 = db6.rawQuery("SELECT * FROM THIERRO", null);
+        //Se guardaran los elementos de cada fila
+        while (fila7.moveToNext()) {
+            data5.add(new String[]{
+                    fila7.getString(0),
+                    fila7.getString(1)
+            });
+        }
+        db6.close();
+
 
 
         crear_dir(); //Metodo para crer la ruta de almacenamiento del  backup
@@ -172,7 +222,7 @@ public class home_datos extends AppCompatActivity {
             writer1.writeAll(data1);
 
             writer1.close();
-            Toast.makeText(this,"Información almacenada, consulte en la carpeta Datos.", Toast.LENGTH_LONG).show();
+           // Toast.makeText(this,"Información almacenada, consulte en la carpeta Datos.", Toast.LENGTH_LONG).show();
 
         }catch (IOException e) {
             Toast.makeText(this,"Error, intente mas tarde.", Toast.LENGTH_LONG).show();
@@ -198,7 +248,83 @@ public class home_datos extends AppCompatActivity {
             writer2.writeAll(data2);
 
             writer2.close();
-            Toast.makeText(this,"Información almacenada, consulte en la carpeta Datos.", Toast.LENGTH_LONG).show();
+          //  Toast.makeText(this,"Información almacenada, consulte en la carpeta Datos.", Toast.LENGTH_LONG).show();
+
+        }catch (IOException e) {
+            Toast.makeText(this,"Error, intente mas tarde.", Toast.LENGTH_LONG).show();
+
+        }
+
+
+        // ----------------- Creacion del Csv Finca -------------------------------
+        String baseDir3 = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/Datos";
+        String filePath3 = baseDir3 + File.separator + NameFile4;
+        File f3 = new File(filePath3);
+        CSVWriter writer3;
+        f3.delete();
+        try {
+            // File exist
+            if (f3.exists() && !f3.isDirectory()) {
+                FileWriter mFileWriter = new FileWriter(filePath3, true);
+                writer3 = new CSVWriter(mFileWriter, ';');
+            } else {
+                writer3 = new CSVWriter(new FileWriter(filePath3), ';');
+            }
+
+            writer3.writeAll(data3);
+
+            writer3.close();
+          //  Toast.makeText(this,"Información almacenada, consulte en la carpeta Datos.", Toast.LENGTH_LONG).show();
+
+        }catch (IOException e) {
+            Toast.makeText(this,"Error, intente mas tarde.", Toast.LENGTH_LONG).show();
+
+        }
+
+        // ----------------- Creacion del Csv Propietarios -------------------------------
+        String baseDir4 = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/Datos";
+        String filePath4 = baseDir4 + File.separator + NameFile5;
+        File f4 = new File(filePath4);
+        CSVWriter writer4;
+        f4.delete();
+        try {
+            // File exist
+            if (f4.exists() && !f4.isDirectory()) {
+                FileWriter mFileWriter = new FileWriter(filePath4, true);
+                writer4 = new CSVWriter(mFileWriter, ';');
+            } else {
+                writer4 = new CSVWriter(new FileWriter(filePath4), ';');
+            }
+
+            writer4.writeAll(data4);
+
+            writer4.close();
+          //  Toast.makeText(this,"Información almacenada, consulte en la carpeta Datos.", Toast.LENGTH_LONG).show();
+
+        }catch (IOException e) {
+            Toast.makeText(this,"Error, intente mas tarde.", Toast.LENGTH_LONG).show();
+
+        }
+
+        // ----------------- Creacion del Csv Hierros -------------------------------
+        String baseDir5 = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/Datos";
+        String filePath5 = baseDir5 + File.separator + NameFile6;
+        File f5 = new File(filePath5);
+        CSVWriter writer5;
+        f5.delete();
+        try {
+            // File exist
+            if (f5.exists() && !f5.isDirectory()) {
+                FileWriter mFileWriter = new FileWriter(filePath5, true);
+                writer5 = new CSVWriter(mFileWriter, ';');
+            } else {
+                writer5 = new CSVWriter(new FileWriter(filePath5), ';');
+            }
+
+            writer5.writeAll(data5);
+
+            writer5.close();
+         //   Toast.makeText(this,"Información almacenada, consulte en la carpeta Datos.", Toast.LENGTH_LONG).show();
 
         }catch (IOException e) {
             Toast.makeText(this,"Error, intente mas tarde.", Toast.LENGTH_LONG).show();
@@ -258,7 +384,7 @@ public class home_datos extends AppCompatActivity {
         }
         db5.setTransactionSuccessful();
         db5.endTransaction();
-
+ /*
         //------------Carga CSV Ventas ----------------------------------------
         UsersSQLiteHelper admine5 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
         SQLiteDatabase db6 = admine5.getWritableDatabase();
@@ -294,41 +420,42 @@ public class home_datos extends AppCompatActivity {
         BufferedReader buffer2 = new BufferedReader(file2);
         String line2 = "";
         String tableName2 ="ANIMALESN";
-        String columns2 = "ID, CODIGO, NOMBRE, GENERO, PROCEDENCIA, RAZA, FOTO, PROPIETARIO, PROPIETARIOA, HIERRO, PROPOSITO, FECHAINGRE, PESO, PESODESTETE, ETAPAP, VALORC, CODMAMA, CODPAPA, CODPARTO, FECHANACI, NFINCA, TIPOANIMAL, COMPPAR";
+        String columns2 = "CODIGO, NOMBRE, GENERO, PROCEDENCIA, RAZA, FOTO, PROPIETARIO, PROPIETARIOA, HIERRO, PROPOSITO, FECHAINGRE, PESO, PESODESTETE, ETAPAP, VALORC, CODMAMA, CODPAPA, CODPARTO, FECHANACI, NFINCA, TIPOANIMAL, COMPPAR";
         String str5 = "INSERT INTO " + tableName1 + " (" + columns2 + ") values(";
         String str6 = ");";
         db7.beginTransaction();
         while ((line2 = buffer2.readLine()) != null) {
             StringBuilder sb2 = new StringBuilder(str5);
             String[] str12 = line2.split(";");
-            sb2.append("'" +str12[0] + "',");
             sb2.append("'" +str12[1] + "',");
             sb2.append("'" +str12[2] + "',");
             sb2.append("'" +str12[3] + "',");
             sb2.append("'" +str12[4] + "',");
             sb2.append("'" +str12[5] + "',");
-            sb2.append("'" +str12[6] + "'");
-            sb2.append("'" +str12[7] + "'");
-            sb2.append("'" +str12[8] + "'");
-            sb2.append("'" +str12[9] + "'");
-            sb2.append("'" +str12[10] + "'");
-            sb2.append("'" +str12[11] + "'");
-            sb2.append("'" +str12[12] + "'");
-            sb2.append("'" +str12[13] + "'");
-            sb2.append("'" +str12[14] + "'");
-            sb2.append("'" +str12[15] + "'");
-            sb2.append("'" +str12[16] + "'");
-            sb2.append("'" +str12[17] + "'");
-            sb2.append("'" +str12[18] + "'");
-            sb2.append("'" +str12[19] + "'");
-            sb2.append("'" +str12[20] + "'");
-            sb2.append("'" +str12[21] + "'");
+            sb2.append("'" +str12[6] + "',");
+            sb2.append("'" +str12[7] + "',");
+            sb2.append("'" +str12[8] + "',");
+            sb2.append("'" +str12[9] + "',");
+            sb2.append("'" +str12[10] + "',");
+            sb2.append("'" +str12[11] + "',");
+            sb2.append("'" +str12[12] + "',");
+            sb2.append("'" +str12[13] + "',");
+            sb2.append("'" +str12[14] + "',");
+            sb2.append("'" +str12[15] + "',");
+            sb2.append("'" +str12[16] + "',");
+            sb2.append("'" +str12[17] + "',");
+            sb2.append("'" +str12[18] + "',");
+            sb2.append("'" +str12[19] + "',");
+            sb2.append("'" +str12[20] + "',");
+            sb2.append("'" +str12[21] + "',");
             sb2.append("'" +str12[22] + "'");
             sb2.append(str6);
             db7.execSQL(sb2.toString());
         }
         db7.setTransactionSuccessful();
         db7.endTransaction();
+
+        */
 
     }// fin cargar datos
 
