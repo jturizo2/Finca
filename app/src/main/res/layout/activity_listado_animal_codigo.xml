@@ -46,25 +46,8 @@
                 android:weightSum="1">
 
                 <Button
-                    android:id="@+id/eliminar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:onClick="eliminar"
-                    android:text="eliminar" />
-
-                <Button
-                    android:id="@+id/actualizar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:onClick="actualizar"
-                    android:text="actualizar"
-                    android:layout_weight="0.75" />
-
-                <Button
                     android:id="@+id/consultar"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:onClick="consultar"
@@ -376,6 +359,30 @@
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/eliminar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:onClick="eliminar"
+                    android:text="eliminar" />
+
+                <Button
+                    android:id="@+id/actualizar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:onClick="actualizar"
+                    android:text="actualizar" />
             </LinearLayout>
 
             <Button
