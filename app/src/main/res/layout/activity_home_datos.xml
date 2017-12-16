@@ -42,25 +42,6 @@
 
 
             <TextView
-                android:id="@+id/textView25"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Carga de Datos"
-                android:textColor="@android:color/background_dark"
-                android:textSize="24dp"/>
-
-
-
-            <Button
-                android:id="@+id/butt3"
-                android:layout_width="256dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:onClick="carga_datos"
-                android:text="Cargar " />
-
-            <TextView
                 android:id="@+id/textVie2"
                 android:layout_width="match_parent"
                 android:layout_height="64dp"

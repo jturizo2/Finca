@@ -144,7 +144,9 @@ public class ingreso_animales_existentes extends AppCompatActivity {
 
     }// fin oncreate
 
-
+    @Override
+    public void  onBackPressed(){
+    }
             public void guardar (View view){
 
 

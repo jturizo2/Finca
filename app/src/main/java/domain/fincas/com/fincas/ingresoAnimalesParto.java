@@ -224,7 +224,9 @@ public class ingresoAnimalesParto extends AppCompatActivity {
         }
 
    }
-
+    @Override
+    public void  onBackPressed(){
+    }
 
     public void atras(View view) {
         Intent iw = new Intent(ingresoAnimalesParto.this, ingresoTipoAnimal.class);

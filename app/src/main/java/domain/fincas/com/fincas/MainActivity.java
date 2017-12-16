@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
             registro.put("APELLIDO",M);
             db1.insert("ACTUAL", null, registro);
             db1.close();
-            Toast.makeText(this, "Welcome "+N +" "+M+" !", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Bienvenido "+N +" "+M+" !", Toast.LENGTH_LONG).show();
             Intent iw = new Intent(MainActivity.this, homep.class);
             startActivity(iw);
             finish();

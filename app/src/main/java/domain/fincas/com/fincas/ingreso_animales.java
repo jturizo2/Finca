@@ -178,8 +178,9 @@ public class ingreso_animales extends AppCompatActivity {
         ArrayAdapter<String> adap6 = new ArrayAdapter<String>(ingreso_animales.this, android.R.layout.simple_spinner_item, hierro);
         Hierro2.setAdapter(adap6);
     }
-
-
+    @Override
+    public void  onBackPressed(){
+    }
 
     public void guardar(View view) {
 
