@@ -137,9 +137,34 @@ public class ingreso_fincas extends AppCompatActivity {
 
                     }
 
-                    Intent i = new Intent(ingreso_fincas.this, home_configuracion.class);
-                    startActivity(i);
-                    finish();
+
+
+
+                    Bundle bundle = getIntent().getExtras();
+                    final String road = bundle.getString("road");
+                    if(road.equals("1")){
+                        Toast.makeText(this, "Datos iniciales guardados correctamente!!!", Toast.LENGTH_LONG).show();
+
+                        //Marcamos que la la aplicación a fue corrieda por primera vez
+                        UsersSQLiteHelper ad = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+                        SQLiteDatabase db1 = ad.getWritableDatabase();
+
+                        ContentValues registro = new ContentValues();
+                        registro.put("NEW", "1");
+                        db1.insert("NNEW", null, registro);
+                        db1.close();
+
+                        Intent i = new Intent(ingreso_fincas.this, homep.class);
+                        startActivity(i);
+                        finish();
+                    }
+                    if(road.equals("0")){
+                        Intent i = new Intent(ingreso_fincas.this, home_configuracion.class);
+                        startActivity(i);
+                        finish();
+                    }
+
+
 
                     }
 

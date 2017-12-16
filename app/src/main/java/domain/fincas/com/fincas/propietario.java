@@ -55,10 +55,21 @@ public class propietario extends AppCompatActivity {
                         db.insert("PROPIETARIOS", null, registro);
                         db.close();
                         Toast.makeText(this, "Propietario Guardado!", Toast.LENGTH_LONG).show();
+                        Bundle bundle = getIntent().getExtras();
+                        final String road = bundle.getString("road");
+                if (("0").equals(road)) {
+                    Intent i = new Intent(propietario.this, home_configuracion.class);
+                    startActivity(i);
+                    finish();
+                }
+                if (("1").equals(road)) {
+                    Intent i = new Intent(propietario.this, hierro.class);
+                    i.putExtra ("road", "1");
+                    startActivity(i);
+                    finish();
+                }
 
-                        Intent i = new Intent(propietario.this, home_configuracion.class);
-                        startActivity(i);
-                        finish();
+
                 }
             }
     }

@@ -49,11 +49,22 @@ public class hierro extends AppCompatActivity {
                 db.close();
                 Toast.makeText(this, "IHierro Ingresado Correctamente!", Toast.LENGTH_LONG).show();
 
-                Intent i = new Intent(hierro.this, home_configuracion.class);
+
+            Bundle bundle = getIntent().getExtras();
+            final String road = bundle.getString("road");
+            if(road.equals("1")){
+                Intent i = new Intent(hierro.this, ingreso_fincas.class);
+                i.putExtra ("road", "1");
                 startActivity(i);
                 finish();
             }
+            if(road.equals("0")){
+                Intent i = new Intent(hierro.this, home_configuracion.class);
+                startActivity(i);
+                finish();
 
+            }
+    }
     }
 
 }

@@ -364,6 +364,7 @@ public class home_datos extends AppCompatActivity {
     }
 
     public void carga_datos(View view) throws IOException {
+        /*
         //Ruta de carga fija - Hacerla dinamica
         String medicamentos  = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/Datos/Medicamentos.csv";
         String animales  = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/Datos/Animales.csv";
@@ -558,6 +559,7 @@ public class home_datos extends AppCompatActivity {
         d5.setTransactionSuccessful();
         d5.endTransaction();
         Toast.makeText(this,"Copia de seguridad cargada!!", Toast.LENGTH_LONG).show();
+        */
     }// fin cargar datos
 
 

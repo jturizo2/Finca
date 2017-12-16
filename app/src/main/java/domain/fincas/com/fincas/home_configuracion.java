@@ -21,6 +21,8 @@ public class home_configuracion extends AppCompatActivity {
 
     public void hierro(View view) {
         Intent i = new Intent(home_configuracion.this, hierro.class);
+        String road = "0";
+        i.putExtra ("road", road);
         startActivity(i);
         finish();
 
@@ -28,6 +30,8 @@ public class home_configuracion extends AppCompatActivity {
 
     public void propietario(View view) {
         Intent i = new Intent(home_configuracion.this, propietario.class);
+        String road = "0";
+        i.putExtra ("road", road);
         startActivity(i);
         finish();
 
@@ -35,6 +39,8 @@ public class home_configuracion extends AppCompatActivity {
 
     public void finca(View view) {
         Intent i = new Intent(home_configuracion.this, ingreso_fincas.class);
+        String road = "0";
+        i.putExtra ("road", road);
         startActivity(i);
         finish();
 
