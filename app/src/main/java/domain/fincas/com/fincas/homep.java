@@ -74,12 +74,12 @@ public class homep extends AppCompatActivity {
     public void SI(){
 
 //Ruta de carga fija - Hacerla dinamica
-        String medicamentos  = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"Medicamentos.csv";
-        String animales  = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"Animales.csv";
-        String finca  = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"Finca.csv";
-        String hierro  = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"Hierro.csv";
-        String propietarios  = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"Propietarios.csv";
-        String ventas  = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"Ventas.csv";
+        String medicamentos  = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/Medicamentos.csv";
+        String animales  = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/Animales.csv";
+        String finca  = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/Finca.csv";
+        String hierro  = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/Hierro.csv";
+        String propietarios  = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/Propietarios.csv";
+        String ventas  = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/Ventas.csv";
         //------------Carga CSV Tratamientos ----------------------------------------
         UsersSQLiteHelper admine4 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
         SQLiteDatabase db5 = admine4.getWritableDatabase();
