@@ -15,108 +15,125 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class listado_animal_codigo extends AppCompatActivity {
-
-    private EditText cod_animal,nombre, peso, pesod,vende,valorc2,fecha;
-    private TextView raza, genero,hierro,proposito,etapap;
+public class listado_animal_codigo2 extends AppCompatActivity {
+    private EditText cod_animal,nombre, peso, pesod,codmama,codpapa,codpar,fecha;
+    private TextView raza, genero,hierro,proposito,etapap,propietario;
     private String id1 ="";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listado_animal_codigo);
+        setContentView(R.layout.activity_listado_animal_codigo2);
+
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         fecha = (EditText) findViewById(R.id.fecha2);
-        valorc2 = (EditText) findViewById(R.id.valorc2);
         cod_animal = (EditText) findViewById(R.id.editText6);
         nombre =(EditText) findViewById(R.id.nombre2);
         peso =(EditText) findViewById(R.id.Peso2);
         pesod =(EditText) findViewById(R.id.Peso_destete2);
+        cod_animal = (EditText) findViewById(R.id.editText6);
+        codmama =(EditText) findViewById(R.id.codmama2);
+        codpapa =(EditText) findViewById(R.id.codpapa2);
+        codpar =(EditText) findViewById(R.id.codparto2);
+
+
         etapap =(TextView) findViewById(R.id.produ);
         genero =(TextView) findViewById(R.id.Genero2);
         raza =(TextView) findViewById(R.id.raza2);
-        vende =(EditText) findViewById(R.id.vende);
         hierro =(TextView) findViewById(R.id.hierr);
         proposito =(TextView) findViewById(R.id.propo);
+        propietario =(TextView) findViewById(R.id.propi2);
 
         // ----------Cargamos los datos de la busqueda--------------------
         //Variables de la actividad pasada
         Bundle bundle = getIntent().getExtras();
         final String use = bundle.getString("COD");
 
-                UsersSQLiteHelper admine2 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
-                SQLiteDatabase db2 = admine2.getWritableDatabase();
-                Cursor fila2 = db2.rawQuery("SELECT ID,NOMBRE,PESO,PESODESTETE,GENERO,ETAPAP,RAZA,PROPIETARIO,PROPIETARIOA," +
-                        "HIERRO,PROPOSITO,VALORC,FECHAINGRE FROM ANIMALESN WHERE  CODIGO='"+use+"'", null);
-                String nombre1 = "";
-                String peso1 = "";
-                String pesodes1 = "";
-                String genero1 = "";
-                String etapap1 = "";
-                String raza1= "";
-                String propietario1 = "";
-                String vendedor1 = "";
-                String hierro1 = "";
-                String proposito1 = "";
-                String valorc1 = "";
-                String fecha1 = "";
+        UsersSQLiteHelper admine2 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+        SQLiteDatabase db2 = admine2.getWritableDatabase();
+        Cursor fila2 = db2.rawQuery("SELECT ID,NOMBRE,PESO,PESODESTETE,GENERO,ETAPAP,RAZA,PROPIETARIO," +
+                "HIERRO,PROPOSITO,CODMAMA,CODPAPA,CODPARTO,FECHANACI FROM ANIMALESN WHERE  CODIGO='"+use+"'", null);
+        String nombre1 = "";
+        String peso1 = "";
+        String pesodes1 = "";
+        String genero1 = "";
+        String etapap1 = "";
+        String raza1= "";
+        String propietario1 = "";
+        String hierro1 = "";
+        String proposito1 = "";
+        String cdmama = "";
+        String cdpapa = "";
+        String cdpar = "";
+        String fecha1 = "";
 
-                while (fila2.moveToNext()) {
-                     id1 = fila2.getString(0);
-                     nombre1 = fila2.getString(1);
-                     peso1 = fila2.getString(2);
-                     pesodes1 = fila2.getString(3);
-                     genero1 = fila2.getString(4);
-                     etapap1 = fila2.getString(5);
-                     raza1= fila2.getString(6);
-                     propietario1 = fila2.getString(7);
-                     vendedor1 = fila2.getString(8);
-                     hierro1 = fila2.getString(9);
-                     proposito1 = fila2.getString(10);
-                     valorc1 = fila2.getString(11);
-                    fecha1 = fila2.getString(12);
+        while (fila2.moveToNext()) {
+            id1 = fila2.getString(0);
+            nombre1 = fila2.getString(1);
+            peso1 = fila2.getString(2);
+            pesodes1 = fila2.getString(3);
+            genero1 = fila2.getString(4);
+            etapap1 = fila2.getString(5);
+            raza1= fila2.getString(6);
+            propietario1 = fila2.getString(7);
+            hierro1 = fila2.getString(8);
+            proposito1 = fila2.getString(9);
+            cdmama = fila2.getString(10);
+            cdpapa = fila2.getString(11);
+            cdpar = fila2.getString(12);
+            fecha1 = fila2.getString(13);
+        }
 
-                }
-
-                // while (fila15.moveToNext()) {ssd14 += fila15.getString(0);}
+        // while (fila15.moveToNext()) {ssd14 += fila15.getString(0);}
 
 
-                db2.close();
-                cod_animal.setText(use);
-                cod_animal.setMovementMethod(new ScrollingMovementMethod());
-                nombre.setText(nombre1);
-                nombre.setMovementMethod(new ScrollingMovementMethod());
+        db2.close();
 
-                peso.setText(peso1);
-                peso.setMovementMethod(new ScrollingMovementMethod());
+        cod_animal.setText(use);
+        cod_animal.setMovementMethod(new ScrollingMovementMethod());
 
-                pesod.setText(pesodes1);
-                pesod.setMovementMethod(new ScrollingMovementMethod());
+        nombre.setText(nombre1);
+        nombre.setMovementMethod(new ScrollingMovementMethod());
 
-                genero.setText(genero1);
-                genero.setMovementMethod(new ScrollingMovementMethod());
+        peso.setText(peso1);
+        peso.setMovementMethod(new ScrollingMovementMethod());
 
-                etapap.setText(etapap1);
-                etapap.setMovementMethod(new ScrollingMovementMethod());
+        pesod.setText(pesodes1);
+        pesod.setMovementMethod(new ScrollingMovementMethod());
 
-                raza.setText(raza1);
-                raza.setMovementMethod(new ScrollingMovementMethod());
+        genero.setText(genero1);
+        genero.setMovementMethod(new ScrollingMovementMethod());
 
-                vende.setText(vendedor1);
-                vende.setMovementMethod(new ScrollingMovementMethod());
+        etapap.setText(etapap1);
+        etapap.setMovementMethod(new ScrollingMovementMethod());
 
-                hierro.setText(hierro1);
-                hierro.setMovementMethod(new ScrollingMovementMethod());
+        raza.setText(raza1);
+        raza.setMovementMethod(new ScrollingMovementMethod());
 
-                proposito.setText(proposito1);
-                proposito.setMovementMethod(new ScrollingMovementMethod());
+        hierro.setText(hierro1);
+        hierro.setMovementMethod(new ScrollingMovementMethod());
 
-                valorc2.setText(valorc1);
-                valorc2.setMovementMethod(new ScrollingMovementMethod());
+        proposito.setText(proposito1);
+        proposito.setMovementMethod(new ScrollingMovementMethod());
 
-                fecha.setText(fecha1);
-                fecha.setMovementMethod(new ScrollingMovementMethod());
-            }
+        propietario.setText(propietario1);
+        propietario.setMovementMethod(new ScrollingMovementMethod());
+
+        codmama.setText(cdmama);
+        codmama.setMovementMethod(new ScrollingMovementMethod());
+
+        codpapa.setText(cdpapa);
+        codpapa.setMovementMethod(new ScrollingMovementMethod());
+
+        codpar.setText(cdpar);
+        codpar.setMovementMethod(new ScrollingMovementMethod());
+
+        fecha.setText(fecha1);
+        fecha.setMovementMethod(new ScrollingMovementMethod());
+
+    }
+
+
+
 
     public void limpiar(){
 
@@ -126,12 +143,13 @@ public class listado_animal_codigo extends AppCompatActivity {
         etapap.setText("");
         genero.setText("");
         raza.setText("");
-        vende.setText("");
         hierro.setText("");
         proposito.setText("");
-        valorc2.setText("");
+        codpar.setText("");
+        codpapa.setText("");
+        codmama.setText("");
+        propietario.setText("");
         fecha.setText("");
-
     }
 
     @Override
@@ -139,11 +157,10 @@ public class listado_animal_codigo extends AppCompatActivity {
     }
 
     public void atras(View view) {
-        Intent iw = new Intent(listado_animal_codigo.this, home_listado_animales.class);
+        Intent iw = new Intent(listado_animal_codigo2.this, home_listado_animales.class);
         startActivity(iw);
         finish();
     }
-
 
     public void eliminar(View view){
 
@@ -206,10 +223,11 @@ public class listado_animal_codigo extends AppCompatActivity {
         else{
             String gcodigo = cod_animal.getText().toString();
             String gnombre = nombre.getText().toString();
-            String gproa = vende.getText().toString();
             String gpeso = peso.getText().toString();
             String gpesod = pesod.getText().toString();
-            String vc = valorc2.getText().toString();
+            String gcodmama = codmama.getText().toString();
+            String gcodpapa = codpapa.getText().toString();
+            String gcodpar = codpar.getText().toString();
             String fec = fecha.getText().toString();
 
 
@@ -220,11 +238,13 @@ public class listado_animal_codigo extends AppCompatActivity {
             ContentValues registro = new ContentValues();
             registro.put("CODIGO", gcodigo);
             registro.put("NOMBRE", gnombre);
-            registro.put("PROPIETARIOA", gproa);
             registro.put("PESO", gpeso);
             registro.put("PESODESTETE", gpesod);
-            registro.put("VALORC", vc);
-            registro.put("FECHAINGRE", fec);
+            registro.put("CODMAMA", gcodmama);
+            registro.put("CODPAPA", gcodpapa);
+            registro.put("CODPARTO", gcodpar);
+            registro.put("FECHANACI", fec);
+
             db3.update("ANIMALESN", registro,"ID="+id1,null);
             db3.close();
             Toast.makeText(this, "Información actualizada!!!", Toast.LENGTH_LONG).show();

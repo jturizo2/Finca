@@ -78,6 +78,9 @@ public class consulta_medicamento extends AppCompatActivity {
 
                 }
                 db2.close();
+                if(ssd2.equals("")){
+                    Toast.makeText(this, "El animal no tiene medicamento registrado.", Toast.LENGTH_LONG).show();
+                }
                 textView.setText(ssd2);
                 textView.setMovementMethod(new ScrollingMovementMethod());
 

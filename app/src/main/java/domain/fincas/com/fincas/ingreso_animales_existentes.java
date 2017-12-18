@@ -22,7 +22,7 @@ import java.util.Date;
 public class ingreso_animales_existentes extends AppCompatActivity {
 
     private Spinner genero, raza, propietario, hierro, proposito,etapap;
-    private EditText codigo, nombre ,codmama,codpapa,peso,pesodeste;
+    private EditText codigo, nombre,peso,pesodeste;
     private Integer c_p ;
     DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     Date date = new Date();
@@ -35,8 +35,6 @@ public class ingreso_animales_existentes extends AppCompatActivity {
 
         codigo= (EditText) findViewById(R.id.cod2);
         nombre= (EditText) findViewById(R.id.nombre2);
-        codmama= (EditText) findViewById(R.id.Cod_MAMA2);
-        codpapa= (EditText) findViewById(R.id.cod_papa2);
         peso= (EditText) findViewById(R.id.Peso2);
         pesodeste= (EditText) findViewById(R.id.Peso_destete2);
         c_p =2;
@@ -158,8 +156,6 @@ public class ingreso_animales_existentes extends AppCompatActivity {
                                     String gpropietario = propietario.getSelectedItem().toString();
                                     String ghierro = hierro.getSelectedItem().toString();
                                     String gpropo = proposito.getSelectedItem().toString();
-                                    String gcodmama = codmama.getText().toString();
-                                    String gcodpapa = codpapa.getText().toString();
                                     String gpeso = peso.getText().toString();
                                     String gpesodeste = pesodeste.getText().toString();
                                     String getapp = etapap.getSelectedItem().toString();
@@ -199,8 +195,6 @@ public class ingreso_animales_existentes extends AppCompatActivity {
                                         registro.put("PROPIETARIO", gpropietario);
                                         registro.put("HIERRO", ghierro);
                                         registro.put("PROPOSITO", gpropo);
-                                        registro.put("CODMAMA", gcodmama);
-                                        registro.put("CODPAPA", gcodpapa);
                                         registro.put("PESO", gpeso);
                                         registro.put("PESODESTETE", gpesodeste);
                                         registro.put("ETAPAP", getapp);

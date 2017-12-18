@@ -39,7 +39,7 @@ public class home_listado_animales extends AppCompatActivity {
     }
 
     public void listado_animales_codigo(View view) {
-        Intent iw = new Intent(home_listado_animales.this, listado_animal_codigo.class);
+        Intent iw = new Intent(home_listado_animales.this, intoCode.class);
         startActivity(iw);
         finish();
     }

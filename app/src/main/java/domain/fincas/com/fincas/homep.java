@@ -269,18 +269,19 @@ public class homep extends AppCompatActivity {
         d5.setTransactionSuccessful();
         d5.endTransaction();
         Toast.makeText(this,"Copia de seguridad cargada!!", Toast.LENGTH_LONG).show();
+            //Marcamos que la la aplicación a fue corrieda por primera vez
+            UsersSQLiteHelper ad88 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+            SQLiteDatabase db1 = ad88.getWritableDatabase();
+
+            ContentValues registro = new ContentValues();
+            registro.put("NEW", "1");
+            db1.insert("NNEW", null, registro);
+            db1.close();
         }catch (Exception e){
-            Toast.makeText(this,"Error!: "+ e.toString(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"La carpeta \"Datos\" de la copia de seguridad no fue encontrada, por favor asegurar que este en la ruta indicada y abra la aplicación de nuevo", Toast.LENGTH_LONG).show();
 
         }
-        //Marcamos que la la aplicación a fue corrieda por primera vez
-        UsersSQLiteHelper ad = new UsersSQLiteHelper(this, "FINCAS", null, 1);
-        SQLiteDatabase db1 = ad.getWritableDatabase();
 
-        ContentValues registro = new ContentValues();
-        registro.put("NEW", "1");
-        db1.insert("NNEW", null, registro);
-        db1.close();
 
     }
 
