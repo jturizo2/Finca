@@ -181,10 +181,12 @@ public class home_datos extends AppCompatActivity {
         db6.close();
 //---------------------------------------------------------------------------------------------------------------------
 
-        crear_dir(); //Metodo para crer la ruta de almacenamiento del  backup
-/*
+       // crear_dir(); //Metodo para crer la ruta de almacenamiento del  backup
+
         // ----------------- Creacion del Csv Medicamentos -------------------------------
-        String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath() + "/Datos";
+        String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
+        //String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath() + "/Datos";
+
         String filePath = baseDir + File.separator + NameFile1;
         File f = new File(filePath);
         CSVWriter writer;
@@ -210,8 +212,7 @@ public class home_datos extends AppCompatActivity {
 
 
         // ----------------- Creacion del Csv Ventas -------------------------------
-        String baseDir1 = android.os.Environment.getExternalStorageDirectory().getAbsolutePath() + "/Datos";
-        String filePath1 = baseDir1 + File.separator + NameFile2;
+        String filePath1 = baseDir + File.separator + NameFile2;
         File f1 = new File(filePath1);
         CSVWriter writer1;
         f1.delete();
@@ -236,8 +237,7 @@ public class home_datos extends AppCompatActivity {
 
 
         // ----------------- Creacion del Csv Animales -------------------------------
-        String baseDir2 = android.os.Environment.getExternalStorageDirectory().getAbsolutePath() + "/Datos";
-        String filePath2 = baseDir2 + File.separator + NameFile3;
+        String filePath2 = baseDir + File.separator + NameFile3;
         File f2 = new File(filePath2);
         CSVWriter writer2;
         f2.delete();
@@ -262,8 +262,7 @@ public class home_datos extends AppCompatActivity {
 
 
         // ----------------- Creacion del Csv Finca -------------------------------
-        String baseDir3 = android.os.Environment.getExternalStorageDirectory().getAbsolutePath() + "/Datos";
-        String filePath3 = baseDir3 + File.separator + NameFile4;
+        String filePath3 = baseDir + File.separator + NameFile4;
         File f3 = new File(filePath3);
         CSVWriter writer3;
         f3.delete();
@@ -287,8 +286,7 @@ public class home_datos extends AppCompatActivity {
         }
 
         // ----------------- Creacion del Csv Propietarios -------------------------------
-        String baseDir4 = android.os.Environment.getExternalStorageDirectory().getAbsolutePath() + "/Datos";
-        String filePath4 = baseDir4 + File.separator + NameFile5;
+        String filePath4 = baseDir + File.separator + NameFile5;
         File f4 = new File(filePath4);
         CSVWriter writer4;
         f4.delete();
@@ -312,8 +310,7 @@ public class home_datos extends AppCompatActivity {
         }
 
         // ----------------- Creacion del Csv Hierros -------------------------------
-        String baseDir5 = android.os.Environment.getExternalStorageDirectory().getAbsolutePath() + "/Datos";
-        String filePath5 = baseDir5 + File.separator + NameFile6;
+        String filePath5 = baseDir + File.separator + NameFile6;
         File f5 = new File(filePath5);
         CSVWriter writer5;
         f5.delete();
@@ -335,9 +332,6 @@ public class home_datos extends AppCompatActivity {
             Toast.makeText(this, "Error, intente mas tarde.", Toast.LENGTH_LONG).show();
 
         }
-        /*---------------------------------------
-
-      */
 
 
     }//fin del metodo crear csv
