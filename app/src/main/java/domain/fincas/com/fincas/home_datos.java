@@ -7,15 +7,19 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.opencsv.CSVWriter;
 
 import java.io.BufferedReader;
+import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -30,6 +34,12 @@ public class home_datos extends AppCompatActivity {
 
     private TextView ruta;
 
+
+    private String filename = "SampleFile.txt";
+    private String filepath = "MyFileStorage";
+    File myExternalFile;
+    String myData = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,13 +47,36 @@ public class home_datos extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         ruta = (TextView) findViewById(R.id.textVie2);
+        Button boton = (Button) findViewById(R.id.button20);
+
+
+
+        //----------Verificamos----------------
+
+        if (!isExternalStorageAvailable() || isExternalStorageReadOnly()) {
+            boton.setEnabled(false);
+        }
     }
 
 
     @Override
     public void onBackPressed() {
     }
+    private static boolean isExternalStorageReadOnly() {
+        String extStorageState = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED_READ_ONLY.equals(extStorageState)) {
+            return true;
+        }
+        return false;
+    }
 
+    private static boolean isExternalStorageAvailable() {
+        String extStorageState = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(extStorageState)) {
+            return true;
+        }
+        return false;
+    }
 
     public void atras(View view) {
         Intent iw = new Intent(home_datos.this, homep.class);
@@ -179,15 +212,13 @@ public class home_datos extends AppCompatActivity {
             });
         }
         db6.close();
-//---------------------------------------------------------------------------------------------------------------------
+//-------------Pedir permiso al celular de guardar el directorio --------------------------------------------------------------------------
+        File dir =crearDirectorioPublico("Datos"); //Metodo para crer la ruta de almacenamiento del  backup
 
-       // crear_dir(); //Metodo para crer la ruta de almacenamiento del  backup
 
         // ----------------- Creacion del Csv Medicamentos -------------------------------
-        String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
-        //String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath() + "/Datos";
 
-        String filePath = baseDir + File.separator + NameFile1;
+        String filePath = dir.toString() + File.separator +"/"+ NameFile1;
         File f = new File(filePath);
         CSVWriter writer;
         f.delete();
@@ -207,12 +238,13 @@ public class home_datos extends AppCompatActivity {
 
         } catch (IOException e) {
             Toast.makeText(this, "Error, intente mas tarde.", Toast.LENGTH_LONG).show();
+            System.out.println("Error: " +e.toString());
 
         }
 
 
         // ----------------- Creacion del Csv Ventas -------------------------------
-        String filePath1 = baseDir + File.separator + NameFile2;
+        String filePath1 = dir.toString() + File.separator +"/"+ NameFile2;
         File f1 = new File(filePath1);
         CSVWriter writer1;
         f1.delete();
@@ -237,7 +269,7 @@ public class home_datos extends AppCompatActivity {
 
 
         // ----------------- Creacion del Csv Animales -------------------------------
-        String filePath2 = baseDir + File.separator + NameFile3;
+        String filePath2 = dir.toString() + File.separator +"/"+ NameFile3;
         File f2 = new File(filePath2);
         CSVWriter writer2;
         f2.delete();
@@ -262,7 +294,7 @@ public class home_datos extends AppCompatActivity {
 
 
         // ----------------- Creacion del Csv Finca -------------------------------
-        String filePath3 = baseDir + File.separator + NameFile4;
+        String filePath3 = dir.toString() + File.separator +"/"+ NameFile4;
         File f3 = new File(filePath3);
         CSVWriter writer3;
         f3.delete();
@@ -286,7 +318,7 @@ public class home_datos extends AppCompatActivity {
         }
 
         // ----------------- Creacion del Csv Propietarios -------------------------------
-        String filePath4 = baseDir + File.separator + NameFile5;
+        String filePath4 = dir.toString() + File.separator +"/"+ NameFile5;
         File f4 = new File(filePath4);
         CSVWriter writer4;
         f4.delete();
@@ -310,7 +342,7 @@ public class home_datos extends AppCompatActivity {
         }
 
         // ----------------- Creacion del Csv Hierros -------------------------------
-        String filePath5 = baseDir + File.separator + NameFile6;
+        String filePath5 = dir.toString() + File.separator +"/"+ NameFile6;
         File f5 = new File(filePath5);
         CSVWriter writer5;
         f5.delete();
@@ -335,28 +367,12 @@ public class home_datos extends AppCompatActivity {
 
 
     }//fin del metodo crear csv
-
-
-    public void crear_dir() {
-        String newFolder = "/Datos";
-        // Comprobamos si la carpeta está ya creada
-        File theDir = new File(android.os.Environment.getExternalStorageDirectory().getAbsolutePath() + newFolder);
-        if (!theDir.exists()) {
-            Toast.makeText(this, "creating directory: " + theDir.getName(), Toast.LENGTH_LONG).show();
-
-            boolean result = false;
-
-            try{
-                theDir.mkdir();
-                result = true;
-            }
-            catch(SecurityException se){
-                Toast.makeText(this, "Error:"+ se.toString(), Toast.LENGTH_LONG).show();
-
-            }
-            if(result) {
-                Toast.makeText(this,"DIR created", Toast.LENGTH_LONG).show();
-            }
-        }
+    public File crearDirectorioPublico(String nombreDirectorio) {
+        //Crear directorio público en la carpeta Pictures.
+        File directorio = new File(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(), nombreDirectorio);
+        //Muestro un mensaje en el logcat si no se creo la carpeta por algun motivo
+        if (!directorio.mkdirs()) System.out.println("Error: No se creo el directorio público");
+        return directorio;
     }
+
 }
