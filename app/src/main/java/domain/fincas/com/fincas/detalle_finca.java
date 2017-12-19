@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 
 public class detalle_finca extends AppCompatActivity {
-    private TextView text1,text2,text3,text4,text5,text6,text7,text8,text9,text10,text11,text12,tvacas;
+    private TextView text1,text2,text3,text4,text5,text6,lec2,text7,text8,text9,text10,text11,text12,tvacas,tvacas11,tvacas22,tvacas33;
 
 
     @Override
@@ -35,8 +35,56 @@ public class detalle_finca extends AppCompatActivity {
         text11 = (TextView) findViewById(R.id.tnovillas2);
         text12 = (TextView) findViewById(R.id.ttoros2);
         tvacas = (TextView) findViewById(R.id.tvacas2);
+        tvacas11 = (TextView) findViewById(R.id.tvacas11);
+        tvacas22 = (TextView) findViewById(R.id.tvacas22);
+        tvacas33 = (TextView) findViewById(R.id.tvacas33);
+        lec2 = (TextView) findViewById(R.id.lec2);
+        //-----------Conteo leche------------------
+        UsersSQLiteHelper admine33 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+        SQLiteDatabase db33 = admine33.getWritableDatabase();
+        Cursor fila33 = db33.rawQuery("SELECT LITROS FROM LECHE", null);
+        String ssd1="";
+        Double data = 0.0;
+        while (fila33.moveToNext()) {
+            data  += Double.parseDouble(fila33.getString(0));
+        }
+        db33.close();
+        lec2.setText(data.toString());
 
-
+        //-----------Conteo medicamentos------------------
+        UsersSQLiteHelper admine3 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+        SQLiteDatabase db3 = admine3.getWritableDatabase();
+        Cursor fila3 = db3.rawQuery("SELECT COSTO FROM TRATAMIENTOS", null);
+         ssd1="";
+         data = 0.0;
+        while (fila3.moveToNext()) {
+            data  += Double.parseDouble(fila3.getString(0));
+        }
+        db3.close();
+        tvacas33.setText(data.toString());
+        //-----------Conteo COMPRAS------------------
+        UsersSQLiteHelper admine1 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+        SQLiteDatabase db1 = admine1.getWritableDatabase();
+        Cursor fila1 = db1.rawQuery("SELECT VALORC FROM ANIMALESN WHERE COMPPAR='0'", null);
+        ssd1="";
+        data = 0.0;
+        while (fila1.moveToNext()) {
+            data  += Double.parseDouble(fila1.getString(0));
+        }
+        db1.close();
+        tvacas11.setText(data.toString());
+        //-----------Conteo VENTAS------------------
+        UsersSQLiteHelper admine2 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+        SQLiteDatabase db2 = admine2.getWritableDatabase();
+        Cursor fila2 = db2.rawQuery("SELECT VALOR FROM VENTAS", null);
+        ssd1="";
+        data = 0.0;
+        while (fila2.moveToNext()) {
+            data  += Double.parseDouble(fila2.getString(0));
+        }
+        db2.close();
+        tvacas22.setText(data.toString());
+        //-------------------------------------------------------------------
         String[] campos = new String[] {"NOMBREF", "HECTAREAS", "DIVICIONES", "LOTES"};
         String[] args = new String[] {""};
         String whereClause = "ID=?";

@@ -43,7 +43,7 @@ public class ingresoAnimalesParto extends AppCompatActivity {
 
         String fc = dateFormat.format(date.getTime());
         fecha.setText(fc);
-        
+
         etapap=(Spinner) findViewById(R.id.etapap);
         String[]tp155 = {""};
         ArrayAdapter<String> adap551 = new ArrayAdapter<String>(ingresoAnimalesParto.this, android.R.layout.simple_spinner_item, tp155);
