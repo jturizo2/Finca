@@ -134,7 +134,7 @@
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
 
-                <TextView
+                <EditText
                     android:id="@+id/produ"
                     android:layout_width="match_parent"
                     android:layout_height="37dp"
@@ -339,7 +339,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="left"
-                    android:inputType="numberDecimal"
+                    android:inputType="textPersonName"
                     android:text=""
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />

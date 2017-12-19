@@ -47,5 +47,11 @@ public class botones_ingreso_info extends AppCompatActivity {
         finish();
 
     }
+    public void leche(View view) {
+        Intent i = new Intent(botones_ingreso_info.this, lecheingre.class);
+        startActivity(i);
+        finish();
+
+    }
 
    }

@@ -206,6 +206,7 @@ public class listado_animal_codigo3 extends AppCompatActivity {
             String gpeso = peso.getText().toString();
             String gpesod = pesod.getText().toString();
             String fec = fecha.getText().toString();
+            String getap = etapap.getText().toString();
 
 
 
@@ -218,6 +219,7 @@ public class listado_animal_codigo3 extends AppCompatActivity {
             registro.put("PESO", gpeso);
             registro.put("PESODESTETE", gpesod);
             registro.put("FECHAINGRE", fec);
+            registro.put("ETAPAP", getap);
             db3.update("ANIMALESN", registro,"ID="+id1,null);
             db3.close();
             Toast.makeText(this, "Información actualizada!!!", Toast.LENGTH_LONG).show();

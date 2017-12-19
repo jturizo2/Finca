@@ -16,8 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class listado_animal_codigo2 extends AppCompatActivity {
-    private EditText cod_animal,nombre, peso, pesod,codmama,codpapa,codpar,fecha;
-    private TextView raza, genero,hierro,proposito,etapap,propietario;
+    private EditText cod_animal,nombre, peso, pesod,codmama,codpapa,codpar,fecha,etapap;
+    private TextView raza, genero,hierro,proposito,propietario;
     private String id1 ="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class listado_animal_codigo2 extends AppCompatActivity {
         codpar =(EditText) findViewById(R.id.codparto2);
 
 
-        etapap =(TextView) findViewById(R.id.produ);
+        etapap =(EditText) findViewById(R.id.produ);
         genero =(TextView) findViewById(R.id.Genero2);
         raza =(TextView) findViewById(R.id.raza2);
         hierro =(TextView) findViewById(R.id.hierr);
@@ -229,6 +229,7 @@ public class listado_animal_codigo2 extends AppCompatActivity {
             String gcodpapa = codpapa.getText().toString();
             String gcodpar = codpar.getText().toString();
             String fec = fecha.getText().toString();
+            String geta = etapap.getText().toString();
 
 
 
@@ -244,6 +245,7 @@ public class listado_animal_codigo2 extends AppCompatActivity {
             registro.put("CODPAPA", gcodpapa);
             registro.put("CODPARTO", gcodpar);
             registro.put("FECHANACI", fec);
+            registro.put("ETAPAP", geta);
 
             db3.update("ANIMALESN", registro,"ID="+id1,null);
             db3.close();

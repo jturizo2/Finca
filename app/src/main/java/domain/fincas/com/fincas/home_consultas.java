@@ -48,6 +48,12 @@ public class home_consultas extends AppCompatActivity {
         finish();
     }
 
+    public void leche(View view) {
+        Intent iw = new Intent(home_consultas.this, intoCodeLeche.class);
+        startActivity(iw);
+        finish();
+    }
+
 
 
 }

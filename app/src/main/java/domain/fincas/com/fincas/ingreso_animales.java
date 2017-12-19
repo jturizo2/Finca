@@ -22,7 +22,7 @@ import java.util.List;
 
 public class ingreso_animales extends AppCompatActivity {
     private Spinner Genero2,Raza2,Propietario2,Hierro2,Proposito2,etapap;
-    private EditText codig, nomb,peso,pesod,etap_p,valor_c, propietari;
+    private EditText codig, nomb,peso,pesod,etap_p,valor_c, propietari,fecha;
     private Integer c_p ;
 
 
@@ -40,10 +40,10 @@ public class ingreso_animales extends AppCompatActivity {
          pesod= (EditText) findViewById(R.id.Peso_destete2);
          valor_c= (EditText) findViewById(R.id.V_Compra2);
          propietari = (EditText) findViewById(R.id.propieta);
-
+        fecha = (EditText) findViewById(R.id.fecha22);
          c_p =0;
-
-
+        String fc = dateFormat.format(date.getTime());
+        fecha.setText(fc);
 
         /* // Consultar Campos en la Base de Datos
 
@@ -196,7 +196,7 @@ public class ingreso_animales extends AppCompatActivity {
         String getapp = etapap.getSelectedItem().toString();
         String gvalorc = valor_c.getText().toString();
         String comp_par = c_p.toString();
-        String fecha_i =dateFormat.format(date).toString();
+        String fecha_i =fecha.getText().toString();
         //------------------------------------------------------------------------------------
         //-----Se busca si el cod existe en los animales
         // Cod actual

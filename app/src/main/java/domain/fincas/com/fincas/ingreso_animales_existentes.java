@@ -22,7 +22,7 @@ import java.util.Date;
 public class ingreso_animales_existentes extends AppCompatActivity {
 
     private Spinner genero, raza, propietario, hierro, proposito,etapap;
-    private EditText codigo, nombre,peso,pesodeste;
+    private EditText codigo, nombre,peso,pesodeste,fecha;
     private Integer c_p ;
     DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     Date date = new Date();
@@ -32,13 +32,14 @@ public class ingreso_animales_existentes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingreso_animales_existentes);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
+        fecha= (EditText) findViewById(R.id.fecha22);
         codigo= (EditText) findViewById(R.id.cod2);
         nombre= (EditText) findViewById(R.id.nombre2);
         peso= (EditText) findViewById(R.id.Peso2);
         pesodeste= (EditText) findViewById(R.id.Peso_destete2);
         c_p =2;
-
+        String fc = dateFormat.format(date.getTime());
+        fecha.setText(fc);
 
         etapap=(Spinner) findViewById(R.id.etapap);
         String[]tp155 = {""};
@@ -160,7 +161,7 @@ public class ingreso_animales_existentes extends AppCompatActivity {
                                     String gpesodeste = pesodeste.getText().toString();
                                     String getapp = etapap.getSelectedItem().toString();
                                     String comp_par = c_p.toString();
-                                    String fecha_i =dateFormat.format(date).toString();
+                                    String fecha_i =fecha.getText().toString();
 
                                     //------------------------------------------------------------
                                     //-----Se busca si el cod existe en los animales

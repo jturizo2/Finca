@@ -54,13 +54,21 @@
 
 
             <Button
+                android:id="@+id/leche3"
+                android:layout_width="242dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="leche"
+                android:text="Litros de leche registrados" />
+
+
+            <Button
                 android:id="@+id/ventas"
                 android:layout_width="242dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:onClick="listado_ventas"
                 android:text="ventas realizadas" />
-
 
 
             <Button

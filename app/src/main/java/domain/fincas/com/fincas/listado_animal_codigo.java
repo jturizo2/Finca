@@ -17,8 +17,8 @@ import android.widget.Toast;
 
 public class listado_animal_codigo extends AppCompatActivity {
 
-    private EditText cod_animal,nombre, peso, pesod,vende,valorc2,fecha;
-    private TextView raza, genero,hierro,proposito,etapap;
+    private EditText cod_animal,nombre, peso, pesod,vende,valorc2,fecha,etapap;
+    private TextView raza, genero,hierro,proposito;
     private String id1 ="";
 
     @Override
@@ -32,7 +32,7 @@ public class listado_animal_codigo extends AppCompatActivity {
         nombre =(EditText) findViewById(R.id.nombre2);
         peso =(EditText) findViewById(R.id.Peso2);
         pesod =(EditText) findViewById(R.id.Peso_destete2);
-        etapap =(TextView) findViewById(R.id.produ);
+        etapap =(EditText) findViewById(R.id.produ);
         genero =(TextView) findViewById(R.id.Genero2);
         raza =(TextView) findViewById(R.id.raza2);
         vende =(EditText) findViewById(R.id.vende);
@@ -211,6 +211,7 @@ public class listado_animal_codigo extends AppCompatActivity {
             String gpesod = pesod.getText().toString();
             String vc = valorc2.getText().toString();
             String fec = fecha.getText().toString();
+            String getapp = etapap.getText().toString();
 
 
 
@@ -225,6 +226,8 @@ public class listado_animal_codigo extends AppCompatActivity {
             registro.put("PESODESTETE", gpesod);
             registro.put("VALORC", vc);
             registro.put("FECHAINGRE", fec);
+            registro.put("ETAPAP", getapp);
+
             db3.update("ANIMALESN", registro,"ID="+id1,null);
             db3.close();
             Toast.makeText(this, "Información actualizada!!!", Toast.LENGTH_LONG).show();

@@ -87,6 +87,12 @@ public class UsersSQLiteHelper extends SQLiteOpenHelper{
         String SQLCREATE8 = "CREATE TABLE NNEW (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "NEW TEXT" +
                 ")";
+        //Registo instalada por primera vez
+        String SQLCREATE9 = "CREATE TABLE LECHE (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "COD TEXT," +
+                "LITROS TEXT," +
+                "FECHA TEXT" +
+                ")";
         db.execSQL(sql);
         db.execSQL(SQLCREATE);
         db.execSQL(SQLCREATE2);
@@ -96,7 +102,7 @@ public class UsersSQLiteHelper extends SQLiteOpenHelper{
         db.execSQL(SQLCREATE6);
         db.execSQL(SQLCREATE7);
         db.execSQL(SQLCREATE8);
-
+        db.execSQL(SQLCREATE9);
     }
 
     @Override
