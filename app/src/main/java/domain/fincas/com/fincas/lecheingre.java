@@ -10,9 +10,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class lecheingre extends AppCompatActivity {
     private EditText cod1,litros,fecha;
 
+    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    Date date = new Date();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +27,8 @@ public class lecheingre extends AppCompatActivity {
         litros= (EditText) findViewById(R.id.litros);
         fecha= (EditText) findViewById(R.id.fecha2);
 
+        String fc = dateFormat.format(date.getTime());
+        fecha.setText(fc);
     }
 
     public void atras(View view) {

@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.06"
                 android:gravity="center"
-                android:text="REGISTRO DE ANIMAL EXISTENTE"
+                android:text="REGISTRO DE LECHE "
                 android:textColor="@android:color/background_dark"
                 android:textSize="24dp" />
 
