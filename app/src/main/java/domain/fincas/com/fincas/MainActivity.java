@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         String name2 = "";
         String lm2 = "";
-
+        /*
         UsersSQLiteHelper admine2 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
         SQLiteDatabase db2 = admine2.getWritableDatabase();
         Cursor fila1 = db2.rawQuery("SELECT NOMBRE,APELLIDO FROM ACTUAL LIMIT 1", null);
@@ -45,15 +45,16 @@ public class MainActivity extends AppCompatActivity {
             lm2=fila1.getString(1);
         }
         db2.close();
-      //   Fin de la Consulta*/
+      //   Fin de la Consulta*
 
         if("".equals(name2)){
 
-        }else{
+
+        }else{ */
             Intent iw = new Intent(MainActivity.this, homep.class);
             startActivity(iw);
             finish();
-        }
+        //}
 
     }
 

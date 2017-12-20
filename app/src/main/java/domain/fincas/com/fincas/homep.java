@@ -357,13 +357,14 @@ public class homep extends AppCompatActivity {
     }
 
     public void cerrar(View view) {
-        //Borrar usuario actual
+        /*Borrar usuario actual
         UsersSQLiteHelper admine3 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
         SQLiteDatabase db3 = admine3.getWritableDatabase();
         db3.delete("ACTUAL",null,null);
         Intent choo2 = new Intent(homep.this, MainActivity.class);
         startActivity(choo2);
         finish();
+        */
     }
 
 

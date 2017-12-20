@@ -386,7 +386,7 @@ public class home_datos extends AppCompatActivity {
             writer5.writeAll(data5);
 
             writer5.close();
-
+            Toast.makeText(this, "Copia  de seguridad guardada en la carpeta Datos.", Toast.LENGTH_LONG).show();
         } catch (IOException e) {
             Toast.makeText(this, "Error: en la configuración de la APP, active los permisos de alamacenamiento.", Toast.LENGTH_LONG).show();
 
