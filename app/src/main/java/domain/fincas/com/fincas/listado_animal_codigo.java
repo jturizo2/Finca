@@ -18,7 +18,7 @@ import android.widget.Toast;
 public class listado_animal_codigo extends AppCompatActivity {
 
     private EditText cod_animal,nombre, peso, pesod,vende,valorc2,fecha,etapap;
-    private TextView raza, genero,hierro,proposito;
+    private TextView raza, genero,hierro,proposito,partos;
     private String id1 ="";
 
     @Override
@@ -38,6 +38,7 @@ public class listado_animal_codigo extends AppCompatActivity {
         vende =(EditText) findViewById(R.id.vende);
         hierro =(TextView) findViewById(R.id.hierr);
         proposito =(TextView) findViewById(R.id.propo);
+        partos =(TextView) findViewById(R.id.partos);
 
         // ----------Cargamos los datos de la busqueda--------------------
         //Variables de la actividad pasada
@@ -77,11 +78,34 @@ public class listado_animal_codigo extends AppCompatActivity {
                     fecha1 = fila2.getString(12);
 
                 }
+        db2.close();
+//------------------------------Consultamos los partos del animal--------------------------------
+        if(genero1.equals("Hembra")){
+            UsersSQLiteHelper admine4 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+            SQLiteDatabase db4 = admine4.getWritableDatabase();
+            Cursor fila4 = db4.rawQuery("SELECT CODIGO,NOMBRE,GENERO,FECHANACI FROM ANIMALESN WHERE  COMPPAR='1' AND CODMAMA='"+use+"'", null);
 
-                // while (fila15.moveToNext()) {ssd14 += fila15.getString(0);}
+            String ss="<-  Partos registrados--> " + "\n";
+            while (fila4.moveToNext()) {
+                ss += "<---------------------> " + "\n"
+                        + "CODIGO:" + fila4.getString(0) + "\n"
+                        + "NOMBRE:" + fila4.getString(1) + "\n"
+                        + "GENERO:" + fila4.getString(2) + "\n"
+                        + "F.NACIMIENTO:" + fila4.getString(3) + "\n";
+            }
+            db4.close();
+            partos.setText(ss);
+            partos.setMovementMethod(new ScrollingMovementMethod());
+
+        }else{
+            partos.setText("Este campo no aplica para machos.");
+            partos.setMovementMethod(new ScrollingMovementMethod());
+
+        }
+        //------------------------------------------------------------------
 
 
-                db2.close();
+
                 cod_animal.setText(use);
                 cod_animal.setMovementMethod(new ScrollingMovementMethod());
                 nombre.setText(nombre1);

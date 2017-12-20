@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 public class listado_animal_codigo2 extends AppCompatActivity {
     private EditText cod_animal,nombre, peso, pesod,codmama,codpapa,codpar,fecha,etapap;
-    private TextView raza, genero,hierro,proposito,propietario;
+    private TextView raza, genero,hierro,proposito,propietario,partos;
     private String id1 ="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,7 @@ public class listado_animal_codigo2 extends AppCompatActivity {
         codmama =(EditText) findViewById(R.id.codmama2);
         codpapa =(EditText) findViewById(R.id.codpapa2);
         codpar =(EditText) findViewById(R.id.codparto2);
+        partos =(TextView) findViewById(R.id.partos);
 
 
         etapap =(EditText) findViewById(R.id.produ);
@@ -87,6 +88,30 @@ public class listado_animal_codigo2 extends AppCompatActivity {
 
 
         db2.close();
+//------------------------------Consultamos los partos del animal--------------------------------
+        if(genero1.equals("Hembra")){
+            UsersSQLiteHelper admine4 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+            SQLiteDatabase db4 = admine4.getWritableDatabase();
+            Cursor fila4 = db4.rawQuery("SELECT CODIGO,NOMBRE,GENERO,FECHANACI FROM ANIMALESN WHERE  COMPPAR='1' AND CODMAMA='"+use+"'", null);
+
+            String ss="<-  Partos registrados--> " + "\n";
+            while (fila4.moveToNext()) {
+                ss += "<---------------------> " + "\n"
+                        + "CODIGO:" + fila4.getString(0) + "\n"
+                        + "NOMBRE:" + fila4.getString(1) + "\n"
+                        + "GENERO:" + fila4.getString(2) + "\n"
+                        + "F.NACIMIENTO:" + fila4.getString(3) + "\n";
+            }
+            db4.close();
+            partos.setText(ss);
+            partos.setMovementMethod(new ScrollingMovementMethod());
+        }else{
+            partos.setText("Este campo no aplica para machos.");
+            partos.setMovementMethod(new ScrollingMovementMethod());
+
+        }
+        //------------------------------------------------------------------
+
 
         cod_animal.setText(use);
         cod_animal.setMovementMethod(new ScrollingMovementMethod());
