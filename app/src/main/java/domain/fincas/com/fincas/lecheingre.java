@@ -69,23 +69,43 @@ public class lecheingre extends AppCompatActivity {
 
 
         }else{
+            UsersSQLiteHelper admine6 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+            SQLiteDatabase db6 = admine6.getWritableDatabase();
+            Cursor fila6 = db6.rawQuery("SELECT ID FROM ANIMALESN WHERE CODIGO='"+use+"' AND ETAPAP='Vaca'", null);
+            String flag6="nada";
+            while (fila6.moveToNext()) {
+                String prube= fila.getString(0);
+                if(use.equals(prube)){
+                    flag6="algop";
+                    break;
+                }
 
-            //Base de datos
-            UsersSQLiteHelper admine9 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
-            SQLiteDatabase db9 = admine9.getWritableDatabase();
-
-            ContentValues registro = new ContentValues();
-            registro.put("COD", gcod1);
-            registro.put("LITROS", glitros);
-            registro.put("FECHA", gfecha);
-            db9.insert("LECHE", null, registro);
-            db9.close();
-            Toast.makeText(this, "Información registrada!!", Toast.LENGTH_LONG).show();
+            }
+            db6.close();
+            // Verificar si es vaca----------------
+            if(flag6.equals("nada")){
+                Toast.makeText(this, "El animal no es una vaca!!!", Toast.LENGTH_LONG).show();
+            }else{
 
 
-            Intent i = new Intent(lecheingre.this, botones_ingreso_info.class);
-            startActivity(i);
-            finish();
+                //Base de datos
+                UsersSQLiteHelper admine9 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+                SQLiteDatabase db9 = admine9.getWritableDatabase();
+
+                ContentValues registro = new ContentValues();
+                registro.put("COD", gcod1);
+                registro.put("LITROS", glitros);
+                registro.put("FECHA", gfecha);
+                db9.insert("LECHE", null, registro);
+                db9.close();
+                Toast.makeText(this, "Información registrada!!", Toast.LENGTH_LONG).show();
+
+
+                Intent i = new Intent(lecheingre.this, botones_ingreso_info.class);
+                startActivity(i);
+                finish();
+            }
+
         }
 
     }
