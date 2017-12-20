@@ -66,6 +66,14 @@
 
 
             <Button
+                android:id="@+id/button2"
+                android:layout_width="256dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="reporte"
+                android:text="Reporte " />
+
+            <Button
                 android:id="@+id/config"
                 android:layout_width="257dp"
                 android:layout_height="wrap_content"

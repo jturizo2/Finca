@@ -366,7 +366,190 @@ public class homep extends AppCompatActivity {
         finish();
         */
     }
+    public void reporte(View view) {
 
+        List<String[]> data = new ArrayList<String[]>();
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy-HH:mm:ss");
+        Date date = new Date();
+
+
+        //-----------------Tabla tratamientos------------------------------------
+        UsersSQLiteHelper admine1 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+        SQLiteDatabase db1 = admine1.getWritableDatabase();
+        Cursor fila1 = db1.rawQuery("SELECT * FROM TRATAMIENTOS", null);
+        data.add(new String[]{"Tabla de tratamientos medicos registrados "});
+        //SE GUARDAN LOS NOMBRE DE LAS COLUMNNAS
+        data.add(new String[]{
+                "ID",
+                "CODIGO",
+                "MEDICAMENTO",
+                "DETALLE",
+                "COSTO",
+                "FECHA"
+        });
+
+        //Se gusragan los elementos de cada fila
+        while (fila1.moveToNext()) {
+            data.add(new String[]{
+                    fila1.getString(0),
+                    fila1.getString(1),
+                    fila1.getString(2),
+                    fila1.getString(3),
+                    fila1.getString(4),
+                    fila1.getString(5)
+            });
+        }
+        db1.close();
+        //-----------------Tabla Animales ------------------------------------
+        UsersSQLiteHelper admine2 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+        SQLiteDatabase db2 = admine2.getWritableDatabase();
+        Cursor fila2 = db2.rawQuery("SELECT * FROM ANIMALESN", null);
+        data.add(new String[]{"Tabla de Animales Registrados "});
+
+        //SE GUARDAN LOS NOMBRE DE LAS COLUMNNAS
+        data.add(new String[]{
+                "ID",
+                "CODIGO",
+                "NOMBRE",
+                "GENERO",
+                "PROCEDENCIA",
+                "RAZA",
+                "FOTO",
+                "PROPIETARIO",
+                "PROPIETARIOA",
+                "HIERRO",
+                "PROPOSITO",
+                "FECHAINGRE",
+                "PESO",
+                "PESODESTETE",
+                "ETAPAP",
+                "VALORC",
+                "CODMAMA",
+                "CODPAPA",
+                "CODPARTO",
+                "FECHANACI",
+                "NFINCA",
+                "TIPOANIMAL",
+                "COMPPAR"
+        });
+
+        //Se gusragan los elementos de cada fila
+        while (fila2.moveToNext()) {
+            data.add(new String[]{
+                    fila2.getString(0),
+                    fila2.getString(1),
+                    fila2.getString(2),
+                    fila2.getString(3),
+                    fila2.getString(4),
+                    fila2.getString(5),
+                    fila2.getString(6),
+                    fila2.getString(7),
+                    fila2.getString(8),
+                    fila2.getString(9),
+                    fila2.getString(10),
+                    fila2.getString(11),
+                    fila2.getString(12),
+                    fila2.getString(13),
+                    fila2.getString(14),
+                    fila2.getString(15),
+                    fila2.getString(16),
+                    fila2.getString(17),
+                    fila2.getString(18),
+                    fila2.getString(19),
+                    fila2.getString(20),
+                    fila2.getString(21),
+                    fila2.getString(22)
+            });
+        }
+        db2.close();
+//--------------Animales vendidos.-----------------------------------------
+        UsersSQLiteHelper admine4 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+        SQLiteDatabase db4 = admine4.getWritableDatabase();
+        Cursor fila4 = db4.rawQuery("SELECT * FROM VENTAS", null);
+        data.add(new String[]{"Tabla de Ventas Registradas "});
+
+        //SE GUARDAN LOS NOMBRE DE LAS COLUMNNAS
+        data.add(new String[]{
+                "ID",
+                "CODIGO",
+                "PESO",
+                "DETALLE",
+                "COMPRADOR",
+                "VALOR",
+                "FECHAV"
+        });
+
+        //Se gusragan los elementos de cada fila
+        while (fila4.moveToNext()) {
+            data.add(new String[]{
+                    fila4.getString(0),
+                    fila4.getString(1),
+                    fila4.getString(2),
+                    fila4.getString(3),
+                    fila4.getString(4),
+                    fila4.getString(5)
+            });
+        }
+        db4.close();
+
+        //--------------Tabla Leche.-----------------------------------------
+        UsersSQLiteHelper admine5 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+        SQLiteDatabase db3 = admine5.getWritableDatabase();
+        Cursor fila5 = db3.rawQuery("SELECT * FROM LECHE", null);
+        data.add(new String[]{"Registros de leches de Vacas "});
+
+        //SE GUARDAN LOS NOMBRE DE LAS COLUMNNAS
+        data.add(new String[]{
+                "ID",
+                "CODIGO",
+                "LITROS",
+                "FECHA"
+
+        });
+
+        //Se gusragan los elementos de cada fila
+        while (fila4.moveToNext()) {
+            data.add(new String[]{
+                    fila5.getString(0),
+                    fila5.getString(1),
+                    fila5.getString(2),
+                    fila5.getString(3)
+
+            });
+        }
+        db3.close();
+
+        //Guardamos CSV-------------------------
+        String NameFile = "Reporte.csv";
+        String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/Datos";
+        String filePath = baseDir+ "/"+NameFile;
+        Toast.makeText(this,filePath, Toast.LENGTH_LONG).show();
+
+        File f = new File(filePath);
+        f.delete();
+        CSVWriter writer;
+
+        try {
+            // File exist
+            if (f.exists() && !f.isDirectory()) {
+                FileWriter mFileWriter = new FileWriter(filePath, true);
+                writer = new CSVWriter(mFileWriter, ';');
+            } else {
+                writer = new CSVWriter(new FileWriter(filePath), ';');
+            }
+
+            writer.writeAll(data);
+
+            writer.close();
+            Toast.makeText(this,"Reporte almacenado, consulte en la carpeta Datos.", Toast.LENGTH_LONG).show();
+
+        }catch (IOException e) {
+            Toast.makeText(this,"Error, intente mas tarde."+e.toString(), Toast.LENGTH_LONG).show();
+
+        }
+
+
+    }
 
 
 
