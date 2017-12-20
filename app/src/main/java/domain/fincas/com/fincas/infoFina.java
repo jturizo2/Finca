@@ -53,7 +53,7 @@ public class infoFina extends AppCompatActivity {
                 while (fila33.moveToNext()) {
                     String PRUBE =fila33.getString(1) ;
                     Date IPRUBE = sdt.parse(PRUBE);
-                    if(iini.after(IPRUBE) && ifin.before(IPRUBE)){
+                    if(iini.before(IPRUBE) && ifin.after(IPRUBE)){
                         data  += Double.parseDouble(fila33.getString(0));
                     }
                 }
@@ -69,7 +69,7 @@ public class infoFina extends AppCompatActivity {
                 while (fila3.moveToNext()) {
                     String PRUBE =fila3.getString(1) ;
                     Date IPRUBE = sdt.parse(PRUBE);
-                    if(iini.after(IPRUBE) && ifin.before(IPRUBE)){
+                    if(iini.before(IPRUBE) && ifin.after(IPRUBE)){
                         data  += Double.parseDouble(fila3.getString(0));
                     }                }
                 db3.close();
@@ -84,7 +84,7 @@ public class infoFina extends AppCompatActivity {
 
                     String PRUBE =fila1.getString(1) ;
                     Date IPRUBE = sdt.parse(PRUBE);
-                    if(iini.after(IPRUBE) && ifin.before(IPRUBE)){
+                    if(iini.before(IPRUBE) && ifin.after(IPRUBE)){
                         data  += Double.parseDouble(fila1.getString(0));
                     }
                 }
@@ -99,7 +99,7 @@ public class infoFina extends AppCompatActivity {
                 while (fila2.moveToNext()) {
                     String PRUBE =fila2.getString(1) ;
                     Date IPRUBE = sdt.parse(PRUBE);
-                    if(iini.after(IPRUBE) && ifin.before(IPRUBE)){
+                    if(iini.before(IPRUBE) && ifin.after(IPRUBE)){
                         data  += Double.parseDouble(fila2.getString(0));
                     }
                 }
@@ -122,6 +122,7 @@ public class infoFina extends AppCompatActivity {
     }
     @Override
     public void  onBackPressed(){
+
     }
     public void atras(View view) {
         Intent iw = new Intent(infoFina.this, home_consultas.class);
