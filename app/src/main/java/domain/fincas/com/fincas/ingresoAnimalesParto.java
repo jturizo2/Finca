@@ -21,7 +21,7 @@ import java.util.Date;
 
 public class ingresoAnimalesParto extends AppCompatActivity {
     private Spinner genero, raza, propietario, hierro, proposito,etapap;
-    private EditText codigo, nombre ,codmama,codpapa,codparto,peso,pesodeste,fecha;
+    private EditText codigo, nombre ,codmama,codpapa,peso,pesodeste,fecha;
     private Integer c_p ;
     DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     Date date = new Date();
@@ -36,7 +36,6 @@ public class ingresoAnimalesParto extends AppCompatActivity {
         nombre= (EditText) findViewById(R.id.nombre2);
         codmama= (EditText) findViewById(R.id.Cod_MAMA2);
         codpapa= (EditText) findViewById(R.id.cod_papa2);
-        codparto= (EditText) findViewById(R.id.cod_part2);
         peso= (EditText) findViewById(R.id.Peso2);
         pesodeste= (EditText) findViewById(R.id.Peso_destete2);
         c_p =1;
@@ -161,7 +160,6 @@ public class ingresoAnimalesParto extends AppCompatActivity {
 
         String gcodmama = codmama.getText().toString();
         String gcodpapa = codpapa.getText().toString();
-        String gcodparto = codparto.getText().toString();
         String gpeso = peso.getText().toString();
         String gpesodeste = pesodeste.getText().toString();
         String getapp = etapap.getSelectedItem().toString();
@@ -203,7 +201,6 @@ public class ingresoAnimalesParto extends AppCompatActivity {
             registro.put("PROPOSITO", gpropo);
             registro.put("CODMAMA", gcodmama);
             registro.put("CODPAPA", gcodpapa);
-            registro.put("CODPARTO", gcodparto);
             registro.put("PESO", gpeso);
             registro.put("PESODESTETE", gpesodeste);
             registro.put("ETAPAP", getapp);

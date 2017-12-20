@@ -16,7 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class listado_animal_codigo2 extends AppCompatActivity {
-    private EditText cod_animal,nombre, peso, pesod,codmama,codpapa,codpar,fecha,etapap;
+    private EditText cod_animal,nombre, peso, pesod,codmama,codpapa,fecha,etapap;
     private TextView raza, genero,hierro,proposito,propietario,partos;
     private String id1 ="";
     @Override
@@ -33,7 +33,6 @@ public class listado_animal_codigo2 extends AppCompatActivity {
         cod_animal = (EditText) findViewById(R.id.editText6);
         codmama =(EditText) findViewById(R.id.codmama2);
         codpapa =(EditText) findViewById(R.id.codpapa2);
-        codpar =(EditText) findViewById(R.id.codparto2);
         partos =(TextView) findViewById(R.id.partos);
 
 
@@ -64,7 +63,6 @@ public class listado_animal_codigo2 extends AppCompatActivity {
         String proposito1 = "";
         String cdmama = "";
         String cdpapa = "";
-        String cdpar = "";
         String fecha1 = "";
 
         while (fila2.moveToNext()) {
@@ -80,7 +78,6 @@ public class listado_animal_codigo2 extends AppCompatActivity {
             proposito1 = fila2.getString(9);
             cdmama = fila2.getString(10);
             cdpapa = fila2.getString(11);
-            cdpar = fila2.getString(12);
             fecha1 = fila2.getString(13);
         }
 
@@ -149,8 +146,6 @@ public class listado_animal_codigo2 extends AppCompatActivity {
         codpapa.setText(cdpapa);
         codpapa.setMovementMethod(new ScrollingMovementMethod());
 
-        codpar.setText(cdpar);
-        codpar.setMovementMethod(new ScrollingMovementMethod());
 
         fecha.setText(fecha1);
         fecha.setMovementMethod(new ScrollingMovementMethod());
@@ -170,7 +165,6 @@ public class listado_animal_codigo2 extends AppCompatActivity {
         raza.setText("");
         hierro.setText("");
         proposito.setText("");
-        codpar.setText("");
         codpapa.setText("");
         codmama.setText("");
         propietario.setText("");
@@ -252,7 +246,6 @@ public class listado_animal_codigo2 extends AppCompatActivity {
             String gpesod = pesod.getText().toString();
             String gcodmama = codmama.getText().toString();
             String gcodpapa = codpapa.getText().toString();
-            String gcodpar = codpar.getText().toString();
             String fec = fecha.getText().toString();
             String geta = etapap.getText().toString();
 
@@ -268,7 +261,6 @@ public class listado_animal_codigo2 extends AppCompatActivity {
             registro.put("PESODESTETE", gpesod);
             registro.put("CODMAMA", gcodmama);
             registro.put("CODPAPA", gcodpapa);
-            registro.put("CODPARTO", gcodpar);
             registro.put("FECHANACI", fec);
             registro.put("ETAPAP", geta);
 
