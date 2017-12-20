@@ -36,14 +36,16 @@ public class infoFina extends AppCompatActivity {
         FIN.setText(fc);
 
     }
-    public void consul(View view) {
+    public void consul8(View view) {
         SimpleDateFormat sdt = new SimpleDateFormat("dd/MM/yyyy");
         String uni = INI.getText().toString();
         String fin = FIN.getText().toString();
         try{
             Date iini = sdt.parse(uni);
             Date ifin = sdt.parse(fin);
+
             if(ifin.after(iini)){
+
                 //-----------Conteo leche------------------
                 UsersSQLiteHelper admine33 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
                 SQLiteDatabase db33 = admine33.getWritableDatabase();
@@ -53,7 +55,9 @@ public class infoFina extends AppCompatActivity {
                 while (fila33.moveToNext()) {
                     String PRUBE =fila33.getString(1) ;
                     Date IPRUBE = sdt.parse(PRUBE);
-                    if(iini.after(IPRUBE) && ifin.before(IPRUBE)){
+                    Boolean p = iini.before(IPRUBE);
+                    Boolean q =  ifin.after(IPRUBE);
+                    if(p && q){
                         data  += Double.parseDouble(fila33.getString(0));
                     }
                 }
@@ -69,7 +73,9 @@ public class infoFina extends AppCompatActivity {
                 while (fila3.moveToNext()) {
                     String PRUBE =fila3.getString(1) ;
                     Date IPRUBE = sdt.parse(PRUBE);
-                    if(iini.after(IPRUBE) && ifin.before(IPRUBE)){
+                    Boolean p = iini.before(IPRUBE);
+                    Boolean q =  ifin.after(IPRUBE);
+                    if(p && q){
                         data  += Double.parseDouble(fila3.getString(0));
                     }                }
                 db3.close();
@@ -84,7 +90,9 @@ public class infoFina extends AppCompatActivity {
 
                     String PRUBE =fila1.getString(1) ;
                     Date IPRUBE = sdt.parse(PRUBE);
-                    if(iini.after(IPRUBE) && ifin.before(IPRUBE)){
+                    Boolean p = iini.before(IPRUBE);
+                    Boolean q =  ifin.after(IPRUBE);
+                    if(p && q){
                         data  += Double.parseDouble(fila1.getString(0));
                     }
                 }
@@ -99,7 +107,9 @@ public class infoFina extends AppCompatActivity {
                 while (fila2.moveToNext()) {
                     String PRUBE =fila2.getString(1) ;
                     Date IPRUBE = sdt.parse(PRUBE);
-                    if(iini.after(IPRUBE) && ifin.before(IPRUBE)){
+                    Boolean p = iini.before(IPRUBE);
+                    Boolean q =  ifin.after(IPRUBE);
+                    if(p && q){
                         data  += Double.parseDouble(fila2.getString(0));
                     }
                 }

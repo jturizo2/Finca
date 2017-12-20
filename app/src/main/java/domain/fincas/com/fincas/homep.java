@@ -523,8 +523,6 @@ public class homep extends AppCompatActivity {
         String NameFile = "Reporte.csv";
         String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/Datos";
         String filePath = baseDir+ "/"+NameFile;
-        Toast.makeText(this,filePath, Toast.LENGTH_LONG).show();
-
         File f = new File(filePath);
         f.delete();
         CSVWriter writer;
