@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="domain.fincas.com.fincas.infoFina"
+    android:gravity="center"
+    >
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="413dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="71dp"
+                android:gravity="center"
+                android:text="RESUMEN FINANCIERO"
+                android:textColor="@android:color/background_dark"
+                android:textSize="24dp" />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="1">
+                <TextView
+                    android:id="@+id/textView666"
+                    android:layout_width="188dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Fecha inicial:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+                <EditText
+                    android:id="@+id/INI"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_gravity="center"
+                    android:ems="10"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:hint="DD/MM/AAAA"
+                    android:text="01/01/1900"
+                    android:inputType="textPersonName" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="1">
+                <TextView
+                    android:id="@+id/textView6663"
+                    android:layout_width="188dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Fecha inicial:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+                <EditText
+                    android:id="@+id/FIN"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_gravity="center"
+                    android:ems="10"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:hint="DD/MM/AAAA"
+
+                    android:inputType="textPersonName" />
+
+            </LinearLayout>
+            <Button
+                android:id="@+id/consultar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="consul"
+                android:text="consultar" />
+
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="match_parent"
+                android:layout_height="66dp"
+                android:gravity="center"
+                android:text="Detalles financieros"
+                android:textColor="@android:color/background_dark"
+                android:textSize="24dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvacas1"
+                    android:layout_width="117dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.32"
+                    android:text="Total Compras [$]:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="24dp" />
+
+                <TextView
+                    android:id="@+id/tvacas11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.28"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="24dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvacas222"
+                    android:layout_width="117dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.32"
+                    android:text="Total ventas [$]:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="24dp" />
+
+                <TextView
+                    android:id="@+id/tvacas22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.28"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="24dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvacas3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Medicamentos [$]:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="24dp" />
+
+                <TextView
+                    android:id="@+id/tvacas33"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.57"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="24dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:gravity="center"
+                android:text="Total leche producida"
+                android:textColor="@android:color/background_dark"
+                android:textSize="24dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lec"
+                    android:layout_width="117dp"
+                    android:layout_height="42dp"
+                    android:text="Total leche [Lts]:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="24dp"
+                    android:layout_weight="0.34" />
+
+                <TextView
+                    android:id="@+id/lec2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.28"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="24dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -87,14 +87,16 @@
         <activity
             android:name=".listado_animal_codigo"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".home_configuracion" />
-        <activity android:name=".home_datos" />
-        <activity android:name=".ReadDataBase" />
-        <activity android:name=".intoCode" />
-        <activity android:name=".listado_animal_codigo2" />
-        <activity android:name=".listado_animal_codigo3" />
-        <activity android:name=".lecheingre" />
-        <activity android:name=".intoCodeLeche"></activity>
+        <activity android:name=".home_configuracion" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".home_datos" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".ReadDataBase" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".intoCode" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".listado_animal_codigo2" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".listado_animal_codigo3" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".lecheingre"  android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".intoCodeLeche" android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".infoFina"
+            android:windowSoftInputMode="stateHidden"></activity>
     </application>
 
 </manifest>

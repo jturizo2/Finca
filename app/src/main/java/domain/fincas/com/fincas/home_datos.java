@@ -33,13 +33,6 @@ import java.util.List;
 public class home_datos extends AppCompatActivity {
 
     private TextView ruta;
-
-
-    private String filename = "SampleFile.txt";
-    private String filepath = "MyFileStorage";
-    File myExternalFile;
-    String myData = "";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

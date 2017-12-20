@@ -12,8 +12,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class medicamentos extends AppCompatActivity {
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
+public class medicamentos extends AppCompatActivity {
+    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    Date date = new Date();
     private EditText cod_a, med_apli,deta,cost;
 
     @Override
@@ -89,6 +94,8 @@ public class medicamentos extends AppCompatActivity {
                                 String medicamento_a = med_apli.getText().toString();
                                 String detalle_m = deta.getText().toString();
                                 String costo =  cost.getText().toString();
+                                String fc = dateFormat.format(date.getTime());
+
                                 //Base de datos
                                 UsersSQLiteHelper admine3 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
                                 SQLiteDatabase db3 = admine3.getWritableDatabase();
@@ -98,6 +105,7 @@ public class medicamentos extends AppCompatActivity {
                                 registro.put("MEDICAMENTO", medicamento_a);
                                 registro.put("DETALLE", detalle_m);
                                 registro.put("COSTO", costo);
+                                registro.put("FECHA", fc);
                                 db3.insert("TRATAMIENTOS", null, registro);
                                 db3.close();
                                 Toast.makeText(this, "Informacion de Medicamentos Guardado con exito!", Toast.LENGTH_LONG).show();

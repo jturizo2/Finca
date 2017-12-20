@@ -53,6 +53,11 @@ public class home_consultas extends AppCompatActivity {
         startActivity(iw);
         finish();
     }
+    public void fina(View view) {
+        Intent iw = new Intent(home_consultas.this, infoFina.class);
+        startActivity(iw);
+        finish();
+    }
 
 
 

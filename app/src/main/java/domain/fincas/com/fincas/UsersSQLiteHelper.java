@@ -34,7 +34,8 @@ public class UsersSQLiteHelper extends SQLiteOpenHelper{
                 "CODIGO TEXT," +
                 "MEDICAMENTO TEXT," +
                 "DETALLE TEXT," +
-                "COSTO TEXT" +
+                "COSTO TEXT," +
+                "FECHA TEXT" +
                 ")";
 
         //Tabla Registro de Animales
