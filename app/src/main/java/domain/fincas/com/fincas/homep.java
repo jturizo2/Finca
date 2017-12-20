@@ -81,21 +81,52 @@ public class homep extends AppCompatActivity {
         String hierro  = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/Datos/Hierro.csv";
         String propietarios  = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/Datos/Propietarios.csv";
         String ventas  = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/Datos/Ventas.csv";
+        String leche  = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/Datos/Leche.csv";
+        try{
+        //------------Carga CSV Leche ----------------------------------------
+        UsersSQLiteHelper admine44 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+        SQLiteDatabase db55 = admine44.getWritableDatabase();
+        File file = new File(leche);
+        FileInputStream fis = null;
+
+            fis = new FileInputStream(file);
+            fis.getChannel().position(0);
+            BufferedReader bRead = new BufferedReader(new InputStreamReader(fis));
+            String line = "";
+            String tableName ="LECHE";
+            String columns = "COD, LITROS, FECHA";
+            String str1 = "INSERT INTO " + tableName + " (" + columns + ") values(";
+            String str2 = ");";
+            db55.beginTransaction();
+            while ((line = bRead.readLine()) != null) {
+                line = line.replace("\"","");
+                System.out.println(":LECHE:  "+line+"  jaja");
+                StringBuilder sb = new StringBuilder(str1);
+                String[] str = line.split(";");
+                sb.append("'" +str[1] + "',");
+                sb.append("'" +str[2] + "',");
+                sb.append("'" +str[3] + "'");
+                sb.append(str2);
+                db55.execSQL(sb.toString());
+            }
+            db55.setTransactionSuccessful();
+            db55.endTransaction();
+
         //------------Carga CSV Tratamientos ----------------------------------------
         UsersSQLiteHelper admine4 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
         SQLiteDatabase db5 = admine4.getWritableDatabase();
-        File file = new File(medicamentos);
-        FileInputStream fis = null;
-        try{
+         file = new File(medicamentos);
+         fis = null;
+
 
         fis = new FileInputStream(file);
         fis.getChannel().position(0);
-        BufferedReader bRead = new BufferedReader(new InputStreamReader(fis));
-        String line = "";
-        String tableName ="TRATAMIENTOS";
-        String columns = "CODIGO, MEDICAMENTO, DETALLE, COSTO";
-        String str1 = "INSERT INTO " + tableName + " (" + columns + ") values(";
-        String str2 = ");";
+         bRead = new BufferedReader(new InputStreamReader(fis));
+         line = "";
+         tableName ="TRATAMIENTOS";
+         columns = "CODIGO, MEDICAMENTO, DETALLE, COSTO";
+         str1 = "INSERT INTO " + tableName + " (" + columns + ") values(";
+         str2 = ");";
         db5.beginTransaction();
         while ((line = bRead.readLine()) != null) {
             line = line.replace("\"","");

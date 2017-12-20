@@ -106,6 +106,23 @@ public class home_datos extends AppCompatActivity {
         }
         db1.close();
 
+        List<String[]> data11 = new ArrayList<String[]>();
+         String NameFile11 = "Leche.csv";
+        //-----------------Tabla Leche------------------------------------
+        UsersSQLiteHelper admine11 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+        SQLiteDatabase db11 = admine11.getWritableDatabase();
+        Cursor fila11 = db11.rawQuery("SELECT * FROM LECHE", null);
+        //Se guardan los elementos de cada fila
+        while (fila11.moveToNext()) {
+            data11.add(new String[]{
+                    fila11.getString(0),
+                    fila11.getString(1),
+                    fila11.getString(2),
+                    fila11.getString(3)
+            });
+        }
+        db11.close();
+
         //--------------- Tabla Ventas---------------------------------
         List<String[]> data1 = new ArrayList<String[]>();
         String NameFile2 = "Ventas.csv";
@@ -215,6 +232,28 @@ public class home_datos extends AppCompatActivity {
 //-------------Pedir permiso al celular de guardar el directorio --------------------------------------------------------------------------
         File dir =crearDirectorioPublico("Datos"); //Metodo para crer la ruta de almacenamiento del  backup
 
+        // ----------------- Creacion del Csv Leche -------------------------------
+
+        String filePath9 = dir.toString() + File.separator +"/"+ NameFile11;
+        File f9 = new File(filePath9);
+        CSVWriter writer9;
+        f9.delete();
+        try {
+            // File exist
+            if (f9.exists() && !f9.isDirectory()) {
+                FileWriter mFileWriter = new FileWriter(filePath9, true);
+                writer9 = new CSVWriter(mFileWriter, ';');
+            } else {
+                writer9 = new CSVWriter(new FileWriter(filePath9), ';');
+            }
+
+            writer9.writeAll(data);
+
+            writer9.close();
+
+        } catch (IOException e) {
+
+        }
 
         // ----------------- Creacion del Csv Medicamentos -------------------------------
 
@@ -234,11 +273,8 @@ public class home_datos extends AppCompatActivity {
             writer.writeAll(data);
 
             writer.close();
-            Toast.makeText(this, "Información almacenada, consulte en la carpeta Datos.", Toast.LENGTH_LONG).show();
 
         } catch (IOException e) {
-            Toast.makeText(this, "Error, intente mas tarde.", Toast.LENGTH_LONG).show();
-            System.out.println("Error: " +e.toString());
 
         }
 
@@ -260,10 +296,8 @@ public class home_datos extends AppCompatActivity {
             writer1.writeAll(data1);
 
             writer1.close();
-            // Toast.makeText(this,"Información almacenada, consulte en la carpeta Datos.", Toast.LENGTH_LONG).show();
 
         } catch (IOException e) {
-            Toast.makeText(this, "Error, intente mas tarde.", Toast.LENGTH_LONG).show();
 
         }
 
@@ -285,10 +319,8 @@ public class home_datos extends AppCompatActivity {
             writer2.writeAll(data2);
 
             writer2.close();
-            //  Toast.makeText(this,"Información almacenada, consulte en la carpeta Datos.", Toast.LENGTH_LONG).show();
 
         } catch (IOException e) {
-            Toast.makeText(this, "Error, intente mas tarde.", Toast.LENGTH_LONG).show();
 
         }
 
@@ -310,10 +342,8 @@ public class home_datos extends AppCompatActivity {
             writer3.writeAll(data3);
 
             writer3.close();
-            //  Toast.makeText(this,"Información almacenada, consulte en la carpeta Datos.", Toast.LENGTH_LONG).show();
 
         } catch (IOException e) {
-            Toast.makeText(this, "Error, intente mas tarde.", Toast.LENGTH_LONG).show();
 
         }
 
@@ -334,10 +364,8 @@ public class home_datos extends AppCompatActivity {
             writer4.writeAll(data4);
 
             writer4.close();
-            //  Toast.makeText(this,"Información almacenada, consulte en la carpeta Datos.", Toast.LENGTH_LONG).show();
 
         } catch (IOException e) {
-            Toast.makeText(this, "Error, intente mas tarde.", Toast.LENGTH_LONG).show();
 
         }
 
@@ -358,10 +386,9 @@ public class home_datos extends AppCompatActivity {
             writer5.writeAll(data5);
 
             writer5.close();
-            //   Toast.makeText(this,"Información almacenada, consulte en la carpeta Datos.", Toast.LENGTH_LONG).show();
 
         } catch (IOException e) {
-            Toast.makeText(this, "Error, intente mas tarde.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Error: en la configuración de la APP, active los permisos de alamacenamiento.", Toast.LENGTH_LONG).show();
 
         }
 
