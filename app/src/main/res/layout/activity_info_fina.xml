@@ -27,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="71dp"
                 android:gravity="center"
-                android:text="RESUMEN FINANCIERO"
+                android:text="RESUMEN FINANCIERO \n FILTRO POR FECHAS"
                 android:textColor="@android:color/background_dark"
                 android:textSize="24dp" />
 
@@ -70,7 +70,7 @@
                     android:layout_width="188dp"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Fecha inicial:"
+                    android:text="Fecha final:"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
                 <EditText
@@ -100,7 +100,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="66dp"
                 android:gravity="center"
-                android:text="Detalles financieros"
+                android:text="Resultados:"
                 android:textColor="@android:color/background_dark"
                 android:textSize="24dp" />
 
