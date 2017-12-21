@@ -200,7 +200,7 @@ public class homep extends AppCompatActivity {
         bRead = new BufferedReader(new InputStreamReader(fis));
         line = "";
         tableName ="VENTAS";
-        columns = "CODIGO, PESO, DETALLE, COMPRADOR, VALOR, FECHAV";
+        columns = "CODIGO, PESO, DETALLE, COMPRADOR, VALOR, FECHAV, GENERO, ETAPAP";
         str1 = "INSERT INTO " + tableName + " (" + columns + ") values(";
         d2.beginTransaction();
         while ((line = bRead.readLine()) != null) {
@@ -213,7 +213,9 @@ public class homep extends AppCompatActivity {
             sb2.append("'" +str12[3] + "',");
             sb2.append("'" +str12[4] + "',");
             sb2.append("'" +str12[5] + "',");
-            sb2.append("'" +str12[6] + "'");
+            sb2.append("'" +str12[6] + "',");
+            sb2.append("'" +str12[7] + "',");
+            sb2.append("'" +str12[8] + "'");
             sb2.append(str2);
             d2.execSQL(sb2.toString());
 
@@ -476,7 +478,9 @@ public class homep extends AppCompatActivity {
                 "DETALLE",
                 "COMPRADOR",
                 "VALOR",
-                "FECHAV"
+                "FECHAV",
+                "GENERO",
+                "ETAPAP"
         });
 
         //Se gusragan los elementos de cada fila
@@ -487,7 +491,10 @@ public class homep extends AppCompatActivity {
                     fila4.getString(2),
                     fila4.getString(3),
                     fila4.getString(4),
-                    fila4.getString(5)
+                    fila4.getString(5),
+                    fila4.getString(6),
+                    fila4.getString(7),
+                    fila4.getString(8)
             });
         }
         db4.close();
