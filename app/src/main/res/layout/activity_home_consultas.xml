@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:onClick="fina"
-                android:text="Resumen financiaero" />
+                android:text="Resumen financiero" />
 
             <Button
                 android:id="@+id/button23"

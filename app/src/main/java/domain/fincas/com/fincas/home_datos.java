@@ -93,7 +93,9 @@ public class home_datos extends AppCompatActivity {
                     fila1.getString(1),
                     fila1.getString(2),
                     fila1.getString(3),
-                    fila1.getString(4)
+                    fila1.getString(4),
+                    fila1.getString(5)
+
             });
         }
         db1.close();

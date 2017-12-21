@@ -55,6 +55,7 @@ public class infoFina extends AppCompatActivity {
                 while (fila33.moveToNext()) {
                     String PRUBE =fila33.getString(1) ;
                     Date IPRUBE = sdt.parse(PRUBE);
+                    //System.out.println("ee:"+ PRUBE);
                     Boolean p = iini.before(IPRUBE);
                     Boolean q =  ifin.after(IPRUBE);
                     if(p && q){
@@ -67,12 +68,14 @@ public class infoFina extends AppCompatActivity {
                 //-----------Conteo medicamentos------------------
                 UsersSQLiteHelper admine3 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
                 SQLiteDatabase db3 = admine3.getWritableDatabase();
-                Cursor fila3 = db3.rawQuery("SELECT COSTO,FECHA FROM TRATAMIENTOS", null);
+                Cursor fila3 = db3.rawQuery("SELECT COSTO, FECHA FROM TRATAMIENTOS", null);
                 ssd1="";
                 data = 0.0;
                 while (fila3.moveToNext()) {
                     String PRUBE =fila3.getString(1) ;
                     Date IPRUBE = sdt.parse(PRUBE);
+                    //System.out.println("ee:"+ PRUBE);
+
                     Boolean p = iini.before(IPRUBE);
                     Boolean q =  ifin.after(IPRUBE);
                     if(p && q){
@@ -83,13 +86,15 @@ public class infoFina extends AppCompatActivity {
                 //-----------Conteo COMPRAS------------------
                 UsersSQLiteHelper admine1 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
                 SQLiteDatabase db1 = admine1.getWritableDatabase();
-                Cursor fila1 = db1.rawQuery("SELECT VALORC,FECHAINGRE FROM ANIMALESN WHERE COMPPAR='0'", null);
+                Cursor fila1 = db1.rawQuery("SELECT VALORC, FECHAINGRE FROM ANIMALESN WHERE COMPPAR='0'", null);
                 ssd1="";
                 data = 0.0;
                 while (fila1.moveToNext()) {
 
                     String PRUBE =fila1.getString(1) ;
                     Date IPRUBE = sdt.parse(PRUBE);
+                    System.out.println("ee:"+ PRUBE);
+
                     Boolean p = iini.before(IPRUBE);
                     Boolean q =  ifin.after(IPRUBE);
                     if(p && q){
@@ -101,12 +106,14 @@ public class infoFina extends AppCompatActivity {
                 //-----------Conteo VENTAS------------------
                 UsersSQLiteHelper admine2 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
                 SQLiteDatabase db2 = admine2.getWritableDatabase();
-                Cursor fila2 = db2.rawQuery("SELECT VALOR,FECHAV FROM VENTAS", null);
+                Cursor fila2 = db2.rawQuery("SELECT VALOR, FECHAV FROM VENTAS", null);
                 ssd1="";
                 data = 0.0;
                 while (fila2.moveToNext()) {
                     String PRUBE =fila2.getString(1) ;
                     Date IPRUBE = sdt.parse(PRUBE);
+                    System.out.println("ee:"+ PRUBE);
+
                     Boolean p = iini.before(IPRUBE);
                     Boolean q =  ifin.after(IPRUBE);
                     if(p && q){

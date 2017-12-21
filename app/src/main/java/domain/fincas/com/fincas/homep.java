@@ -124,7 +124,7 @@ public class homep extends AppCompatActivity {
          bRead = new BufferedReader(new InputStreamReader(fis));
          line = "";
          tableName ="TRATAMIENTOS";
-         columns = "CODIGO, MEDICAMENTO, DETALLE, COSTO";
+         columns = "CODIGO, MEDICAMENTO, DETALLE, COSTO,FECHA";
          str1 = "INSERT INTO " + tableName + " (" + columns + ") values(";
          str2 = ");";
         db5.beginTransaction();
