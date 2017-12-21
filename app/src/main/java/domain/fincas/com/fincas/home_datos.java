@@ -79,13 +79,13 @@ public class home_datos extends AppCompatActivity {
 
     public void descargar_datos(View view) {
         //----------- Sacamos información de las tablas----------------------------------------
-
+        File dir =crearDirectorioPublico("Datos"); //Metodo para crer la ruta de almacenamiento del  backup
+        //-----------------Tabla tratamientos------------------------------------
         List<String[]> data = new ArrayList<String[]>();
         String NameFile1 = "Medicamentos.csv";
-        //-----------------Tabla tratamientos------------------------------------
         UsersSQLiteHelper admine1 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
         SQLiteDatabase db1 = admine1.getWritableDatabase();
-        Cursor fila1 = db1.rawQuery("SELECT * FROM TRATAMIENTOS", null);
+        Cursor fila1 = db1.rawQuery("SELECT ID,CODIGO, MEDICAMENTO, DETALLE, COSTO,FECHA FROM TRATAMIENTOS", null);
         //Se guardan los elementos de cada fila
         while (fila1.moveToNext()) {
             data.add(new String[]{
@@ -100,9 +100,29 @@ public class home_datos extends AppCompatActivity {
         }
         db1.close();
 
-        List<String[]> data11 = new ArrayList<String[]>();
-         String NameFile11 = "Leche.csv";
+        String filePath = dir.toString() + File.separator +"/"+ NameFile1;
+        File f = new File(filePath);
+        CSVWriter writer;
+        f.delete();
+        try {
+            // File exist
+            if (f.exists() && !f.isDirectory()) {
+                FileWriter mFileWriter = new FileWriter(filePath, true);
+                writer = new CSVWriter(mFileWriter, ';');
+            } else {
+                writer = new CSVWriter(new FileWriter(filePath), ';');
+            }
+
+            writer.writeAll(data);
+
+            writer.close();
+
+        } catch (IOException e) {
+
+        }
         //-----------------Tabla Leche------------------------------------
+        List<String[]> data11 = new ArrayList<String[]>();
+        String NameFile11 = "Leche.csv";
         UsersSQLiteHelper admine11 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
         SQLiteDatabase db11 = admine11.getWritableDatabase();
         Cursor fila11 = db11.rawQuery("SELECT * FROM LECHE", null);
@@ -116,7 +136,26 @@ public class home_datos extends AppCompatActivity {
             });
         }
         db11.close();
+        String filePath9 = dir.toString() + File.separator +"/"+ NameFile11;
+        File f9 = new File(filePath9);
+        CSVWriter writer9;
+        f9.delete();
+        try {
+            // File exist
+            if (f9.exists() && !f9.isDirectory()) {
+                FileWriter mFileWriter = new FileWriter(filePath9, true);
+                writer9 = new CSVWriter(mFileWriter, ';');
+            } else {
+                writer9 = new CSVWriter(new FileWriter(filePath9), ';');
+            }
 
+            writer9.writeAll(data11);
+
+            writer9.close();
+
+        } catch (IOException e) {
+
+        }
         //--------------- Tabla Ventas---------------------------------
         List<String[]> data1 = new ArrayList<String[]>();
         String NameFile2 = "Ventas.csv";
@@ -139,6 +178,27 @@ public class home_datos extends AppCompatActivity {
         }
         db4.close();
 
+
+        String filePath1 = dir.toString() + File.separator +"/"+ NameFile2;
+        File f1 = new File(filePath1);
+        CSVWriter writer1;
+        f1.delete();
+        try {
+            // File exist
+            if (f1.exists() && !f1.isDirectory()) {
+                FileWriter mFileWriter = new FileWriter(filePath1, true);
+                writer1 = new CSVWriter(mFileWriter, ';');
+            } else {
+                writer1 = new CSVWriter(new FileWriter(filePath1), ';');
+            }
+
+            writer1.writeAll(data1);
+
+            writer1.close();
+
+        } catch (IOException e) {
+
+        }
         //-----------------Tabla Animales ------------------------------------
         List<String[]> data2 = new ArrayList<String[]>();
         String NameFile3 = "Animales.csv";
@@ -174,131 +234,6 @@ public class home_datos extends AppCompatActivity {
             });
         }
         db2.close();
-
-        //--------------- Tabla Fincas---------------------------------
-        List<String[]> data3 = new ArrayList<String[]>();
-        String NameFile4 = "Finca.csv";
-        UsersSQLiteHelper admine5 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
-        SQLiteDatabase db5 = admine5.getWritableDatabase();
-        Cursor fila5 = db5.rawQuery("SELECT * FROM NFINCAS", null);
-        //Se guardaran los elementos de cada fila
-        while (fila5.moveToNext()) {
-            data3.add(new String[]{
-                    fila5.getString(0),
-                    fila5.getString(1),
-                    fila5.getString(2),
-                    fila5.getString(3),
-                    fila5.getString(4),
-                    fila5.getString(5)
-            });
-        }
-        db5.close();
-
-        //--------------- Tabla Propietarios---------------------------------
-        List<String[]> data4 = new ArrayList<String[]>();
-        String NameFile5 = "Propietarios.csv";
-        UsersSQLiteHelper admine3 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
-        SQLiteDatabase db3 = admine3.getWritableDatabase();
-        Cursor fila3 = db3.rawQuery("SELECT * FROM PROPIETARIOS", null);
-        //Se guardaran los elementos de cada fila
-        while (fila3.moveToNext()) {
-            data4.add(new String[]{
-                    fila3.getString(0),
-                    fila3.getString(1),
-                    fila3.getString(2)
-
-            });
-        }
-        db3.close();
-
-        //--------------- Tabla Hierros---------------------------------
-        List<String[]> data5 = new ArrayList<String[]>();
-        String NameFile6 = "Hierro.csv";
-        UsersSQLiteHelper admine7 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
-        SQLiteDatabase db6 = admine7.getWritableDatabase();
-        Cursor fila7 = db6.rawQuery("SELECT * FROM THIERRO", null);
-        //Se guardaran los elementos de cada fila
-        while (fila7.moveToNext()) {
-            data5.add(new String[]{
-                    fila7.getString(0),
-                    fila7.getString(1)
-            });
-        }
-        db6.close();
-//-------------Pedir permiso al celular de guardar el directorio --------------------------------------------------------------------------
-        File dir =crearDirectorioPublico("Datos"); //Metodo para crer la ruta de almacenamiento del  backup
-
-        // ----------------- Creacion del Csv Leche -------------------------------
-
-        String filePath9 = dir.toString() + File.separator +"/"+ NameFile11;
-        File f9 = new File(filePath9);
-        CSVWriter writer9;
-        f9.delete();
-        try {
-            // File exist
-            if (f9.exists() && !f9.isDirectory()) {
-                FileWriter mFileWriter = new FileWriter(filePath9, true);
-                writer9 = new CSVWriter(mFileWriter, ';');
-            } else {
-                writer9 = new CSVWriter(new FileWriter(filePath9), ';');
-            }
-
-            writer9.writeAll(data);
-
-            writer9.close();
-
-        } catch (IOException e) {
-
-        }
-
-        // ----------------- Creacion del Csv Medicamentos -------------------------------
-
-        String filePath = dir.toString() + File.separator +"/"+ NameFile1;
-        File f = new File(filePath);
-        CSVWriter writer;
-        f.delete();
-        try {
-            // File exist
-            if (f.exists() && !f.isDirectory()) {
-                FileWriter mFileWriter = new FileWriter(filePath, true);
-                writer = new CSVWriter(mFileWriter, ';');
-            } else {
-                writer = new CSVWriter(new FileWriter(filePath), ';');
-            }
-
-            writer.writeAll(data);
-
-            writer.close();
-
-        } catch (IOException e) {
-
-        }
-
-
-        // ----------------- Creacion del Csv Ventas -------------------------------
-        String filePath1 = dir.toString() + File.separator +"/"+ NameFile2;
-        File f1 = new File(filePath1);
-        CSVWriter writer1;
-        f1.delete();
-        try {
-            // File exist
-            if (f1.exists() && !f1.isDirectory()) {
-                FileWriter mFileWriter = new FileWriter(filePath1, true);
-                writer1 = new CSVWriter(mFileWriter, ';');
-            } else {
-                writer1 = new CSVWriter(new FileWriter(filePath1), ';');
-            }
-
-            writer1.writeAll(data1);
-
-            writer1.close();
-
-        } catch (IOException e) {
-
-        }
-
-
-        // ----------------- Creacion del Csv Animales -------------------------------
         String filePath2 = dir.toString() + File.separator +"/"+ NameFile3;
         File f2 = new File(filePath2);
         CSVWriter writer2;
@@ -320,8 +255,24 @@ public class home_datos extends AppCompatActivity {
 
         }
 
-
-        // ----------------- Creacion del Csv Finca -------------------------------
+        //--------------- Tabla Fincas---------------------------------
+        List<String[]> data3 = new ArrayList<String[]>();
+        String NameFile4 = "Finca.csv";
+        UsersSQLiteHelper admine5 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+        SQLiteDatabase db5 = admine5.getWritableDatabase();
+        Cursor fila5 = db5.rawQuery("SELECT * FROM NFINCAS", null);
+        //Se guardaran los elementos de cada fila
+        while (fila5.moveToNext()) {
+            data3.add(new String[]{
+                    fila5.getString(0),
+                    fila5.getString(1),
+                    fila5.getString(2),
+                    fila5.getString(3),
+                    fila5.getString(4),
+                    fila5.getString(5)
+            });
+        }
+        db5.close();
         String filePath3 = dir.toString() + File.separator +"/"+ NameFile4;
         File f3 = new File(filePath3);
         CSVWriter writer3;
@@ -342,8 +293,22 @@ public class home_datos extends AppCompatActivity {
         } catch (IOException e) {
 
         }
+        //--------------- Tabla Propietarios---------------------------------
+        List<String[]> data4 = new ArrayList<String[]>();
+        String NameFile5 = "Propietarios.csv";
+        UsersSQLiteHelper admine3 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+        SQLiteDatabase db3 = admine3.getWritableDatabase();
+        Cursor fila3 = db3.rawQuery("SELECT * FROM PROPIETARIOS", null);
+        //Se guardaran los elementos de cada fila
+        while (fila3.moveToNext()) {
+            data4.add(new String[]{
+                    fila3.getString(0),
+                    fila3.getString(1),
+                    fila3.getString(2)
 
-        // ----------------- Creacion del Csv Propietarios -------------------------------
+            });
+        }
+        db3.close();
         String filePath4 = dir.toString() + File.separator +"/"+ NameFile5;
         File f4 = new File(filePath4);
         CSVWriter writer4;
@@ -364,8 +329,21 @@ public class home_datos extends AppCompatActivity {
         } catch (IOException e) {
 
         }
+        //--------------- Tabla Hierros---------------------------------
+        List<String[]> data5 = new ArrayList<String[]>();
+        String NameFile6 = "Hierro.csv";
+        UsersSQLiteHelper admine7 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+        SQLiteDatabase db6 = admine7.getWritableDatabase();
+        Cursor fila7 = db6.rawQuery("SELECT * FROM THIERRO", null);
+        //Se guardaran los elementos de cada fila
+        while (fila7.moveToNext()) {
+            data5.add(new String[]{
+                    fila7.getString(0),
+                    fila7.getString(1)
+            });
+        }
+        db6.close();
 
-        // ----------------- Creacion del Csv Hierros -------------------------------
         String filePath5 = dir.toString() + File.separator +"/"+ NameFile6;
         File f5 = new File(filePath5);
         CSVWriter writer5;
@@ -383,6 +361,7 @@ public class home_datos extends AppCompatActivity {
 
             writer5.close();
             Toast.makeText(this, "Copia  de seguridad guardada en la carpeta Datos.", Toast.LENGTH_LONG).show();
+
         } catch (IOException e) {
             Toast.makeText(this, "Error: en la configuración de la APP, active los permisos de alamacenamiento.", Toast.LENGTH_LONG).show();
 

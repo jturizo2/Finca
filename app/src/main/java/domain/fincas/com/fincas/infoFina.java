@@ -94,7 +94,6 @@ public class infoFina extends AppCompatActivity {
                     String PRUBE =fila1.getString(1) ;
                     Date IPRUBE = sdt.parse(PRUBE);
                     System.out.println("ee:"+ PRUBE);
-
                     Boolean p = iini.before(IPRUBE);
                     Boolean q =  ifin.after(IPRUBE);
                     if(p && q){
@@ -131,7 +130,7 @@ public class infoFina extends AppCompatActivity {
 
             }
         }catch (Exception e){
-            Toast.makeText(this, "Error: Formato de fecha incorrecto.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, e+"Error: Formato de fecha incorrecto.", Toast.LENGTH_LONG).show();
         }
 
 

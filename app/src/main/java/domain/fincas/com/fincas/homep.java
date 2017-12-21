@@ -136,7 +136,9 @@ public class homep extends AppCompatActivity {
             sb.append("'" +str[1] + "',");
             sb.append("'" +str[2] + "',");
             sb.append("'" +str[3] + "',");
-            sb.append("'" +str[4] + "'");
+            sb.append("'" +str[4] + "',");
+            sb.append("'" +str[5] + "'");
+
             sb.append(str2);
             db5.execSQL(sb.toString());
         }
@@ -313,6 +315,7 @@ public class homep extends AppCompatActivity {
             db1.close();
         }catch (Exception e){
             Toast.makeText(this,"La carpeta \"Datos\" de la copia de seguridad no fue encontrada, por favor asegurar que este en la ruta indicada y abra la aplicación de nuevo", Toast.LENGTH_LONG).show();
+            Toast.makeText(this,e.toString(), Toast.LENGTH_LONG).show();
 
         }
 
@@ -515,7 +518,7 @@ public class homep extends AppCompatActivity {
         });
 
         //Se gusragan los elementos de cada fila
-        while (fila4.moveToNext()) {
+        while (fila5.moveToNext()) {
             data.add(new String[]{
                     fila5.getString(0),
                     fila5.getString(1),
