@@ -71,9 +71,10 @@ public class UsersSQLiteHelper extends SQLiteOpenHelper{
                 "DETALLE TEXT," +
                 "COMPRADOR TEXT," +
                 "VALOR TEXT," +
-                "FECHAV TEXT" +
+                "FECHAV TEXT," +
+                "GENERO TEXT," +
+                "ETAPAP TEXT" +
                 ")";
-
         //Tabla Registro de Prpietarios
         String SQLCREATE6 = "CREATE TABLE PROPIETARIOS (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "NOMBRE TEXT," +

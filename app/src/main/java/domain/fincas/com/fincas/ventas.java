@@ -103,8 +103,16 @@ public class ventas extends AppCompatActivity {
 
                             }else{
 
+
                                 UsersSQLiteHelper admine9 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
                                 SQLiteDatabase db9 = admine9.getWritableDatabase();
+                                Cursor fila5 = db9.rawQuery("SELECT GENERO, ETAPAP FROM ANIMALESN WHERE CODIGO='"+gcod_a+"'", null);
+                                String genero = "";
+                                String etapa = "";
+                                while (fila5.moveToNext()) {
+                                    genero = fila5.getString(0);
+                                    etapa = fila5.getString(1);
+                                }
 
                                 ContentValues registro = new ContentValues();
                                 registro.put("CODIGO", gcod_a);
@@ -113,7 +121,8 @@ public class ventas extends AppCompatActivity {
                                 registro.put("COMPRADOR", gcomprad);
                                 registro.put("VALOR", gvalor);
                                 registro.put("FECHAV",fecha_i);
-
+                                registro.put("GENERO",genero);
+                                registro.put("ETAPAP",etapa);
                                 db9.insert("VENTAS", null, registro);
                                 db9.close();
                                 Toast.makeText(this, "Venta Registrada!!", Toast.LENGTH_LONG).show();

@@ -136,10 +136,41 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tanima"
+                    android:id="@+id/tanimae"
                     android:layout_width="117dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.32"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/tanima2e"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.23"
+                    android:text="Propios"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/tanimave"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vendidos"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tanima"
+                    android:layout_width="117dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.65"
                     android:text="Total Animales:"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
@@ -148,9 +179,18 @@
                     android:id="@+id/tanima2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0.81"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/tanimav"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.35"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -167,11 +207,21 @@
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
 
+
+
                 <TextView
                     android:id="@+id/tmachos2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0.40"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/tmachosv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.17"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
             </LinearLayout>
@@ -189,17 +239,26 @@
                     android:text="Total Hembras:"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
-
                 <TextView
                     android:id="@+id/thembras2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0.40"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/thembras2v"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.17"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
             </LinearLayout>
 
             <LinearLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
@@ -217,12 +276,21 @@
                     android:id="@+id/tterneros2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0.40"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/tternerosv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.17"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
             </LinearLayout>
 
             <LinearLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
@@ -240,9 +308,21 @@
                     android:id="@+id/tterneras2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0.40"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/tterneras2v"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.17"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+
+
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -262,9 +342,21 @@
                     android:id="@+id/tnovillos2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0.40"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/tnovillos2v"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.17"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+
+
+
             </LinearLayout>
 
             <LinearLayout
@@ -285,9 +377,19 @@
                     android:id="@+id/tnovillas2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0.40"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/tnovillas2v"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.17"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+
             </LinearLayout>
 
             <LinearLayout
@@ -308,9 +410,20 @@
                     android:id="@+id/ttoros2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0.40"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/ttoros2v"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.17"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+
+
             </LinearLayout>
 
             <LinearLayout
@@ -331,9 +444,20 @@
                     android:id="@+id/tvacas2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0.40"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/tvacas2v"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.17"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+
+
             </LinearLayout>
 
             <LinearLayout
