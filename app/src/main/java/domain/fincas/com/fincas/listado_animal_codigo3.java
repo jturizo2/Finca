@@ -16,7 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class listado_animal_codigo3 extends AppCompatActivity {
-    private EditText cod_animal,nombre, peso, pesod,fecha;
+    private EditText cod_animal,nombre, peso, pesod,fecha,fecha2;
     private TextView raza, genero,hierro,proposito,etapap,propietario,partos;
     private String id1 ="";
     @Override
@@ -32,6 +32,7 @@ public class listado_animal_codigo3 extends AppCompatActivity {
         peso =(EditText) findViewById(R.id.Peso2);
         pesod =(EditText) findViewById(R.id.Peso_destete2);
         cod_animal = (EditText) findViewById(R.id.editText6);
+        fecha2 = (EditText) findViewById(R.id.feha2);
         partos =(TextView) findViewById(R.id.partos);
 
 
@@ -50,7 +51,7 @@ public class listado_animal_codigo3 extends AppCompatActivity {
         UsersSQLiteHelper admine2 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
         SQLiteDatabase db2 = admine2.getWritableDatabase();
         Cursor fila2 = db2.rawQuery("SELECT ID,NOMBRE,PESO,PESODESTETE,GENERO,ETAPAP,RAZA,PROPIETARIO," +
-                "HIERRO,PROPOSITO,FECHAINGRE FROM ANIMALESN WHERE  CODIGO='"+use+"'", null);
+                "HIERRO,PROPOSITO,FECHAINGRE, FECHANACI FROM ANIMALESN WHERE  CODIGO='"+use+"'", null);
         String nombre1 = "";
         String peso1 = "";
         String pesodes1 = "";
@@ -61,6 +62,7 @@ public class listado_animal_codigo3 extends AppCompatActivity {
         String hierro1 = "";
         String proposito1 = "";
         String fecha1 = "";
+        String fecha22 = "";
 
         while (fila2.moveToNext()) {
             id1 = fila2.getString(0);
@@ -74,6 +76,8 @@ public class listado_animal_codigo3 extends AppCompatActivity {
             hierro1 = fila2.getString(8);
             proposito1 = fila2.getString(9);
             fecha1 = fila2.getString(10);
+            fecha22 = fila2.getString(11);
+
         }
 
         // while (fila15.moveToNext()) {ssd14 += fila15.getString(0);}
@@ -137,6 +141,11 @@ public class listado_animal_codigo3 extends AppCompatActivity {
         fecha.setText(fecha1);
         fecha.setMovementMethod(new ScrollingMovementMethod());
 
+        fecha2.setText(fecha22);
+        fecha2.setMovementMethod(new ScrollingMovementMethod());
+
+
+
     }
 
 
@@ -154,6 +163,7 @@ public class listado_animal_codigo3 extends AppCompatActivity {
         proposito.setText("");
         propietario.setText("");
         fecha.setText("");
+        fecha2.setText("");
     }
 
     @Override
@@ -230,6 +240,7 @@ public class listado_animal_codigo3 extends AppCompatActivity {
             String gpeso = peso.getText().toString();
             String gpesod = pesod.getText().toString();
             String fec = fecha.getText().toString();
+            String fech = fecha2.getText().toString();
             String getap = etapap.getText().toString();
 
 
@@ -243,6 +254,7 @@ public class listado_animal_codigo3 extends AppCompatActivity {
             registro.put("PESO", gpeso);
             registro.put("PESODESTETE", gpesod);
             registro.put("FECHAINGRE", fec);
+            registro.put("FECHANACI", fech);
             registro.put("ETAPAP", getap);
             db3.update("ANIMALESN", registro,"ID="+id1,null);
             db3.close();

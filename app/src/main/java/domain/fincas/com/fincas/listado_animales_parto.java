@@ -25,7 +25,7 @@ public class listado_animales_parto extends AppCompatActivity {
         String whereClause = "ID=?";
         UsersSQLiteHelper admine4 = new UsersSQLiteHelper(this,"FINCAS", null, 1);
         SQLiteDatabase db5 = admine4.getWritableDatabase();
-        Cursor fila = db5.rawQuery("SELECT CODIGO, NOMBRE, GENERO, RAZA, PROPIETARIO, HIERRO, PROPOSITO, CODMAMA, CODPAPA, CODPARTO, PESO, PESODESTETE, ETAPAP, FECHANACI FROM ANIMALESN WHERE COMPPAR='1'", null);
+        Cursor fila = db5.rawQuery("SELECT CODIGO, NOMBRE, GENERO, RAZA, PROPIETARIO, HIERRO, PROPOSITO, CODMAMA, CODPAPA, PESO, PESODESTETE, ETAPAP, FECHANACI FROM ANIMALESN WHERE COMPPAR='1'", null);
         //Cursor fila = db5.query("ANIMALESN", campos, null, null, null, null, null);
         String ssd ="";
         while (fila.moveToNext()) {
@@ -38,11 +38,10 @@ public class listado_animales_parto extends AppCompatActivity {
                     + "Proposito: " + fila.getString(6)+ "\n"
                     + "Codigo Madre: " + fila.getString(7)+ "\n"
                     + "Codigo Padre: " + fila.getString(8)+ "\n"
-                    + "Codigo Parto: " + fila.getString(9)+ "\n"
-                    + "Peso(kg): " + fila.getString(10)+ "\n"
-                    + "Peso Destete(kg): " + fila.getString(11)+ "\n"
-                    + "Etapa de Producción: " + fila.getString(12)+ "\n"
-                    + "Fecha de Nacimiento: " + fila.getString(13)+ "\n \n";
+                    + "Peso al Nacer(kg): " + fila.getString(9)+ "\n"
+                    + "Peso Destete(kg): " + fila.getString(10)+ "\n"
+                    + "Etapa de Producción: " + fila.getString(11)+ "\n"
+                    + "Fecha de Nacimiento: " + fila.getString(12)+ "\n \n";
 
         }
         db5.close();

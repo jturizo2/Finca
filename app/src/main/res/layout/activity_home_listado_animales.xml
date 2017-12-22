@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:onClick="listado_animales_existentes"
-                android:text="existentes" />
+                android:text="AL PARTIR" />
 
             <Button
                 android:id="@+id/button29"
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:onClick="listado_animales_parto"
-                android:text="en cria" />
+                android:text="Crias" />
 
             <Button
                 android:id="@+id/button30"

@@ -32,23 +32,24 @@ public class listado_animales extends AppCompatActivity {
         String whereClause = "ID=?";
         UsersSQLiteHelper admine4 = new UsersSQLiteHelper(this,"FINCAS", null, 1);
         SQLiteDatabase db5 = admine4.getWritableDatabase();
-        Cursor fila = db5.rawQuery("SELECT CODIGO, NOMBRE, GENERO, RAZA, PROPIETARIOA, HIERRO, PROPOSITO,  PESO, PESODESTETE, ETAPAP, VALORC, FECHAINGRE  FROM ANIMALESN WHERE COMPPAR='0'", null);
+        Cursor fila = db5.rawQuery("SELECT CODIGO, NOMBRE, GENERO, RAZA,PROPIETARIO, PROPIETARIOA, HIERRO, PROPOSITO,  PESO, PESODESTETE, ETAPAP, VALORC, FECHANACI, FECHAINGRE  FROM ANIMALESN WHERE COMPPAR='0'", null);
         //Cursor fila = db5.query("ANIMALESN", campos, null, null, null, null, null);
         String ssd ="";
         while (fila.moveToNext()) {
-            ssd +=    "Codigo: "+fila.getString(0)+ "\n"
-                    + "Nombre: " + fila.getString(1)+ "\n"
+            ssd +=    "Codigo Animal: "+fila.getString(0)+ "\n"
+                    + "Nombre Animal: " + fila.getString(1)+ "\n"
                     + "Genero: " + fila.getString(2)+ "\n"
                     + "Raza: " + fila.getString(3)+ "\n"
-                    + "Propietario Anterior: " + fila.getString(4)+ "\n"
-                    + "Hierro: " + fila.getString(5)+ "\n"
-                    + "Proposito: " + fila.getString(6)+ "\n"
-
-                    + "Peso(kg): " + fila.getString(7)+ "\n"
-                    + "Peso Destete (kg): " + fila.getString(8)+ "\n"
-                    + "Etapa de Producción: " + fila.getString(9)+ "\n"
-                    + "Valor de Compra ($): " + fila.getString(10)+ "\n"
-                    + "Fecha de Ingreso: " + fila.getString(11)+ "\n \n";
+                    + "Nuevo Propietario: " + fila.getString(4)+ "\n"
+                    + "Vendedor: " + fila.getString(5)+ "\n"
+                    + "Hierro: " + fila.getString(6)+ "\n"
+                    + "Proposito: " + fila.getString(7)+ "\n"
+                    + "Peso al Comprar(kg): " + fila.getString(8)+ "\n"
+                    + "Peso Actual (kg): " + fila.getString(9)+ "\n"
+                    + "Etapa de Producción: " + fila.getString(10)+ "\n"
+                    + "Valor de Compra ($): " + fila.getString(11)+ "\n"
+                    + "Fecha de Nacimiento: " + fila.getString(12)+ "\n"
+                    + "Fecha de Compra: " + fila.getString(13)+ "\n \n";
 
         }
         db5.close();

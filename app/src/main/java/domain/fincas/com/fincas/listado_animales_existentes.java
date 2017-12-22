@@ -25,23 +25,22 @@ public class listado_animales_existentes extends AppCompatActivity {
         String whereClause = "ID=?";
         UsersSQLiteHelper admine4 = new UsersSQLiteHelper(this,"FINCAS", null, 1);
         SQLiteDatabase db5 = admine4.getWritableDatabase();
-        Cursor fila = db5.rawQuery("SELECT CODIGO, NOMBRE, GENERO, RAZA, PROPIETARIO, HIERRO, PROPOSITO,  CODMAMA, CODPAPA, PESO, PESODESTETE, ETAPAP, FECHAINGRE FROM ANIMALESN WHERE COMPPAR='2'", null);
+        Cursor fila = db5.rawQuery("SELECT CODIGO, NOMBRE, GENERO, RAZA, PROPIETARIO, HIERRO, PROPOSITO, PESO, PESODESTETE, ETAPAP, FECHAINGRE, FECHANACI FROM ANIMALESN WHERE COMPPAR='2'", null);
         //Cursor fila = db5.query("ANIMALESN", campos, null, null, null, null, null);
         String ssd ="";
         while (fila.moveToNext()) {
-            ssd +=    "Codigo: "+fila.getString(0)+ "\n"
-                    + "Nombre: " + fila.getString(1)+ "\n"
+            ssd +=    "Codigo Animal: "+fila.getString(0)+ "\n"
+                    + "Nombre Animal: " + fila.getString(1)+ "\n"
                     + "Genero: " + fila.getString(2)+ "\n"
                     + "Raza: " + fila.getString(3)+ "\n"
                     + "Propietario: " + fila.getString(4)+ "\n"
                     + "Hierro: " + fila.getString(5)+ "\n"
                     + "Proposito: " + fila.getString(6)+ "\n"
-                    + "Codigo Madre: " + fila.getString(7)+ "\n"
-                    + "Codigo Padre: " + fila.getString(8)+ "\n"
-                    + "Peso(kg): " + fila.getString(9)+ "\n"
-                    + "Peso Destete (kg): " + fila.getString(10)+ "\n"
-                    + "Etapa de Producción: " + fila.getString(11)+ "\n"
-                    + "Fecha de Ingreso: " + fila.getString(12)+ "\n \n";
+                    + "Peso Actual(kg): " + fila.getString(7)+ "\n"
+                    + "Peso Recibido (kg): " + fila.getString(8)+ "\n"
+                    + "Etapa de Producción: " + fila.getString(9)+ "\n"
+                    + "Fecha de Recibido: " + fila.getString(10)+ "\n"
+                    + "Fecha de Nacimiento: " + fila.getString(11)+ "\n \n";
         }
         db5.close();
         text1.setText(ssd);
