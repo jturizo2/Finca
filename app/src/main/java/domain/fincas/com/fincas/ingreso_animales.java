@@ -42,6 +42,7 @@ public class ingreso_animales extends AppCompatActivity {
          propietari = (EditText) findViewById(R.id.propieta);
         fecha = (EditText) findViewById(R.id.fecha22);
         fecha2= (EditText) findViewById(R.id.fech22);
+
          c_p =0;
         String fc = dateFormat.format(date.getTime());
         fecha.setText(fc);
@@ -82,6 +83,21 @@ public class ingreso_animales extends AppCompatActivity {
         String[]tp155 = {""};
         ArrayAdapter<String> adap551 = new ArrayAdapter<String>(ingreso_animales.this, android.R.layout.simple_spinner_item, tp155);
         etapap.setAdapter(adap551);
+
+        ArrayList<String> name = new ArrayList<String>();
+        UsersSQLiteHelper admine2 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+        SQLiteDatabase db2 = admine2.getWritableDatabase();
+        Cursor fila1 = db2.rawQuery("SELECT NOMBRE,APELLIDO FROM PROPIETARIOS", null);
+
+        while(fila1.moveToNext()){
+            name.add(fila1.getString(0)+" "+fila1.getString(1));
+        }
+        db2.close();
+        //Spinners Propietario
+        Propietario2=(Spinner) findViewById(R.id.Propietrio2);
+        String[]tp5 = {"Macho","Hembra"};
+        ArrayAdapter<String> adap5 = new ArrayAdapter<String>(ingreso_animales.this, android.R.layout.simple_spinner_item, name);
+        Propietario2.setAdapter(adap5);
 
         //  Spinners :::::::::::::::::::::::::::::: Genero :::::::::::::::::
         Genero2=(Spinner) findViewById(R.id.Genero2);
@@ -191,6 +207,7 @@ public class ingreso_animales extends AppCompatActivity {
         String ggenero = Genero2.getSelectedItem().toString();
         String graza = Raza2.getSelectedItem().toString();
         String gpropietario = propietari.getText().toString();
+        String gpropietario2 = Propietario2.getSelectedItem().toString();
         String ghierro = Hierro2.getSelectedItem().toString();
         String gpropo = Proposito2.getSelectedItem().toString();
         String gpeso = peso.getText().toString();
@@ -230,6 +247,7 @@ public class ingreso_animales extends AppCompatActivity {
             registro.put("NOMBRE", gnomb);
             registro.put("GENERO", ggenero);
             registro.put("RAZA", graza);
+            registro.put("PROPIETARIO", gpropietario2);
             registro.put("PROPIETARIOA", gpropietario);
             registro.put("HIERRO", ghierro);
             registro.put("PROPOSITO", gpropo);
