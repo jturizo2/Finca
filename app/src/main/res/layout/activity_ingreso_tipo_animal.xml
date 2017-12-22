@@ -23,14 +23,14 @@
         android:layout_width="243dp"
         android:layout_height="wrap_content"
         android:onClick="anima_exis"
-        android:text="Propios" />
+        android:text="al partir" />
 
     <Button
         android:id="@+id/button11"
         android:layout_width="242dp"
         android:layout_height="wrap_content"
         android:onClick="parto"
-        android:text="El cria" />
+        android:text="crias nacidas" />
 
     <Button
         android:id="@+id/button16"

@@ -22,7 +22,7 @@ import java.util.Date;
 public class ingreso_animales_existentes extends AppCompatActivity {
 
     private Spinner genero, raza, propietario, hierro, proposito,etapap;
-    private EditText codigo, nombre,peso,pesodeste,fecha;
+    private EditText codigo, nombre,peso,pesodeste,fecha,fecha2;
     private Integer c_p ;
     DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     Date date = new Date();
@@ -33,6 +33,7 @@ public class ingreso_animales_existentes extends AppCompatActivity {
         setContentView(R.layout.activity_ingreso_animales_existentes);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         fecha= (EditText) findViewById(R.id.fecha22);
+        fecha2= (EditText) findViewById(R.id.fech22);
         codigo= (EditText) findViewById(R.id.cod2);
         nombre= (EditText) findViewById(R.id.nombre2);
         peso= (EditText) findViewById(R.id.Peso2);
@@ -40,6 +41,7 @@ public class ingreso_animales_existentes extends AppCompatActivity {
         c_p =2;
         String fc = dateFormat.format(date.getTime());
         fecha.setText(fc);
+        fecha2.setText(fc);
 
         etapap=(Spinner) findViewById(R.id.etapap);
         String[]tp155 = {""};
@@ -162,6 +164,7 @@ public class ingreso_animales_existentes extends AppCompatActivity {
                                     String getapp = etapap.getSelectedItem().toString();
                                     String comp_par = c_p.toString();
                                     String fecha_i =fecha.getText().toString();
+                                    String fecha_n =fecha2.getText().toString();
 
                                     //------------------------------------------------------------
                                     //-----Se busca si el cod existe en los animales
@@ -201,6 +204,7 @@ public class ingreso_animales_existentes extends AppCompatActivity {
                                         registro.put("ETAPAP", getapp);
                                         registro.put("COMPPAR", comp_par);
                                         registro.put("FECHAINGRE", fecha_i);
+                                        registro.put("FECHANACI", fecha_n);
 
                                         db9.insert("ANIMALESN", null, registro);
                                         db9.close();

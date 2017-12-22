@@ -19,15 +19,16 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:weightSum="1">
+
             <TextView
                 android:id="@+id/animal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.06"
                 android:gravity="center"
-                android:text="REGISTRO DE CRIAS"
+                android:text="REGISTRO DE CRIAS NACIDAS"
                 android:textColor="@android:color/background_dark"
-                android:textSize="24dp"
-                android:layout_weight="0.06" />
+                android:textSize="24dp" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -258,9 +259,9 @@
                 <TextView
                     android:id="@+id/Peso1"
                     android:layout_width="150dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="59dp"
                     android:gravity="center"
-                    android:text="Peso [Kg]:"
+                    android:text="Peso al Nacer [Kg]:"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
 
@@ -304,9 +305,9 @@
                 <TextView
                     android:id="@+id/fecha11"
                     android:layout_width="150dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Fecha [DD/MM/AAAA]:"
+                    android:text="Fecha de Nacimiento [DD/MM/AAAA]:"
                     android:textColor="@android:color/background_dark"
                     android:textSize="14dp" />
 
