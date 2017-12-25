@@ -137,11 +137,11 @@
 
                 <TextView
                     android:id="@+id/tanimae"
-                    android:layout_width="117dp"
+                    android:layout_width="102dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.32"
                     android:textColor="@android:color/background_dark"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    android:layout_weight="0.06" />
 
                 <TextView
                     android:id="@+id/tanima2e"
@@ -158,6 +158,15 @@
                     android:layout_height="wrap_content"
                     android:text="Vendidos"
                     android:textColor="@android:color/background_dark"
+                    android:textSize="18dp"
+                    android:layout_weight="0.23" />
+
+                <TextView
+                    android:id="@+id/alpartir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Al Partir"
+                    android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
 
             </LinearLayout>
@@ -168,18 +177,18 @@
 
                 <TextView
                     android:id="@+id/tanima"
-                    android:layout_width="117dp"
+                    android:layout_width="116dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.65"
-                    android:text="Total Animales:"
+                    android:text="T. Animales:"
                     android:textColor="@android:color/background_dark"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    android:layout_weight="0.03" />
 
                 <TextView
                     android:id="@+id/tanima2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.81"
+                    android:layout_weight="0.14"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
 
@@ -187,7 +196,15 @@
                     android:id="@+id/tanimav"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.35"
+                    android:layout_weight="0.13"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/tanimap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.06"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
 
@@ -202,18 +219,17 @@
                     android:id="@+id/tmachos"
                     android:layout_width="117dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.32"
-                    android:text="Total Machos:"
+                    android:layout_weight="0.03"
+                    android:text="T. Machos:"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
-
 
 
                 <TextView
                     android:id="@+id/tmachos2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.40"
+                    android:layout_weight="0.14"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
 
@@ -221,7 +237,15 @@
                     android:id="@+id/tmachosv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.17"
+                    android:layout_weight="0.13"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/tmachosp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.06"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
             </LinearLayout>
@@ -235,15 +259,15 @@
                     android:id="@+id/thembras"
                     android:layout_width="117dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.32"
-                    android:text="Total Hembras:"
+                    android:layout_weight="0.03"
+                    android:text="T. Hembras:"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
                 <TextView
                     android:id="@+id/thembras2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.40"
+                    android:layout_weight="0.14"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
 
@@ -251,7 +275,15 @@
                     android:id="@+id/thembras2v"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.17"
+                    android:layout_weight="0.13"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/thembras2p"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.06"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
 
@@ -267,8 +299,8 @@
                     android:id="@+id/tterneros"
                     android:layout_width="117dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.32"
-                    android:text="Total Terneros:"
+                    android:layout_weight="0.03"
+                    android:text="T. Terneros:"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
 
@@ -276,7 +308,7 @@
                     android:id="@+id/tterneros2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.40"
+                    android:layout_weight="0.14"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
 
@@ -284,7 +316,15 @@
                     android:id="@+id/tternerosv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.17"
+                    android:layout_weight="0.13"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/tternerosp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.06"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
             </LinearLayout>
@@ -299,8 +339,8 @@
                     android:id="@+id/tterneras"
                     android:layout_width="117dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.32"
-                    android:text="Total Terneras:"
+                    android:layout_weight="0.03"
+                    android:text="T. Terneras:"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
 
@@ -308,7 +348,7 @@
                     android:id="@+id/tterneras2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.40"
+                    android:layout_weight="0.14"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
 
@@ -316,7 +356,15 @@
                     android:id="@+id/tterneras2v"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.17"
+                    android:layout_weight="0.13"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/tterneras2p"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.06"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
 
@@ -333,8 +381,8 @@
                     android:id="@+id/tnovillos"
                     android:layout_width="117dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.32"
-                    android:text="Total Novillos:"
+                    android:layout_weight="0.03"
+                    android:text="T. Novillos:"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
 
@@ -342,7 +390,7 @@
                     android:id="@+id/tnovillos2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.40"
+                    android:layout_weight="0.14"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
 
@@ -350,7 +398,15 @@
                     android:id="@+id/tnovillos2v"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.17"
+                    android:layout_weight="0.13"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/tnovillos2p"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.06"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
 
@@ -368,8 +424,8 @@
                     android:id="@+id/tnovillas"
                     android:layout_width="117dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.32"
-                    android:text="Total Novillas:"
+                    android:layout_weight="0.03"
+                    android:text="T. Novillas:"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
 
@@ -377,7 +433,7 @@
                     android:id="@+id/tnovillas2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.40"
+                    android:layout_weight="0.14"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
 
@@ -385,7 +441,15 @@
                     android:id="@+id/tnovillas2v"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.17"
+                    android:layout_weight="0.13"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/tnovillas2p"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.06"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
 
@@ -401,8 +465,8 @@
                     android:id="@+id/ttoros"
                     android:layout_width="117dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.32"
-                    android:text="Total Toros:"
+                    android:layout_weight="0.03"
+                    android:text="T. Toros:"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
 
@@ -410,7 +474,7 @@
                     android:id="@+id/ttoros2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.40"
+                    android:layout_weight="0.14"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
 
@@ -418,7 +482,15 @@
                     android:id="@+id/ttoros2v"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.17"
+                    android:layout_weight="0.13"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/ttoros2vp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.06"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
 
@@ -435,8 +507,8 @@
                     android:id="@+id/tvacas"
                     android:layout_width="117dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.32"
-                    android:text="Total Vacas:"
+                    android:layout_weight="0.03"
+                    android:text="T. Vacas:"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
 
@@ -444,7 +516,7 @@
                     android:id="@+id/tvacas2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.40"
+                    android:layout_weight="0.14"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
 
@@ -452,7 +524,15 @@
                     android:id="@+id/tvacas2v"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.17"
+                    android:layout_weight="0.13"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/tvacas2vp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.06"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
 

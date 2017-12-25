@@ -127,7 +127,7 @@ public class ingreso_animales_existentes extends AppCompatActivity {
 
         //  Spinners :::::::::::::::::::::::::::::: Proposito :::::::::::::::::
         proposito=(Spinner) findViewById(R.id.Proposito2);
-        String[]tp2 = {"Engorde","Lechería","Cria"};
+        String[]tp2 = {"Engorde","Lechería","Cria","Doble Proposito","Triple Proposito"};
         ArrayAdapter<String> adap2 = new ArrayAdapter<String>(ingreso_animales_existentes.this, android.R.layout.simple_spinner_item, tp2);
         proposito.setAdapter(adap2);
 
