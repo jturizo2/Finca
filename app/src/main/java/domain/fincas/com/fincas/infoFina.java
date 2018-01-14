@@ -1,11 +1,13 @@
 package domain.fincas.com.fincas;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,16 +35,66 @@ public class infoFina extends AppCompatActivity {
         lec2 = (TextView) findViewById(R.id.lec2);
 
         String fc = dateFormat.format(date.getTime());
+        //FIN.setText(fc);
+
+
+        //--------------- datepicker---------------------------------
+        INI = (EditText) findViewById(R.id.INI);
+        INI.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                showDatePickerDialog();
+            }
+        });
+        INI.setText(fc);
+
+        FIN = (EditText) findViewById(R.id.FIN);
+        FIN.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                showDatePickerDialog1();
+            }
+        });
         FIN.setText(fc);
 
+        //--------------- datepicker---------------------------------
+
     }
+
+    //metodo mostrar datepicker
+    private void showDatePickerDialog() {
+        DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                // +1 because january is zero
+                final String selectedDate = day + " / " + (month+1) + " / " + year;
+                INI.setText(selectedDate);
+            }
+        });
+        newFragment.show(getFragmentManager(), "datePicker");
+
+
+    } // fin metodo mostrar datepicker
+
+    //metodo mostrar datepicker
+    private void showDatePickerDialog1() {
+        DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                // +1 because january is zero
+                final String selectedDate = day + " / " + (month+1) + " / " + year;
+                FIN.setText(selectedDate);
+            }
+        });
+        newFragment.show(getFragmentManager(), "datePicker");
+
+
+    } // fin metodo mostrar datepicker
     public void consul8(View view) {
         SimpleDateFormat sdt = new SimpleDateFormat("dd/MM/yyyy");
         String uni = INI.getText().toString();
         String fin = FIN.getText().toString();
         try{
-            Date iini = sdt.parse(uni);
-            Date ifin = sdt.parse(fin);
+            Date iini = sdt.parse(uni.replace(" ",""));
+            Date ifin = sdt.parse(fin.replace(" ",""));
 
             if(ifin.after(iini)){
 

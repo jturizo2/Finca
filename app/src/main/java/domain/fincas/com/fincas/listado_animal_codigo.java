@@ -1,5 +1,6 @@
 package domain.fincas.com.fincas;
 
+import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,13 +12,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class listado_animal_codigo extends AppCompatActivity {
 
-    private EditText cod_animal,nombre, peso, pesod,vende,valorc2,fecha,fecha2,etapap;
+    private EditText cod_animal,nombre, peso, pesod,vende,valorc2,fecha,fecha2,etapap,etPlannedDate,etPlannedDate1;
     private TextView raza, genero,hierro,proposito,partos,npropieta;
     private String id1 ="";
 
@@ -26,8 +28,8 @@ public class listado_animal_codigo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listado_animal_codigo);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        fecha = (EditText) findViewById(R.id.fecha2);
-        fecha2 = (EditText) findViewById(R.id.fcha2);
+        //fecha = (EditText) findViewById(R.id.fecha2);
+        //fecha2 = (EditText) findViewById(R.id.fcha2);
         valorc2 = (EditText) findViewById(R.id.valorc2);
         cod_animal = (EditText) findViewById(R.id.editText6);
         nombre =(EditText) findViewById(R.id.nombre2);
@@ -41,6 +43,23 @@ public class listado_animal_codigo extends AppCompatActivity {
         proposito =(TextView) findViewById(R.id.propo);
         partos =(TextView) findViewById(R.id.partos);
         npropieta =(TextView) findViewById(R.id.npropietario);
+
+        //--------------- datepicker---------------------------------
+        etPlannedDate = (EditText) findViewById(R.id.etPlannedDate);
+        etPlannedDate.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                showDatePickerDialog();
+            }
+        });
+        //etPlannedDate.setText(fc);
+
+        etPlannedDate1 = (EditText) findViewById(R.id.etPlannedDate1);
+        etPlannedDate1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                showDatePickerDialog1();
+            }
+        });
+        //--------------- datepicker---------------------------------
 
         // ----------Cargamos los datos de la busqueda--------------------
         //Variables de la actividad pasada
@@ -147,11 +166,11 @@ public class listado_animal_codigo extends AppCompatActivity {
                 valorc2.setText(valorc1);
                 valorc2.setMovementMethod(new ScrollingMovementMethod());
 
-                fecha.setText(fecha1);
-                fecha.setMovementMethod(new ScrollingMovementMethod());
+                etPlannedDate.setText(fecha1);
+                etPlannedDate.setMovementMethod(new ScrollingMovementMethod());
 
-                fecha2.setText(fechan);
-                fecha2.setMovementMethod(new ScrollingMovementMethod());
+                etPlannedDate1.setText(fechan);
+                etPlannedDate1.setMovementMethod(new ScrollingMovementMethod());
             }
 
     public void limpiar(){
@@ -166,9 +185,9 @@ public class listado_animal_codigo extends AppCompatActivity {
         hierro.setText("");
         proposito.setText("");
         valorc2.setText("");
-        fecha.setText("");
+        etPlannedDate.setText("");
         npropieta.setText("");
-        fecha2.setText("");
+        etPlannedDate1.setText("");
 
     }
 
@@ -182,6 +201,35 @@ public class listado_animal_codigo extends AppCompatActivity {
         finish();
     }
 
+    //metodo mostrar datepicker
+    private void showDatePickerDialog() {
+        DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                // +1 because january is zero
+                final String selectedDate = day + " / " + (month+1) + " / " + year;
+                etPlannedDate.setText(selectedDate);
+            }
+        });
+        newFragment.show(getFragmentManager(), "datePicker");
+
+
+    } // fin metodo mostrar datepicker
+
+    //metodo mostrar datepicker 1
+    private void showDatePickerDialog1() {
+        DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                // +1 because january is zero
+                final String selectedDate = day + " / " + (month+1) + " / " + year;
+                etPlannedDate1.setText(selectedDate);
+            }
+        });
+        newFragment.show(getFragmentManager(), "datePicker");
+
+
+    } // fin metodo mostrar datepicker 1
 
     public void eliminar(View view){
 
@@ -248,9 +296,9 @@ public class listado_animal_codigo extends AppCompatActivity {
             String gpeso = peso.getText().toString();
             String gpesod = pesod.getText().toString();
             String vc = valorc2.getText().toString();
-            String fec = fecha.getText().toString();
+            String fec = etPlannedDate.getText().toString();
             String getapp = etapap.getText().toString();
-            String gfechana = fecha2.getText().toString();
+            String gfechana = etPlannedDate1.getText().toString();
 
 
 
@@ -264,8 +312,8 @@ public class listado_animal_codigo extends AppCompatActivity {
             registro.put("PESO", gpeso);
             registro.put("PESODESTETE", gpesod);
             registro.put("VALORC", vc);
-            registro.put("FECHAINGRE", fec);
-            registro.put("FECHANACI", gfechana);
+            registro.put("FECHAINGRE", fec.replace(" ",""));
+            registro.put("FECHANACI", gfechana.replace(" ",""));
             registro.put("ETAPAP", getapp);
 
             db3.update("ANIMALESN", registro,"ID="+id1,null);

@@ -1,5 +1,6 @@
 package domain.fincas.com.fincas;
 
+import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -22,7 +24,7 @@ import java.util.Date;
 public class ingreso_animales_existentes extends AppCompatActivity {
 
     private Spinner genero, raza, propietario, hierro, proposito,etapap;
-    private EditText codigo, nombre,peso,pesodeste,fecha,fecha2;
+    private EditText codigo, nombre,peso,pesodeste,fecha,fecha2, etPlannedDate,etPlannedDate1;
     private Integer c_p ;
     DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     Date date = new Date();
@@ -32,16 +34,37 @@ public class ingreso_animales_existentes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingreso_animales_existentes);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        fecha= (EditText) findViewById(R.id.fecha22);
-        fecha2= (EditText) findViewById(R.id.fech22);
+        //fecha= (EditText) findViewById(R.id.fecha22);
+        //fecha2= (EditText) findViewById(R.id.fech22);
         codigo= (EditText) findViewById(R.id.cod2);
         nombre= (EditText) findViewById(R.id.nombre2);
         peso= (EditText) findViewById(R.id.Peso2);
         pesodeste= (EditText) findViewById(R.id.Peso_destete2);
         c_p =2;
         String fc = dateFormat.format(date.getTime());
-        fecha.setText(fc);
-        fecha2.setText(fc);
+        //fecha.setText(fc);
+        //fecha2.setText(fc);
+
+        //--------------- datepicker---------------------------------
+        etPlannedDate = (EditText) findViewById(R.id.etPlannedDate);
+        etPlannedDate.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                showDatePickerDialog();
+            }
+        });
+        etPlannedDate.setText(fc);
+
+        etPlannedDate1 = (EditText) findViewById(R.id.etPlannedDate1);
+        etPlannedDate1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                showDatePickerDialog1();
+            }
+        });
+        etPlannedDate1.setText(fc);
+
+        //--------------- datepicker---------------------------------
+
+
 
         etapap=(Spinner) findViewById(R.id.etapap);
         String[]tp155 = {""};
@@ -148,7 +171,39 @@ public class ingreso_animales_existentes extends AppCompatActivity {
     @Override
     public void  onBackPressed(){
     }
-            public void guardar (View view){
+
+    //metodo mostrar datepicker
+    private void showDatePickerDialog() {
+        DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                // +1 because january is zero
+                final String selectedDate = day + " / " + (month+1) + " / " + year;
+                etPlannedDate.setText(selectedDate);
+            }
+        });
+        newFragment.show(getFragmentManager(), "datePicker");
+
+
+    } // fin metodo mostrar datepicker
+
+
+    //metodo mostrar datepicker1
+    private void showDatePickerDialog1() {
+        DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                // +1 because january is zero
+                final String selectedDate = day + " / " + (month+1) + " / " + year;
+                etPlannedDate1.setText(selectedDate);
+            }
+        });
+        newFragment.show(getFragmentManager(), "datePicker");
+
+
+    } // fin metodo mostrar datepicker 1
+
+    public void guardar (View view){
 
 
 
@@ -163,8 +218,8 @@ public class ingreso_animales_existentes extends AppCompatActivity {
                                     String gpesodeste = pesodeste.getText().toString();
                                     String getapp = etapap.getSelectedItem().toString();
                                     String comp_par = c_p.toString();
-                                    String fecha_i =fecha.getText().toString();
-                                    String fecha_n =fecha2.getText().toString();
+                                    String fecha_i =etPlannedDate.getText().toString().replace(" ","");
+                                    String fecha_n =etPlannedDate1.getText().toString().replace(" ","");
 
                                     //------------------------------------------------------------
                                     //-----Se busca si el cod existe en los animales

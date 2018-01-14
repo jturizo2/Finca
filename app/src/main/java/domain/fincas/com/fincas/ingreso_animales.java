@@ -1,5 +1,6 @@
 package domain.fincas.com.fincas;
 
+import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -9,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
@@ -22,7 +24,7 @@ import java.util.List;
 
 public class ingreso_animales extends AppCompatActivity {
     private Spinner Genero2,Raza2,Propietario2,Hierro2,Proposito2,etapap;
-    private EditText codig, nomb,peso,pesod,etap_p,valor_c, propietari,fecha,fecha2;
+    private EditText codig, nomb,peso,pesod,etap_p,valor_c, propietari,fecha,fecha2,etPlannedDate,etPlannedDate1;
     private Integer c_p ;
 
 
@@ -40,13 +42,29 @@ public class ingreso_animales extends AppCompatActivity {
          pesod= (EditText) findViewById(R.id.Peso_destete2);
          valor_c= (EditText) findViewById(R.id.V_Compra2);
          propietari = (EditText) findViewById(R.id.propieta);
-        fecha = (EditText) findViewById(R.id.fecha22);
-        fecha2= (EditText) findViewById(R.id.fech22);
+        //fecha = (EditText) findViewById(R.id.fecha22);
+        //fecha2= (EditText) findViewById(R.id.fech22);
 
          c_p =0;
         String fc = dateFormat.format(date.getTime());
-        fecha.setText(fc);
-        fecha2.setText(fc);
+
+        //--------------- datepicker---------------------------------
+        etPlannedDate = (EditText) findViewById(R.id.etPlannedDate);
+        etPlannedDate.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                showDatePickerDialog();
+            }
+        });
+        etPlannedDate.setText(fc);
+
+        etPlannedDate1 = (EditText) findViewById(R.id.etPlannedDate1);
+        etPlannedDate1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                showDatePickerDialog1();
+            }
+        });
+        etPlannedDate1.setText(fc);
+        //--------------- datepicker---------------------------------
 
         /* // Consultar Campos en la Base de Datos
 
@@ -200,6 +218,36 @@ public class ingreso_animales extends AppCompatActivity {
     public void  onBackPressed(){
     }
 
+    //metodo mostrar datepicker
+    private void showDatePickerDialog() {
+        DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                // +1 because january is zero
+                final String selectedDate = day + " / " + (month+1) + " / " + year;
+                etPlannedDate.setText(selectedDate);
+            }
+        });
+        newFragment.show(getFragmentManager(), "datePicker");
+
+
+    } // fin metodo mostrar datepicker
+
+
+    //metodo mostrar datepicker1
+    private void showDatePickerDialog1() {
+        DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                // +1 because january is zero
+                final String selectedDate = day + " / " + (month+1) + " / " + year;
+                etPlannedDate1.setText(selectedDate);
+            }
+        });
+        newFragment.show(getFragmentManager(), "datePicker");
+
+
+    } // fin metodo mostrar datepicker1
     public void guardar(View view) {
 
         String gcodigo = codig.getText().toString();
@@ -215,8 +263,8 @@ public class ingreso_animales extends AppCompatActivity {
         String getapp = etapap.getSelectedItem().toString();
         String gvalorc = valor_c.getText().toString();
         String comp_par = c_p.toString();
-        String fecha_i =fecha.getText().toString();
-        String fecha_n =fecha2.getText().toString();
+        String fecha_i =etPlannedDate.getText().toString().replace(" ","");
+        String fecha_n =etPlannedDate1.getText().toString().replace(" ","");
         //------------------------------------------------------------------------------------
         //-----Se busca si el cod existe en los animales
         // Cod actual

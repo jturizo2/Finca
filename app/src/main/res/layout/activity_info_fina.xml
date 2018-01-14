@@ -46,18 +46,23 @@
                     android:text="Fecha inicial:"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
-                <EditText
-                    android:id="@+id/INI"
-                    android:layout_width="match_parent"
-                    android:layout_height="52dp"
-                    android:layout_gravity="center"
-                    android:ems="10"
-                    android:focusable="true"
-                    android:gravity="center"
-                    android:hint="DD/MM/AAAA"
-                    android:text="01/01/1900"
-                    android:inputType="textPersonName" />
 
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilPlannedDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/INI"
+                        android:hint="Fecha Inicial"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="date"
+                        android:focusable="false"
+                        android:textSize="14dp"
+                        android:clickable="true"
+                        android:maxLines="1" />
+                </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -73,17 +78,22 @@
                     android:text="Fecha final:"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
-                <EditText
-                    android:id="@+id/FIN"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilPlannedDate1"
                     android:layout_width="match_parent"
-                    android:layout_height="52dp"
-                    android:layout_gravity="center"
-                    android:ems="10"
-                    android:focusable="true"
-                    android:gravity="center"
-                    android:hint="DD/MM/AAAA"
+                    android:layout_height="wrap_content">
 
-                    android:inputType="textPersonName" />
+                    <EditText
+                        android:id="@+id/FIN"
+                        android:hint="Fecha Final"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="date"
+                        android:focusable="false"
+                        android:textSize="14dp"
+                        android:clickable="true"
+                        android:maxLines="1" />
+                </android.support.design.widget.TextInputLayout>
 
             </LinearLayout>
             <Button

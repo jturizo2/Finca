@@ -1,5 +1,6 @@
 package domain.fincas.com.fincas;
 
+import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,12 +12,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class listado_animal_codigo3 extends AppCompatActivity {
-    private EditText cod_animal,nombre, peso, pesod,fecha,fecha2;
+    private EditText cod_animal,nombre, peso, pesod,fecha,fecha2,etPlannedDate,etPlannedDate1;
     private TextView raza, genero,hierro,proposito,etapap,propietario,partos;
     private String id1 ="";
     @Override
@@ -26,13 +28,13 @@ public class listado_animal_codigo3 extends AppCompatActivity {
 
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        fecha = (EditText) findViewById(R.id.fecha2);
+        //fecha = (EditText) findViewById(R.id.fecha2);
         cod_animal = (EditText) findViewById(R.id.editText6);
         nombre =(EditText) findViewById(R.id.nombre2);
         peso =(EditText) findViewById(R.id.Peso2);
         pesod =(EditText) findViewById(R.id.Peso_destete2);
         cod_animal = (EditText) findViewById(R.id.editText6);
-        fecha2 = (EditText) findViewById(R.id.feha2);
+        //fecha2 = (EditText) findViewById(R.id.feha2);
         partos =(TextView) findViewById(R.id.partos);
 
 
@@ -42,6 +44,25 @@ public class listado_animal_codigo3 extends AppCompatActivity {
         hierro =(TextView) findViewById(R.id.hierr);
         proposito =(TextView) findViewById(R.id.propo);
         propietario =(TextView) findViewById(R.id.propi2);
+
+
+        //--------------- datepicker---------------------------------
+        etPlannedDate = (EditText) findViewById(R.id.etPlannedDate);
+        etPlannedDate.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                showDatePickerDialog();
+            }
+        });
+        //etPlannedDate.setText(fc);
+
+        etPlannedDate1 = (EditText) findViewById(R.id.etPlannedDate1);
+        etPlannedDate1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                showDatePickerDialog1();
+            }
+        });
+
+        //--------------- datepicker---------------------------------
 
         // ----------Cargamos los datos de la busqueda--------------------
         //Variables de la actividad pasada
@@ -138,17 +159,47 @@ public class listado_animal_codigo3 extends AppCompatActivity {
         propietario.setText(propietario1);
         propietario.setMovementMethod(new ScrollingMovementMethod());
 
-        fecha.setText(fecha1);
-        fecha.setMovementMethod(new ScrollingMovementMethod());
+        etPlannedDate.setText(fecha1);
+        etPlannedDate.setMovementMethod(new ScrollingMovementMethod());
 
-        fecha2.setText(fecha22);
-        fecha2.setMovementMethod(new ScrollingMovementMethod());
+        etPlannedDate1.setText(fecha22);
+        etPlannedDate1.setMovementMethod(new ScrollingMovementMethod());
 
 
 
     }
 
+    //metodo mostrar datepicker
+    private void showDatePickerDialog() {
+        DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                // +1 because january is zero
+                final String selectedDate = day + " / " + (month+1) + " / " + year;
+                etPlannedDate.setText(selectedDate);
+            }
+        });
+        newFragment.show(getFragmentManager(), "datePicker");
 
+
+    } // fin metodo mostrar datepicker
+
+
+
+    //metodo mostrar datepicker1
+    private void showDatePickerDialog1() {
+        DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                // +1 because january is zero
+                final String selectedDate = day + " / " + (month+1) + " / " + year;
+                etPlannedDate1.setText(selectedDate);
+            }
+        });
+        newFragment.show(getFragmentManager(), "datePicker");
+
+
+    } // fin metodo mostrar datepicker1
 
 
     public void limpiar(){
@@ -162,8 +213,8 @@ public class listado_animal_codigo3 extends AppCompatActivity {
         hierro.setText("");
         proposito.setText("");
         propietario.setText("");
-        fecha.setText("");
-        fecha2.setText("");
+        etPlannedDate.setText("");
+        etPlannedDate1.setText("");
     }
 
     @Override
@@ -239,8 +290,8 @@ public class listado_animal_codigo3 extends AppCompatActivity {
             String gnombre = nombre.getText().toString();
             String gpeso = peso.getText().toString();
             String gpesod = pesod.getText().toString();
-            String fec = fecha.getText().toString();
-            String fech = fecha2.getText().toString();
+            String fec = etPlannedDate.getText().toString().replace(" ","");
+            String fech = etPlannedDate1.getText().toString().replace(" ","");
             String getap = etapap.getText().toString();
 
 

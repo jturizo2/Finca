@@ -1,5 +1,6 @@
 package domain.fincas.com.fincas;
 
+import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -7,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -15,7 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class lecheingre extends AppCompatActivity {
-    private EditText cod1,litros,fecha;
+    private EditText cod1,litros,fecha,etPlannedDate;
 
     DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     Date date = new Date();
@@ -25,10 +27,21 @@ public class lecheingre extends AppCompatActivity {
         setContentView(R.layout.activity_lecheingre);
         cod1= (EditText) findViewById(R.id.cod2);
         litros= (EditText) findViewById(R.id.litros);
-        fecha= (EditText) findViewById(R.id.fecha2);
+        //fecha= (EditText) findViewById(R.id.fecha2);
 
         String fc = dateFormat.format(date.getTime());
-        fecha.setText(fc);
+        //fecha.setText(fc);
+
+        //--------------- datepicker---------------------------------
+        etPlannedDate = (EditText) findViewById(R.id.etPlannedDate);
+        etPlannedDate.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                showDatePickerDialog();
+            }
+        });
+        etPlannedDate.setText(fc);
+
+        //--------------- datepicker---------------------------------
     }
 
     public void atras(View view) {
@@ -37,13 +50,26 @@ public class lecheingre extends AppCompatActivity {
         finish();
 
     }
+    //metodo mostrar datepicker
+    private void showDatePickerDialog() {
+        DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                // +1 because january is zero
+                final String selectedDate = day + " / " + (month+1) + " / " + year;
+                etPlannedDate.setText(selectedDate);
+            }
+        });
+        newFragment.show(getFragmentManager(), "datePicker");
 
+
+    } // fin metodo mostrar datepicker
     public void guardar(View view) {
 
 
         String gcod1 = cod1.getText().toString();
         String glitros = litros.getText().toString();
-        String gfecha = fecha.getText().toString();
+        String gfecha = etPlannedDate .getText().toString().replace(" ","");
         //------------------------------------------------------------------------------------
         //-----Se busca si el cod existe en los animales
         // Cod actual
@@ -87,7 +113,9 @@ public class lecheingre extends AppCompatActivity {
                 Toast.makeText(this, "El animal no es una vaca!!!", Toast.LENGTH_LONG).show();
             }else{
 
-
+                    if(glitros.equals("")){
+                        glitros="0";
+                    }
                 //Base de datos
                 UsersSQLiteHelper admine9 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
                 SQLiteDatabase db9 = admine9.getWritableDatabase();

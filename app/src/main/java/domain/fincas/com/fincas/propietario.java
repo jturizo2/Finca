@@ -3,10 +3,12 @@ package domain.fincas.com.fincas;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -22,6 +24,25 @@ public class propietario extends AppCompatActivity {
 
         nombre1=(EditText)findViewById(R.id.nombre1);
         apellido1=(EditText)findViewById(R.id.apellido1);
+
+        String name2 = "";
+        UsersSQLiteHelper admine2 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+        SQLiteDatabase db2 = admine2.getWritableDatabase();
+        Cursor fila1 = db2.rawQuery("SELECT NEW FROM NNEW LIMIT 1", null);
+        while(fila1.moveToNext()){
+            name2=fila1.getString(0);
+        }
+        db2.close();
+        //   Fin de la Consulta*/
+
+        if("".equals(name2)){
+
+            Button btn = (Button) findViewById(R.id.Atras);
+            btn.setEnabled(false);
+
+        }
+        db2.close();
+
 
     }
     @Override

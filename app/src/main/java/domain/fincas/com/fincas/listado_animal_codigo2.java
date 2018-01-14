@@ -1,5 +1,6 @@
 package domain.fincas.com.fincas;
 
+import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,12 +12,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class listado_animal_codigo2 extends AppCompatActivity {
-    private EditText cod_animal,nombre, peso, pesod,codmama,codpapa,fecha,etapap;
+    private EditText cod_animal,nombre, peso, pesod,codmama,codpapa,fecha,etapap,etPlannedDate;
     private TextView raza, genero,hierro,proposito,propietario,partos;
     private String id1 ="";
     @Override
@@ -25,7 +27,7 @@ public class listado_animal_codigo2 extends AppCompatActivity {
         setContentView(R.layout.activity_listado_animal_codigo2);
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        fecha = (EditText) findViewById(R.id.fecha2);
+        //fecha = (EditText) findViewById(R.id.fecha2);
         cod_animal = (EditText) findViewById(R.id.editText6);
         nombre =(EditText) findViewById(R.id.nombre2);
         peso =(EditText) findViewById(R.id.Peso2);
@@ -42,6 +44,18 @@ public class listado_animal_codigo2 extends AppCompatActivity {
         hierro =(TextView) findViewById(R.id.hierr);
         proposito =(TextView) findViewById(R.id.propo);
         propietario =(TextView) findViewById(R.id.propi2);
+
+
+        //--------------- datepicker---------------------------------
+        etPlannedDate = (EditText) findViewById(R.id.etPlannedDate);
+        etPlannedDate.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                showDatePickerDialog();
+            }
+        });
+       // etPlannedDate.setText(fc);
+
+        //--------------- datepicker---------------------------------
 
         // ----------Cargamos los datos de la busqueda--------------------
         //Variables de la actividad pasada
@@ -147,8 +161,8 @@ public class listado_animal_codigo2 extends AppCompatActivity {
         codpapa.setMovementMethod(new ScrollingMovementMethod());
 
 
-        fecha.setText(fecha1);
-        fecha.setMovementMethod(new ScrollingMovementMethod());
+        etPlannedDate.setText(fecha1);
+        etPlannedDate.setMovementMethod(new ScrollingMovementMethod());
 
     }
 
@@ -168,12 +182,27 @@ public class listado_animal_codigo2 extends AppCompatActivity {
         codpapa.setText("");
         codmama.setText("");
         propietario.setText("");
-        fecha.setText("");
+        etPlannedDate.setText("");
     }
 
     @Override
     public void  onBackPressed(){
     }
+
+    //metodo mostrar datepicker
+    private void showDatePickerDialog() {
+        DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                // +1 because january is zero
+                final String selectedDate = day + " / " + (month+1) + " / " + year;
+                etPlannedDate.setText(selectedDate);
+            }
+        });
+        newFragment.show(getFragmentManager(), "datePicker");
+
+
+    } // fin metodo mostrar datepicker
 
     public void atras(View view) {
         Intent iw = new Intent(listado_animal_codigo2.this, home_listado_animales.class);
@@ -246,7 +275,7 @@ public class listado_animal_codigo2 extends AppCompatActivity {
             String gpesod = pesod.getText().toString();
             String gcodmama = codmama.getText().toString();
             String gcodpapa = codpapa.getText().toString();
-            String fec = fecha.getText().toString();
+            String fec = etPlannedDate.getText().toString();
             String geta = etapap.getText().toString();
 
 
@@ -261,7 +290,7 @@ public class listado_animal_codigo2 extends AppCompatActivity {
             registro.put("PESODESTETE", gpesod);
             registro.put("CODMAMA", gcodmama);
             registro.put("CODPAPA", gcodpapa);
-            registro.put("FECHANACI", fec);
+            registro.put("FECHANACI", fec.replace(" ",""));
             registro.put("ETAPAP", geta);
 
             db3.update("ANIMALESN", registro,"ID="+id1,null);

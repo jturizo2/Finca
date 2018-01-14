@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "854276208024",
+    "firebase_url": "https://appfincas-ea7a5.firebaseio.com",
+    "project_id": "appfincas-ea7a5",
+    "storage_bucket": "appfincas-ea7a5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:854276208024:android:f1f9700eb74f6bf6",
+        "android_client_info": {
+          "package_name": "domain.fincas.com.fincas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "854276208024-foh966cla21bk36j078jla8gthej1l3u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDf8S5jmj9HNkpouB--9bj_eJm8bKQuvLY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

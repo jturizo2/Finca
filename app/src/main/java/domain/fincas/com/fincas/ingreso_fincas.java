@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -27,8 +28,27 @@ public class ingreso_fincas extends AppCompatActivity {
        divisi =(EditText)findViewById(R.id.editText5);
        lotes =(EditText)findViewById(R.id.editText4);
 
+        //------------------Boton atras inhabilitado por primera vez ---------------
 
+        String name2 = "";
+        UsersSQLiteHelper admine22 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+        SQLiteDatabase db22 = admine22.getWritableDatabase();
+        Cursor fila1 = db22.rawQuery("SELECT NEW FROM NNEW LIMIT 1", null);
+        while(fila1.moveToNext()){
+            name2=fila1.getString(0);
+        }
+        db22.close();
+        //   Fin de la Consulta*/
 
+        if("".equals(name2)){
+
+            Button btn = (Button) findViewById(R.id.button15);
+            btn.setEnabled(false);
+
+        }
+        db22.close();
+
+        //---------------------------------
         //Verificar si existe un registro de finca
         UsersSQLiteHelper admine = new UsersSQLiteHelper(this,"FINCAS", null, 1);
         SQLiteDatabase db = admine.getWritableDatabase();
