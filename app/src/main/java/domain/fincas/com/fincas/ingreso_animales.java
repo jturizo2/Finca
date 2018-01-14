@@ -250,78 +250,82 @@ public class ingreso_animales extends AppCompatActivity {
     } // fin metodo mostrar datepicker1
     public void guardar(View view) {
 
-        String gcodigo = codig.getText().toString();
-        String gnomb = nomb.getText().toString();
-        String ggenero = Genero2.getSelectedItem().toString();
-        String graza = Raza2.getSelectedItem().toString();
-        String gpropietario = propietari.getText().toString();
-        String gpropietario2 = Propietario2.getSelectedItem().toString();
-        String ghierro = Hierro2.getSelectedItem().toString();
-        String gpropo = Proposito2.getSelectedItem().toString();
-        String gpeso = peso.getText().toString();
-        String gpesod = pesod.getText().toString();
-        String getapp = etapap.getSelectedItem().toString();
-        String gvalorc = valor_c.getText().toString();
-        String comp_par = c_p.toString();
-        String fecha_i =etPlannedDate.getText().toString().replace(" ","");
-        String fecha_n =etPlannedDate1.getText().toString().replace(" ","");
-        //------------------------------------------------------------------------------------
-        //-----Se busca si el cod existe en los animales
-        // Cod actual
-        String use=codig.getText().toString();
-        // Lista de codigos existentes
-        UsersSQLiteHelper admine = new UsersSQLiteHelper(this, "FINCAS", null, 1);
-        SQLiteDatabase db = admine.getWritableDatabase();
-        Cursor fila = db.rawQuery("SELECT CODIGO FROM ANIMALESN", null);
-        String ssd ="";
-        String flag="nada";
-        while (fila.moveToNext()) {
-            String prube= fila.getString(0);
-            if(use.equals(prube)){
-                flag="algop";
-                break;
+        if ("".equals(codig.getText().toString())) {
+            Toast.makeText(this, "Ingrese el codido del animal!!", Toast.LENGTH_LONG).show();
+        } else {
+
+            String gcodigo = codig.getText().toString();
+            String gnomb = nomb.getText().toString();
+            String ggenero = Genero2.getSelectedItem().toString();
+            String graza = Raza2.getSelectedItem().toString();
+            String gpropietario = propietari.getText().toString();
+            String gpropietario2 = Propietario2.getSelectedItem().toString();
+            String ghierro = Hierro2.getSelectedItem().toString();
+            String gpropo = Proposito2.getSelectedItem().toString();
+            String gpeso = peso.getText().toString();
+            String gpesod = pesod.getText().toString();
+            String getapp = etapap.getSelectedItem().toString();
+            String gvalorc = valor_c.getText().toString();
+            String comp_par = c_p.toString();
+            String fecha_i = etPlannedDate.getText().toString().replace(" ", "");
+            String fecha_n = etPlannedDate1.getText().toString().replace(" ", "");
+            //------------------------------------------------------------------------------------
+            //-----Se busca si el cod existe en los animales
+            // Cod actual
+            String use = codig.getText().toString();
+            // Lista de codigos existentes
+            UsersSQLiteHelper admine = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+            SQLiteDatabase db = admine.getWritableDatabase();
+            Cursor fila = db.rawQuery("SELECT CODIGO FROM ANIMALESN", null);
+            String ssd = "";
+            String flag = "nada";
+            while (fila.moveToNext()) {
+                String prube = fila.getString(0);
+                if (use.equals(prube)) {
+                    flag = "algop";
+                    break;
+                }
+
             }
+            db.close();
 
+            if (flag.equals("nada")) {
+                //Base de datos
+                UsersSQLiteHelper admine9 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+                SQLiteDatabase db9 = admine9.getWritableDatabase();
+
+                ContentValues registro = new ContentValues();
+                registro.put("CODIGO", gcodigo);
+                registro.put("NOMBRE", gnomb);
+                registro.put("GENERO", ggenero);
+                registro.put("RAZA", graza);
+                registro.put("PROPIETARIO", gpropietario2);
+                registro.put("PROPIETARIOA", gpropietario);
+                registro.put("HIERRO", ghierro);
+                registro.put("PROPOSITO", gpropo);
+                registro.put("PESO", gpeso);
+                registro.put("PESODESTETE", gpesod);
+                registro.put("ETAPAP", getapp);
+                registro.put("VALORC", gvalorc);
+                registro.put("COMPPAR", comp_par);
+                registro.put("FECHAINGRE", fecha_i);
+                registro.put("FECHANACI", fecha_n);
+
+                db9.insert("ANIMALESN", null, registro);
+                db9.close();
+                Toast.makeText(this, "Animal Registrado!!", Toast.LENGTH_LONG).show();
+
+
+                Intent i = new Intent(ingreso_animales.this, ingresoTipoAnimal.class);
+                startActivity(i);
+                finish();
+
+            } else {
+                Toast.makeText(this, "El código ya existe!!!", Toast.LENGTH_LONG).show();
+                limpiar();
+            }
         }
-        db.close();
-
-        if(flag.equals("nada")){
-            //Base de datos
-            UsersSQLiteHelper admine9 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
-            SQLiteDatabase db9 = admine9.getWritableDatabase();
-
-            ContentValues registro = new ContentValues();
-            registro.put("CODIGO", gcodigo);
-            registro.put("NOMBRE", gnomb);
-            registro.put("GENERO", ggenero);
-            registro.put("RAZA", graza);
-            registro.put("PROPIETARIO", gpropietario2);
-            registro.put("PROPIETARIOA", gpropietario);
-            registro.put("HIERRO", ghierro);
-            registro.put("PROPOSITO", gpropo);
-            registro.put("PESO", gpeso);
-            registro.put("PESODESTETE", gpesod);
-            registro.put("ETAPAP", getapp);
-            registro.put("VALORC", gvalorc);
-            registro.put("COMPPAR", comp_par);
-            registro.put("FECHAINGRE", fecha_i);
-            registro.put("FECHANACI", fecha_n);
-
-            db9.insert("ANIMALESN", null, registro);
-            db9.close();
-            Toast.makeText(this, "Animal Registrado!!", Toast.LENGTH_LONG).show();
-
-
-            Intent i = new Intent(ingreso_animales.this, ingresoTipoAnimal.class);
-            startActivity(i);
-            finish();
-
-        }else{
-            Toast.makeText(this, "El código ya existe!!!", Toast.LENGTH_LONG).show();
-            limpiar();
-        }
-
-    }
+    }//fin metodo guardar
 
     public void atras(View view) {
         Intent iw = new Intent(ingreso_animales.this, ingresoTipoAnimal.class);

@@ -39,7 +39,7 @@ public class listado_animales_parto extends AppCompatActivity {
                     + "Codigo Madre: " + fila.getString(7)+ "\n"
                     + "Codigo Padre: " + fila.getString(8)+ "\n"
                     + "Peso al Nacer(kg): " + fila.getString(9)+ "\n"
-                    + "Peso Destete(kg): " + fila.getString(10)+ "\n"
+                    + "Peso Actual(kg): " + fila.getString(10)+ "\n"
                     + "Etapa de Producción: " + fila.getString(11)+ "\n"
                     + "Fecha de Nacimiento: " + fila.getString(12)+ "\n \n";
 

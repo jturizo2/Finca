@@ -185,9 +185,7 @@ public class listado_animal_codigo2 extends AppCompatActivity {
         etPlannedDate.setText("");
     }
 
-    @Override
-    public void  onBackPressed(){
-    }
+
 
     //metodo mostrar datepicker
     private void showDatePickerDialog() {
