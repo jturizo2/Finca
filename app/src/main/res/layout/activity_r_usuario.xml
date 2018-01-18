@@ -57,7 +57,7 @@
                 android:layout_gravity="center"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="Usuario"
+                android:hint="Email"
                 android:inputType="textPersonName" />
 
             <EditText
@@ -88,6 +88,16 @@
                 android:gravity="center"
                 android:onClick="save"
                 android:text="Registrar" />
+
+
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="212dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:onClick="atra"
+                android:text="Atras" />
         </LinearLayout>
     </ScrollView>
 

@@ -1,27 +1,35 @@
 {
   "project_info": {
-    "project_number": "854276208024",
-    "firebase_url": "https://appfincas-ea7a5.firebaseio.com",
-    "project_id": "appfincas-ea7a5",
-    "storage_bucket": "appfincas-ea7a5.appspot.com"
+    "project_number": "687867668420",
+    "firebase_url": "https://appfincasd.firebaseio.com",
+    "project_id": "appfincasd",
+    "storage_bucket": "appfincasd.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:854276208024:android:f1f9700eb74f6bf6",
+        "mobilesdk_app_id": "1:687867668420:android:f1f9700eb74f6bf6",
         "android_client_info": {
           "package_name": "domain.fincas.com.fincas"
         }
       },
       "oauth_client": [
         {
-          "client_id": "854276208024-foh966cla21bk36j078jla8gthej1l3u.apps.googleusercontent.com",
+          "client_id": "687867668420-a9nnt6405vn9cgg2c30aq58g50kseqp5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "domain.fincas.com.fincas",
+            "certificate_hash": "22a8ff572d833c373a34ebc744bf74f82864766e"
+          }
+        },
+        {
+          "client_id": "687867668420-7r91no6smak0qletkv1ukvscorvomn47.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDf8S5jmj9HNkpouB--9bj_eJm8bKQuvLY"
+          "current_key": "AIzaSyCNUDYnJ9hXu7r5j4koR27tvHcd3ii48Do"
         }
       ],
       "services": {
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "687867668420-7r91no6smak0qletkv1ukvscorvomn47.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

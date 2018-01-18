@@ -7,6 +7,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import domain.fincas.com.fincas.objetos.FireBaseReferences;
 
 public class ReadDataBase extends AppCompatActivity {
     private TextView read;
@@ -17,6 +26,10 @@ public class ReadDataBase extends AppCompatActivity {
         read=(TextView)findViewById(R.id.read);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+        //-----Fire database---------------------
+
+        //----------------------------------------
+/*
         // Tratamientos
         //Leemos la ultima inspeccion registrada
         UsersSQLiteHelper admine4 = new UsersSQLiteHelper(this, "FINCAS", null, 1);

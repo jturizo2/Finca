@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.opencsv.CSVWriter;
 
 import java.io.BufferedReader;
@@ -362,14 +363,11 @@ public class homep extends AppCompatActivity {
     }
 
     public void cerrar(View view) {
-        /*Borrar usuario actual
-        UsersSQLiteHelper admine3 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
-        SQLiteDatabase db3 = admine3.getWritableDatabase();
-        db3.delete("ACTUAL",null,null);
+        FirebaseAuth.getInstance().signOut();
         Intent choo2 = new Intent(homep.this, MainActivity.class);
         startActivity(choo2);
         finish();
-        */
+
     }
     public void reporte(View view) {
 
