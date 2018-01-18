@@ -57,7 +57,7 @@
                 android:layout_gravity="center"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="Email"
+                android:hint="E-mail"
                 android:inputType="textPersonName" />
 
             <EditText

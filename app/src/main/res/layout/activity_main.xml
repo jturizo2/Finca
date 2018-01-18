@@ -32,7 +32,7 @@
                 android:layout_gravity="center"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="Usuario"
+                android:hint="E-mail"
                 android:inputType="textPersonName"
                 android:singleLine="false" />
 
