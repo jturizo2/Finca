@@ -19,8 +19,11 @@ import android.widget.Toast;
 
 public class listado_animal_codigo2 extends AppCompatActivity {
     private EditText cod_animal,nombre, peso, pesod,codmama,codpapa,fecha,etapap,etPlannedDate;
-    private TextView raza, genero,hierro,proposito,propietario,partos;
+    private TextView raza, genero,hierro,proposito,propietario;
     private String id1 ="";
+    String genero1 = "";
+    String cdmama = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +38,6 @@ public class listado_animal_codigo2 extends AppCompatActivity {
         cod_animal = (EditText) findViewById(R.id.editText6);
         codmama =(EditText) findViewById(R.id.codmama2);
         codpapa =(EditText) findViewById(R.id.codpapa2);
-        partos =(TextView) findViewById(R.id.partos);
 
 
         etapap =(EditText) findViewById(R.id.produ);
@@ -69,13 +71,11 @@ public class listado_animal_codigo2 extends AppCompatActivity {
         String nombre1 = "";
         String peso1 = "";
         String pesodes1 = "";
-        String genero1 = "";
         String etapap1 = "";
         String raza1= "";
         String propietario1 = "";
         String hierro1 = "";
         String proposito1 = "";
-        String cdmama = "";
         String cdpapa = "";
         String fecha1 = "";
 
@@ -99,30 +99,6 @@ public class listado_animal_codigo2 extends AppCompatActivity {
 
 
         db2.close();
-//------------------------------Consultamos los partos del animal--------------------------------
-        if(genero1.equals("Hembra")){
-            UsersSQLiteHelper admine4 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
-            SQLiteDatabase db4 = admine4.getWritableDatabase();
-            Cursor fila4 = db4.rawQuery("SELECT CODIGO,NOMBRE,GENERO,FECHANACI FROM ANIMALESN WHERE  COMPPAR='1' AND CODMAMA='"+use+"'", null);
-
-            String ss="<-  Partos registrados--> " + "\n";
-            while (fila4.moveToNext()) {
-                ss += "<---------------------> " + "\n"
-                        + "CODIGO:" + fila4.getString(0) + "\n"
-                        + "NOMBRE:" + fila4.getString(1) + "\n"
-                        + "GENERO:" + fila4.getString(2) + "\n"
-                        + "F.NACIMIENTO:" + fila4.getString(3) + "\n";
-            }
-            db4.close();
-            partos.setText(ss);
-            partos.setMovementMethod(new ScrollingMovementMethod());
-        }else{
-            partos.setText("Este campo no aplica para machos.");
-            partos.setMovementMethod(new ScrollingMovementMethod());
-
-        }
-        //------------------------------------------------------------------
-
 
         cod_animal.setText(use);
         cod_animal.setMovementMethod(new ScrollingMovementMethod());
@@ -166,8 +142,19 @@ public class listado_animal_codigo2 extends AppCompatActivity {
 
     }
 
+    public void consul (View view) {
+        //Variables de la actividad pasada
+        Bundle bundle = getIntent().getExtras();
+        final String use = bundle.getString("COD");
+        if (genero1.equals("Hembra")) {
+            Intent iw = new Intent(listado_animal_codigo2.this, readPartos.class);
+            iw.putExtra("datos", use);
+            startActivity(iw);
 
-
+        } else {
+            Toast.makeText(this, "Este campo no aplica para machos.", Toast.LENGTH_LONG).show();
+        }
+    }
 
     public void limpiar(){
 
