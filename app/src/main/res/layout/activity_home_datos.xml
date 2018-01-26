@@ -4,21 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     tools:context="domain.fincas.com.fincas.home_datos">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/textView24"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:gravity="center"
                 android:text="Descarga de Datos"
                 android:textColor="@android:color/background_dark"
@@ -27,31 +31,21 @@
 
             <Button
                 android:id="@+id/button20"
-                android:layout_width="256dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:onClick="descargar_datos"
                 android:text="Descargar " />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:gravity="center"
-                android:text=""/>
-
-
-            <TextView
-                android:id="@+id/textVie2"
-                android:layout_width="match_parent"
-                android:layout_height="64dp"
-                android:gravity="center"
-                android:text=""/>
 
             <Button
                 android:id="@+id/button3"
-                android:layout_width="256dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:onClick="atras"
                 android:text="Atras " />

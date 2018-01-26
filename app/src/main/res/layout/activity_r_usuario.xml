@@ -22,18 +22,20 @@
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.08"
                 android:gravity="center"
                 android:text="Registro de Usuario"
-
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:textColor="@android:color/background_dark"
                 android:textSize="24dp" />
 
             <EditText
                 android:id="@+id/nombre"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:ems="10"
                 android:gravity="center"
@@ -43,7 +45,9 @@
             <EditText
                 android:id="@+id/apellido"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:ems="10"
                 android:gravity="center"
@@ -53,17 +57,21 @@
             <EditText
                 android:id="@+id/usuario"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="Email"
+                android:hint="E-mail"
                 android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/contras"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:ems="10"
                 android:gravity="center"
@@ -73,7 +81,9 @@
             <EditText
                 android:id="@+id/rcontras"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:ems="10"
                 android:gravity="center"
@@ -82,8 +92,10 @@
 
             <Button
                 android:id="@+id/button5"
-                android:layout_width="212dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:onClick="save"
@@ -92,8 +104,10 @@
 
             <Button
                 android:id="@+id/button6"
-                android:layout_width="212dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:onClick="atra"

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Admin fincas</string>
     <string name="title_activity_registra_usuario">RegistraUsuario</string>
+    <string name="title_activity_hornal">HornalActivity</string>
 </resources>

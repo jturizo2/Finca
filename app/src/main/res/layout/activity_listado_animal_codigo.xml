@@ -62,7 +62,7 @@
                     android:focusable="true"
                     android:gravity="center"
                     android:hint="Codigo Animal"
-                    android:inputType="textPersonName" />
+                    android:inputType="number|numberDecimal" />
 
             </LinearLayout>
 

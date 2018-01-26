@@ -52,7 +52,7 @@
                     android:ems="10"
                     android:gravity="center"
                     android:hint="Codigo: 1, 2, 3...."
-                    android:inputType="number" />
+                    android:inputType="number|numberDecimal" />
             </LinearLayout>
 
             <LinearLayout

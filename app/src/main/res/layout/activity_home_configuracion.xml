@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     tools:context="domain.fincas.com.fincas.home_configuracion">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -18,7 +19,9 @@
             <TextView
                 android:id="@+id/textView18"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:text="Configuración"
                 android:gravity="center"
                 android:textColor="@android:color/background_dark"
@@ -26,35 +29,41 @@
 
             <Button
                 android:id="@+id/finca"
-                android:layout_width="257dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:onClick="finca"
                 android:text="finca" />
 
             <Button
                 android:id="@+id/propietario"
-                android:layout_width="257dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:onClick="propietario"
                 android:text="propietario" />
 
             <Button
                 android:id="@+id/hierro"
-                android:layout_width="257dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:onClick="hierro"
                 android:text="hierro" />
 
-
-
                 <Button
                 android:id="@+id/atras"
-                android:layout_width="257dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_margin="10dp"
+                    android:layout_gravity="center"
                 android:onClick="atras"
                 android:text="atras" />
 

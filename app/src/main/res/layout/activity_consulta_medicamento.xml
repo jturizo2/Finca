@@ -4,60 +4,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="domain.fincas.com.fincas.consulta_medicamento"
-    android:gravity="center">
+    android:gravity="center"
+    tools:context="domain.fincas.com.fincas.consulta_medicamento">
 
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:orientation="vertical" >
 
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:text="Consulta de Medicamentos Aplicados por Animal"
                 android:textColor="@android:color/background_dark"
                 android:textSize="24dp"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:layout_margin="10dp" />
 
             <EditText
                 android:id="@+id/editText6"
-                android:layout_width="186dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="number|numberSigned|numberDecimal"
-                android:hint="Codigo Animal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_gravity="center"
-
-                android:gravity="center"/>
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="Codigo Animal"
+                android:inputType="number|numberDecimal" />
 
             <Button
                 android:id="@+id/button20"
-                android:layout_width="148dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:layout_gravity="center"
                 android:onClick="consultar"
-                android:text="CONSULTAR" />
+                android:text="CONSULTAR"
+                android:layout_margin="10dp"/>
 
             <TextView
                 android:id="@+id/textView7"
-                android:layout_width="292dp"
-                android:layout_height="224dp"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
                 android:text=""
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:layout_margin="10dp"/>
 
             <Button
                 android:id="@+id/button24"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:onClick="atras"
-                android:text="ATRAS" />
+                android:text="ATRAS"
+                android:layout_margin="10dp"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

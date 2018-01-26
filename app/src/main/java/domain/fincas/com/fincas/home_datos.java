@@ -32,13 +32,13 @@ import java.util.List;
 
 public class home_datos extends AppCompatActivity {
 
-    private TextView ruta;    @Override
+    private TextView ruta;
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_datos);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        ruta = (TextView) findViewById(R.id.textVie2);
         Button boton = (Button) findViewById(R.id.button20);
 
 

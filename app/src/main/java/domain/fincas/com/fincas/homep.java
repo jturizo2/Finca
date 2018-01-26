@@ -529,7 +529,7 @@ public class homep extends AppCompatActivity {
 
         //Guardamos CSV-------------------------
         String NameFile = "Reporte.csv";
-        String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/Datos";
+        String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
         String filePath = baseDir+ "/"+NameFile;
         File f = new File(filePath);
         f.delete();
@@ -547,7 +547,7 @@ public class homep extends AppCompatActivity {
             writer.writeAll(data);
 
             writer.close();
-            Toast.makeText(this,"Reporte almacenado, consulte en la carpeta Datos.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Reporte almacenado en la memoria del dispositivo.", Toast.LENGTH_LONG).show();
 
         }catch (IOException e) {
             Toast.makeText(this,"Error, intente mas tarde."+e.toString(), Toast.LENGTH_LONG).show();

@@ -114,7 +114,12 @@
         <activity
             android:name=".infoFina"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".readPartos"></activity>
+        <activity android:name=".readPartos" />
+        <activity android:name=".hornal" />
+        <activity
+            android:name=".hornal.HornalActivity"
+            android:label="@string/title_activity_hornal"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

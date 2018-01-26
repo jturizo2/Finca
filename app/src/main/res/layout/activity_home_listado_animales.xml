@@ -10,7 +10,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="319dp">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,56 +20,59 @@
             <TextView
                 android:id="@+id/textView14"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:text="Listado total de Animales"
                 android:gravity="center"
                 android:textColor="@android:color/background_dark"
                 android:textSize="24dp"/>
 
-            <TextView
-                android:id="@+id/textView16"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
             <Button
                 android:id="@+id/button"
-                android:layout_width="207dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:onClick="listado_animales_codigo"
                 android:text="busqueda por codigo" />
 
             <Button
                 android:id="@+id/button31"
-                android:layout_width="207dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:onClick="listado_animales_existentes"
                 android:text="AL PARTIR" />
 
             <Button
                 android:id="@+id/button29"
-                android:layout_width="206dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:onClick="listado_animales_parto"
                 android:text="Crias" />
 
             <Button
                 android:id="@+id/button30"
-                android:layout_width="207dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"                android:layout_gravity="center"
                 android:onClick="listado_animales_compra"
                 android:text="comprados" />
 
-
-
-
-
             <Button
                 android:id="@+id/button32"
-                android:layout_width="208dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:onClick="atras"
                 android:text="atras" />

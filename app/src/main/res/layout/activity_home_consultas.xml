@@ -11,17 +11,20 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="381dp">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
-                android:layout_height="36dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:gravity="center"
                 android:text="CONSULTAS"
                 android:textColor="@android:color/background_dark"
@@ -29,32 +32,40 @@
 
             <Button
                 android:id="@+id/button22"
-                android:layout_width="242dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:onClick="listado_fincas"
                 android:text="Resumen de Fincas" />
 
             <Button
                 android:id="@+id/finan"
-                android:layout_width="246dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:onClick="fina"
                 android:text="Resumen financiero" />
 
             <Button
                 android:id="@+id/button23"
-                android:layout_width="242dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:onClick="home_listado_animales"
                 android:text="Animales registrados" />
 
             <Button
                 android:id="@+id/button21"
-                android:layout_width="240dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:onClick="consulta_medicamento"
                 android:text="Medicamentos aplicados"
                 android:layout_gravity="center"/>
@@ -63,8 +74,10 @@
 
             <Button
                 android:id="@+id/leche3"
-                android:layout_width="242dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:onClick="leche"
                 android:text="Litros de leche registrados" />
@@ -72,8 +85,10 @@
 
             <Button
                 android:id="@+id/ventas"
-                android:layout_width="242dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:onClick="listado_ventas"
                 android:text="ventas realizadas" />
@@ -81,8 +96,10 @@
 
             <Button
                 android:id="@+id/button25"
-                android:layout_width="243dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:onClick="atras"
                 android:text="ATRAS"
                 android:layout_gravity="center"/>

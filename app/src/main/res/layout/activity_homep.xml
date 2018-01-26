@@ -11,7 +11,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
 
         >
@@ -21,10 +21,10 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="match_parent"
+                android:layout_margin="10dp"
                 android:layout_height="wrap_content"
                 android:text="HOME"
                 android:gravity="center"
@@ -41,16 +41,18 @@
 
             <Button
                 android:id="@+id/button3"
-                android:layout_width="257dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:onClick="ingreso_info"
                 android:text="REGISTRO" />
 
             <Button
                 android:id="@+id/button4"
-                android:layout_width="257dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:onClick="consultas"
                 android:text="CONSULTA" />
@@ -58,8 +60,9 @@
 
             <Button
                 android:id="@+id/button20"
-                android:layout_width="256dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:onClick="backup"
                 android:text="backup datos " />
@@ -67,24 +70,27 @@
 
             <Button
                 android:id="@+id/button2"
-                android:layout_width="256dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:onClick="reporte"
                 android:text="Reporte " />
 
             <Button
                 android:id="@+id/config"
-                android:layout_width="257dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:onClick="configuracion"
                 android:text="configuracion" />
 
             <Button
                 android:id="@+id/button19"
-                android:layout_width="256dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:onClick="cerrar"
                 android:text="Cerrar sesión " />
