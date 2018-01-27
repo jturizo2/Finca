@@ -254,13 +254,11 @@ public class ingresoAnimalesParto extends AppCompatActivity {
    } //fin del metodo guardar
     @Override
     public void  onBackPressed(){
-    }
-
-    public void atras(View view) {
         Intent iw = new Intent(ingresoAnimalesParto.this, ingresoTipoAnimal.class);
         startActivity(iw);
         finish();
     }
+
 
 
     private void limpiar(){

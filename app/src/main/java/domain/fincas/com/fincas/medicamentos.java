@@ -34,10 +34,7 @@ public class medicamentos extends AppCompatActivity {
     }
     @Override
     public void  onBackPressed(){
-    }
 
-
-    public void back(View view) {
         Intent iw = new Intent(medicamentos.this, botones_ingreso_info.class);
         startActivity(iw);
         finish();

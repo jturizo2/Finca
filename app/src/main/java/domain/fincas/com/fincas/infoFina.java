@@ -190,9 +190,6 @@ public class infoFina extends AppCompatActivity {
     }
     @Override
     public void  onBackPressed(){
-
-    }
-    public void atras(View view) {
         Intent iw = new Intent(infoFina.this, home_consultas.class);
         startActivity(iw);
         finish();

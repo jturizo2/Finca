@@ -59,13 +59,6 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/Atras"
-                    android:layout_width="157dp"
-                    android:layout_height="wrap_content"
-                    android:onClick="atras"
-                    android:text="Atras" />
-
-                <Button
                     android:id="@+id/Guardar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

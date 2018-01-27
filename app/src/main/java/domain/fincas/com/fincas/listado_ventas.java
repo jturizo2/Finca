@@ -39,9 +39,6 @@ public class listado_ventas extends AppCompatActivity {
 
     @Override
     public void  onBackPressed(){
-    }
-
-    public void atras(View view) {
         Intent iw = new Intent(listado_ventas.this, home_consultas.class);
         startActivity(iw);
         finish();

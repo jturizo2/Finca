@@ -16,6 +16,9 @@ public class home_consultas extends AppCompatActivity {
     }
     @Override
     public void  onBackPressed(){
+        Intent iw = new Intent(home_consultas.this, homep.class);
+        startActivity(iw);
+        finish();
     }
 
     public void consulta_medicamento(View view) {
@@ -42,11 +45,7 @@ public class home_consultas extends AppCompatActivity {
         finish();
     }
 
-    public void atras(View view) {
-        Intent iw = new Intent(home_consultas.this, homep.class);
-        startActivity(iw);
-        finish();
-    }
+
 
     public void leche(View view) {
         Intent iw = new Intent(home_consultas.this, intoCodeLeche.class);

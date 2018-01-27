@@ -39,9 +39,7 @@ public class ventas extends AppCompatActivity {
 
     @Override
     public void  onBackPressed(){
-    }
 
-    public void back(View view) {
         Intent iw = new Intent(ventas.this, botones_ingreso_info.class);
         startActivity(iw);
         finish();

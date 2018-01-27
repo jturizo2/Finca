@@ -33,14 +33,6 @@
                 android:textColor="@android:color/background_dark"
                 android:textSize="18dp"/>
 
-            <Button
-                android:id="@+id/atras"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.06"
-                android:onClick="atras"
-                android:text="ATRAS" />
-
 
         </LinearLayout>
     </ScrollView>

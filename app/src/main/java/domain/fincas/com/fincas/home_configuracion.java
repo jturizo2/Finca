@@ -17,6 +17,9 @@ public class home_configuracion extends AppCompatActivity {
 
     @Override
     public void  onBackPressed(){
+        Intent i = new Intent(home_configuracion.this, homep.class);
+        startActivity(i);
+        finish();
     }
 
     public void hierro(View view) {
@@ -46,11 +49,5 @@ public class home_configuracion extends AppCompatActivity {
 
     }
 
-    public void atras(View view) {
-        Intent i = new Intent(home_configuracion.this, homep.class);
-        startActivity(i);
-        finish();
-
-    }
 
 }

@@ -52,11 +52,10 @@ public class listado_animales_parto extends AppCompatActivity {
 
     }
 
+
+
     @Override
     public void  onBackPressed(){
-    }
-
-    public void atras(View view) {
         Intent iw = new Intent(listado_animales_parto.this, home_listado_animales.class);
         startActivity(iw);
         finish();

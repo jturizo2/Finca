@@ -47,12 +47,11 @@ public class listado_animales_existentes extends AppCompatActivity {
         text1.setMovementMethod(new ScrollingMovementMethod());
 
     }
+
+
+
     @Override
     public void  onBackPressed(){
-    }
-
-
-    public void atras(View view) {
         Intent iw = new Intent(listado_animales_existentes.this, home_listado_animales.class);
         startActivity(iw);
         finish();

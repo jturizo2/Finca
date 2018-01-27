@@ -193,15 +193,10 @@ public class detalle_finca extends AppCompatActivity {
     }//fin oncreate
     @Override
     public void  onBackPressed(){
-    }
-
-    public void atras(View view) {
         Intent iw = new Intent(detalle_finca.this, home_consultas.class);
         startActivity(iw);
         finish();
     }
-
-
 
 
 }

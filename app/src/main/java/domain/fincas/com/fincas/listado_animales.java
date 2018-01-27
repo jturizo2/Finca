@@ -59,11 +59,9 @@ public class listado_animales extends AppCompatActivity {
       //   Fin de la Consulta */
     }
 
+
     @Override
     public void  onBackPressed(){
-    }
-
-    public void atras(View view) {
         Intent iw = new Intent(listado_animales.this, home_listado_animales.class);
         startActivity(iw);
     }

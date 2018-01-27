@@ -67,15 +67,6 @@
                 android:onClick="listado_animales_compra"
                 android:text="comprados" />
 
-            <Button
-                android:id="@+id/button32"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_margin="10dp"
-                android:layout_gravity="center"
-                android:onClick="atras"
-                android:text="atras" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

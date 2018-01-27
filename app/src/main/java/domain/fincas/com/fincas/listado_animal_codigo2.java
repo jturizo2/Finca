@@ -189,7 +189,9 @@ public class listado_animal_codigo2 extends AppCompatActivity {
 
     } // fin metodo mostrar datepicker
 
-    public void atras(View view) {
+    @Override
+    public void  onBackPressed(){
+
         Intent iw = new Intent(listado_animal_codigo2.this, home_listado_animales.class);
         startActivity(iw);
         finish();

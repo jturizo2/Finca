@@ -25,6 +25,12 @@ public class propietario extends AppCompatActivity {
         nombre1=(EditText)findViewById(R.id.nombre1);
         apellido1=(EditText)findViewById(R.id.apellido1);
 
+
+
+    }
+    @Override
+    public void  onBackPressed(){
+
         String name2 = "";
         UsersSQLiteHelper admine2 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
         SQLiteDatabase db2 = admine2.getWritableDatabase();
@@ -37,23 +43,14 @@ public class propietario extends AppCompatActivity {
 
         if("".equals(name2)){
 
-            Button btn = (Button) findViewById(R.id.Atras);
-            btn.setEnabled(false);
+        }else{
+            Intent i = new Intent(propietario.this, home_configuracion.class);
+            startActivity(i);
+            finish();
 
         }
         db2.close();
 
-
-    }
-    @Override
-    public void  onBackPressed(){
-    }
-
-
-    public void atras(View view) {
-        Intent i = new Intent(propietario.this, home_configuracion.class);
-        startActivity(i);
-        finish();
     }
     public void guardar(View view) {
 

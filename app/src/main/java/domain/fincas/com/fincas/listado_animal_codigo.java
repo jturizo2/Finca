@@ -177,8 +177,9 @@ public class listado_animal_codigo extends AppCompatActivity {
     }
 
 
+    @Override
+    public void  onBackPressed(){
 
-    public void atras(View view) {
         Intent iw = new Intent(listado_animal_codigo.this, home_listado_animales.class);
         startActivity(iw);
         finish();

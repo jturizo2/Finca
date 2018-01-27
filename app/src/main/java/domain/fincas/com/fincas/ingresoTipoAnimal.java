@@ -16,6 +16,9 @@ public class ingresoTipoAnimal extends AppCompatActivity {
     }
     @Override
     public void  onBackPressed(){
+        Intent iw = new Intent(ingresoTipoAnimal.this, botones_ingreso_info.class);
+        startActivity(iw);
+        finish();
     }
 
     public void naci(View view) {
@@ -35,10 +38,6 @@ public class ingresoTipoAnimal extends AppCompatActivity {
         finish();
     }
 
-    public void atras(View view) {
-        Intent iw = new Intent(ingresoTipoAnimal.this, botones_ingreso_info.class);
-        startActivity(iw);
-        finish();
-   }
+
 
 }

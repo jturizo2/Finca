@@ -206,9 +206,10 @@ public class listado_animal_codigo3 extends AppCompatActivity {
         etPlannedDate1.setText("");
     }
 
-   
 
-    public void atras(View view) {
+
+    @Override
+    public void  onBackPressed(){
         Intent iw = new Intent(listado_animal_codigo3.this, home_listado_animales.class);
         startActivity(iw);
         finish();

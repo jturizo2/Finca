@@ -43,8 +43,13 @@ public class readPartos extends AppCompatActivity {
 
         //------------------------------------------------------------------
 
+        }
 
-
+    @Override
+    public void  onBackPressed() {
+        finish();
     }
 
 }
+
+

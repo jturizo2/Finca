@@ -28,13 +28,11 @@ public class consulta_medicamento extends AppCompatActivity {
 
     @Override
     public void  onBackPressed(){
-    }
-
-    public void atras(View view) {
         Intent iw = new Intent(consulta_medicamento.this, home_consultas.class);
         startActivity(iw);
         finish();
     }
+
 
     public void consultar(View view){
         if ("".equals(cod_animal.getText().toString())) {

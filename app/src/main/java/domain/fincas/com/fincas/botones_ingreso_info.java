@@ -16,9 +16,6 @@ public class botones_ingreso_info extends AppCompatActivity {
     }
     @Override
     public void  onBackPressed(){
-    }
-
-    public void devolver(View view) {
         Intent i = new Intent(botones_ingreso_info.this, homep.class);
         startActivity(i);
         finish();

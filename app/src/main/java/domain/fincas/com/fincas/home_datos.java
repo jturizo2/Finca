@@ -53,6 +53,9 @@ public class home_datos extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        Intent iw = new Intent(home_datos.this, homep.class);
+        startActivity(iw);
+        finish();
     }
     private static boolean isExternalStorageReadOnly() {
         String extStorageState = Environment.getExternalStorageState();
@@ -70,11 +73,6 @@ public class home_datos extends AppCompatActivity {
         return false;
     }
 
-    public void atras(View view) {
-        Intent iw = new Intent(home_datos.this, homep.class);
-        startActivity(iw);
-        finish();
-    }
 
 
     public void descargar_datos(View view) {

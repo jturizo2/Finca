@@ -44,7 +44,9 @@ public class lecheingre extends AppCompatActivity {
         //--------------- datepicker---------------------------------
     }
 
-    public void atras(View view) {
+    @Override
+    public void  onBackPressed(){
+
         Intent i = new Intent(lecheingre.this, botones_ingreso_info.class);
         startActivity(i);
         finish();

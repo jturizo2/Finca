@@ -23,6 +23,12 @@ public class hierro extends AppCompatActivity {
 
         hie = (EditText) findViewById(R.id.hierro);
 
+
+    }
+
+    @Override
+    public void  onBackPressed(){
+
         //------------------Boton atras inhabilitado por primera vez ---------------
 
         String name2 = "";
@@ -37,25 +43,19 @@ public class hierro extends AppCompatActivity {
 
         if("".equals(name2)){
 
-            Button btn = (Button) findViewById(R.id.Atras);
-            btn.setEnabled(false);
 
+        }else{
+            Intent iw = new Intent(hierro.this, home_configuracion.class);
+            startActivity(iw);
+            finish();
         }
         db22.close();
-    }
 
-    @Override
-    public void  onBackPressed(){
-        //----
     }
 
 
 
-    public void atras(View view) {
-        Intent iw = new Intent(hierro.this, home_configuracion.class);
-        startActivity(iw);
-        finish();
-    }
+
     public void guardar_hierro(View view) {
         if ("".equals(hie.getText().toString())) {
             Toast.makeText(this, "Digite las letras del Hierro!!", Toast.LENGTH_LONG).show();

@@ -162,23 +162,14 @@
 
     <Button
         android:id="@+id/button14"
-        android:layout_width="166dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
         android:onClick="guardar_finca"
         android:text="actualizar" />
 
-    <Button
-        android:id="@+id/button15"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:onClick="devolver_ingrefo"
-        android:text="ATRAS" />
-
-</LinearLayout>
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

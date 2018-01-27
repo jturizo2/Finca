@@ -44,10 +44,6 @@ public class listado_fincas extends AppCompatActivity {
     }
     @Override
     public void  onBackPressed(){
-    }
-
-
-    public void detalle_fincas(View view) {
         Intent iw = new Intent(listado_fincas.this, detalle_finca.class);
         startActivity(iw);
         finish();

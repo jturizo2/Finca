@@ -58,14 +58,6 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"/>
 
-            <Button
-                android:id="@+id/button24"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:onClick="atras"
-                android:text="ATRAS"
-                android:layout_margin="10dp"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

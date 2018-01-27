@@ -170,6 +170,9 @@ public class ingreso_animales_existentes extends AppCompatActivity {
 
     @Override
     public void  onBackPressed(){
+        Intent iw = new Intent(ingreso_animales_existentes.this, ingresoTipoAnimal.class);
+        startActivity(iw);
+        finish();
     }
 
     //metodo mostrar datepicker
@@ -282,11 +285,7 @@ public class ingreso_animales_existentes extends AppCompatActivity {
         }
     }// fin del metodo guardar
 
-    public void atras(View view) {
-        Intent iw = new Intent(ingreso_animales_existentes.this, ingresoTipoAnimal.class);
-        startActivity(iw);
-        finish();
-    }
+
 
     private void limpiar(){
         codigo.setText("");
