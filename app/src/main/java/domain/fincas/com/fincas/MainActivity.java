@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
 
-            Toast.makeText(this, "This version is not Android 6 or later " + Build.VERSION.SDK_INT, Toast.LENGTH_LONG).show();
+           // Toast.makeText(this, "This version is not Android 6 or later " + Build.VERSION.SDK_INT, Toast.LENGTH_LONG).show();
 
         } else {
 
@@ -129,11 +129,11 @@ public class MainActivity extends AppCompatActivity {
                 requestPermissions(new String[] {android.Manifest.permission.WRITE_EXTERNAL_STORAGE},
                         REQUEST_CODE_ASK_PERMISSIONS);
 
-                Toast.makeText(this, "Requesting permissions", Toast.LENGTH_LONG).show();
+               // Toast.makeText(this, "Requesting permissions", Toast.LENGTH_LONG).show();
 
             }else if (hasWriteContactsPermission == PackageManager.PERMISSION_GRANTED){
 
-                Toast.makeText(this, "The permissions are already granted ", Toast.LENGTH_LONG).show();
+               // Toast.makeText(this, "The permissions are already granted ", Toast.LENGTH_LONG).show();
 
             }
 
@@ -146,9 +146,9 @@ public class MainActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         if(REQUEST_CODE_ASK_PERMISSIONS == requestCode) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "OK Permissions granted ! :-) " + Build.VERSION.SDK_INT, Toast.LENGTH_LONG).show();
+                //Toast.makeText(this, "OK Permissions granted ! :-) " + Build.VERSION.SDK_INT, Toast.LENGTH_LONG).show();
             } else {
-                Toast.makeText(this, "Permissions are not granted ! :-( " + Build.VERSION.SDK_INT, Toast.LENGTH_LONG).show();
+               // Toast.makeText(this, "Permissions are not granted ! :-( " + Build.VERSION.SDK_INT, Toast.LENGTH_LONG).show();
             }
         }else{
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);

@@ -50,5 +50,10 @@ public class botones_ingreso_info extends AppCompatActivity {
         finish();
 
     }
+    public void jornales(View view) {
+        Intent i = new Intent(botones_ingreso_info.this, trabajos.class);
+        startActivity(i);
+        finish();
 
+    }
    }
