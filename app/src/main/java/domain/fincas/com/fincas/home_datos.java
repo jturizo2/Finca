@@ -2,9 +2,13 @@ package domain.fincas.com.fincas;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,7 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.opencsv.CSVWriter;
-
+import android.Manifest;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
@@ -31,7 +35,7 @@ import java.util.Date;
 import java.util.List;
 
 public class home_datos extends AppCompatActivity {
-
+    private static final int REQUEST_CODE_ASK_PERMISSIONS = 123;
     private TextView ruta;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,9 +77,9 @@ public class home_datos extends AppCompatActivity {
         return false;
     }
 
+  public void descargar_datos(View view) {
+        //Verificamos si la App tiene los peromisos
 
-
-    public void descargar_datos(View view) {
         //----------- Sacamos información de las tablas----------------------------------------
         File dir =crearDirectorioPublico("Datos"); //Metodo para crer la ruta de almacenamiento del  backup
         //-----------------Tabla tratamientos------------------------------------

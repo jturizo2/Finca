@@ -1,10 +1,13 @@
 package domain.fincas.com.fincas;
 
+import android.*;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -27,6 +30,8 @@ import com.google.firebase.auth.FirebaseUser;
 import domain.fincas.com.fincas.objetos.FireBaseReferences;
 
 public class MainActivity extends AppCompatActivity {
+    private static final int REQUEST_CODE_ASK_PERMISSIONS = 123;
+
     EditText user, pass;
     private Cursor query;
     FirebaseAuth.AuthStateListener mAut;
@@ -37,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         user = (EditText) findViewById(R.id.editText4);
         pass = (EditText) findViewById(R.id.editText5);
+
+        checkPermission();
         mAut = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -75,6 +82,10 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
 
     public void log(View view) {
         String Usuario = user.getText().toString();
@@ -100,5 +111,47 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+
+    private void checkPermission() {
+
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+
+            Toast.makeText(this, "This version is not Android 6 or later " + Build.VERSION.SDK_INT, Toast.LENGTH_LONG).show();
+
+        } else {
+
+            int hasWriteContactsPermission = checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+            if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED) {
+
+                requestPermissions(new String[] {android.Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        REQUEST_CODE_ASK_PERMISSIONS);
+
+                Toast.makeText(this, "Requesting permissions", Toast.LENGTH_LONG).show();
+
+            }else if (hasWriteContactsPermission == PackageManager.PERMISSION_GRANTED){
+
+                Toast.makeText(this, "The permissions are already granted ", Toast.LENGTH_LONG).show();
+
+            }
+
+        }
+
+        return;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if(REQUEST_CODE_ASK_PERMISSIONS == requestCode) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "OK Permissions granted ! :-) " + Build.VERSION.SDK_INT, Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(this, "Permissions are not granted ! :-( " + Build.VERSION.SDK_INT, Toast.LENGTH_LONG).show();
+            }
+        }else{
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
     }
 }

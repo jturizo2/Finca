@@ -48,11 +48,6 @@ public class r_usuario extends AppCompatActivity {
 
     }
 
-    public void atra(View view) {
-        Intent i = new Intent(r_usuario.this, MainActivity.class);
-        startActivity(i);
-        finish();
-    }
     public void save(View view) {
         if ("".equals(nombre.getText().toString())) {
             Toast.makeText(this, "Escriba su nombre!!", Toast.LENGTH_LONG).show();
@@ -99,8 +94,8 @@ public class r_usuario extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        Intent iw = new Intent(r_usuario.this, home_listado_animales.class);
-        startActivity(iw);
+        Intent i = new Intent(r_usuario.this, MainActivity.class);
+        startActivity(i);
         finish();
     }
 
