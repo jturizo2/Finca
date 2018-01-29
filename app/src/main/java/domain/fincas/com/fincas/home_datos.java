@@ -122,6 +122,48 @@ public class home_datos extends AppCompatActivity {
         } catch (IOException e) {
 
         }
+
+      //-----------------Tabla HORNALES------------------------------------
+      data = new ArrayList<String[]>();
+      NameFile1 = "Jornales.csv";
+      admine1 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+      db1 = admine1.getWritableDatabase();
+      fila1 = db1.rawQuery("SELECT ID, FECHA, TRABAJO,CANTJORNAL, VALORJORNAL, TOTAL FROM HORNAL", null);
+      //Se guardan los elementos de cada fila
+      while (fila1.moveToNext()) {
+          data.add(new String[]{
+                  fila1.getString(0),
+                  fila1.getString(1),
+                  fila1.getString(2),
+                  fila1.getString(3),
+                  fila1.getString(4),
+                  fila1.getString(5)
+
+          });
+      }
+      db1.close();
+
+       filePath = dir.toString() + File.separator +"/"+ NameFile1;
+       f = new File(filePath);
+      CSVWriter writer5;
+      f.delete();
+      try {
+          // File exist
+          if (f.exists() && !f.isDirectory()) {
+              FileWriter mFileWriter = new FileWriter(filePath, true);
+              writer5 = new CSVWriter(mFileWriter, ';');
+          } else {
+              writer5 = new CSVWriter(new FileWriter(filePath), ';');
+          }
+
+          writer5.writeAll(data);
+
+          writer5.close();
+
+      } catch (IOException e) {
+
+      }
+
         //-----------------Tabla Leche------------------------------------
         List<String[]> data11 = new ArrayList<String[]>();
         String NameFile11 = "Leche.csv";
@@ -348,20 +390,20 @@ public class home_datos extends AppCompatActivity {
 
         String filePath5 = dir.toString() + File.separator +"/"+ NameFile6;
         File f5 = new File(filePath5);
-        CSVWriter writer5;
+        CSVWriter writ;
         f5.delete();
         try {
             // File exist
             if (f5.exists() && !f5.isDirectory()) {
                 FileWriter mFileWriter = new FileWriter(filePath5, true);
-                writer5 = new CSVWriter(mFileWriter, ';');
+                writ = new CSVWriter(mFileWriter, ';');
             } else {
-                writer5 = new CSVWriter(new FileWriter(filePath5), ';');
+                writ = new CSVWriter(new FileWriter(filePath5), ';');
             }
 
-            writer5.writeAll(data5);
+            writ.writeAll(data5);
 
-            writer5.close();
+            writ.close();
             Toast.makeText(this, "Copia  de seguridad guardada en la carpeta Datos.", Toast.LENGTH_LONG).show();
 
         } catch (IOException e) {

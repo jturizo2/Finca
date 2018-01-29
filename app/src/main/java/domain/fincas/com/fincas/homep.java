@@ -83,6 +83,8 @@ public class homep extends AppCompatActivity {
         String propietarios  = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/Datos/Propietarios.csv";
         String ventas  = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/Datos/Ventas.csv";
         String leche  = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/Datos/Leche.csv";
+        String jornal  = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/Datos/Jornales.csv";
+
         try{
         //------------Carga CSV Leche ----------------------------------------
         UsersSQLiteHelper admine44 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
@@ -277,6 +279,36 @@ public class homep extends AppCompatActivity {
         d4.setTransactionSuccessful();
         d4.endTransaction();
 
+            //------------Carga CSV jornales ----------------------------------------
+            UsersSQLiteHelper ad44 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+            SQLiteDatabase d44 = ad44.getWritableDatabase();
+            file = new File(jornal);
+            fis = null;
+            fis = new FileInputStream(file);
+            fis.getChannel().position(0);
+            bRead = new BufferedReader(new InputStreamReader(fis));
+            line = "";
+            tableName ="HORNAL";
+            columns = "FECHA, TRABAJO,CANTJORNAL, VALORJORNAL, TOTAL";
+            str1 = "INSERT INTO " + tableName + " (" + columns + ") values(";
+            d4.beginTransaction();
+            while ((line = bRead.readLine()) != null) {
+                line = line.replace("\"","");
+                System.out.println(":JORNAL:  "+line+"  jaja");
+                StringBuilder sb2 = new StringBuilder(str1);
+                String[] str12 = line.split(";");
+                sb2.append("'" +str12[1] + "',");
+                sb2.append("'" +str12[2] + "',");
+                sb2.append("'" +str12[3] + "',");
+                sb2.append("'" +str12[4] + "',");
+                sb2.append("'" +str12[5] + "'");
+                sb2.append(str2);
+                System.out.println(sb2.toString()+"  jaja");
+                d4.execSQL(sb2.toString());
+            }
+            d4.setTransactionSuccessful();
+            d4.endTransaction();
+            
         //------------Carga CSV NFINCAS ----------------------------------------
         UsersSQLiteHelper ad5 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
         SQLiteDatabase d5 = ad5.getWritableDatabase();
