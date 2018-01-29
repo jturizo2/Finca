@@ -2,10 +2,12 @@ package domain.fincas.com.fincas;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -16,26 +18,18 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class infoFina extends AppCompatActivity {
-
+public class jornalConsul extends AppCompatActivity {
+    private TextView read;
     private EditText INI,FIN;
-    private TextView lec2,tvacas11,tvacas22,tvacas33;
-
     DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     Date date = new Date();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_info_fina);
-
-        tvacas11 = (TextView) findViewById(R.id.tvacas11);
-        tvacas22 = (TextView) findViewById(R.id.tvacas22);
-        tvacas33 = (TextView) findViewById(R.id.tvacas33);
-        lec2 = (TextView) findViewById(R.id.lec2);
-
+        setContentView(R.layout.activity_jornal_consul);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        read = (TextView) findViewById(R.id.read);
         String fc = dateFormat.format(date.getTime());
-        //FIN.setText(fc);
-
 
         //--------------- datepicker---------------------------------
         INI = (EditText) findViewById(R.id.INI);
@@ -57,7 +51,6 @@ public class infoFina extends AppCompatActivity {
         //--------------- datepicker---------------------------------
 
     }
-
     //metodo mostrar datepicker
     private void showDatePickerDialog() {
         DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
@@ -87,6 +80,14 @@ public class infoFina extends AppCompatActivity {
 
 
     } // fin metodo mostrar datepicker
+
+    @Override
+    public void  onBackPressed(){
+        Intent iw = new Intent(jornalConsul.this, home_consultas.class);
+        startActivity(iw);
+        finish();
+    }
+
     public void consul8(View view) {
         SimpleDateFormat sdt = new SimpleDateFormat("dd/MM/yyyy");
         String uni = INI.getText().toString();
@@ -100,85 +101,35 @@ public class infoFina extends AppCompatActivity {
                 //-----------Conteo leche------------------
                 UsersSQLiteHelper admine33 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
                 SQLiteDatabase db33 = admine33.getWritableDatabase();
-                Cursor fila33 = db33.rawQuery("SELECT LITROS,FECHA FROM LECHE", null);
-                String ssd1="";
+                Cursor fila = db33.rawQuery("SELECT ID, FECHA, TRABAJO,CANTJORNAL, VALORJORNAL, TOTAL FROM HORNAL", null);
+                String ssd="";
                 Double data = 0.0;
-                while (fila33.moveToNext()) {
-                    String PRUBE =fila33.getString(1) ;
+                while (fila.moveToNext()) {
+
+                    String PRUBE =(fila.getString(1)).replace(" ","") ;
                     Date IPRUBE = sdt.parse(PRUBE);
-                    //System.out.println("ee:"+ PRUBE);
+                    System.out.println("ee:"+ PRUBE);
+
                     Boolean p = iini.before(IPRUBE);
                     Boolean q =  ifin.after(IPRUBE);
                     if(p && q){
-                        data  += Double.parseDouble(fila33.getString(0));
+                        ssd +=    "Id: "+fila.getString(0)+ "\n"
+                                + "Fecha: " + fila.getString(1)+ "\n"
+                                + "Trabajo: " + fila.getString(2)+ "\n"
+                                + "Jornales: " + fila.getString(3)+ "\n"
+                                + "Valor Jornal: " + fila.getString(4)+ "\n"
+                                + "Total: " + fila.getString(5)+ "\n"
+                                + "-------------------\n"
+                        ;
+                        data  += Double.parseDouble(fila.getString(5));
+
                     }
                 }
                 db33.close();
-                lec2.setText(data.toString());
-
-                //-----------Conteo medicamentos------------------
-                UsersSQLiteHelper admine3 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
-                SQLiteDatabase db3 = admine3.getWritableDatabase();
-                Cursor fila3 = db3.rawQuery("SELECT COSTO, FECHA FROM TRATAMIENTOS", null);
-                ssd1="";
-                data = 0.0;
-                while (fila3.moveToNext()) {
-                    String PRUBE =fila3.getString(1) ;
-                    Date IPRUBE = sdt.parse(PRUBE);
-                    //System.out.println("ee:"+ PRUBE);
-
-                    Boolean p = iini.before(IPRUBE);
-                    Boolean q =  ifin.after(IPRUBE);
-                    if(p && q){
-                        data  += Double.parseDouble(fila3.getString(0));
-                    }                }
-                db3.close();
-                tvacas33.setText(data.toString());
-                //-----------Conteo COMPRAS------------------
-                UsersSQLiteHelper admine1 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
-                SQLiteDatabase db1 = admine1.getWritableDatabase();
-                Cursor fila1 = db1.rawQuery("SELECT VALORC, FECHAINGRE FROM ANIMALESN WHERE COMPPAR='0'", null);
-                ssd1="";
-                data = 0.0;
-                while (fila1.moveToNext()) {
-
-                    String PRUBE =fila1.getString(1) ;
-                    Date IPRUBE = sdt.parse(PRUBE);
-                    System.out.println("ee:"+ PRUBE);
-                    Boolean p = iini.before(IPRUBE);
-                    Boolean q =  ifin.after(IPRUBE);
-                    if(p && q){
-                        data  += Double.parseDouble(fila1.getString(0));
-                    }
-                }
-                db1.close();
-                tvacas11.setText(data.toString());
-                //-----------Conteo VENTAS------------------
-                UsersSQLiteHelper admine2 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
-                SQLiteDatabase db2 = admine2.getWritableDatabase();
-                Cursor fila2 = db2.rawQuery("SELECT VALOR, FECHAV FROM VENTAS", null);
-                ssd1="";
-                data = 0.0;
-                while (fila2.moveToNext()) {
-                    String PRUBE =(fila2.getString(1)).replace(" ","")  ;
-                    Date IPRUBE = sdt.parse(PRUBE);
-                    System.out.println("ee:"+ PRUBE);
-
-                    Boolean p = iini.before(IPRUBE);
-                    Boolean q =  ifin.after(IPRUBE);
-                    if(p && q){
-                        data  += Double.parseDouble(fila2.getString(0));
-                    }
-                }
-                db2.close();
-                tvacas22.setText(data.toString());
-
-
+                read.setText(ssd+ "\n  Total suma de trabajos: "+data.toString());
             }else{
 
                 Toast.makeText(this,"La fecha final debe ser mayor a la inicial!!", Toast.LENGTH_LONG).show();
-
-
             }
         }catch (Exception e){
             Toast.makeText(this, e+"Error: Formato de fecha incorrecto.", Toast.LENGTH_LONG).show();
@@ -186,12 +137,6 @@ public class infoFina extends AppCompatActivity {
 
 
 
-    }
-    @Override
-    public void  onBackPressed(){
-        Intent iw = new Intent(infoFina.this, home_consultas.class);
-        startActivity(iw);
-        finish();
     }
 
 

@@ -58,6 +58,11 @@ public class home_consultas extends AppCompatActivity {
         finish();
     }
 
+    public void jornales(View view) {
+        Intent iw = new Intent(home_consultas.this, jornalConsul.class);
+        startActivity(iw);
+        finish();
+    }
 
 
 }

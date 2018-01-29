@@ -25,7 +25,6 @@ public class hornal {
     }
 
     public hornal(Cursor cursor) {
-        id = cursor.getString(cursor.getColumnIndex(hornalContratc.HornalEntry.ID));
         fecha = cursor.getString(cursor.getColumnIndex(hornalContratc.HornalEntry.FECHA));
         trabajo = cursor.getString(cursor.getColumnIndex(hornalContratc.HornalEntry.TRABAJO));
         cantjornal =  Double.parseDouble(cursor.getString(cursor.getColumnIndex(hornalContratc.HornalEntry.CANTJORNAL)));
@@ -35,7 +34,6 @@ public class hornal {
 
     public ContentValues toContentValues() {
         ContentValues values = new ContentValues();
-        values.put(hornalContratc.HornalEntry.ID,  id);
         values.put(hornalContratc.HornalEntry.FECHA, fecha);
         values.put(hornalContratc.HornalEntry.TRABAJO, trabajo);
         values.put(hornalContratc.HornalEntry.CANTJORNAL, cantjornal);

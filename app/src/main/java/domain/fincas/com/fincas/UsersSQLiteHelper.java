@@ -5,6 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
+import domain.fincas.com.fincas.datos.hornalContratc;
+
 
 public class UsersSQLiteHelper extends SQLiteOpenHelper{
 
@@ -95,6 +97,14 @@ public class UsersSQLiteHelper extends SQLiteOpenHelper{
                 "LITROS TEXT," +
                 "FECHA TEXT" +
                 ")";
+
+        String SQLCREATE10 = "CREATE TABLE HORNAL (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "FECHA TEXT," +
+                "TRABAJO TEXT," +
+                "CANTJORNAL TEXT," +
+                "VALORJORNAL TEXT," +
+                "TOTAL TEXT" +
+                ")";
         db.execSQL(sql);
         db.execSQL(SQLCREATE);
         db.execSQL(SQLCREATE2);
@@ -105,6 +115,8 @@ public class UsersSQLiteHelper extends SQLiteOpenHelper{
         db.execSQL(SQLCREATE7);
         db.execSQL(SQLCREATE8);
         db.execSQL(SQLCREATE9);
+        db.execSQL(SQLCREATE10);
+
     }
 
     @Override

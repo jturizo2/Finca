@@ -20,7 +20,7 @@ public class HornalDBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         //Create table
         db.execSQL("CREATE TABLE " + hornalContratc.HornalEntry.TABLE_NAME + " ("
-                + hornalContratc.HornalEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + hornalContratc.HornalEntry.ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + hornalContratc.HornalEntry.ID + " TEXT NOT NULL,"
                 + hornalContratc.HornalEntry.FECHA + " TEXT NOT NULL,"
                 + hornalContratc.HornalEntry.TRABAJO + " TEXT NOT NULL,"
@@ -54,7 +54,7 @@ public class HornalDBHelper extends SQLiteOpenHelper {
         // No hay operaciones
     }
 
-    public long saveLawyer(hornal hornal) {
+    public long saveHornal(hornal hornal) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 
         return sqLiteDatabase.insert(
@@ -65,8 +65,7 @@ public class HornalDBHelper extends SQLiteOpenHelper {
     }
 
     public Cursor getAllHornal() {
-        return getReadableDatabase()
-                .query(
+        return getReadableDatabase().query(
                         hornalContratc.HornalEntry.TABLE_NAME,
                         null,
                         null,

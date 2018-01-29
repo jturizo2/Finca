@@ -3,6 +3,7 @@ package domain.fincas.com.fincas;
 import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -26,6 +27,8 @@ public class lecheingre extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lecheingre);
         cod1= (EditText) findViewById(R.id.cod2);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         litros= (EditText) findViewById(R.id.litros);
         //fecha= (EditText) findViewById(R.id.fecha2);
 

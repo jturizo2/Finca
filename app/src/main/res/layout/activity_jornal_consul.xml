@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context="domain.fincas.com.fincas.jornalConsul">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Listado De Jornales"
+                android:gravity="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="24dp"
+                android:padding="10dp" />
+
+            <TextView
+                android:id="@+id/textView958"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Filtro por fechas:"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18dp"
+                android:gravity="left"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="1">
+                <TextView
+                    android:id="@+id/textView666"
+                    android:layout_width="188dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Fecha inicial:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilPlannedDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/INI"
+                        android:hint="Fecha Inicial"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="date"
+                        android:focusable="false"
+                        android:textSize="14dp"
+                        android:clickable="true"
+                        android:maxLines="1" />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="1">
+                <TextView
+                    android:id="@+id/textView6663"
+                    android:layout_width="188dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Fecha final:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18dp" />
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/tilPlannedDate1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/FIN"
+                        android:hint="Fecha Final"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="date"
+                        android:focusable="false"
+                        android:textSize="14dp"
+                        android:clickable="true"
+                        android:maxLines="1" />
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+            <Button
+                android:id="@+id/consultar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="consul8"
+                android:text="consultar" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textView95858"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Resultados:"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18dp"
+                android:gravity="left"/>
+            <TextView
+                android:id="@+id/read"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
