@@ -83,7 +83,7 @@ public class homep extends AppCompatActivity {
         String propietarios  = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/Datos/Propietarios.csv";
         String ventas  = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/Datos/Ventas.csv";
         String leche  = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/Datos/Leche.csv";
-        String jornal  = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/Datos/Jornales.csv";
+        String jornal  = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/Datos/jo.csv";
 
         try{
         //------------Carga CSV Leche ----------------------------------------
@@ -308,7 +308,7 @@ public class homep extends AppCompatActivity {
             }
             d4.setTransactionSuccessful();
             d4.endTransaction();
-            
+
         //------------Carga CSV NFINCAS ----------------------------------------
         UsersSQLiteHelper ad5 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
         SQLiteDatabase d5 = ad5.getWritableDatabase();
