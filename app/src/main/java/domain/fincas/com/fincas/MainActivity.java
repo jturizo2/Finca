@@ -27,11 +27,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
+import java.io.File;
+
 import domain.fincas.com.fincas.objetos.FireBaseReferences;
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_ASK_PERMISSIONS = 123;
-
+    String us="";
     EditText user, pass;
     private Cursor query;
     FirebaseAuth.AuthStateListener mAut;
@@ -51,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
                 if((user1 != null) && user1.isEmailVerified() ){
                     Toast.makeText(getApplicationContext(), "Sesión iniciada.", Toast.LENGTH_LONG).show();
                     Toast.makeText(getApplicationContext(), "Welcome "+user1.getEmail(), Toast.LENGTH_LONG).show();
+                    us=user1.getEmail();
+
                     //Si ya esta iniciada la sesion salto a home p
                     Intent iw = new Intent(MainActivity.this, homep.class);
                     startActivity(iw);
