@@ -105,6 +105,11 @@ public class UsersSQLiteHelper extends SQLiteOpenHelper{
                 "VALORJORNAL TEXT," +
                 "TOTAL TEXT" +
                 ")";
+        //Datos iniciales-- hierro finca propietario --
+
+        db.execSQL("INSERT INTO HIERRO (HIERRO)VALUES ('Ninguno')");
+        db.execSQL("INSERT INTO NFINCAS (CODIGO,NOMBREF,HECTAREAS,DIVICIONES,LOTES)VALUES (' ',' ', ' ',' ',' ')");
+        db.execSQL("INSERT INTO PROPIETARIOS (NOMBRE,APELLIDO) VALUES ('','')");
         db.execSQL(sql);
         db.execSQL(SQLCREATE);
         db.execSQL(SQLCREATE2);

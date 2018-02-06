@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
                     //Si ya esta iniciada la sesion salto a home p
                     Intent iw = new Intent(MainActivity.this, homep.class);
                     startActivity(iw);
-                    finish();
                 }else{
                     Toast.makeText(getApplicationContext(), "Sesión cerrada.", Toast.LENGTH_LONG).show();
                 }
