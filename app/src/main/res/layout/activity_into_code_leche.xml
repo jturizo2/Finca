@@ -39,7 +39,7 @@
                 android:focusable="true"
                 android:gravity="center"
                 android:hint="Codigo Animal"
-                android:inputType="textPersonName|number|numberDecimal" />
+                android:inputType="date" />
 
 
             <LinearLayout

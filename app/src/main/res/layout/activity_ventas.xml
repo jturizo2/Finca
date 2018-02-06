@@ -46,7 +46,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
                     android:ems="10"
-                    android:inputType="textPersonName|number|numberDecimal" />
+                    android:inputType="date" />
 
             </LinearLayout>
 

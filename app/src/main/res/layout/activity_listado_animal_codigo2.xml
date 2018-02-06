@@ -62,7 +62,7 @@
                     android:focusable="true"
                     android:gravity="center"
                     android:hint="Codigo Animal"
-                    android:inputType="number|numberDecimal" />
+                    android:inputType="date" />
 
             </LinearLayout>
 
@@ -266,7 +266,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="left"
-                    android:inputType="numberDecimal"
+                    android:inputType="date"
                     android:text=""
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
@@ -291,7 +291,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="left"
-                    android:inputType="numberDecimal"
+                    android:inputType="date"
                     android:text=""
                     android:textColor="@android:color/background_dark"
                     android:textSize="18dp" />
