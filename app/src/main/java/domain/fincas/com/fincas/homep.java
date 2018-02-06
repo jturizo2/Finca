@@ -1083,7 +1083,7 @@ public class homep extends AppCompatActivity {
             db = admine1.getWritableDatabase();
             Cursor fila2 = db.rawQuery("SELECT * FROM LECHE", null);
         //Se guardan los elementos de cada fila
-        while (fila.moveToNext()) {
+        while (fila2.moveToNext()) {
             data.add(new String[]{
                     fila2.getString(0),
                     fila2.getString(1),
