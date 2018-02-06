@@ -52,12 +52,12 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseUser user1 = firebaseAuth.getCurrentUser();
                 if((user1 != null) && user1.isEmailVerified() ){
                     Toast.makeText(getApplicationContext(), "Sesión iniciada.", Toast.LENGTH_LONG).show();
-                    Toast.makeText(getApplicationContext(), "Welcome "+user1.getEmail(), Toast.LENGTH_LONG).show();
                     us=user1.getEmail();
 
                     //Si ya esta iniciada la sesion salto a home p
                     Intent iw = new Intent(MainActivity.this, homep.class);
                     startActivity(iw);
+                    finish();
                 }else{
                     Toast.makeText(getApplicationContext(), "Sesión cerrada.", Toast.LENGTH_LONG).show();
                 }
@@ -104,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
                         //Si ya esta iniciada la sesion salto a home p
                         Intent iw = new Intent(MainActivity.this, homep.class);
                         startActivity(iw);
-                        finish();
                     }else{
                         Toast.makeText(MainActivity.this, "Correo no verificado.", Toast.LENGTH_LONG).show();
 

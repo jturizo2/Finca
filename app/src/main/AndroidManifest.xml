@@ -121,12 +121,14 @@
             android:name=".hornal.HornalActivity"
             android:label="@string/title_activity_hornal"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".trabajos"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".jornalConsul"
-            android:windowSoftInputMode="stateHidden"
-            ></activity>
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".trabajos"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".jornalConsul"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".out"></activity>
     </application>
 
 </manifest>

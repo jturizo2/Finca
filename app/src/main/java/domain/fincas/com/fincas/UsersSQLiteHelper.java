@@ -107,9 +107,7 @@ public class UsersSQLiteHelper extends SQLiteOpenHelper{
                 ")";
         //Datos iniciales-- hierro finca propietario --
 
-        db.execSQL("INSERT INTO HIERRO (HIERRO)VALUES ('Ninguno')");
-        db.execSQL("INSERT INTO NFINCAS (CODIGO,NOMBREF,HECTAREAS,DIVICIONES,LOTES)VALUES (' ',' ', ' ',' ',' ')");
-        db.execSQL("INSERT INTO PROPIETARIOS (NOMBRE,APELLIDO) VALUES ('','')");
+
         db.execSQL(sql);
         db.execSQL(SQLCREATE);
         db.execSQL(SQLCREATE2);
@@ -122,6 +120,9 @@ public class UsersSQLiteHelper extends SQLiteOpenHelper{
         db.execSQL(SQLCREATE9);
         db.execSQL(SQLCREATE10);
 
+        db.execSQL("INSERT INTO THIERRO (HIERRO)VALUES ('Ninguno')");
+        db.execSQL("INSERT INTO NFINCAS (CODIGO,NOMBREF,HECTAREAS,DIVICIONES,LOTES)VALUES (' ',' ', ' ',' ',' ')");
+        db.execSQL("INSERT INTO PROPIETARIOS (NOMBRE,APELLIDO) VALUES ('','')");
     }
 
     @Override
