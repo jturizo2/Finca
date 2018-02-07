@@ -103,7 +103,7 @@ public class jornalConsul extends AppCompatActivity {
                 SQLiteDatabase db33 = admine33.getWritableDatabase();
                 Cursor fila = db33.rawQuery("SELECT ID, FECHA, TRABAJO,CANTJORNAL, VALORJORNAL, TOTAL FROM HORNAL", null);
                 String ssd="";
-                Double data = 0.0;
+                Double data = 0.0;  numero N = new numero();
                 while (fila.moveToNext()) {
 
                     String PRUBE =(fila.getString(1)).replace(" ","") ;
@@ -112,13 +112,15 @@ public class jornalConsul extends AppCompatActivity {
 
                     Boolean p = iini.before(IPRUBE);
                     Boolean q =  ifin.after(IPRUBE);
+
+
                     if(p && q){
                         ssd +=    "Id: "+fila.getString(0)+ "\n"
                                 + "Fecha: " + fila.getString(1)+ "\n"
                                 + "Trabajo: " + fila.getString(2)+ "\n"
                                 + "Jornales: " + fila.getString(3)+ "\n"
-                                + "Valor Jornal: " + fila.getString(4)+ "\n"
-                                + "Total: " + fila.getString(5)+ "\n"
+                                + "Valor Jornal: " + N.douTopes(fila.getString(4))+ "\n"
+                                + "Total: " + N.douTopes(fila.getString(5))+ "\n"
                                 + "-------------------\n"
                         ;
                         data  += Double.parseDouble(fila.getString(5));
@@ -126,7 +128,7 @@ public class jornalConsul extends AppCompatActivity {
                     }
                 }
                 db33.close();
-                read.setText(ssd+ "\n  Total suma de trabajos: "+data.toString());
+                read.setText(ssd+ "\n  Total suma de trabajos: "+N.douTopes(data.toString()));
             }else{
 
                 Toast.makeText(this,"La fecha final debe ser mayor a la inicial!!", Toast.LENGTH_LONG).show();

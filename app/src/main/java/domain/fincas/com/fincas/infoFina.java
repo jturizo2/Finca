@@ -114,7 +114,8 @@ public class infoFina extends AppCompatActivity {
                     }
                 }
                 db33.close();
-                lec2.setText(data.toString());
+                numero N = new numero();
+                lec2.setText((data.intValue())+"");
 
                 //-----------Conteo medicamentos------------------
                 UsersSQLiteHelper admine3 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
@@ -133,7 +134,7 @@ public class infoFina extends AppCompatActivity {
                         data  += Double.parseDouble(fila3.getString(0));
                     }                }
                 db3.close();
-                tvacas33.setText(data.toString());
+                tvacas33.setText(N.douTopes(data.toString()));
                 //-----------Conteo COMPRAS------------------
                 UsersSQLiteHelper admine1 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
                 SQLiteDatabase db1 = admine1.getWritableDatabase();
@@ -152,7 +153,7 @@ public class infoFina extends AppCompatActivity {
                     }
                 }
                 db1.close();
-                tvacas11.setText(data.toString());
+                tvacas11.setText(N.douTopes(data.toString()));
                 //-----------Conteo VENTAS------------------
                 UsersSQLiteHelper admine2 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
                 SQLiteDatabase db2 = admine2.getWritableDatabase();
@@ -171,7 +172,7 @@ public class infoFina extends AppCompatActivity {
                     }
                 }
                 db2.close();
-                tvacas22.setText(data.toString());
+                tvacas22.setText(N.douTopes(data.toString()));
 
 
             }else{

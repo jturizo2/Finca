@@ -35,6 +35,8 @@ public class listado_animales extends AppCompatActivity {
         Cursor fila = db5.rawQuery("SELECT CODIGO, NOMBRE, GENERO, RAZA,PROPIETARIO, PROPIETARIOA, HIERRO, PROPOSITO,  PESO, PESODESTETE, ETAPAP, VALORC, FECHANACI, FECHAINGRE  FROM ANIMALESN WHERE COMPPAR='0'", null);
         //Cursor fila = db5.query("ANIMALESN", campos, null, null, null, null, null);
         String ssd ="";
+        numero N = new numero();
+
         while (fila.moveToNext()) {
             ssd +=    "Codigo Animal: "+fila.getString(0)+ "\n"
                     + "Nombre Animal: " + fila.getString(1)+ "\n"
@@ -47,7 +49,7 @@ public class listado_animales extends AppCompatActivity {
                     + "Peso al Comprar(kg): " + fila.getString(8)+ "\n"
                     + "Peso Actual (kg): " + fila.getString(9)+ "\n"
                     + "Etapa de Producción: " + fila.getString(10)+ "\n"
-                    + "Valor de Compra ($): " + fila.getString(11)+ "\n"
+                    + "Valor de Compra ($): " + N.douTopes(fila.getString(11))+ "\n"
                     + "Fecha de Nacimiento: " + fila.getString(12)+ "\n"
                     + "Fecha de Compra: " + fila.getString(13)+ "\n \n";
 

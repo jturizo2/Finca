@@ -74,7 +74,7 @@ public class homep extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user1 = firebaseAuth.getCurrentUser();
                 String name2 = "";
-                UsersSQLiteHelper admine2 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
+                final UsersSQLiteHelper admine2 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
                 SQLiteDatabase db2 = admine2.getWritableDatabase();
                 Cursor fila1 = db2.rawQuery("SELECT NEW FROM NNEW LIMIT 1", null);
                 while(fila1.moveToNext()){
@@ -108,8 +108,7 @@ public class homep extends AppCompatActivity {
                                     //------------Carga CSV Animales ----------------------------------------
                                     try {
 
-                                        UsersSQLiteHelper ad = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
-                                        SQLiteDatabase d = ad.getWritableDatabase();
+                                        SQLiteDatabase d = admine2.getWritableDatabase();
                                         File file = new File(localFile.toString());
                                         FileInputStream fis = null;
                                         fis = new FileInputStream(file);
@@ -161,7 +160,6 @@ public class homep extends AppCompatActivity {
 
                                         //-----------------Tabla Animales ------------------------------------
                                         List<String[]> data2 = new ArrayList<String[]>();
-                                        UsersSQLiteHelper admine2 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
                                         SQLiteDatabase db2 = admine2.getWritableDatabase();
                                         Cursor fila2 = db2.rawQuery("SELECT * FROM ANIMALESN", null);
                                         //Se guardaran los elementos de cada fila
@@ -241,8 +239,7 @@ public class homep extends AppCompatActivity {
                                     // Local temp file has been created
                                     //------------Carga CSV Animales ----------------------------------------
                                     try {
-                                        UsersSQLiteHelper admine4 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
-                                        SQLiteDatabase db5 = admine4.getWritableDatabase();
+                                        SQLiteDatabase db5 = admine2.getWritableDatabase();
                                         File file = new File(localFile.toString());
                                         FileInputStream fis = null;
 
@@ -276,8 +273,7 @@ public class homep extends AppCompatActivity {
 
                                         //-----------------Tabla tratamientos------------------------------------
                                         List<String[]> data = new ArrayList<String[]>();
-                                        UsersSQLiteHelper admine1 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
-                                        SQLiteDatabase db1 = admine1.getWritableDatabase();
+                                        SQLiteDatabase db1 = admine2.getWritableDatabase();
                                         Cursor fila1 = db1.rawQuery("SELECT ID,CODIGO, MEDICAMENTO, DETALLE, COSTO,FECHA FROM TRATAMIENTOS", null);
                                         //Se guardan los elementos de cada fila
                                         while (fila1.moveToNext()) {
@@ -340,8 +336,7 @@ public class homep extends AppCompatActivity {
                                     // Local temp file has been created
                                     //------------Carga CSV Animales ----------------------------------------
                                     try {
-                                        UsersSQLiteHelper ad5 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
-                                        SQLiteDatabase d5 = ad5.getWritableDatabase();
+                                        SQLiteDatabase d5 = admine2.getWritableDatabase();
                                         File file = new File(localFile.toString());
                                         FileInputStream fis = null;
                                         fis = new FileInputStream(file);
@@ -372,8 +367,7 @@ public class homep extends AppCompatActivity {
 
                                         //--------------- Tabla Fincas---------------------------------
                                         List<String[]> data3 = new ArrayList<String[]>();
-                                        UsersSQLiteHelper admine5 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
-                                        SQLiteDatabase db5 = admine5.getWritableDatabase();
+                                        SQLiteDatabase db5 = admine2.getWritableDatabase();
                                         Cursor fila5 = db5.rawQuery("SELECT * FROM NFINCAS", null);
                                         //Se guardaran los elementos de cada fila
                                         while (fila5.moveToNext()) {
@@ -436,8 +430,7 @@ public class homep extends AppCompatActivity {
                                     // Local temp file has been created
                                     //------------Carga CSV Animales ----------------------------------------
                                     try {
-                                        UsersSQLiteHelper admine44 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
-                                        SQLiteDatabase db55 = admine44.getWritableDatabase();
+                                        SQLiteDatabase db55 = admine2.getWritableDatabase();
                                         File file = new File(localFile.toString());
                                         FileInputStream fis = null;
 
@@ -467,8 +460,7 @@ public class homep extends AppCompatActivity {
 
                                         //-----------------Tabla Leche------------------------------------
                                         List<String[]> data11 = new ArrayList<String[]>();
-                                        UsersSQLiteHelper admine11 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
-                                        SQLiteDatabase db11 = admine11.getWritableDatabase();
+                                        SQLiteDatabase db11 = admine2.getWritableDatabase();
                                         Cursor fila11 = db11.rawQuery("SELECT * FROM LECHE", null);
                                         //Se guardan los elementos de cada fila
                                         while (fila11.moveToNext()) {
@@ -526,8 +518,7 @@ public class homep extends AppCompatActivity {
                                     // Local temp file has been created
                                     //------------Carga CSV Animales ----------------------------------------
                                     try {
-                                        UsersSQLiteHelper ad2 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
-                                        SQLiteDatabase d2 = ad2.getWritableDatabase();
+                                        SQLiteDatabase d2 = admine2.getWritableDatabase();
                                         File file = new File(localFile.toString());
                                         FileInputStream fis = null;
                                         fis = new FileInputStream(file);
@@ -561,8 +552,7 @@ public class homep extends AppCompatActivity {
                                         d2.close();
                                         //--------------- Tabla Ventas---------------------------------
                                         List<String[]> data1 = new ArrayList<String[]>();
-                                        UsersSQLiteHelper admine4 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
-                                        SQLiteDatabase db4 = admine4.getWritableDatabase();
+                                        SQLiteDatabase db4 = admine2.getWritableDatabase();
                                         Cursor fila4 = db4.rawQuery("SELECT * FROM VENTAS", null);
                                         //Se guardaran los elementos de cada fila
                                         while (fila4.moveToNext()) {
@@ -628,8 +618,7 @@ public class homep extends AppCompatActivity {
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                                     // Local temp file has been created
                                     try {
-                                        UsersSQLiteHelper ad4 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
-                                        SQLiteDatabase d4 = ad4.getWritableDatabase();
+                                        SQLiteDatabase d4 = admine2.getWritableDatabase();
                                         File file = new File(localFile.toString());
                                         FileInputStream fis = null;
                                         fis = new FileInputStream(file);
@@ -656,8 +645,7 @@ public class homep extends AppCompatActivity {
                                         d4.close();
                                         //--------------- Tabla Hierros---------------------------------
                                         List<String[]> data5 = new ArrayList<String[]>();
-                                        UsersSQLiteHelper admine7 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
-                                        SQLiteDatabase db6 = admine7.getWritableDatabase();
+                                        SQLiteDatabase db6 = admine2.getWritableDatabase();
                                         Cursor fila7 = db6.rawQuery("SELECT * FROM THIERRO", null);
                                         //Se guardaran los elementos de cada fila
                                         while (fila7.moveToNext()) {
@@ -715,8 +703,7 @@ public class homep extends AppCompatActivity {
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                                     // Local temp file has been created
                                     try {
-                                        UsersSQLiteHelper ad3 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
-                                        SQLiteDatabase d3 = ad3.getWritableDatabase();
+                                        SQLiteDatabase d3 = admine2.getWritableDatabase();
                                         File file = new File(localFile.toString());
                                         FileInputStream fis = null;
                                         fis = new FileInputStream(file);
@@ -745,8 +732,7 @@ public class homep extends AppCompatActivity {
 
                                         //--------------- Tabla Propietarios---------------------------------
                                         List<String[]> data4 = new ArrayList<String[]>();
-                                        UsersSQLiteHelper admine3 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
-                                        SQLiteDatabase db3 = admine3.getWritableDatabase();
+                                        SQLiteDatabase db3 = admine2.getWritableDatabase();
                                         Cursor fila3 = db3.rawQuery("SELECT * FROM PROPIETARIOS", null);
                                         //Se guardaran los elementos de cada fila
                                         while (fila3.moveToNext()) {
@@ -804,8 +790,7 @@ public class homep extends AppCompatActivity {
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                                     // Local temp file has been created
                                     try {
-                                        UsersSQLiteHelper ad4 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
-                                        SQLiteDatabase d4 = ad4.getWritableDatabase();
+                                        SQLiteDatabase d4 = admine2.getWritableDatabase();
                                         File file = new File(localFile.toString());
                                         FileInputStream fis = null;
                                         fis = new FileInputStream(file);
@@ -837,8 +822,7 @@ public class homep extends AppCompatActivity {
 
                                         //-----------------Tabla HORNALES------------------------------------
                                         List<String[]> data = new ArrayList<String[]>();
-                                        UsersSQLiteHelper admine1 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
-                                        SQLiteDatabase db1 = admine1.getWritableDatabase();
+                                        SQLiteDatabase db1 = admine2.getWritableDatabase();
                                         Cursor fila1 = db1.rawQuery("SELECT ID, FECHA, TRABAJO,CANTJORNAL, VALORJORNAL, TOTAL FROM HORNAL", null);
                                         //Se guardan los elementos de cada fila
                                         while (fila1.moveToNext()) {
@@ -869,7 +853,7 @@ public class homep extends AppCompatActivity {
                                         } catch (IOException e) {
                                         }
                                     } catch (Exception e) {
-
+                                        Toast.makeText(homep.this, "Error-new"+e.toString(), Toast.LENGTH_LONG).show();
                                     }
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
@@ -885,8 +869,7 @@ public class homep extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), e.toString() + "", Toast.LENGTH_LONG).show();
                         }
                         //Marcamos que la la aplicación a fue corrieda por primera vez
-                        UsersSQLiteHelper ad88 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
-                        SQLiteDatabase db1 = ad88.getWritableDatabase();
+                        SQLiteDatabase db1 = admine2.getWritableDatabase();
                         ContentValues registro = new ContentValues();
                         registro.put("NEW", "1");
                         db1.insert("NNEW", null, registro);

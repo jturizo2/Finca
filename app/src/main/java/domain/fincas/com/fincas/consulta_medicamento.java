@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import domain.fincas.com.fincas.numero;
 
 public class consulta_medicamento extends AppCompatActivity {
     private EditText cod_animal;
@@ -66,13 +67,15 @@ public class consulta_medicamento extends AppCompatActivity {
             }else{
                 UsersSQLiteHelper admine2 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
                 SQLiteDatabase db2 = admine2.getWritableDatabase();
-                Cursor fila2 = db2.rawQuery("SELECT CODIGO, MEDICAMENTO, DETALLE, COSTO  FROM TRATAMIENTOS WHERE  CODIGO='"+use+"'", null);
+                Cursor fila2 = db2.rawQuery("SELECT CODIGO, MEDICAMENTO, DETALLE, COSTO, FECHA  FROM TRATAMIENTOS WHERE  CODIGO='"+use+"'", null);
                 String ssd2 ="";
+                numero N = new numero();
                 while (fila2.moveToNext()) {
                     ssd2 += "CODIGO: " + fila2.getString(0)+ "\n"
                             + "MEDICAMENTO: " + fila2.getString(1)+ "\n"
                             + "DETALLE: " + fila2.getString(2)+ "\n"+
-                            "COSTO: " + fila2.getString(3)+ "\n";
+                            "COSTO: " + N.douTopes(fila2.getString(3))+ "\n" +
+                            "FECHA: " + fila2.getString(4)+ "\n";
 
                 }
                 db2.close();
