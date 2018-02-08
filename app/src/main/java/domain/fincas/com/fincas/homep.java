@@ -1,25 +1,18 @@
 package domain.fincas.com.fincas;
-
 import android.content.ContentValues;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
-import android.os.Environment;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.FileDownloadTask;
@@ -39,7 +32,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 
 public class homep extends AppCompatActivity {
     String us22="";
@@ -64,6 +56,10 @@ public class homep extends AppCompatActivity {
     String filePath3 = dir.toString() + File.separator +"/"+ NameFile4;
     String filePath4 = dir.toString() + File.separator +"/"+ NameFile5;
     String filePath5 = dir.toString() + File.separator +"/"+ NameFile6;
+//---------------------------------------------------------------------------
+     String localFile1="" ; String localFile2="" ; String localFile3="" ; String localFile4="" ;
+     String localFile5="" ; String localFile6="" ; String localFile7="" ; String localFile8="" ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +70,7 @@ public class homep extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user1 = firebaseAuth.getCurrentUser();
                 String name2 = "";
-                final UsersSQLiteHelper admine2 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
+                UsersSQLiteHelper admine2 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
                 SQLiteDatabase db2 = admine2.getWritableDatabase();
                 Cursor fila1 = db2.rawQuery("SELECT NEW FROM NNEW LIMIT 1", null);
                 while(fila1.moveToNext()){
@@ -105,117 +101,7 @@ public class homep extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                                     // Local temp file has been created
-                                    //------------Carga CSV Animales ----------------------------------------
-                                    try {
-
-                                        SQLiteDatabase d = admine2.getWritableDatabase();
-                                        File file = new File(localFile.toString());
-                                        FileInputStream fis = null;
-                                        fis = new FileInputStream(file);
-                                        fis.getChannel().position(0);
-                                        String str2 = ");";
-
-                                        BufferedReader bRead = new BufferedReader(new InputStreamReader(fis));
-                                        String line = "";
-                                        String tableName = "ANIMALESN";
-                                        String columns = "CODIGO,NOMBRE,GENERO,PROCEDENCIA,RAZA,FOTO,PROPIETARIO,PROPIETARIOA,HIERRO,PROPOSITO,FECHAINGRE,PESO,PESODESTETE,ETAPAP,VALORC,CODMAMA,CODPAPA,CODPARTO,FECHANACI,NFINCA,TIPOANIMAL,COMPPAR";
-                                        String str1 = "INSERT INTO " + tableName + " (" + columns + ") values(";
-                                        d.beginTransaction();
-                                        while ((line = bRead.readLine()) != null) {
-                                            line = line.replace("\"", "");
-                                            System.out.println(":ANIMALES:  " + line + "  jaja");
-                                            StringBuilder sb2 = new StringBuilder(str1);
-                                            String[] str12 = line.split(";");
-                                            sb2.append("'" + str12[1] + "',");
-                                            sb2.append("'" + str12[2] + "',");
-                                            sb2.append("'" + str12[3] + "',");
-                                            sb2.append("'" + str12[4] + "',");
-                                            sb2.append("'" + str12[5] + "',");
-                                            sb2.append("'" + str12[6] + "',");
-                                            sb2.append("'" + str12[7] + "',");
-                                            sb2.append("'" + str12[8] + "',");
-                                            sb2.append("'" + str12[9] + "',");
-                                            sb2.append("'" + str12[10] + "',");
-                                            sb2.append("'" + str12[11] + "',");
-                                            sb2.append("'" + str12[12] + "',");
-                                            sb2.append("'" + str12[13] + "',");
-                                            sb2.append("'" + str12[14] + "',");
-                                            sb2.append("'" + str12[15] + "',");
-                                            sb2.append("'" + str12[16] + "',");
-                                            sb2.append("'" + str12[17] + "',");
-                                            sb2.append("'" + str12[18] + "',");
-                                            sb2.append("'" + str12[19] + "',");
-                                            sb2.append("'" + str12[20] + "',");
-                                            sb2.append("'" + str12[21] + "',");
-                                            sb2.append("'" + str12[22] + "'");
-
-                                            sb2.append(str2);
-                                            d.execSQL(sb2.toString());
-
-                                        }
-                                        d.setTransactionSuccessful();
-                                        d.endTransaction();
-                                        d.close();
-
-
-                                        //-----------------Tabla Animales ------------------------------------
-                                        List<String[]> data2 = new ArrayList<String[]>();
-                                        SQLiteDatabase db2 = admine2.getWritableDatabase();
-                                        Cursor fila2 = db2.rawQuery("SELECT * FROM ANIMALESN", null);
-                                        //Se guardaran los elementos de cada fila
-                                        while (fila2.moveToNext()) {
-                                            data2.add(new String[]{
-                                                    fila2.getString(0),
-                                                    fila2.getString(1),
-                                                    fila2.getString(2),
-                                                    fila2.getString(3),
-                                                    fila2.getString(4),
-                                                    fila2.getString(5),
-                                                    fila2.getString(6),
-                                                    fila2.getString(7),
-                                                    fila2.getString(8),
-                                                    fila2.getString(9),
-                                                    fila2.getString(10),
-                                                    fila2.getString(11),
-                                                    fila2.getString(12),
-                                                    fila2.getString(13),
-                                                    fila2.getString(14),
-                                                    fila2.getString(15),
-                                                    fila2.getString(16),
-                                                    fila2.getString(17),
-                                                    fila2.getString(18),
-                                                    fila2.getString(19),
-                                                    fila2.getString(20),
-                                                    fila2.getString(21),
-                                                    fila2.getString(22)
-                                            });
-                                        }
-                                        db2.close();
-
-
-
-                                        File f2 = new File(filePath2);
-                                        CSVWriter writer2;
-                                        f2.delete();
-                                        try {
-                                            // File exist
-                                            if (f2.exists() && !f2.isDirectory()) {
-                                                FileWriter mFileWriter = new FileWriter(filePath2, true);
-                                                writer2 = new CSVWriter(mFileWriter, ';');
-                                            } else {
-                                                writer2 = new CSVWriter(new FileWriter(filePath2), ';');
-                                            }
-
-                                            writer2.writeAll(data2);
-
-                                            writer2.close();
-
-                                        } catch (IOException e) {
-
-                                        }
-                                    } catch (Exception e) {
-
-                                    }
+                                    localFile1=localFile.toString();
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -236,83 +122,8 @@ public class homep extends AppCompatActivity {
                             pathReference2.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                                    // Local temp file has been created
-                                    //------------Carga CSV Animales ----------------------------------------
-                                    try {
-                                        SQLiteDatabase db5 = admine2.getWritableDatabase();
-                                        File file = new File(localFile.toString());
-                                        FileInputStream fis = null;
+                                    localFile2=localFile.toString();
 
-                                        fis = new FileInputStream(file);
-                                        fis.getChannel().position(0);
-                                        BufferedReader bRead = new BufferedReader(new InputStreamReader(fis));
-                                        String line = "";
-                                        String tableName = "TRATAMIENTOS";
-                                        String columns = "CODIGO, MEDICAMENTO, DETALLE, COSTO,FECHA";
-                                        String str1 = "INSERT INTO " + tableName + " (" + columns + ") values(";
-                                        String str2 = ");";
-                                        db5.beginTransaction();
-                                        while ((line = bRead.readLine()) != null) {
-                                            line = line.replace("\"", "");
-                                            System.out.println(":TRATA:  " + line + "  jaja");
-                                            StringBuilder sb = new StringBuilder(str1);
-                                            String[] str = line.split(";");
-                                            sb.append("'" + str[1] + "',");
-                                            sb.append("'" + str[2] + "',");
-                                            sb.append("'" + str[3] + "',");
-                                            sb.append("'" + str[4] + "',");
-                                            sb.append("'" + str[5] + "'");
-
-                                            sb.append(str2);
-                                            db5.execSQL(sb.toString());
-                                        }
-                                        db5.setTransactionSuccessful();
-                                        db5.endTransaction();
-                                        db5.close();
-                                        //Baja los datos a la carpeta datos
-
-                                        //-----------------Tabla tratamientos------------------------------------
-                                        List<String[]> data = new ArrayList<String[]>();
-                                        SQLiteDatabase db1 = admine2.getWritableDatabase();
-                                        Cursor fila1 = db1.rawQuery("SELECT ID,CODIGO, MEDICAMENTO, DETALLE, COSTO,FECHA FROM TRATAMIENTOS", null);
-                                        //Se guardan los elementos de cada fila
-                                        while (fila1.moveToNext()) {
-                                            data.add(new String[]{
-                                                    fila1.getString(0),
-                                                    fila1.getString(1),
-                                                    fila1.getString(2),
-                                                    fila1.getString(3),
-                                                    fila1.getString(4),
-                                                    fila1.getString(5)
-
-                                            });
-                                        }
-                                        db1.close();
-
-
-                                        File f = new File(filePath);
-                                        CSVWriter writer;
-                                        f.delete();
-                                        try {
-                                            // File exist
-                                            if (f.exists() && !f.isDirectory()) {
-                                                FileWriter mFileWriter = new FileWriter(filePath, true);
-                                                writer = new CSVWriter(mFileWriter, ';');
-                                            } else {
-                                                writer = new CSVWriter(new FileWriter(filePath), ';');
-                                            }
-
-                                            writer.writeAll(data);
-
-                                            writer.close();
-
-                                        } catch (IOException e) {
-
-                                        }
-
-                                    } catch (Exception e) {
-
-                                    }
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -333,80 +144,8 @@ public class homep extends AppCompatActivity {
                             pathReference3.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                                    // Local temp file has been created
-                                    //------------Carga CSV Animales ----------------------------------------
-                                    try {
-                                        SQLiteDatabase d5 = admine2.getWritableDatabase();
-                                        File file = new File(localFile.toString());
-                                        FileInputStream fis = null;
-                                        fis = new FileInputStream(file);
-                                        fis.getChannel().position(0);
-                                        BufferedReader bRead = new BufferedReader(new InputStreamReader(fis));
-                                        String line = "";
-                                        String tableName = "NFINCAS";
-                                        String columns = "CODIGO, NOMBREF,HECTAREAS,DIVICIONES,LOTES";
-                                        String str1 = "INSERT INTO " + tableName + " (" + columns + ") values(";
-                                        String str2 = ");";
-                                        d5.beginTransaction();
-                                        while ((line = bRead.readLine()) != null) {
-                                            line = line.replace("\"", "");
-                                            System.out.println(":finca:  " + line + "  jaja");
-                                            StringBuilder sb2 = new StringBuilder(str1);
-                                            String[] str12 = line.split(";");
-                                            sb2.append("'" + str12[1] + "',");
-                                            sb2.append("'" + str12[2] + "',");
-                                            sb2.append("'" + str12[3] + "',");
-                                            sb2.append("'" + str12[4] + "',");
-                                            sb2.append("'" + str12[5] + "'");
-                                            sb2.append(str2);
-                                            d5.execSQL(sb2.toString());
-                                        }
-                                        d5.setTransactionSuccessful();
-                                        d5.endTransaction();
-                                        d5.close();
+                                    localFile3=localFile.toString();
 
-                                        //--------------- Tabla Fincas---------------------------------
-                                        List<String[]> data3 = new ArrayList<String[]>();
-                                        SQLiteDatabase db5 = admine2.getWritableDatabase();
-                                        Cursor fila5 = db5.rawQuery("SELECT * FROM NFINCAS", null);
-                                        //Se guardaran los elementos de cada fila
-                                        while (fila5.moveToNext()) {
-                                            data3.add(new String[]{
-                                                    fila5.getString(0),
-                                                    fila5.getString(1),
-                                                    fila5.getString(2),
-                                                    fila5.getString(3),
-                                                    fila5.getString(4),
-                                                    fila5.getString(5)
-                                            });
-                                        }
-                                        db5.close();
-
-                                        File f3 = new File(filePath3);
-                                        CSVWriter writer3;
-                                        f3.delete();
-                                        try {
-                                            // File exist
-                                            if (f3.exists() && !f3.isDirectory()) {
-                                                FileWriter mFileWriter = new FileWriter(filePath3, true);
-                                                writer3 = new CSVWriter(mFileWriter, ';');
-                                            } else {
-                                                writer3 = new CSVWriter(new FileWriter(filePath3), ';');
-                                            }
-
-                                            writer3.writeAll(data3);
-
-                                            writer3.close();
-
-                                        } catch (IOException e) {
-
-                                        }
-
-                                        Toast.makeText(homep.this, "Copia de seguridad cargada!!", Toast.LENGTH_LONG).show();
-
-                                    } catch (Exception e) {
-
-                                    }
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -427,74 +166,8 @@ public class homep extends AppCompatActivity {
                             pathReference4.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                                    // Local temp file has been created
-                                    //------------Carga CSV Animales ----------------------------------------
-                                    try {
-                                        SQLiteDatabase db55 = admine2.getWritableDatabase();
-                                        File file = new File(localFile.toString());
-                                        FileInputStream fis = null;
+                                    localFile4=localFile.toString();
 
-                                        fis = new FileInputStream(file);
-                                        fis.getChannel().position(0);
-                                        BufferedReader bRead = new BufferedReader(new InputStreamReader(fis));
-                                        String line = "";
-                                        String tableName = "LECHE";
-                                        String columns = "COD, LITROS, FECHA";
-                                        String str1 = "INSERT INTO " + tableName + " (" + columns + ") values(";
-                                        String str2 = ");";
-                                        db55.beginTransaction();
-                                        while ((line = bRead.readLine()) != null) {
-                                            line = line.replace("\"", "");
-                                            System.out.println(":LECHE:  " + line + "  jaja");
-                                            StringBuilder sb = new StringBuilder(str1);
-                                            String[] str = line.split(";");
-                                            sb.append("'" + str[1] + "',");
-                                            sb.append("'" + str[2] + "',");
-                                            sb.append("'" + str[3] + "'");
-                                            sb.append(str2);
-                                            db55.execSQL(sb.toString());
-                                        }
-                                        db55.setTransactionSuccessful();
-                                        db55.endTransaction();
-                                        db55.close();
-
-                                        //-----------------Tabla Leche------------------------------------
-                                        List<String[]> data11 = new ArrayList<String[]>();
-                                        SQLiteDatabase db11 = admine2.getWritableDatabase();
-                                        Cursor fila11 = db11.rawQuery("SELECT * FROM LECHE", null);
-                                        //Se guardan los elementos de cada fila
-                                        while (fila11.moveToNext()) {
-                                            data11.add(new String[]{
-                                                    fila11.getString(0),
-                                                    fila11.getString(1),
-                                                    fila11.getString(2),
-                                                    fila11.getString(3)
-                                            });
-                                        }
-                                        db11.close();
-                                        File f9 = new File(filePath9);
-                                        CSVWriter writer9;
-                                        f9.delete();
-                                        try {
-                                            // File exist
-                                            if (f9.exists() && !f9.isDirectory()) {
-                                                FileWriter mFileWriter = new FileWriter(filePath9, true);
-                                                writer9 = new CSVWriter(mFileWriter, ';');
-                                            } else {
-                                                writer9 = new CSVWriter(new FileWriter(filePath9), ';');
-                                            }
-
-                                            writer9.writeAll(data11);
-
-                                            writer9.close();
-
-                                        } catch (IOException e) {
-
-                                        }
-
-                                    } catch (Exception e) {
-
-                                    }
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -515,86 +188,8 @@ public class homep extends AppCompatActivity {
                             pathReference5.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                                    // Local temp file has been created
-                                    //------------Carga CSV Animales ----------------------------------------
-                                    try {
-                                        SQLiteDatabase d2 = admine2.getWritableDatabase();
-                                        File file = new File(localFile.toString());
-                                        FileInputStream fis = null;
-                                        fis = new FileInputStream(file);
-                                        fis.getChannel().position(0);
-                                        BufferedReader bRead = new BufferedReader(new InputStreamReader(fis));
-                                        String line = "";
-                                        String tableName = "VENTAS";
-                                        String columns = "CODIGO, PESO, DETALLE, COMPRADOR, VALOR, FECHAV, GENERO, ETAPAP";
-                                        String str1 = "INSERT INTO " + tableName + " (" + columns + ") values(";
-                                        String str2 = ");";
-                                        d2.beginTransaction();
-                                        while ((line = bRead.readLine()) != null) {
-                                            line = line.replace("\"", "");
-                                            System.out.println(":VENTAS:  " + line + "  jaja");
-                                            StringBuilder sb2 = new StringBuilder(str1);
-                                            String[] str12 = line.split(";");
-                                            sb2.append("'" + str12[1] + "',");
-                                            sb2.append("'" + str12[2] + "',");
-                                            sb2.append("'" + str12[3] + "',");
-                                            sb2.append("'" + str12[4] + "',");
-                                            sb2.append("'" + str12[5] + "',");
-                                            sb2.append("'" + str12[6] + "',");
-                                            sb2.append("'" + str12[7] + "',");
-                                            sb2.append("'" + str12[8] + "'");
-                                            sb2.append(str2);
-                                            d2.execSQL(sb2.toString());
+                                    localFile5=localFile.toString();
 
-                                        }
-                                        d2.setTransactionSuccessful();
-                                        d2.endTransaction();
-                                        d2.close();
-                                        //--------------- Tabla Ventas---------------------------------
-                                        List<String[]> data1 = new ArrayList<String[]>();
-                                        SQLiteDatabase db4 = admine2.getWritableDatabase();
-                                        Cursor fila4 = db4.rawQuery("SELECT * FROM VENTAS", null);
-                                        //Se guardaran los elementos de cada fila
-                                        while (fila4.moveToNext()) {
-                                            data1.add(new String[]{
-                                                    fila4.getString(0),
-                                                    fila4.getString(1),
-                                                    fila4.getString(2),
-                                                    fila4.getString(3),
-                                                    fila4.getString(4),
-                                                    fila4.getString(5),
-                                                    fila4.getString(6),
-                                                    fila4.getString(7),
-                                                    fila4.getString(8)
-                                            });
-                                        }
-                                        db4.close();
-
-
-
-                                        File f1 = new File(filePath1);
-
-                                        CSVWriter writer1;
-                                        f1.delete();
-                                        try {
-                                            // File exist
-                                            if (f1.exists() && !f1.isDirectory()) {
-                                                FileWriter mFileWriter = new FileWriter(filePath1, true);
-                                                writer1 = new CSVWriter(mFileWriter, ';');
-                                            } else {
-                                                writer1 = new CSVWriter(new FileWriter(filePath1), ';');
-                                            }
-
-                                            writer1.writeAll(data1);
-
-                                            writer1.close();
-
-                                        } catch (IOException e) {
-
-                                        }
-                                    } catch (Exception e) {
-
-                                    }
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -616,71 +211,8 @@ public class homep extends AppCompatActivity {
                             pathReference6.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                                    // Local temp file has been created
-                                    try {
-                                        SQLiteDatabase d4 = admine2.getWritableDatabase();
-                                        File file = new File(localFile.toString());
-                                        FileInputStream fis = null;
-                                        fis = new FileInputStream(file);
-                                        fis.getChannel().position(0);
-                                        BufferedReader bRead = new BufferedReader(new InputStreamReader(fis));
-                                        String line = "";
-                                        String tableName = "THIERRO";
-                                        String columns = "HIERRO";
-                                        String str1 = "INSERT INTO " + tableName + " (" + columns + ") values(";
-                                        String str2 = ");";
-                                        d4.beginTransaction();
-                                        while ((line = bRead.readLine()) != null) {
-                                            line = line.replace("\"", "");
-                                            System.out.println(":HIERRO:  " + line + "  jaja");
-                                            StringBuilder sb2 = new StringBuilder(str1);
-                                            String[] str12 = line.split(";");
-                                            sb2.append("'" + str12[1] + "'");
-                                            sb2.append(str2);
-                                            System.out.println(sb2.toString() + "  jaja");
-                                            d4.execSQL(sb2.toString());
-                                        }
-                                        d4.setTransactionSuccessful();
-                                        d4.endTransaction();
-                                        d4.close();
-                                        //--------------- Tabla Hierros---------------------------------
-                                        List<String[]> data5 = new ArrayList<String[]>();
-                                        SQLiteDatabase db6 = admine2.getWritableDatabase();
-                                        Cursor fila7 = db6.rawQuery("SELECT * FROM THIERRO", null);
-                                        //Se guardaran los elementos de cada fila
-                                        while (fila7.moveToNext()) {
-                                            data5.add(new String[]{
-                                                    fila7.getString(0),
-                                                    fila7.getString(1)
-                                            });
-                                        }
-                                        db6.close();
+                                    localFile6=localFile.toString();
 
-                                        File f5 = new File(filePath5);
-                                        CSVWriter writ;
-                                        f5.delete();
-                                        try {
-                                            // File exist
-                                            if (f5.exists() && !f5.isDirectory()) {
-                                                FileWriter mFileWriter = new FileWriter(filePath5, true);
-                                                writ = new CSVWriter(mFileWriter, ';');
-                                            } else {
-                                                writ = new CSVWriter(new FileWriter(filePath5), ';');
-                                            }
-
-                                            writ.writeAll(data5);
-
-                                            writ.close();
-                                            Toast.makeText(homep.this, "Copia  de seguridad guardada en la carpeta Datos.", Toast.LENGTH_LONG).show();
-
-                                        } catch (IOException e) {
-                                            Toast.makeText(homep.this, "Error: en la configuración de la APP, active los permisos de alamacenamiento.", Toast.LENGTH_LONG).show();
-
-                                        }
-
-                                    } catch (Exception e) {
-
-                                    }
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -701,73 +233,8 @@ public class homep extends AppCompatActivity {
                             pathReference7.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                                    // Local temp file has been created
-                                    try {
-                                        SQLiteDatabase d3 = admine2.getWritableDatabase();
-                                        File file = new File(localFile.toString());
-                                        FileInputStream fis = null;
-                                        fis = new FileInputStream(file);
-                                        fis.getChannel().position(0);
-                                        BufferedReader bRead = new BufferedReader(new InputStreamReader(fis));
-                                        String line = "";
-                                        String tableName = "PROPIETARIOS";
-                                        String columns = "NOMBRE, APELLIDO";
-                                        String str1 = "INSERT INTO " + tableName + " (" + columns + ") values(";
-                                        String str2 = ");";
-                                        d3.beginTransaction();
-                                        while ((line = bRead.readLine()) != null) {
-                                            line = line.replace("\"", "");
-                                            System.out.println(":propi:  " + line + "  jaja");
-                                            StringBuilder sb2 = new StringBuilder(str1);
-                                            String[] str12 = line.split(";");
-                                            sb2.append("'" + str12[1] + "',");
-                                            sb2.append("'" + str12[2] + "'");
-                                            sb2.append(str2);
-                                            d3.execSQL(sb2.toString());
-                                        }
-                                        d3.setTransactionSuccessful();
-                                        d3.endTransaction();
-                                        d3.close();
+                                    localFile7=localFile.toString();
 
-
-                                        //--------------- Tabla Propietarios---------------------------------
-                                        List<String[]> data4 = new ArrayList<String[]>();
-                                        SQLiteDatabase db3 = admine2.getWritableDatabase();
-                                        Cursor fila3 = db3.rawQuery("SELECT * FROM PROPIETARIOS", null);
-                                        //Se guardaran los elementos de cada fila
-                                        while (fila3.moveToNext()) {
-                                            data4.add(new String[]{
-                                                    fila3.getString(0),
-                                                    fila3.getString(1),
-                                                    fila3.getString(2)
-
-                                            });
-                                        }
-                                        db3.close();
-
-                                        File f4 = new File(filePath4);
-                                        CSVWriter writer4;
-                                        f4.delete();
-                                        try {
-                                            // File exist
-                                            if (f4.exists() && !f4.isDirectory()) {
-                                                FileWriter mFileWriter = new FileWriter(filePath4, true);
-                                                writer4 = new CSVWriter(mFileWriter, ';');
-                                            } else {
-                                                writer4 = new CSVWriter(new FileWriter(filePath4), ';');
-                                            }
-
-                                            writer4.writeAll(data4);
-
-                                            writer4.close();
-
-                                        } catch (IOException e) {
-
-                                        }
-
-                                    } catch (Exception e) {
-
-                                    }
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -788,73 +255,8 @@ public class homep extends AppCompatActivity {
                             pathReference8.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                                    // Local temp file has been created
-                                    try {
-                                        SQLiteDatabase d4 = admine2.getWritableDatabase();
-                                        File file = new File(localFile.toString());
-                                        FileInputStream fis = null;
-                                        fis = new FileInputStream(file);
-                                        fis.getChannel().position(0);
-                                        BufferedReader bRead = new BufferedReader(new InputStreamReader(fis));
-                                        String line = "";
-                                        String tableName = "HORNAL";
-                                        String columns = "FECHA, TRABAJO,CANTJORNAL, VALORJORNAL, TOTAL";
-                                        String str1 = "INSERT INTO " + tableName + " (" + columns + ") values(";
-                                        String str2 = ");";
-                                        d4.beginTransaction();
-                                        while ((line = bRead.readLine()) != null) {
-                                            line = line.replace("\"", "");
-                                            System.out.println(":JORNAL:  " + line + "  jaja");
-                                            StringBuilder sb2 = new StringBuilder(str1);
-                                            String[] str12 = line.split(";");
-                                            sb2.append("'" + str12[1] + "',");
-                                            sb2.append("'" + str12[2] + "',");
-                                            sb2.append("'" + str12[3] + "',");
-                                            sb2.append("'" + str12[4] + "',");
-                                            sb2.append("'" + str12[5] + "'");
-                                            sb2.append(str2);
-                                            System.out.println(sb2.toString() + "  jaja");
-                                            d4.execSQL(sb2.toString());
-                                        }
-                                        d4.setTransactionSuccessful();
-                                        d4.endTransaction();
-                                        d4.close();
+                                    localFile8=localFile.toString();
 
-                                        //-----------------Tabla HORNALES------------------------------------
-                                        List<String[]> data = new ArrayList<String[]>();
-                                        SQLiteDatabase db1 = admine2.getWritableDatabase();
-                                        Cursor fila1 = db1.rawQuery("SELECT ID, FECHA, TRABAJO,CANTJORNAL, VALORJORNAL, TOTAL FROM HORNAL", null);
-                                        //Se guardan los elementos de cada fila
-                                        while (fila1.moveToNext()) {
-                                            data.add(new String[]{
-                                                    fila1.getString(0),
-                                                    fila1.getString(1),
-                                                    fila1.getString(2),
-                                                    fila1.getString(3),
-                                                    fila1.getString(4),
-                                                    fila1.getString(5)
-
-                                            });
-                                        }
-                                        db1.close();
-                                        File f = new File(filePath8);
-                                        CSVWriter writer5;
-                                        f.delete();
-                                        try {
-                                            // File exist
-                                            if (f.exists() && !f.isDirectory()) {
-                                                FileWriter mFileWriter = new FileWriter(filePath8, true);
-                                                writer5 = new CSVWriter(mFileWriter, ';');
-                                            } else {
-                                                writer5 = new CSVWriter(new FileWriter(filePath8), ';');
-                                            }
-                                            writer5.writeAll(data);
-                                            writer5.close();
-                                        } catch (IOException e) {
-                                        }
-                                    } catch (Exception e) {
-                                        Toast.makeText(homep.this, "Error-new"+e.toString(), Toast.LENGTH_LONG).show();
-                                    }
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -965,15 +367,11 @@ public class homep extends AppCompatActivity {
         finish();
     }
 
-
-
     public void configuracion(View view) {
         Intent i = new Intent(homep.this, home_configuracion.class);
         startActivity(i);
         finish();
-
     }
-
     public void consultas(View view) {
         Intent i = new Intent(homep.this, home_consultas.class);
         startActivity(i);
@@ -1272,9 +670,6 @@ public class homep extends AppCompatActivity {
 
             Toast.makeText(homep.this, "Presione de nuevo cerrar sesion", Toast.LENGTH_LONG).show();
         }
-
-
-
         //------------------------------------------------------------------------------------------------
         //Guardar en la nube la copia de seguridad
         FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -1326,12 +721,6 @@ public class homep extends AppCompatActivity {
                 // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
                 Uri downloadUrl = taskSnapshot.getDownloadUrl();
                 //Marcamos que la la aplicación a fue corrieda por primera vez
-                UsersSQLiteHelper ad88 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
-                SQLiteDatabase db = ad88.getWritableDatabase();
-                db.execSQL("DELETE FROM TRATAMIENTOS");
-                db.close();
-                File f4 = new File(filePath);
-                f4.delete();
                 ev1 = 1;
                 //Toast.makeText(home_datos.this, "Datos subidos con exito a la nube!.", Toast.LENGTH_LONG).show();
 
@@ -1348,12 +737,7 @@ public class homep extends AppCompatActivity {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
                 Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                UsersSQLiteHelper ad88 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
-                SQLiteDatabase db = ad88.getWritableDatabase();
-                db.execSQL("DELETE FROM HORNAL");
-                db.close();
-                File f4 = new File(filePath8);
-                f4.delete();
+
                 ev2 = 1;
                 //Toast.makeText(home_datos.this, "Datos subidos con exito a la nube!.", Toast.LENGTH_LONG).show();
 
@@ -1369,12 +753,7 @@ public class homep extends AppCompatActivity {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
                 Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                UsersSQLiteHelper ad88 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
-                SQLiteDatabase db = ad88.getWritableDatabase();
-                db.execSQL("DELETE FROM LECHE");
-                db.close();
-                File f4 = new File(filePath9);
-                f4.delete();
+
                 ev3 = 1;
                 //Toast.makeText(home_datos.this, "Datos subidos con exito a la nube!.", Toast.LENGTH_LONG).show();
 
@@ -1390,12 +769,7 @@ public class homep extends AppCompatActivity {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
                 Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                UsersSQLiteHelper ad88 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
-                SQLiteDatabase db = ad88.getWritableDatabase();
-                db.execSQL("DELETE FROM VENTAS");
-                db.close();
-                File f4 = new File(filePath1);
-                f4.delete();
+
                 ev4 = 1;
                 /// /Toast.makeText(home_datos.this, "Datos subidos con exito a la nube!.", Toast.LENGTH_LONG).show();
 
@@ -1411,12 +785,7 @@ public class homep extends AppCompatActivity {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
                 Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                UsersSQLiteHelper ad88 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
-                SQLiteDatabase db = ad88.getWritableDatabase();
-                db.execSQL("DELETE FROM ANIMALESN");
-                db.close();
-                File f4 = new File(filePath2);
-                f4.delete();
+
                 ev5 = 1;
                 //Toast.makeText(home_datos.this, "Datos subidos con exito a la nube!.", Toast.LENGTH_LONG).show();
 
@@ -1432,12 +801,6 @@ public class homep extends AppCompatActivity {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
                 Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                UsersSQLiteHelper ad88 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
-                SQLiteDatabase db = ad88.getWritableDatabase();
-                db.execSQL("DELETE FROM NFINCAS");
-                db.close();
-                File f4 = new File(filePath3);
-                f4.delete();
                 ev6 = 1;
                 //Toast.makeText(home_datos.this, "Datos subidos con exito a la nube!.", Toast.LENGTH_LONG).show();
 
@@ -1453,12 +816,7 @@ public class homep extends AppCompatActivity {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
                 Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                UsersSQLiteHelper ad88 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
-                SQLiteDatabase db = ad88.getWritableDatabase();
-                db.execSQL("DELETE FROM PROPIETARIOS");
-                db.close();
-                File f4 = new File(filePath4);
-                f4.delete();
+
                 ev7 = 1;
                 //Toast.makeText(home_datos.this, "Datos subidos con exito a la nube!.", Toast.LENGTH_LONG).show();
 
@@ -1474,13 +832,7 @@ public class homep extends AppCompatActivity {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
                 Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                UsersSQLiteHelper ad88 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
-                SQLiteDatabase db = ad88.getWritableDatabase();
-                db.execSQL("DELETE FROM THIERRO");
-                db.execSQL("DELETE FROM NNEW");
-                db.close();
-                File f4 = new File(filePath5);
-                f4.delete();
+
                 ev8 = 1;
                 //Toast.makeText(home_datos.this, "Datos subidos con exito a la nube!.", Toast.LENGTH_LONG).show();
 
@@ -1488,10 +840,33 @@ public class homep extends AppCompatActivity {
         });
             if(ev1==1 && ev2==1 && ev3==1 && ev4==1 && ev5==1 && ev6==1 && ev7==1 && ev8==1) {
                 FirebaseAuth.getInstance().signOut();
+                UsersSQLiteHelper ad = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
+                SQLiteDatabase db = ad.getWritableDatabase();
+                db.execSQL("DELETE FROM NFINCAS");
+                db.execSQL("DELETE FROM TRATAMIENTOS");
+                db.execSQL("DELETE FROM HORNAL");
+                db.execSQL("DELETE FROM LECHE");
+                db.execSQL("DELETE FROM VENTAS");
+                db.execSQL("DELETE FROM ANIMALESN");
+                db.execSQL("DELETE FROM PROPIETARIOS");
+                db.execSQL("DELETE FROM THIERRO");
+                db.execSQL("DELETE FROM NNEW");
+                db.close();
+
+                File f4 = new File(filePath);f4.delete();
+                f4 = new File(filePath8);f4.delete();
+                f4 = new File(filePath9);f4.delete();
+                f4 = new File(filePath1);f4.delete();
+                f4 = new File(filePath2);f4.delete();
+                f4 = new File(filePath3);f4.delete();
+                f4 = new File(filePath4);f4.delete();
+                f4 = new File(filePath5);f4.delete();
                 Intent choo2 = new Intent(homep.this, out.class);
                 startActivity(choo2);
             }
     }
+
+
     public void reporte(View view) {
 
         List<String[]> data = new ArrayList<String[]>();
@@ -1714,5 +1089,632 @@ public class homep extends AppCompatActivity {
         //Muestro un mensaje en el logcat si no se creo la carpeta por algun motivo
         if (!directorio.mkdirs()) System.out.println("Error: No se creo el directorio público");
         return directorio;
+    }
+    public void prube (View view) {
+        UsersSQLiteHelper admine2 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
+        if(!localFile1.equals("")&&!localFile2.equals("")&&!localFile3.equals("")&&!localFile4.equals("")&& !localFile5.equals("")&&!localFile6.equals("")&&!localFile7.equals("")&&!localFile8.equals("")) {
+            Toast.makeText(homep.this, "esto"+localFile1, Toast.LENGTH_LONG).show();
+            //------------Carga CSV Animales ----------------------------------------
+            try {
+
+                SQLiteDatabase d = admine2.getWritableDatabase();
+                File file = new File(localFile1);
+                FileInputStream fis = null;
+                fis = new FileInputStream(file);
+                fis.getChannel().position(0);
+                String str2 = ");";
+
+                BufferedReader bRead = new BufferedReader(new InputStreamReader(fis));
+                String line = "";
+                String tableName = "ANIMALESN";
+                String columns = "CODIGO,NOMBRE,GENERO,PROCEDENCIA,RAZA,FOTO,PROPIETARIO,PROPIETARIOA,HIERRO,PROPOSITO,FECHAINGRE,PESO,PESODESTETE,ETAPAP,VALORC,CODMAMA,CODPAPA,CODPARTO,FECHANACI,NFINCA,TIPOANIMAL,COMPPAR";
+                String str1 = "INSERT INTO " + tableName + " (" + columns + ") values(";
+                d.beginTransaction();
+                while ((line = bRead.readLine()) != null) {
+                    line = line.replace("\"", "");
+                    System.out.println(":ANIMALES:  " + line + "  jaja");
+                    StringBuilder sb2 = new StringBuilder(str1);
+                    String[] str12 = line.split(";");
+                    sb2.append("'" + str12[1] + "',");
+                    sb2.append("'" + str12[2] + "',");
+                    sb2.append("'" + str12[3] + "',");
+                    sb2.append("'" + str12[4] + "',");
+                    sb2.append("'" + str12[5] + "',");
+                    sb2.append("'" + str12[6] + "',");
+                    sb2.append("'" + str12[7] + "',");
+                    sb2.append("'" + str12[8] + "',");
+                    sb2.append("'" + str12[9] + "',");
+                    sb2.append("'" + str12[10] + "',");
+                    sb2.append("'" + str12[11] + "',");
+                    sb2.append("'" + str12[12] + "',");
+                    sb2.append("'" + str12[13] + "',");
+                    sb2.append("'" + str12[14] + "',");
+                    sb2.append("'" + str12[15] + "',");
+                    sb2.append("'" + str12[16] + "',");
+                    sb2.append("'" + str12[17] + "',");
+                    sb2.append("'" + str12[18] + "',");
+                    sb2.append("'" + str12[19] + "',");
+                    sb2.append("'" + str12[20] + "',");
+                    sb2.append("'" + str12[21] + "',");
+                    sb2.append("'" + str12[22] + "'");
+
+                    sb2.append(str2);
+                    d.execSQL(sb2.toString());
+
+                }
+                d.setTransactionSuccessful();
+                d.endTransaction();
+                d.close();
+
+
+                //-----------------Tabla Animales ------------------------------------
+                List<String[]> data2 = new ArrayList<String[]>();
+                SQLiteDatabase db2 = admine2.getWritableDatabase();
+                Cursor fila2 = db2.rawQuery("SELECT * FROM ANIMALESN", null);
+                //Se guardaran los elementos de cada fila
+                while (fila2.moveToNext()) {
+                    data2.add(new String[]{
+                            fila2.getString(0),
+                            fila2.getString(1),
+                            fila2.getString(2),
+                            fila2.getString(3),
+                            fila2.getString(4),
+                            fila2.getString(5),
+                            fila2.getString(6),
+                            fila2.getString(7),
+                            fila2.getString(8),
+                            fila2.getString(9),
+                            fila2.getString(10),
+                            fila2.getString(11),
+                            fila2.getString(12),
+                            fila2.getString(13),
+                            fila2.getString(14),
+                            fila2.getString(15),
+                            fila2.getString(16),
+                            fila2.getString(17),
+                            fila2.getString(18),
+                            fila2.getString(19),
+                            fila2.getString(20),
+                            fila2.getString(21),
+                            fila2.getString(22)
+                    });
+                }
+                db2.close();
+
+
+                File f2 = new File(filePath2);
+                CSVWriter writer2;
+                f2.delete();
+                try {
+                    // File exist
+                    if (f2.exists() && !f2.isDirectory()) {
+                        FileWriter mFileWriter = new FileWriter(filePath2, true);
+                        writer2 = new CSVWriter(mFileWriter, ';');
+                    } else {
+                        writer2 = new CSVWriter(new FileWriter(filePath2), ';');
+                    }
+
+                    writer2.writeAll(data2);
+
+                    writer2.close();
+
+                } catch (IOException e) {
+
+                }
+            } catch (Exception e) {
+
+            }
+
+
+            // Local temp file has been created
+            //------------Carga CSV Animales ----------------------------------------
+            try {
+                SQLiteDatabase db5 = admine2.getWritableDatabase();
+                File file = new File(localFile2);
+                FileInputStream fis = null;
+
+                fis = new FileInputStream(file);
+                fis.getChannel().position(0);
+                BufferedReader bRead = new BufferedReader(new InputStreamReader(fis));
+                String line = "";
+                String tableName = "TRATAMIENTOS";
+                String columns = "CODIGO, MEDICAMENTO, DETALLE, COSTO,FECHA";
+                String str1 = "INSERT INTO " + tableName + " (" + columns + ") values(";
+                String str2 = ");";
+                db5.beginTransaction();
+                while ((line = bRead.readLine()) != null) {
+                    line = line.replace("\"", "");
+                    System.out.println(":TRATA:  " + line + "  jaja");
+                    StringBuilder sb = new StringBuilder(str1);
+                    String[] str = line.split(";");
+                    sb.append("'" + str[1] + "',");
+                    sb.append("'" + str[2] + "',");
+                    sb.append("'" + str[3] + "',");
+                    sb.append("'" + str[4] + "',");
+                    sb.append("'" + str[5] + "'");
+
+                    sb.append(str2);
+                    db5.execSQL(sb.toString());
+                }
+                db5.setTransactionSuccessful();
+                db5.endTransaction();
+                db5.close();
+                //Baja los datos a la carpeta datos
+
+                //-----------------Tabla tratamientos------------------------------------
+                List<String[]> data = new ArrayList<String[]>();
+                SQLiteDatabase db1 = admine2.getWritableDatabase();
+                Cursor fila1 = db1.rawQuery("SELECT ID,CODIGO, MEDICAMENTO, DETALLE, COSTO,FECHA FROM TRATAMIENTOS", null);
+                //Se guardan los elementos de cada fila
+                while (fila1.moveToNext()) {
+                    data.add(new String[]{
+                            fila1.getString(0),
+                            fila1.getString(1),
+                            fila1.getString(2),
+                            fila1.getString(3),
+                            fila1.getString(4),
+                            fila1.getString(5)
+
+                    });
+                }
+                db1.close();
+
+
+                File f = new File(filePath);
+                CSVWriter writer;
+                f.delete();
+                try {
+                    // File exist
+                    if (f.exists() && !f.isDirectory()) {
+                        FileWriter mFileWriter = new FileWriter(filePath, true);
+                        writer = new CSVWriter(mFileWriter, ';');
+                    } else {
+                        writer = new CSVWriter(new FileWriter(filePath), ';');
+                    }
+
+                    writer.writeAll(data);
+
+                    writer.close();
+
+                } catch (IOException e) {
+
+                }
+
+            } catch (Exception e) {
+
+            }
+
+
+            // Local temp file has been created
+            //------------Carga CSV Animales ----------------------------------------
+            try {
+
+                SQLiteDatabase d5 = admine2.getWritableDatabase();
+                File file = new File(localFile3);
+                FileInputStream fis = null;
+                fis = new FileInputStream(file);
+                fis.getChannel().position(0);
+                BufferedReader bRead = new BufferedReader(new InputStreamReader(fis));
+                String line = "";
+                String tableName = "NFINCAS";
+                String columns = "CODIGO, NOMBREF,HECTAREAS,DIVICIONES,LOTES";
+                String str1 = "INSERT INTO " + tableName + " (" + columns + ") values(";
+                String str2 = ");";
+                d5.beginTransaction();
+                while ((line = bRead.readLine()) != null) {
+                    line = line.replace("\"", "");
+                    System.out.println(":finca:  " + line + "  jaja");
+                    StringBuilder sb2 = new StringBuilder(str1);
+                    String[] str12 = line.split(";");
+                    sb2.append("'" + str12[1] + "',");
+                    sb2.append("'" + str12[2] + "',");
+                    sb2.append("'" + str12[3] + "',");
+                    sb2.append("'" + str12[4] + "',");
+                    sb2.append("'" + str12[5] + "'");
+                    sb2.append(str2);
+                    d5.execSQL(sb2.toString());
+                }
+                d5.setTransactionSuccessful();
+                d5.endTransaction();
+                d5.close();
+
+                //--------------- Tabla Fincas---------------------------------
+                List<String[]> data3 = new ArrayList<String[]>();
+                SQLiteDatabase db5 = admine2.getWritableDatabase();
+                Cursor fila5 = db5.rawQuery("SELECT * FROM NFINCAS", null);
+                //Se guardaran los elementos de cada fila
+                while (fila5.moveToNext()) {
+                    data3.add(new String[]{
+                            fila5.getString(0),
+                            fila5.getString(1),
+                            fila5.getString(2),
+                            fila5.getString(3),
+                            fila5.getString(4),
+                            fila5.getString(5)
+                    });
+                }
+                db5.close();
+
+                File f3 = new File(filePath3);
+                CSVWriter writer3;
+                f3.delete();
+                try {
+                    // File exist
+                    if (f3.exists() && !f3.isDirectory()) {
+                        FileWriter mFileWriter = new FileWriter(filePath3, true);
+                        writer3 = new CSVWriter(mFileWriter, ';');
+                    } else {
+                        writer3 = new CSVWriter(new FileWriter(filePath3), ';');
+                    }
+
+                    writer3.writeAll(data3);
+
+                    writer3.close();
+
+                } catch (IOException e) {
+
+                }
+
+                Toast.makeText(homep.this, "Copia de seguridad cargada!!", Toast.LENGTH_LONG).show();
+
+            } catch (Exception e) {
+
+            }
+
+            // Local temp file has been created
+            //------------Carga CSV Animales ----------------------------------------
+            try {
+                SQLiteDatabase db55 = admine2.getWritableDatabase();
+                File file = new File(localFile4);
+                FileInputStream fis = null;
+
+                fis = new FileInputStream(file);
+                fis.getChannel().position(0);
+                BufferedReader bRead = new BufferedReader(new InputStreamReader(fis));
+                String line = "";
+                String tableName = "LECHE";
+                String columns = "COD, LITROS, FECHA";
+                String str1 = "INSERT INTO " + tableName + " (" + columns + ") values(";
+                String str2 = ");";
+                db55.beginTransaction();
+                while ((line = bRead.readLine()) != null) {
+                    line = line.replace("\"", "");
+                    System.out.println(":LECHE:  " + line + "  jaja");
+                    StringBuilder sb = new StringBuilder(str1);
+                    String[] str = line.split(";");
+                    sb.append("'" + str[1] + "',");
+                    sb.append("'" + str[2] + "',");
+                    sb.append("'" + str[3] + "'");
+                    sb.append(str2);
+                    db55.execSQL(sb.toString());
+                }
+                db55.setTransactionSuccessful();
+                db55.endTransaction();
+                db55.close();
+
+                //-----------------Tabla Leche------------------------------------
+                List<String[]> data11 = new ArrayList<String[]>();
+                SQLiteDatabase db11 = admine2.getWritableDatabase();
+                Cursor fila11 = db11.rawQuery("SELECT * FROM LECHE", null);
+                //Se guardan los elementos de cada fila
+                while (fila11.moveToNext()) {
+                    data11.add(new String[]{
+                            fila11.getString(0),
+                            fila11.getString(1),
+                            fila11.getString(2),
+                            fila11.getString(3)
+                    });
+                }
+                db11.close();
+                File f9 = new File(filePath9);
+                CSVWriter writer9;
+                f9.delete();
+                try {
+                    // File exist
+                    if (f9.exists() && !f9.isDirectory()) {
+                        FileWriter mFileWriter = new FileWriter(filePath9, true);
+                        writer9 = new CSVWriter(mFileWriter, ';');
+                    } else {
+                        writer9 = new CSVWriter(new FileWriter(filePath9), ';');
+                    }
+
+                    writer9.writeAll(data11);
+
+                    writer9.close();
+
+                } catch (IOException e) {
+
+                }
+
+            } catch (Exception e) {
+
+            }
+
+
+            // Local temp file has been created
+            //------------Carga CSV Animales ----------------------------------------
+            try {
+                SQLiteDatabase d2 = admine2.getWritableDatabase();
+                File file = new File(localFile5);
+                FileInputStream fis = null;
+                fis = new FileInputStream(file);
+                fis.getChannel().position(0);
+                BufferedReader bRead = new BufferedReader(new InputStreamReader(fis));
+                String line = "";
+                String tableName = "VENTAS";
+                String columns = "CODIGO, PESO, DETALLE, COMPRADOR, VALOR, FECHAV, GENERO, ETAPAP";
+                String str1 = "INSERT INTO " + tableName + " (" + columns + ") values(";
+                String str2 = ");";
+                d2.beginTransaction();
+                while ((line = bRead.readLine()) != null) {
+                    line = line.replace("\"", "");
+                    System.out.println(":VENTAS:  " + line + "  jaja");
+                    StringBuilder sb2 = new StringBuilder(str1);
+                    String[] str12 = line.split(";");
+                    sb2.append("'" + str12[1] + "',");
+                    sb2.append("'" + str12[2] + "',");
+                    sb2.append("'" + str12[3] + "',");
+                    sb2.append("'" + str12[4] + "',");
+                    sb2.append("'" + str12[5] + "',");
+                    sb2.append("'" + str12[6] + "',");
+                    sb2.append("'" + str12[7] + "',");
+                    sb2.append("'" + str12[8] + "'");
+                    sb2.append(str2);
+                    d2.execSQL(sb2.toString());
+
+                }
+                d2.setTransactionSuccessful();
+                d2.endTransaction();
+                d2.close();
+                //--------------- Tabla Ventas---------------------------------
+                List<String[]> data1 = new ArrayList<String[]>();
+                SQLiteDatabase db4 = admine2.getWritableDatabase();
+                Cursor fila4 = db4.rawQuery("SELECT * FROM VENTAS", null);
+                //Se guardaran los elementos de cada fila
+                while (fila4.moveToNext()) {
+                    data1.add(new String[]{
+                            fila4.getString(0),
+                            fila4.getString(1),
+                            fila4.getString(2),
+                            fila4.getString(3),
+                            fila4.getString(4),
+                            fila4.getString(5),
+                            fila4.getString(6),
+                            fila4.getString(7),
+                            fila4.getString(8)
+                    });
+                }
+                db4.close();
+
+
+                File f1 = new File(filePath1);
+
+                CSVWriter writer1;
+                f1.delete();
+                try {
+                    // File exist
+                    if (f1.exists() && !f1.isDirectory()) {
+                        FileWriter mFileWriter = new FileWriter(filePath1, true);
+                        writer1 = new CSVWriter(mFileWriter, ';');
+                    } else {
+                        writer1 = new CSVWriter(new FileWriter(filePath1), ';');
+                    }
+
+                    writer1.writeAll(data1);
+
+                    writer1.close();
+
+                } catch (IOException e) {
+
+                }
+            } catch (Exception e) {
+
+            }
+
+            // Local temp file has been created
+            try {
+                SQLiteDatabase d4 = admine2.getWritableDatabase();
+                File file = new File(localFile6);
+                FileInputStream fis = null;
+                fis = new FileInputStream(file);
+                fis.getChannel().position(0);
+                BufferedReader bRead = new BufferedReader(new InputStreamReader(fis));
+                String line = "";
+                String tableName = "THIERRO";
+                String columns = "HIERRO";
+                String str1 = "INSERT INTO " + tableName + " (" + columns + ") values(";
+                String str2 = ");";
+                d4.beginTransaction();
+                while ((line = bRead.readLine()) != null) {
+                    line = line.replace("\"", "");
+                    System.out.println(":HIERRO:  " + line + "  jaja");
+                    StringBuilder sb2 = new StringBuilder(str1);
+                    String[] str12 = line.split(";");
+                    sb2.append("'" + str12[1] + "'");
+                    sb2.append(str2);
+                    System.out.println(sb2.toString() + "  jaja");
+                    d4.execSQL(sb2.toString());
+                }
+                d4.setTransactionSuccessful();
+                d4.endTransaction();
+                d4.close();
+                //--------------- Tabla Hierros---------------------------------
+                List<String[]> data5 = new ArrayList<String[]>();
+                SQLiteDatabase db6 = admine2.getWritableDatabase();
+                Cursor fila7 = db6.rawQuery("SELECT * FROM THIERRO", null);
+                //Se guardaran los elementos de cada fila
+                while (fila7.moveToNext()) {
+                    data5.add(new String[]{
+                            fila7.getString(0),
+                            fila7.getString(1)
+                    });
+                }
+                db6.close();
+
+                File f5 = new File(filePath5);
+                CSVWriter writ;
+                f5.delete();
+                try {
+                    // File exist
+                    if (f5.exists() && !f5.isDirectory()) {
+                        FileWriter mFileWriter = new FileWriter(filePath5, true);
+                        writ = new CSVWriter(mFileWriter, ';');
+                    } else {
+                        writ = new CSVWriter(new FileWriter(filePath5), ';');
+                    }
+
+                    writ.writeAll(data5);
+
+                    writ.close();
+                    Toast.makeText(homep.this, "Copia  de seguridad guardada en la carpeta Datos.", Toast.LENGTH_LONG).show();
+
+                } catch (IOException e) {
+                    Toast.makeText(homep.this, "Error: en la configuración de la APP, active los permisos de alamacenamiento.", Toast.LENGTH_LONG).show();
+
+                }
+
+            } catch (Exception e) {
+                Toast.makeText(homep.this, "Error-new" + e.toString(), Toast.LENGTH_LONG).show();
+
+            }
+
+            // Local temp file has been created
+            try {
+                SQLiteDatabase d3 = admine2.getWritableDatabase();
+                File file = new File(localFile7);
+                FileInputStream fis = null;
+                fis = new FileInputStream(file);
+                fis.getChannel().position(0);
+                BufferedReader bRead = new BufferedReader(new InputStreamReader(fis));
+                String line = "";
+                String tableName = "PROPIETARIOS";
+                String columns = "NOMBRE, APELLIDO";
+                String str1 = "INSERT INTO " + tableName + " (" + columns + ") values(";
+                String str2 = ");";
+                d3.beginTransaction();
+                while ((line = bRead.readLine()) != null) {
+                    line = line.replace("\"", "");
+                    System.out.println(":propi:  " + line + "  jaja");
+                    StringBuilder sb2 = new StringBuilder(str1);
+                    String[] str12 = line.split(";");
+                    sb2.append("'" + str12[1] + "',");
+                    sb2.append("'" + str12[2] + "'");
+                    sb2.append(str2);
+                    d3.execSQL(sb2.toString());
+                }
+                d3.setTransactionSuccessful();
+                d3.endTransaction();
+                d3.close();
+
+
+                //--------------- Tabla Propietarios---------------------------------
+                List<String[]> data4 = new ArrayList<String[]>();
+                SQLiteDatabase db3 = admine2.getWritableDatabase();
+                Cursor fila3 = db3.rawQuery("SELECT * FROM PROPIETARIOS", null);
+                //Se guardaran los elementos de cada fila
+                while (fila3.moveToNext()) {
+                    data4.add(new String[]{
+                            fila3.getString(0),
+                            fila3.getString(1),
+                            fila3.getString(2)
+
+                    });
+                }
+                db3.close();
+
+                File f4 = new File(filePath4);
+                CSVWriter writer4;
+                f4.delete();
+                try {
+                    // File exist
+                    if (f4.exists() && !f4.isDirectory()) {
+                        FileWriter mFileWriter = new FileWriter(filePath4, true);
+                        writer4 = new CSVWriter(mFileWriter, ';');
+                    } else {
+                        writer4 = new CSVWriter(new FileWriter(filePath4), ';');
+                    }
+
+                    writer4.writeAll(data4);
+
+                    writer4.close();
+
+                } catch (IOException e) {
+
+                }
+
+            } catch (Exception e) {
+                Toast.makeText(homep.this, "Error-new" + e.toString(), Toast.LENGTH_LONG).show();
+
+            }
+
+
+            // Local temp file has been created
+            try {
+                SQLiteDatabase d4 = admine2.getWritableDatabase();
+                File file = new File(localFile8);
+                FileInputStream fis = null;
+                fis = new FileInputStream(file);
+                fis.getChannel().position(0);
+                BufferedReader bRead = new BufferedReader(new InputStreamReader(fis));
+                String line = "";
+                String tableName = "HORNAL";
+                String columns = "FECHA, TRABAJO,CANTJORNAL, VALORJORNAL, TOTAL";
+                String str1 = "INSERT INTO " + tableName + " (" + columns + ") values(";
+                String str2 = ");";
+                d4.beginTransaction();
+                while ((line = bRead.readLine()) != null) {
+                    line = line.replace("\"", "");
+                    System.out.println(":JORNAL:  " + line + "  jaja");
+                    StringBuilder sb2 = new StringBuilder(str1);
+                    String[] str12 = line.split(";");
+                    sb2.append("'" + str12[1] + "',");
+                    sb2.append("'" + str12[2] + "',");
+                    sb2.append("'" + str12[3] + "',");
+                    sb2.append("'" + str12[4] + "',");
+                    sb2.append("'" + str12[5] + "'");
+                    sb2.append(str2);
+                    System.out.println(sb2.toString() + "  jaja");
+                    d4.execSQL(sb2.toString());
+                }
+                d4.setTransactionSuccessful();
+                d4.endTransaction();
+                d4.close();
+
+                //-----------------Tabla HORNALES------------------------------------
+                List<String[]> data = new ArrayList<String[]>();
+                SQLiteDatabase db1 = admine2.getWritableDatabase();
+                Cursor fila1 = db1.rawQuery("SELECT ID, FECHA, TRABAJO,CANTJORNAL, VALORJORNAL, TOTAL FROM HORNAL", null);
+                //Se guardan los elementos de cada fila
+                while (fila1.moveToNext()) {
+                    data.add(new String[]{
+                            fila1.getString(0),
+                            fila1.getString(1),
+                            fila1.getString(2),
+                            fila1.getString(3),
+                            fila1.getString(4),
+                            fila1.getString(5)
+
+                    });
+                }
+                db1.close();
+                File f = new File(filePath8);
+                CSVWriter writer5;
+                f.delete();
+                try {
+                    // File exist
+                    if (f.exists() && !f.isDirectory()) {
+                        FileWriter mFileWriter = new FileWriter(filePath8, true);
+                        writer5 = new CSVWriter(mFileWriter, ';');
+                    } else {
+                        writer5 = new CSVWriter(new FileWriter(filePath8), ';');
+                    }
+                    writer5.writeAll(data);
+                    writer5.close();
+                } catch (IOException e) {
+                }
+            } catch (Exception e) {
+                Toast.makeText(homep.this, "Error-new" + e.toString(), Toast.LENGTH_LONG).show();
+            }
+        }
     }
 }
