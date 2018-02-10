@@ -96,7 +96,7 @@ public class homep extends AppCompatActivity {
                         String rt = us22 + "/Animales.csv";
                         StorageReference pathReference1 = storageRef.child(rt.replace(" ", ""));
                         try {
-                            final File localFile = File.createTempFile("Da1", "cvs");
+                            final File localFile = new File(dir, "Animales.csv");
                             pathReference1.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
@@ -118,7 +118,7 @@ public class homep extends AppCompatActivity {
                         rt = us22 + "/Medicamentos.csv";
                         StorageReference pathReference2 = storageRef.child(rt.replace(" ", ""));
                         try {
-                            final File localFile = File.createTempFile("Da2", "cvs");
+                            final File localFile = new File(dir, "Medicamentos.csv");
                             pathReference2.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
@@ -140,7 +140,7 @@ public class homep extends AppCompatActivity {
                         rt = us22 + "/Finca.csv";
                         StorageReference pathReference3 = storageRef.child(rt.replace(" ", ""));
                         try {
-                            final File localFile = File.createTempFile("Da3", "cvs");
+                            final File localFile = new File(dir, "Finca.csv");
                             pathReference3.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
@@ -162,7 +162,7 @@ public class homep extends AppCompatActivity {
                         rt = us22 + "/Leche.csv";
                         StorageReference pathReference4 = storageRef.child(rt.replace(" ", ""));
                         try {
-                            final File localFile = File.createTempFile("Da4", "cvs");
+                            final File localFile = new File(dir, "Leche.csv");
                             pathReference4.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
@@ -184,7 +184,7 @@ public class homep extends AppCompatActivity {
                         rt = us22 + "/Ventas.csv";
                         StorageReference pathReference5 = storageRef.child(rt.replace(" ", ""));
                         try {
-                            final File localFile = File.createTempFile("Da5", "cvs");
+                            final File localFile = new File(dir, "Ventas.csv");
                             pathReference5.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
@@ -207,7 +207,7 @@ public class homep extends AppCompatActivity {
                         rt = us22 + "/Hierro.csv";
                         StorageReference pathReference6 = storageRef.child(rt.replace(" ", ""));
                         try {
-                            final File localFile = File.createTempFile("Da6", "cvs");
+                            final File localFile = new File(dir, "Hierro.csv");
                             pathReference6.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
@@ -229,7 +229,7 @@ public class homep extends AppCompatActivity {
                         rt = us22 + "/Propietarios.csv";
                         StorageReference pathReference7 = storageRef.child(rt.replace(" ", ""));
                         try {
-                            final File localFile = File.createTempFile("Da7", "cvs");
+                            final File localFile = new File(dir, "Propietarios.csv");
                             pathReference7.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
@@ -251,7 +251,7 @@ public class homep extends AppCompatActivity {
                         rt = us22 + "/jo.csv";
                         StorageReference pathReference8 = storageRef.child(rt.replace(" ", ""));
                         try {
-                            final File localFile = File.createTempFile("Da8", "cvs");
+                            final File localFile = new File(dir, "jo.csv");
                             pathReference8.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
@@ -370,26 +370,26 @@ public class homep extends AppCompatActivity {
     public void configuracion(View view) {
         Intent i = new Intent(homep.this, home_configuracion.class);
         startActivity(i);
-        finish();
+        //finish();
     }
     public void consultas(View view) {
         Intent i = new Intent(homep.this, home_consultas.class);
         startActivity(i);
-        finish();
+        //finish();
 
     }
 
     public void ingreso_info(View view) {
         Intent i = new Intent(homep.this, botones_ingreso_info.class);
         startActivity(i);
-        finish();
+        //finish();
 
     }
 
     public void backup(View view) {
         Intent i = new Intent(homep.this, home_datos.class);
         startActivity(i);
-        finish();
+        //finish();
 
     }
 
@@ -1092,13 +1092,14 @@ public class homep extends AppCompatActivity {
     }
     public void prube (View view) {
         UsersSQLiteHelper admine2 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
+
         if(!localFile1.equals("")&&!localFile2.equals("")&&!localFile3.equals("")&&!localFile4.equals("")&& !localFile5.equals("")&&!localFile6.equals("")&&!localFile7.equals("")&&!localFile8.equals("")) {
-            Toast.makeText(homep.this, "esto"+localFile1, Toast.LENGTH_LONG).show();
             //------------Carga CSV Animales ----------------------------------------
             try {
+                Toast.makeText(homep.this, "Entré", Toast.LENGTH_LONG).show();
 
                 SQLiteDatabase d = admine2.getWritableDatabase();
-                File file = new File(localFile1);
+                File file = new File(filePath2);
                 FileInputStream fis = null;
                 fis = new FileInputStream(file);
                 fis.getChannel().position(0);
@@ -1146,71 +1147,13 @@ public class homep extends AppCompatActivity {
                 d.endTransaction();
                 d.close();
 
-
-                //-----------------Tabla Animales ------------------------------------
-                List<String[]> data2 = new ArrayList<String[]>();
-                SQLiteDatabase db2 = admine2.getWritableDatabase();
-                Cursor fila2 = db2.rawQuery("SELECT * FROM ANIMALESN", null);
-                //Se guardaran los elementos de cada fila
-                while (fila2.moveToNext()) {
-                    data2.add(new String[]{
-                            fila2.getString(0),
-                            fila2.getString(1),
-                            fila2.getString(2),
-                            fila2.getString(3),
-                            fila2.getString(4),
-                            fila2.getString(5),
-                            fila2.getString(6),
-                            fila2.getString(7),
-                            fila2.getString(8),
-                            fila2.getString(9),
-                            fila2.getString(10),
-                            fila2.getString(11),
-                            fila2.getString(12),
-                            fila2.getString(13),
-                            fila2.getString(14),
-                            fila2.getString(15),
-                            fila2.getString(16),
-                            fila2.getString(17),
-                            fila2.getString(18),
-                            fila2.getString(19),
-                            fila2.getString(20),
-                            fila2.getString(21),
-                            fila2.getString(22)
-                    });
-                }
-                db2.close();
-
-
-                File f2 = new File(filePath2);
-                CSVWriter writer2;
-                f2.delete();
-                try {
-                    // File exist
-                    if (f2.exists() && !f2.isDirectory()) {
-                        FileWriter mFileWriter = new FileWriter(filePath2, true);
-                        writer2 = new CSVWriter(mFileWriter, ';');
-                    } else {
-                        writer2 = new CSVWriter(new FileWriter(filePath2), ';');
-                    }
-
-                    writer2.writeAll(data2);
-
-                    writer2.close();
-
-                } catch (IOException e) {
-
-                }
             } catch (Exception e) {
-
             }
-
-
             // Local temp file has been created
             //------------Carga CSV Animales ----------------------------------------
             try {
                 SQLiteDatabase db5 = admine2.getWritableDatabase();
-                File file = new File(localFile2);
+                File file = new File(filePath1);
                 FileInputStream fis = null;
 
                 fis = new FileInputStream(file);
@@ -1241,56 +1184,14 @@ public class homep extends AppCompatActivity {
                 db5.close();
                 //Baja los datos a la carpeta datos
 
-                //-----------------Tabla tratamientos------------------------------------
-                List<String[]> data = new ArrayList<String[]>();
-                SQLiteDatabase db1 = admine2.getWritableDatabase();
-                Cursor fila1 = db1.rawQuery("SELECT ID,CODIGO, MEDICAMENTO, DETALLE, COSTO,FECHA FROM TRATAMIENTOS", null);
-                //Se guardan los elementos de cada fila
-                while (fila1.moveToNext()) {
-                    data.add(new String[]{
-                            fila1.getString(0),
-                            fila1.getString(1),
-                            fila1.getString(2),
-                            fila1.getString(3),
-                            fila1.getString(4),
-                            fila1.getString(5)
-
-                    });
-                }
-                db1.close();
-
-
-                File f = new File(filePath);
-                CSVWriter writer;
-                f.delete();
-                try {
-                    // File exist
-                    if (f.exists() && !f.isDirectory()) {
-                        FileWriter mFileWriter = new FileWriter(filePath, true);
-                        writer = new CSVWriter(mFileWriter, ';');
-                    } else {
-                        writer = new CSVWriter(new FileWriter(filePath), ';');
-                    }
-
-                    writer.writeAll(data);
-
-                    writer.close();
-
-                } catch (IOException e) {
-
-                }
-
             } catch (Exception e) {
-
             }
-
-
             // Local temp file has been created
             //------------Carga CSV Animales ----------------------------------------
             try {
 
                 SQLiteDatabase d5 = admine2.getWritableDatabase();
-                File file = new File(localFile3);
+                File file = new File(filePath3);
                 FileInputStream fis = null;
                 fis = new FileInputStream(file);
                 fis.getChannel().position(0);
@@ -1317,55 +1218,14 @@ public class homep extends AppCompatActivity {
                 d5.setTransactionSuccessful();
                 d5.endTransaction();
                 d5.close();
-
-                //--------------- Tabla Fincas---------------------------------
-                List<String[]> data3 = new ArrayList<String[]>();
-                SQLiteDatabase db5 = admine2.getWritableDatabase();
-                Cursor fila5 = db5.rawQuery("SELECT * FROM NFINCAS", null);
-                //Se guardaran los elementos de cada fila
-                while (fila5.moveToNext()) {
-                    data3.add(new String[]{
-                            fila5.getString(0),
-                            fila5.getString(1),
-                            fila5.getString(2),
-                            fila5.getString(3),
-                            fila5.getString(4),
-                            fila5.getString(5)
-                    });
-                }
-                db5.close();
-
-                File f3 = new File(filePath3);
-                CSVWriter writer3;
-                f3.delete();
-                try {
-                    // File exist
-                    if (f3.exists() && !f3.isDirectory()) {
-                        FileWriter mFileWriter = new FileWriter(filePath3, true);
-                        writer3 = new CSVWriter(mFileWriter, ';');
-                    } else {
-                        writer3 = new CSVWriter(new FileWriter(filePath3), ';');
-                    }
-
-                    writer3.writeAll(data3);
-
-                    writer3.close();
-
-                } catch (IOException e) {
-
-                }
-
                 Toast.makeText(homep.this, "Copia de seguridad cargada!!", Toast.LENGTH_LONG).show();
-
             } catch (Exception e) {
-
             }
-
             // Local temp file has been created
             //------------Carga CSV Animales ----------------------------------------
             try {
                 SQLiteDatabase db55 = admine2.getWritableDatabase();
-                File file = new File(localFile4);
+                File file = new File(filePath9);
                 FileInputStream fis = null;
 
                 fis = new FileInputStream(file);
@@ -1392,50 +1252,13 @@ public class homep extends AppCompatActivity {
                 db55.endTransaction();
                 db55.close();
 
-                //-----------------Tabla Leche------------------------------------
-                List<String[]> data11 = new ArrayList<String[]>();
-                SQLiteDatabase db11 = admine2.getWritableDatabase();
-                Cursor fila11 = db11.rawQuery("SELECT * FROM LECHE", null);
-                //Se guardan los elementos de cada fila
-                while (fila11.moveToNext()) {
-                    data11.add(new String[]{
-                            fila11.getString(0),
-                            fila11.getString(1),
-                            fila11.getString(2),
-                            fila11.getString(3)
-                    });
-                }
-                db11.close();
-                File f9 = new File(filePath9);
-                CSVWriter writer9;
-                f9.delete();
-                try {
-                    // File exist
-                    if (f9.exists() && !f9.isDirectory()) {
-                        FileWriter mFileWriter = new FileWriter(filePath9, true);
-                        writer9 = new CSVWriter(mFileWriter, ';');
-                    } else {
-                        writer9 = new CSVWriter(new FileWriter(filePath9), ';');
-                    }
-
-                    writer9.writeAll(data11);
-
-                    writer9.close();
-
-                } catch (IOException e) {
-
-                }
-
             } catch (Exception e) {
-
             }
-
-
             // Local temp file has been created
             //------------Carga CSV Animales ----------------------------------------
             try {
                 SQLiteDatabase d2 = admine2.getWritableDatabase();
-                File file = new File(localFile5);
+                File file = new File(filePath1);
                 FileInputStream fis = null;
                 fis = new FileInputStream(file);
                 fis.getChannel().position(0);
@@ -1466,47 +1289,7 @@ public class homep extends AppCompatActivity {
                 d2.setTransactionSuccessful();
                 d2.endTransaction();
                 d2.close();
-                //--------------- Tabla Ventas---------------------------------
-                List<String[]> data1 = new ArrayList<String[]>();
-                SQLiteDatabase db4 = admine2.getWritableDatabase();
-                Cursor fila4 = db4.rawQuery("SELECT * FROM VENTAS", null);
-                //Se guardaran los elementos de cada fila
-                while (fila4.moveToNext()) {
-                    data1.add(new String[]{
-                            fila4.getString(0),
-                            fila4.getString(1),
-                            fila4.getString(2),
-                            fila4.getString(3),
-                            fila4.getString(4),
-                            fila4.getString(5),
-                            fila4.getString(6),
-                            fila4.getString(7),
-                            fila4.getString(8)
-                    });
-                }
-                db4.close();
 
-
-                File f1 = new File(filePath1);
-
-                CSVWriter writer1;
-                f1.delete();
-                try {
-                    // File exist
-                    if (f1.exists() && !f1.isDirectory()) {
-                        FileWriter mFileWriter = new FileWriter(filePath1, true);
-                        writer1 = new CSVWriter(mFileWriter, ';');
-                    } else {
-                        writer1 = new CSVWriter(new FileWriter(filePath1), ';');
-                    }
-
-                    writer1.writeAll(data1);
-
-                    writer1.close();
-
-                } catch (IOException e) {
-
-                }
             } catch (Exception e) {
 
             }
@@ -1514,7 +1297,7 @@ public class homep extends AppCompatActivity {
             // Local temp file has been created
             try {
                 SQLiteDatabase d4 = admine2.getWritableDatabase();
-                File file = new File(localFile6);
+                File file = new File(filePath5);
                 FileInputStream fis = null;
                 fis = new FileInputStream(file);
                 fis.getChannel().position(0);
@@ -1538,50 +1321,15 @@ public class homep extends AppCompatActivity {
                 d4.setTransactionSuccessful();
                 d4.endTransaction();
                 d4.close();
-                //--------------- Tabla Hierros---------------------------------
-                List<String[]> data5 = new ArrayList<String[]>();
-                SQLiteDatabase db6 = admine2.getWritableDatabase();
-                Cursor fila7 = db6.rawQuery("SELECT * FROM THIERRO", null);
-                //Se guardaran los elementos de cada fila
-                while (fila7.moveToNext()) {
-                    data5.add(new String[]{
-                            fila7.getString(0),
-                            fila7.getString(1)
-                    });
-                }
-                db6.close();
-
-                File f5 = new File(filePath5);
-                CSVWriter writ;
-                f5.delete();
-                try {
-                    // File exist
-                    if (f5.exists() && !f5.isDirectory()) {
-                        FileWriter mFileWriter = new FileWriter(filePath5, true);
-                        writ = new CSVWriter(mFileWriter, ';');
-                    } else {
-                        writ = new CSVWriter(new FileWriter(filePath5), ';');
-                    }
-
-                    writ.writeAll(data5);
-
-                    writ.close();
-                    Toast.makeText(homep.this, "Copia  de seguridad guardada en la carpeta Datos.", Toast.LENGTH_LONG).show();
-
-                } catch (IOException e) {
-                    Toast.makeText(homep.this, "Error: en la configuración de la APP, active los permisos de alamacenamiento.", Toast.LENGTH_LONG).show();
-
-                }
 
             } catch (Exception e) {
                 Toast.makeText(homep.this, "Error-new" + e.toString(), Toast.LENGTH_LONG).show();
-
             }
 
             // Local temp file has been created
             try {
                 SQLiteDatabase d3 = admine2.getWritableDatabase();
-                File file = new File(localFile7);
+                File file = new File(filePath4);
                 FileInputStream fis = null;
                 fis = new FileInputStream(file);
                 fis.getChannel().position(0);
@@ -1606,52 +1354,13 @@ public class homep extends AppCompatActivity {
                 d3.endTransaction();
                 d3.close();
 
-
-                //--------------- Tabla Propietarios---------------------------------
-                List<String[]> data4 = new ArrayList<String[]>();
-                SQLiteDatabase db3 = admine2.getWritableDatabase();
-                Cursor fila3 = db3.rawQuery("SELECT * FROM PROPIETARIOS", null);
-                //Se guardaran los elementos de cada fila
-                while (fila3.moveToNext()) {
-                    data4.add(new String[]{
-                            fila3.getString(0),
-                            fila3.getString(1),
-                            fila3.getString(2)
-
-                    });
-                }
-                db3.close();
-
-                File f4 = new File(filePath4);
-                CSVWriter writer4;
-                f4.delete();
-                try {
-                    // File exist
-                    if (f4.exists() && !f4.isDirectory()) {
-                        FileWriter mFileWriter = new FileWriter(filePath4, true);
-                        writer4 = new CSVWriter(mFileWriter, ';');
-                    } else {
-                        writer4 = new CSVWriter(new FileWriter(filePath4), ';');
-                    }
-
-                    writer4.writeAll(data4);
-
-                    writer4.close();
-
-                } catch (IOException e) {
-
-                }
-
             } catch (Exception e) {
                 Toast.makeText(homep.this, "Error-new" + e.toString(), Toast.LENGTH_LONG).show();
-
             }
-
-
             // Local temp file has been created
             try {
                 SQLiteDatabase d4 = admine2.getWritableDatabase();
-                File file = new File(localFile8);
+                File file = new File(filePath8);
                 FileInputStream fis = null;
                 fis = new FileInputStream(file);
                 fis.getChannel().position(0);
@@ -1679,42 +1388,11 @@ public class homep extends AppCompatActivity {
                 d4.setTransactionSuccessful();
                 d4.endTransaction();
                 d4.close();
-
-                //-----------------Tabla HORNALES------------------------------------
-                List<String[]> data = new ArrayList<String[]>();
-                SQLiteDatabase db1 = admine2.getWritableDatabase();
-                Cursor fila1 = db1.rawQuery("SELECT ID, FECHA, TRABAJO,CANTJORNAL, VALORJORNAL, TOTAL FROM HORNAL", null);
-                //Se guardan los elementos de cada fila
-                while (fila1.moveToNext()) {
-                    data.add(new String[]{
-                            fila1.getString(0),
-                            fila1.getString(1),
-                            fila1.getString(2),
-                            fila1.getString(3),
-                            fila1.getString(4),
-                            fila1.getString(5)
-
-                    });
-                }
-                db1.close();
-                File f = new File(filePath8);
-                CSVWriter writer5;
-                f.delete();
-                try {
-                    // File exist
-                    if (f.exists() && !f.isDirectory()) {
-                        FileWriter mFileWriter = new FileWriter(filePath8, true);
-                        writer5 = new CSVWriter(mFileWriter, ';');
-                    } else {
-                        writer5 = new CSVWriter(new FileWriter(filePath8), ';');
-                    }
-                    writer5.writeAll(data);
-                    writer5.close();
-                } catch (IOException e) {
-                }
             } catch (Exception e) {
                 Toast.makeText(homep.this, "Error-new" + e.toString(), Toast.LENGTH_LONG).show();
             }
+            Toast.makeText(homep.this, "Salí", Toast.LENGTH_LONG).show();
+
         }
     }
 }
