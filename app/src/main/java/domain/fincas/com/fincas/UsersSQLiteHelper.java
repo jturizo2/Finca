@@ -120,9 +120,9 @@ public class UsersSQLiteHelper extends SQLiteOpenHelper{
         db.execSQL(SQLCREATE9);
         db.execSQL(SQLCREATE10);
 
-        db.execSQL("INSERT INTO THIERRO (HIERRO)VALUES ('Ninguno')");
-        db.execSQL("INSERT INTO NFINCAS (CODIGO,NOMBREF,HECTAREAS,DIVICIONES,LOTES)VALUES (' ',' ', ' ',' ',' ')");
-        db.execSQL("INSERT INTO PROPIETARIOS (NOMBRE,APELLIDO) VALUES ('','')");
+        //db.execSQL("INSERT INTO THIERRO (HIERRO)VALUES ('Ninguno')");
+        //db.execSQL("INSERT INTO NFINCAS (CODIGO,NOMBREF,HECTAREAS,DIVICIONES,LOTES)VALUES (' ',' ', ' ',' ',' ')");
+        //db.execSQL("INSERT INTO PROPIETARIOS (NOMBRE,APELLIDO) VALUES ('','')");
     }
 
     @Override

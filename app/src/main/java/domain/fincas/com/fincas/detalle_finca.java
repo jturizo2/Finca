@@ -158,7 +158,7 @@ public class detalle_finca extends AppCompatActivity {
         // fin consulta de finca (nombre,lotes, divisiones, hectareas)
 
         //Consulta de animales
-        text5.setText(s1);
+        text5.setText(Integer.toString(Integer.parseInt(s1)-1)+"");
         text6.setText(s2);
         text7.setText(s3);
         text8.setText(s4);
@@ -168,7 +168,7 @@ public class detalle_finca extends AppCompatActivity {
         text12.setText(s8);
         tvacas.setText(s9);
 
-        tv1.setText(s10);
+        tv1.setText(Integer.toString(Integer.parseInt(s10)-1)+"");
         tv2.setText(s11);
         tv3.setText(s12);
         tv4.setText(s13);

@@ -5,10 +5,16 @@ import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -34,10 +40,15 @@ import java.util.Date;
 import java.util.List;
 
 public class homep extends AppCompatActivity {
+    ProgressBar circular;
+    Button bn1,bn2,bn4,bn5,bn6,bn7;
+    LinearLayout cir1;
+
     String us22="";
     FirebaseAuth.AuthStateListener mAut;
     FirebaseAuth mAut2;
     int ev1=0,ev2=0,ev3=0,ev4=0,ev5=0,ev6=0,ev7=0,ev8=0;
+    int ev11=0,ev22=0,ev33=0,ev44=0,ev55=0,ev66=0,ev77=0,ev88=0;
     //----------- Sacamos información de las tablas----------------------------------------
     File dir =crearDirectorioPublico("Datos"); //Metodo para crer la ruta de almacenamiento del  backup
     String NameFile1 = "Medicamentos.csv";
@@ -65,6 +76,8 @@ public class homep extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homep);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        añadirVistas();
+
         mAut = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -80,12 +93,10 @@ public class homep extends AppCompatActivity {
                 //   Fin de la Consulta
 
                 if("".equals(name2)) {
-
-
                     if ((user1 != null) && user1.isEmailVerified()) {
                         us22 = user1.getEmail();
                         Toast.makeText(getApplicationContext(), "Welcome "+user1.getEmail(), Toast.LENGTH_LONG).show();
-
+                        new Asyn_load().execute();//Carga de tarea asincrona global
                         //Tareas en el inicio de sesion
                         //Descargar base de datos de la nube
                         FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -102,6 +113,7 @@ public class homep extends AppCompatActivity {
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                                     // Local temp file has been created
                                     localFile1=localFile.toString();
+                                    ev11=1;
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -123,6 +135,7 @@ public class homep extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                                     localFile2=localFile.toString();
+                                    ev22=1;
 
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
@@ -145,6 +158,7 @@ public class homep extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                                     localFile3=localFile.toString();
+                                    ev33=1;
 
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
@@ -167,7 +181,7 @@ public class homep extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                                     localFile4=localFile.toString();
-
+                                    ev44=1;
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -189,7 +203,7 @@ public class homep extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                                     localFile5=localFile.toString();
-
+                                    ev55=1;
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -212,7 +226,7 @@ public class homep extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                                     localFile6=localFile.toString();
-
+                                    ev66=1;
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -234,7 +248,7 @@ public class homep extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                                     localFile7=localFile.toString();
-
+                                    ev77=1;
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -256,7 +270,7 @@ public class homep extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                                     localFile8=localFile.toString();
-
+                                    ev88=1;
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -286,8 +300,134 @@ public class homep extends AppCompatActivity {
         };
 
     }
+    private void añadirVistas(){
+        bn1=(Button) findViewById(R.id.bn1);
+        bn2=(Button) findViewById(R.id.bn2);
+        bn4=(Button) findViewById(R.id.bn4);
+        bn5=(Button) findViewById(R.id.bn5);
+        bn6=(Button) findViewById(R.id.bn6);
+        bn7=(Button) findViewById(R.id.bn7);
+        cir1=(LinearLayout) findViewById(R.id.cir1);
+        circular =(ProgressBar)findViewById(R.id.cir);
+        circular.setProgress(0);
+        ViewGroup.LayoutParams params = cir1.getLayoutParams();
+        params.height = 0;
+        cir1.setLayoutParams(params);
+
+    }
+    public  class Asyn_load extends AsyncTask <Void,Integer,Void>{
+        int prog;
+
+        @Override
+        protected void onPreExecute() {
+            prog=0;
+            circular.setVisibility(View.VISIBLE);
+            ViewGroup.LayoutParams params = cir1.getLayoutParams();
+            params.height = 200;
+            cir1.setLayoutParams(params);
+
+            bn1.setVisibility(View.INVISIBLE);
+            bn2.setVisibility(View.INVISIBLE);
+            bn4.setVisibility(View.INVISIBLE);
+            bn5.setVisibility(View.INVISIBLE);
+            bn6.setVisibility(View.INVISIBLE);
+            bn7.setVisibility(View.INVISIBLE);
 
 
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            while (prog<100){
+                if(ev11==1 &&ev22==1 &&ev33==1 &&ev44==1 &&ev55==1 &&ev66==1 &&ev77==1&&ev88==1) {
+                    prog=110;
+                }
+                SystemClock.sleep(100);
+            }
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+           circular.setProgress(values[0]);
+
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            circular.setVisibility(View.INVISIBLE);
+            ViewGroup.LayoutParams params = cir1.getLayoutParams();
+            params.height = 0;
+            cir1.setLayoutParams(params);
+
+            bn1.setVisibility(View.VISIBLE);
+            bn2.setVisibility(View.VISIBLE);
+            bn4.setVisibility(View.VISIBLE);
+            bn5.setVisibility(View.VISIBLE);
+            bn6.setVisibility(View.VISIBLE);
+            bn7.setVisibility(View.VISIBLE);
+            bn1.setEnabled(false);
+            bn2.setEnabled(false);
+            bn4.setEnabled(false);
+            bn5.setEnabled(false);
+            bn6.setEnabled(false);
+            bn7.setEnabled(false);
+
+            //Toast.makeText(getApplicationContext(), "Fin ", Toast.LENGTH_LONG).show();
+            prube();
+        }
+    }
+
+    public  class Asyn_out extends AsyncTask <Void,Integer,Void>{
+        int progreso;
+
+        @Override
+        protected void onPreExecute() {
+            progreso=0;
+            circular.setVisibility(View.VISIBLE);
+            ViewGroup.LayoutParams params = cir1.getLayoutParams();
+            params.height = 200;
+            cir1.setLayoutParams(params);
+
+            bn1.setVisibility(View.INVISIBLE);
+            bn2.setVisibility(View.INVISIBLE);
+            bn4.setVisibility(View.INVISIBLE);
+            bn5.setVisibility(View.INVISIBLE);
+            bn6.setVisibility(View.INVISIBLE);
+            bn7.setVisibility(View.INVISIBLE);
+
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            while (progreso<100){
+                if(ev1==1 &&ev2==1 &&ev3==1 &&ev4==1 &&ev5==1 &&ev6==1 &&ev7==1&&ev8==1) {
+                progreso=110;
+                }
+                    SystemClock.sleep(5);
+            }
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            circular.setProgress(values[0]);
+
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            circular.setVisibility(View.INVISIBLE);
+            ViewGroup.LayoutParams params = cir1.getLayoutParams();
+            params.height = 0;
+            cir1.setLayoutParams(params);
+
+            //Toast.makeText(getApplicationContext(), "Fin ", Toast.LENGTH_LONG).show();
+            outEnd();
+        }
+    }
     @Override
     protected void onStart() {
         super.onStart();
@@ -395,6 +535,7 @@ public class homep extends AppCompatActivity {
 
     public void cerrar(View view) {
         String user =FirebaseAuth.getInstance().getCurrentUser().getEmail().toString();
+
         if(ev1==0 && ev2==0 && ev3==0 && ev4==0 && ev5==0 && ev6==0 && ev7==0 && ev8==0) {
         //Tareas cuando cierras sesion:
         //Subir base de datos local a la nube
@@ -663,14 +804,16 @@ public class homep extends AppCompatActivity {
             writ.close();
             Toast.makeText(this, "Copia  de seguridad guardada en la carpeta Datos.", Toast.LENGTH_LONG).show();
 
+
         } catch (IOException e) {
             Toast.makeText(this, "Error: en la configuración de la APP, active los permisos de alamacenamiento.", Toast.LENGTH_LONG).show();
 
         }
 
-            Toast.makeText(homep.this, "Presione de nuevo cerrar sesion", Toast.LENGTH_LONG).show();
         }
         //------------------------------------------------------------------------------------------------
+        new Asyn_out().execute();
+
         //Guardar en la nube la copia de seguridad
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
@@ -838,35 +981,36 @@ public class homep extends AppCompatActivity {
 
             }
         });
-            if(ev1==1 && ev2==1 && ev3==1 && ev4==1 && ev5==1 && ev6==1 && ev7==1 && ev8==1) {
-                FirebaseAuth.getInstance().signOut();
-                UsersSQLiteHelper ad = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
-                SQLiteDatabase db = ad.getWritableDatabase();
-                db.execSQL("DELETE FROM NFINCAS");
-                db.execSQL("DELETE FROM TRATAMIENTOS");
-                db.execSQL("DELETE FROM HORNAL");
-                db.execSQL("DELETE FROM LECHE");
-                db.execSQL("DELETE FROM VENTAS");
-                db.execSQL("DELETE FROM ANIMALESN");
-                db.execSQL("DELETE FROM PROPIETARIOS");
-                db.execSQL("DELETE FROM THIERRO");
-                db.execSQL("DELETE FROM NNEW");
-                db.close();
 
-                File f4 = new File(filePath);f4.delete();
-                f4 = new File(filePath8);f4.delete();
-                f4 = new File(filePath9);f4.delete();
-                f4 = new File(filePath1);f4.delete();
-                f4 = new File(filePath2);f4.delete();
-                f4 = new File(filePath3);f4.delete();
-                f4 = new File(filePath4);f4.delete();
-                f4 = new File(filePath5);f4.delete();
-                Intent choo2 = new Intent(homep.this, out.class);
-                startActivity(choo2);
-            }
     }
 
+    public void outEnd() {
+            FirebaseAuth.getInstance().signOut();
+            UsersSQLiteHelper ad = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
+            SQLiteDatabase db = ad.getWritableDatabase();
+            db.execSQL("DELETE FROM NFINCAS");
+            db.execSQL("DELETE FROM TRATAMIENTOS");
+            db.execSQL("DELETE FROM HORNAL");
+            db.execSQL("DELETE FROM LECHE");
+            db.execSQL("DELETE FROM VENTAS");
+            db.execSQL("DELETE FROM ANIMALESN");
+            db.execSQL("DELETE FROM PROPIETARIOS");
+            db.execSQL("DELETE FROM THIERRO");
+            db.execSQL("DELETE FROM NNEW");
+            db.close();
 
+            File f4 = new File(filePath);f4.delete();
+            f4 = new File(filePath8);f4.delete();
+            f4 = new File(filePath9);f4.delete();
+            f4 = new File(filePath1);f4.delete();
+            f4 = new File(filePath2);f4.delete();
+            f4 = new File(filePath3);f4.delete();
+            f4 = new File(filePath4);f4.delete();
+            f4 = new File(filePath5);f4.delete();
+            Intent choo2 = new Intent(homep.this, MainActivity.class);
+            startActivity(choo2);
+
+    }
     public void reporte(View view) {
 
         List<String[]> data = new ArrayList<String[]>();
@@ -1090,15 +1234,15 @@ public class homep extends AppCompatActivity {
         if (!directorio.mkdirs()) System.out.println("Error: No se creo el directorio público");
         return directorio;
     }
-    public void prube (View view) {
-        UsersSQLiteHelper admine2 = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
+    public void prube () {
+        UsersSQLiteHelper admi = new UsersSQLiteHelper(homep.this, "FINCAS", null, 1);
 
         if(!localFile1.equals("")&&!localFile2.equals("")&&!localFile3.equals("")&&!localFile4.equals("")&& !localFile5.equals("")&&!localFile6.equals("")&&!localFile7.equals("")&&!localFile8.equals("")) {
             //------------Carga CSV Animales ----------------------------------------
             try {
-                Toast.makeText(homep.this, "Entré", Toast.LENGTH_LONG).show();
+                //Toast.makeText(homep.this, "Entré", Toast.LENGTH_LONG).show();
 
-                SQLiteDatabase d = admine2.getWritableDatabase();
+                SQLiteDatabase d = admi.getWritableDatabase();
                 File file = new File(filePath2);
                 FileInputStream fis = null;
                 fis = new FileInputStream(file);
@@ -1148,12 +1292,14 @@ public class homep extends AppCompatActivity {
                 d.close();
 
             } catch (Exception e) {
+                Toast.makeText(homep.this, "Entré1", Toast.LENGTH_LONG).show();
+
             }
             // Local temp file has been created
             //------------Carga CSV Animales ----------------------------------------
             try {
-                SQLiteDatabase db5 = admine2.getWritableDatabase();
-                File file = new File(filePath1);
+                SQLiteDatabase db5 = admi.getWritableDatabase();
+                File file = new File(filePath);
                 FileInputStream fis = null;
 
                 fis = new FileInputStream(file);
@@ -1185,12 +1331,14 @@ public class homep extends AppCompatActivity {
                 //Baja los datos a la carpeta datos
 
             } catch (Exception e) {
+                Toast.makeText(homep.this, "Entré2", Toast.LENGTH_LONG).show();
+
             }
             // Local temp file has been created
             //------------Carga CSV Animales ----------------------------------------
             try {
 
-                SQLiteDatabase d5 = admine2.getWritableDatabase();
+                SQLiteDatabase d5 = admi.getWritableDatabase();
                 File file = new File(filePath3);
                 FileInputStream fis = null;
                 fis = new FileInputStream(file);
@@ -1218,13 +1366,15 @@ public class homep extends AppCompatActivity {
                 d5.setTransactionSuccessful();
                 d5.endTransaction();
                 d5.close();
-                Toast.makeText(homep.this, "Copia de seguridad cargada!!", Toast.LENGTH_LONG).show();
+//                Toast.makeText(homep.this, "Copia de seguridad cargada!!", Toast.LENGTH_LONG).show();
             } catch (Exception e) {
+                Toast.makeText(homep.this, "Entré3", Toast.LENGTH_LONG).show();
+
             }
             // Local temp file has been created
             //------------Carga CSV Animales ----------------------------------------
             try {
-                SQLiteDatabase db55 = admine2.getWritableDatabase();
+                SQLiteDatabase db55 = admi.getWritableDatabase();
                 File file = new File(filePath9);
                 FileInputStream fis = null;
 
@@ -1253,11 +1403,13 @@ public class homep extends AppCompatActivity {
                 db55.close();
 
             } catch (Exception e) {
+                Toast.makeText(homep.this, "Entré4", Toast.LENGTH_LONG).show();
+
             }
             // Local temp file has been created
             //------------Carga CSV Animales ----------------------------------------
             try {
-                SQLiteDatabase d2 = admine2.getWritableDatabase();
+                SQLiteDatabase d2 = admi.getWritableDatabase();
                 File file = new File(filePath1);
                 FileInputStream fis = null;
                 fis = new FileInputStream(file);
@@ -1291,12 +1443,13 @@ public class homep extends AppCompatActivity {
                 d2.close();
 
             } catch (Exception e) {
+                Toast.makeText(homep.this, "Entré5", Toast.LENGTH_LONG).show();
 
             }
 
             // Local temp file has been created
             try {
-                SQLiteDatabase d4 = admine2.getWritableDatabase();
+                SQLiteDatabase d4 = admi.getWritableDatabase();
                 File file = new File(filePath5);
                 FileInputStream fis = null;
                 fis = new FileInputStream(file);
@@ -1323,12 +1476,12 @@ public class homep extends AppCompatActivity {
                 d4.close();
 
             } catch (Exception e) {
-                Toast.makeText(homep.this, "Error-new" + e.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(homep.this, "Entré6", Toast.LENGTH_LONG).show();
             }
 
             // Local temp file has been created
             try {
-                SQLiteDatabase d3 = admine2.getWritableDatabase();
+                SQLiteDatabase d3 = admi.getWritableDatabase();
                 File file = new File(filePath4);
                 FileInputStream fis = null;
                 fis = new FileInputStream(file);
@@ -1340,6 +1493,7 @@ public class homep extends AppCompatActivity {
                 String str1 = "INSERT INTO " + tableName + " (" + columns + ") values(";
                 String str2 = ");";
                 d3.beginTransaction();
+                line = bRead.readLine();
                 while ((line = bRead.readLine()) != null) {
                     line = line.replace("\"", "");
                     System.out.println(":propi:  " + line + "  jaja");
@@ -1355,11 +1509,11 @@ public class homep extends AppCompatActivity {
                 d3.close();
 
             } catch (Exception e) {
-                Toast.makeText(homep.this, "Error-new" + e.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(homep.this, "Entré7", Toast.LENGTH_LONG).show();
             }
             // Local temp file has been created
             try {
-                SQLiteDatabase d4 = admine2.getWritableDatabase();
+                SQLiteDatabase d4 = admi.getWritableDatabase();
                 File file = new File(filePath8);
                 FileInputStream fis = null;
                 fis = new FileInputStream(file);
@@ -1389,9 +1543,15 @@ public class homep extends AppCompatActivity {
                 d4.endTransaction();
                 d4.close();
             } catch (Exception e) {
-                Toast.makeText(homep.this, "Error-new" + e.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(homep.this, "Entré81", Toast.LENGTH_LONG).show();
             }
-            Toast.makeText(homep.this, "Salí", Toast.LENGTH_LONG).show();
+
+            bn1.setEnabled(true);
+            bn2.setEnabled(true);
+            bn4.setEnabled(true);
+            bn5.setEnabled(true);
+            bn6.setEnabled(true);
+            bn7.setEnabled(true);
 
         }
     }

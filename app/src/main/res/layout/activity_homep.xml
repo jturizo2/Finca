@@ -38,68 +38,74 @@
                 android:layout_gravity="center"
                 app:srcCompat="@drawable/finca" />
 
+<LinearLayout
+    android:id="@+id/cir1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal">
+    <ProgressBar
+    android:id="@+id/cir"
+    style="?android:attr/progressBarStyle"
+    android:layout_width="110dp"
+    android:layout_height="110dp"
+    tools:visibility="invisible" />
+</LinearLayout>
+
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/bn1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:layout_gravity="center"
+                android:layout_margin="10dp"
                 android:onClick="ingreso_info"
                 android:text="REGISTRO" />
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/bn2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:layout_gravity="center"
+                android:layout_margin="10dp"
                 android:onClick="consultas"
                 android:text="CONSULTA" />
-            <Button
-                android:id="@+id/but"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_gravity="center"
-                android:onClick="prube"
-                android:text="prube" />
 
 
             <Button
-                android:id="@+id/button20"
+                android:id="@+id/bn4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:layout_gravity="center"
+                android:layout_margin="10dp"
                 android:onClick="backup"
                 android:text="backup datos " />
 
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/bn5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:layout_gravity="center"
+                android:layout_margin="10dp"
                 android:onClick="reporte"
                 android:text="Reporte " />
 
             <Button
-                android:id="@+id/config"
+                android:id="@+id/bn6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:layout_gravity="center"
+                android:layout_margin="10dp"
                 android:onClick="configuracion"
                 android:text="configuracion" />
 
             <Button
-                android:id="@+id/button19"
+                android:id="@+id/bn7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:layout_gravity="center"
+                android:layout_margin="10dp"
                 android:onClick="cerrar"
                 android:text="Cerrar sesión " />
 

@@ -70,6 +70,7 @@ public class consulta_medicamento extends AppCompatActivity {
                 Cursor fila2 = db2.rawQuery("SELECT CODIGO, MEDICAMENTO, DETALLE, COSTO, FECHA  FROM TRATAMIENTOS WHERE  CODIGO='"+use+"'", null);
                 String ssd2 ="";
                 numero N = new numero();
+
                 while (fila2.moveToNext()) {
                     ssd2 += "CODIGO: " + fila2.getString(0)+ "\n"
                             + "MEDICAMENTO: " + fila2.getString(1)+ "\n"

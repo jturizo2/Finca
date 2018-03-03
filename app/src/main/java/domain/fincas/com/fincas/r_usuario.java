@@ -3,6 +3,7 @@ package domain.fincas.com.fincas;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -130,41 +131,38 @@ private void registar(String email,String pass){
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 user.sendEmailVerification();
                 //Crear carpetas nube
-
-                //----------- Sacamos información de las tablas----------------------------------------
                 File dir =crearDirectorioPublico("Datos"); //Metodo para crer la ruta de almacenamiento del  backup
-                String NameFile1 = "Medicamentos.csv";
-                String NameFile8 = "jo.csv";
-                String NameFile11 = "Leche.csv";
-                String NameFile2 = "Ventas.csv";
-                String NameFile3 = "Animales.csv";
-                String NameFile4 = "Finca.csv";
-                String NameFile5 = "Propietarios.csv";
-                String NameFile6 = "Hierro.csv";
-                String filePath = dir.toString() + File.separator +"/"+ NameFile1;
-                String filePath8 = dir.toString() + File.separator +"/"+ NameFile8;
-                String filePath9 = dir.toString() + File.separator +"/"+ NameFile11;
-                String filePath1 = dir.toString() + File.separator +"/"+ NameFile2;
-                String filePath2 = dir.toString() + File.separator +"/"+ NameFile3;
-                String filePath3 = dir.toString() + File.separator +"/"+ NameFile4;
-                String filePath4 = dir.toString() + File.separator +"/"+ NameFile5;
-                String filePath5 = dir.toString() + File.separator +"/"+ NameFile6;
+                String medicamentos = "Medicamentos.csv";
+                String jornales = "jo.csv";
+                String leche = "Leche.csv";
+                String ventas = "Ventas.csv";
+                String animales = "Animales.csv";
+                String finca = "Finca.csv";
+                String propi = "Propietarios.csv";
+                String hierro = "Hierro.csv";
+                String medicamentos2 = dir.toString() + File.separator +"/"+ medicamentos;
+                String jornales2 = dir.toString() + File.separator +"/"+ jornales;
+                String leche2 = dir.toString() + File.separator +"/"+ leche;
+                String ventas2 = dir.toString() + File.separator +"/"+ ventas;
+                String animales2 = dir.toString() + File.separator +"/"+ animales;
+                String finca2 = dir.toString() + File.separator +"/"+ finca;
+                String propi2 = dir.toString() + File.separator +"/"+ propi;
+                String hierro2 = dir.toString() + File.separator +"/"+ hierro;
                 //Idemtificamos usuario iniciado
-
 
                 //-----------------Tabla tratamientos------------------------------------
                 List<String[]> data = new ArrayList<String[]>();
-                data.add(new String[]{""});
-                File f = new File(filePath);
+                data.add(new String[]{" "," "," "," "," "," "});
+                File f = new File(medicamentos2);
                 CSVWriter writer;
                 f.delete();
                 try {
                     // File exist
                     if (f.exists() && !f.isDirectory()) {
-                        FileWriter mFileWriter = new FileWriter(filePath, true);
+                        FileWriter mFileWriter = new FileWriter(medicamentos2, true);
                         writer = new CSVWriter(mFileWriter, ';');
                     } else {
-                        writer = new CSVWriter(new FileWriter(filePath), ';');
+                        writer = new CSVWriter(new FileWriter(medicamentos2), ';');
                     }
 
                     writer.writeAll(data);
@@ -177,17 +175,17 @@ private void registar(String email,String pass){
 
                 //-----------------Tabla HORNALES------------------------------------
                 data = new ArrayList<String[]>();
-                data.add(new String[]{""});
-                f = new File(filePath8);
+                data.add(new String[]{" "," "," "," "," "," "});
+                f = new File(jornales2);
                 CSVWriter writer5;
                 f.delete();
                 try {
                     // File exist
                     if (f.exists() && !f.isDirectory()) {
-                        FileWriter mFileWriter = new FileWriter(filePath8, true);
+                        FileWriter mFileWriter = new FileWriter(jornales2, true);
                         writer5 = new CSVWriter(mFileWriter, ';');
                     } else {
-                        writer5 = new CSVWriter(new FileWriter(filePath8), ';');
+                        writer5 = new CSVWriter(new FileWriter(jornales2), ';');
                     }
 
                     writer5.writeAll(data);
@@ -199,21 +197,21 @@ private void registar(String email,String pass){
                 }
 
                 //-----------------Tabla Leche------------------------------------
-                List<String[]> data11 = new ArrayList<String[]>();
-                data11.add(new String[]{""});
-                File f9 = new File(filePath9);
+                data = new ArrayList<String[]>();
+                data.add(new String[]{" "," "," "," "});
+                File f9 = new File(leche2);
                 CSVWriter writer9;
                 f9.delete();
                 try {
                     // File exist
                     if (f9.exists() && !f9.isDirectory()) {
-                        FileWriter mFileWriter = new FileWriter(filePath9, true);
+                        FileWriter mFileWriter = new FileWriter(leche2, true);
                         writer9 = new CSVWriter(mFileWriter, ';');
                     } else {
-                        writer9 = new CSVWriter(new FileWriter(filePath9), ';');
+                        writer9 = new CSVWriter(new FileWriter(leche2), ';');
                     }
 
-                    writer9.writeAll(data11);
+                    writer9.writeAll(data);
 
                     writer9.close();
 
@@ -221,22 +219,22 @@ private void registar(String email,String pass){
 
                 }
                 //--------------- Tabla Ventas---------------------------------
-                List<String[]> data1 = new ArrayList<String[]>();
-                data1.add(new String[]{""});
-                File f1 = new File(filePath1);
+                data = new ArrayList<String[]>();
+                data.add(new String[]{" "," "," "," "," "," "," "," "," "});
+                File f1 = new File(ventas2);
 
                 CSVWriter writer1;
                 f1.delete();
                 try {
                     // File exist
                     if (f1.exists() && !f1.isDirectory()) {
-                        FileWriter mFileWriter = new FileWriter(filePath1, true);
+                        FileWriter mFileWriter = new FileWriter(ventas2, true);
                         writer1 = new CSVWriter(mFileWriter, ';');
                     } else {
-                        writer1 = new CSVWriter(new FileWriter(filePath1), ';');
+                        writer1 = new CSVWriter(new FileWriter(ventas2), ';');
                     }
 
-                    writer1.writeAll(data1);
+                    writer1.writeAll(data);
 
                     writer1.close();
 
@@ -244,21 +242,21 @@ private void registar(String email,String pass){
 
                 }
                 //-----------------Tabla Animales ------------------------------------
-                List<String[]> data2 = new ArrayList<String[]>();
-                data2.add(new String[]{""});
-                File f2 = new File(filePath2);
+                data = new ArrayList<String[]>();
+                data.add(new String[]{" "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "});
+                File f2 = new File(animales2);
                 CSVWriter writer2;
                 f2.delete();
                 try {
                     // File exist
                     if (f2.exists() && !f2.isDirectory()) {
-                        FileWriter mFileWriter = new FileWriter(filePath2, true);
+                        FileWriter mFileWriter = new FileWriter(animales2, true);
                         writer2 = new CSVWriter(mFileWriter, ';');
                     } else {
-                        writer2 = new CSVWriter(new FileWriter(filePath2), ';');
+                        writer2 = new CSVWriter(new FileWriter(animales2), ';');
                     }
 
-                    writer2.writeAll(data2);
+                    writer2.writeAll(data);
 
                     writer2.close();
 
@@ -267,21 +265,21 @@ private void registar(String email,String pass){
                 }
 
                 //--------------- Tabla Fincas---------------------------------
-                List<String[]> data3 = new ArrayList<String[]>();
-                data3.add(new String[]{""});
-                File f3 = new File(filePath3);
+                data = new ArrayList<String[]>();
+                data.add(new String[]{" "," "," "," "," "," "});
+                File f3 = new File(finca2);
                 CSVWriter writer3;
                 f3.delete();
                 try {
                     // File exist
                     if (f3.exists() && !f3.isDirectory()) {
-                        FileWriter mFileWriter = new FileWriter(filePath3, true);
+                        FileWriter mFileWriter = new FileWriter(finca2, true);
                         writer3 = new CSVWriter(mFileWriter, ';');
                     } else {
-                        writer3 = new CSVWriter(new FileWriter(filePath3), ';');
+                        writer3 = new CSVWriter(new FileWriter(finca2), ';');
                     }
 
-                    writer3.writeAll(data3);
+                    writer3.writeAll(data);
 
                     writer3.close();
 
@@ -289,21 +287,21 @@ private void registar(String email,String pass){
 
                 }
                 //--------------- Tabla Propietarios---------------------------------
-                List<String[]> data4 = new ArrayList<String[]>();
-                data4.add(new String[]{""});
-                File f4 = new File(filePath4);
+                data = new ArrayList<String[]>();
+                data.add(new String[]{" "," "," "});
+                File f4 = new File(propi2);
                 CSVWriter writer4;
                 f4.delete();
                 try {
                     // File exist
                     if (f4.exists() && !f4.isDirectory()) {
-                        FileWriter mFileWriter = new FileWriter(filePath4, true);
+                        FileWriter mFileWriter = new FileWriter(propi2, true);
                         writer4 = new CSVWriter(mFileWriter, ';');
                     } else {
-                        writer4 = new CSVWriter(new FileWriter(filePath4), ';');
+                        writer4 = new CSVWriter(new FileWriter(propi2), ';');
                     }
 
-                    writer4.writeAll(data4);
+                    writer4.writeAll(data);
 
                     writer4.close();
 
@@ -311,21 +309,21 @@ private void registar(String email,String pass){
 
                 }
                 //--------------- Tabla Hierros---------------------------------
-                List<String[]> data5 = new ArrayList<String[]>();
-                data5.add(new String[]{""});
-                File f5 = new File(filePath5);
+                data = new ArrayList<String[]>();
+                data.add(new String[]{" "," "});
+                File f5 = new File(hierro2);
                 CSVWriter writ;
                 f5.delete();
                 try {
                     // File exist
                     if (f5.exists() && !f5.isDirectory()) {
-                        FileWriter mFileWriter = new FileWriter(filePath5, true);
+                        FileWriter mFileWriter = new FileWriter(hierro2, true);
                         writ = new CSVWriter(mFileWriter, ';');
                     } else {
-                        writ = new CSVWriter(new FileWriter(filePath5), ';');
+                        writ = new CSVWriter(new FileWriter(hierro2), ';');
                     }
 
-                    writ.writeAll(data5);
+                    writ.writeAll(data);
 
                     writ.close();
                     Toast.makeText(r_usuario.this, "Copia  de seguridad guardada en la carpeta Datos.", Toast.LENGTH_LONG).show();
@@ -339,37 +337,36 @@ private void registar(String email,String pass){
                 FirebaseStorage storage = FirebaseStorage.getInstance();
                 StorageReference storageRef = storage.getReference();
                 //Hierro
-                Uri file = Uri.fromFile(new File(filePath));
+                Uri file = Uri.fromFile(new File(hierro2));
                 StorageReference riversRef =  storageRef.child(mail+"/"+file.getLastPathSegment());
                 UploadTask uploadTask1 = riversRef.putFile(file);
                 //Medicamentos
 
-                file = Uri.fromFile(new File(filePath8));
+                file = Uri.fromFile(new File(medicamentos2));
                 riversRef =  storageRef.child(mail+"/"+file.getLastPathSegment());
                 UploadTask uploadTask2 = riversRef.putFile(file);
 
-
-                file = Uri.fromFile(new File(filePath9));
+                file = Uri.fromFile(new File(jornales2));
                 riversRef =  storageRef.child(mail+"/"+file.getLastPathSegment());
                 UploadTask uploadTask3 = riversRef.putFile(file);
 
-                file = Uri.fromFile(new File(filePath1));
+                file = Uri.fromFile(new File(leche2));
                 riversRef =  storageRef.child(mail+"/"+file.getLastPathSegment());
                 UploadTask  uploadTask4 = riversRef.putFile(file);
 
-                file = Uri.fromFile(new File(filePath2));
+                file = Uri.fromFile(new File(ventas2));
                 riversRef =  storageRef.child(mail+"/"+file.getLastPathSegment());
                 UploadTask  uploadTask5 = riversRef.putFile(file);
 
-                file = Uri.fromFile(new File(filePath3));
+                file = Uri.fromFile(new File(animales2));
                 riversRef =  storageRef.child(mail+"/"+file.getLastPathSegment());
                 UploadTask  uploadTask6 = riversRef.putFile(file);
 
-                file = Uri.fromFile(new File(filePath4));
+                file = Uri.fromFile(new File(finca2));
                 riversRef =  storageRef.child(mail+"/"+file.getLastPathSegment());
                 UploadTask  uploadTask7 = riversRef.putFile(file);
 
-                file = Uri.fromFile(new File(filePath5));
+                file = Uri.fromFile(new File(propi2));
                 riversRef =  storageRef.child(mail+"/"+file.getLastPathSegment());
                 UploadTask  uploadTask8 = riversRef.putFile(file);
 

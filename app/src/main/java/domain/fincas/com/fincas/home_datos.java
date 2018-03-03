@@ -80,7 +80,7 @@ public class home_datos extends AppCompatActivity {
     public void onBackPressed() {
         Intent iw = new Intent(home_datos.this, homep.class);
         startActivity(iw);
-        finish();
+
     }
     private static boolean isExternalStorageReadOnly() {
         String extStorageState = Environment.getExternalStorageState();

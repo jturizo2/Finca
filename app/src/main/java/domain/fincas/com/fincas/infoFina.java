@@ -103,6 +103,7 @@ public class infoFina extends AppCompatActivity {
                 Cursor fila33 = db33.rawQuery("SELECT LITROS,FECHA FROM LECHE", null);
                 String ssd1="";
                 Double data = 0.0;
+                fila33.moveToNext();
                 while (fila33.moveToNext()) {
                     String PRUBE =fila33.getString(1) ;
                     Date IPRUBE = sdt.parse(PRUBE);
@@ -123,6 +124,7 @@ public class infoFina extends AppCompatActivity {
                 Cursor fila3 = db3.rawQuery("SELECT COSTO, FECHA FROM TRATAMIENTOS", null);
                 ssd1="";
                 data = 0.0;
+                fila3.moveToNext();
                 while (fila3.moveToNext()) {
                     String PRUBE =fila3.getString(1) ;
                     Date IPRUBE = sdt.parse(PRUBE);
@@ -160,6 +162,7 @@ public class infoFina extends AppCompatActivity {
                 Cursor fila2 = db2.rawQuery("SELECT VALOR, FECHAV FROM VENTAS", null);
                 ssd1="";
                 data = 0.0;
+                fila2.moveToNext();
                 while (fila2.moveToNext()) {
                     String PRUBE =(fila2.getString(1)).replace(" ","")  ;
                     Date IPRUBE = sdt.parse(PRUBE);

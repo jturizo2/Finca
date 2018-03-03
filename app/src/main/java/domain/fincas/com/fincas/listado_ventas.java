@@ -22,21 +22,25 @@ public class listado_ventas extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.textView13);
 
         String[] campos = new String[] {"CODIGO","PESO","DETALLE","COMPRADOR","VALOR","FECHAV"};
-        String[] args = new String[] {""};
-        String whereClause = "ID=?";
         UsersSQLiteHelper admine4 = new UsersSQLiteHelper(this,"FINCAS", null, 1);
         SQLiteDatabase db5 = admine4.getWritableDatabase();
 
         Cursor fila = db5.query("VENTAS", campos, null, null, null, null, null);
         String ssd ="";
         numero N = new numero();
-
+        fila.moveToNext();
         while (fila.moveToNext()) {
-            ssd += "Codigo del Animal: " + fila.getString(0)+ "\n" + "Peso del Animal: " + fila.getString(1)+ "\n"+ "Detalle de la venta: " + fila.getString(2)+ "\n" +"Nombre del Comprador: " + fila.getString(3)+ "\n" +"Valor del Animal($): " + N.douTopes(fila.getString(4))+"\n" +"Fecha de Venta: " + fila.getString(5)+"\n \n";
+            ssd += "Codigo del Animal: " + fila.getString(0)+ "\n"
+                    + "Peso del Animal: " + fila.getString(1)+ "\n"
+                    + "Detalle de la venta: " + fila.getString(2)+ "\n"
+                    +"Nombre del Comprador: " + fila.getString(3)+ "\n"
+                    +"Valor del Animal($): " + N.douTopes(fila.getString(4))+"\n"
+                    +"Fecha de Venta: " + fila.getString(5)+"\n \n";
         }
         db5.close();
         textView.setText(ssd);
         textView.setMovementMethod(new ScrollingMovementMethod());
+
     }
 
     @Override

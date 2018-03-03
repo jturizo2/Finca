@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
@@ -28,6 +29,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 
 import java.io.File;
+import java.io.IOException;
 
 import domain.fincas.com.fincas.objetos.FireBaseReferences;
 
@@ -63,6 +65,16 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
+        AssetManager assetManager = getAssets();
+
+        try {
+            assetManager.open("Animales.csv");
+            Toast.makeText(getApplicationContext(), "Leido", Toast.LENGTH_LONG).show();
+
+        } catch (IOException e) {
+            Toast.makeText(getApplicationContext(), "Error: " + e.toString(), Toast.LENGTH_LONG).show();
+        }
+
     }
 
     @Override
