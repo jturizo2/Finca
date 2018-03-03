@@ -750,8 +750,7 @@ public class homep extends AppCompatActivity {
             Cursor fila6 = db.rawQuery("SELECT * FROM PROPIETARIOS", null);
         //Se guardaran los elementos de cada fila
         while (fila6.moveToNext()) {
-            data.add(new String[]{
-                    fila6.getString(0),
+            data.add(new String[]{fila6.getString(0),
                     fila6.getString(1),
                     fila6.getString(2)
             });
@@ -771,7 +770,7 @@ public class homep extends AppCompatActivity {
             writer4.writeAll(data);
             writer4.close();
         } catch (IOException e) {
-
+            Toast.makeText(this, e+"Error: "+e.toString(), Toast.LENGTH_LONG).show();
         }
         //--------------- Tabla Hierros---------------------------------
         data = new ArrayList<String[]>();
@@ -1493,7 +1492,6 @@ public class homep extends AppCompatActivity {
                 String str1 = "INSERT INTO " + tableName + " (" + columns + ") values(";
                 String str2 = ");";
                 d3.beginTransaction();
-                line = bRead.readLine();
                 while ((line = bRead.readLine()) != null) {
                     line = line.replace("\"", "");
                     System.out.println(":propi:  " + line + "  jaja");
