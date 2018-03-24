@@ -572,7 +572,7 @@ public class homep extends AppCompatActivity {
         //-----------------Tabla HORNALES------------------------------------
         data = new ArrayList<String[]>();
         db = admine1.getWritableDatabase();
-        Cursor fila1 = db.rawQuery("SELECT ID, FECHA, TRABAJO,CANTJORNAL, VALORJORNAL, TOTAL FROM HORNAL", null);
+        Cursor fila1 = db.rawQuery("SELECT ID, FECHA, TRABAJO,CANTJORNAL, VALORJORNAL, SUBTOJOR, DETALLE, CANTINSUMOS, VALORINSUMO, SUBTOINS, TOTAL FROM HORNAL", null);
         //Se guardan los elementos de cada fila
         while (fila1.moveToNext()) {
             data.add(new String[]{
@@ -581,7 +581,13 @@ public class homep extends AppCompatActivity {
                     fila1.getString(2),
                     fila1.getString(3),
                     fila1.getString(4),
-                    fila1.getString(5)
+                    fila1.getString(5),
+                    fila1.getString(6),
+                    fila1.getString(7),
+                    fila1.getString(8),
+                    fila1.getString(9),
+                    fila1.getString(10)
+
             });
         }
         db.close();
@@ -1178,11 +1184,16 @@ public class homep extends AppCompatActivity {
                 "TRABAJO",
                 "CANTJORNAL",
                 "VALORJORNAL",
+                "SUBTOJOR",
+                "DETALLE",
+                "CANTINSUMOS",
+                "VALORINSUMO",
+                "SUBTOINS",
                 "TOTAL"
         });
         admine1 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
         db1 = admine1.getWritableDatabase();
-        fila1 = db1.rawQuery("SELECT ID, FECHA, TRABAJO,CANTJORNAL, VALORJORNAL, TOTAL FROM HORNAL", null);
+        fila1 = db1.rawQuery("SELECT ID, FECHA, TRABAJO,CANTJORNAL, VALORJORNAL, SUBTOJOR, DETALLE,CANTINSUMOS,VALORINSUMO, SUBTOINS, TOTAL FROM HORNAL", null);
         //Se guardan los elementos de cada fila
         while (fila1.moveToNext()) {
             data.add(new String[]{
@@ -1191,7 +1202,12 @@ public class homep extends AppCompatActivity {
                     fila1.getString(2),
                     fila1.getString(3),
                     fila1.getString(4),
-                    fila1.getString(5)
+                    fila1.getString(5),
+                    fila1.getString(6),
+                    fila1.getString(7),
+                    fila1.getString(8),
+                    fila1.getString(9),
+                    fila1.getString(10)
 
             });
         }
@@ -1519,7 +1535,7 @@ public class homep extends AppCompatActivity {
                 BufferedReader bRead = new BufferedReader(new InputStreamReader(fis));
                 String line = "";
                 String tableName = "HORNAL";
-                String columns = "FECHA, TRABAJO,CANTJORNAL, VALORJORNAL, TOTAL";
+                String columns = "FECHA, TRABAJO,CANTJORNAL, VALORJORNAL, SUBTOJOR, DETALLE, CANTINSUMOS, VALORINSUMO, SUBTOINS,TOTAL";
                 String str1 = "INSERT INTO " + tableName + " (" + columns + ") values(";
                 String str2 = ");";
                 d4.beginTransaction();
@@ -1532,7 +1548,12 @@ public class homep extends AppCompatActivity {
                     sb2.append("'" + str12[2] + "',");
                     sb2.append("'" + str12[3] + "',");
                     sb2.append("'" + str12[4] + "',");
-                    sb2.append("'" + str12[5] + "'");
+                    sb2.append("'" + str12[5] + "',");
+                    sb2.append("'" + str12[6] + "',");
+                    sb2.append("'" + str12[7] + "',");
+                    sb2.append("'" + str12[8] + "',");
+                    sb2.append("'" + str12[9] + "',");
+                    sb2.append("'" + str12[10] + "'");
                     sb2.append(str2);
                     System.out.println(sb2.toString() + "  jaja");
                     d4.execSQL(sb2.toString());
@@ -1541,7 +1562,7 @@ public class homep extends AppCompatActivity {
                 d4.endTransaction();
                 d4.close();
             } catch (Exception e) {
-                Toast.makeText(homep.this, "Entré81", Toast.LENGTH_LONG).show();
+               // Toast.makeText(homep.this, "Entré81", Toast.LENGTH_LONG).show();
             }
 
             bn1.setEnabled(true);

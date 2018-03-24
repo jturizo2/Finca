@@ -180,7 +180,7 @@ public class home_datos extends AppCompatActivity {
       data = new ArrayList<String[]>();
       admine1 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
       db1 = admine1.getWritableDatabase();
-      fila1 = db1.rawQuery("SELECT ID, FECHA, TRABAJO,CANTJORNAL, VALORJORNAL, TOTAL FROM HORNAL", null);
+      fila1 = db1.rawQuery("SELECT ID, FECHA, TRABAJO,CANTJORNAL, VALORJORNAL, SUBTOJOR ,DETALLE, CANTINSUMOS, VALORINSUMO,SUBTOINS ,TOTAL FROM HORNAL", null);
       //Se guardan los elementos de cada fila
       while (fila1.moveToNext()) {
           data.add(new String[]{
@@ -189,7 +189,12 @@ public class home_datos extends AppCompatActivity {
                   fila1.getString(2),
                   fila1.getString(3),
                   fila1.getString(4),
-                  fila1.getString(5)
+                  fila1.getString(5),
+                  fila1.getString(6),
+                  fila1.getString(7),
+                  fila1.getString(8),
+                  fila1.getString(9),
+                  fila1.getString(10)
 
           });
       }

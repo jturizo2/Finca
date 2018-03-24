@@ -103,6 +103,11 @@ public class UsersSQLiteHelper extends SQLiteOpenHelper{
                 "TRABAJO TEXT," +
                 "CANTJORNAL TEXT," +
                 "VALORJORNAL TEXT," +
+                "SUBTOJOR TEXT," +
+                "DETALLE TEXT," +
+                "CANTINSUMOS TEXT," +
+                "VALORINSUMO TEXT," +
+                "SUBTOINS TEXT," +
                 "TOTAL TEXT" +
                 ")";
         //Datos iniciales-- hierro finca propietario --

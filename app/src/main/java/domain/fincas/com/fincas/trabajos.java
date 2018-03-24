@@ -21,7 +21,8 @@ import domain.fincas.com.fincas.datos.*;
 import domain.fincas.com.fincas.datos.hornal;
 
 public class trabajos extends AppCompatActivity {
-    private EditText etPlannedDate,trabajo,cantidad,valorJ;
+
+    private EditText etPlannedDate,trabajo,cantidad,valorJ,detalle,cantinsu,valorinsu;
 
     DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     Date date = new Date();
@@ -39,6 +40,9 @@ public class trabajos extends AppCompatActivity {
         trabajo = (EditText) findViewById(R.id.trabajo);
         cantidad = (EditText) findViewById(R.id.cantJornal);
         valorJ = (EditText) findViewById(R.id.valoj);
+        detalle = (EditText) findViewById(R.id.trabjo);
+        cantinsu = (EditText) findViewById(R.id.cantornal);
+        valorinsu = (EditText) findViewById(R.id.vaoj);
 
 
         etPlannedDate.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +82,9 @@ public class trabajos extends AppCompatActivity {
         String trabaj = trabajo.getText().toString();
         String canti = cantidad.getText().toString();
         String valor = valorJ.getText().toString();
+        String deta = detalle.getText().toString();
+        String cantis = cantinsu.getText().toString();
+        String valins = valorinsu.getText().toString();
         //Guardar en Base de datos:
 
         UsersSQLiteHelper admine9 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
@@ -88,7 +95,14 @@ public class trabajos extends AppCompatActivity {
         registro.put("TRABAJO",trabaj);
         registro.put("CANTJORNAL",canti);
         registro.put("VALORJORNAL",valor);
-        registro.put("TOTAL",Double.parseDouble(canti)*Double.parseDouble(valor));
+        double x =Double.parseDouble(canti)*Double.parseDouble(valor);
+        registro.put("SUBTOJOR",x);
+        registro.put("DETALLE",deta);
+        registro.put("CANTINSUMOS",cantis);
+        registro.put("VALORINSUMO",valins);
+        double y = Double.parseDouble(cantis)*Double.parseDouble(valins);
+        registro.put("SUBTOINS",y);
+        registro.put("TOTAL",x + y);
 
 
         db9.insert("HORNAL", null, registro);
