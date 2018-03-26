@@ -97,11 +97,11 @@
                 android:id="@+id/jornales"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_margin="10dp"
                 android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
                 android:onClick="jornales"
-                android:text="Jornales" />
+                android:text="insumos" />
 
         </LinearLayout>
     </ScrollView>

@@ -101,7 +101,7 @@ public class jornalConsul extends AppCompatActivity {
                 //-----------Conteo leche------------------
                 UsersSQLiteHelper admine33 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
                 SQLiteDatabase db33 = admine33.getWritableDatabase();
-                Cursor fila = db33.rawQuery("SELECT ID, FECHA, TRABAJO,CANTJORNAL, VALORJORNAL, TOTAL FROM HORNAL", null);
+                Cursor fila = db33.rawQuery("SELECT ID, FECHA, TRABAJO, CANTJORNAL, VALORJORNAL, SUBTOJOR, DETALLE, CANTINSUMOS, VALORINSUMO, SUBTOINS, TOTAL FROM HORNAL", null);
                 String ssd="";
                 Double data = 0.0;  numero N = new numero();
                 fila.moveToNext();
@@ -120,11 +120,16 @@ public class jornalConsul extends AppCompatActivity {
                                 + "Fecha: " + fila.getString(1)+ "\n"
                                 + "Trabajo: " + fila.getString(2)+ "\n"
                                 + "Jornales: " + fila.getString(3)+ "\n"
-                                + "Valor Jornal: " + N.douTopes(fila.getString(4))+ "\n"
-                                + "Total: " + N.douTopes(fila.getString(5))+ "\n"
-                                + "-------------------\n"
+                                + "Valor Jornal: " + fila.getString(4)+ "\n"
+                                + "Subtotal Valor Jornal: " + fila.getString(5)+ "\n"
+                                + "Detalle Insumos: " + fila.getString(6)+ "\n"
+                                + "Cantidad Insumos: " + fila.getString(7)+ "\n"
+                                + "Valor Insumos: " + fila.getString(8)+ "\n"
+                                + "Subtotal Valor Insumos: " + fila.getString(9)+ "\n"
+                                + "Total: " + fila.getString(10)+ "\n"
+                                + "----------------------------------------\n"
                         ;
-                        data  += Double.parseDouble(fila.getString(5));
+                        data  += Double.parseDouble(fila.getString(10));
 
                     }
                 }
