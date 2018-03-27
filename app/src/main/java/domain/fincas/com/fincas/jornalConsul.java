@@ -104,7 +104,6 @@ public class jornalConsul extends AppCompatActivity {
                 Cursor fila = db33.rawQuery("SELECT ID, FECHA, TRABAJO, CANTJORNAL, VALORJORNAL, SUBTOJOR, DETALLE, CANTINSUMOS, VALORINSUMO, SUBTOINS, TOTAL FROM HORNAL", null);
                 String ssd="";
                 Double data = 0.0;  numero N = new numero();
-                fila.moveToNext();
                 while (fila.moveToNext()) {
 
                     String PRUBE =(fila.getString(1)).replace(" ","") ;

@@ -19,7 +19,7 @@ import java.util.Date;
 public class infoFina extends AppCompatActivity {
 
     private EditText INI,FIN;
-    private TextView lec2,tvacas11,tvacas22,tvacas33;
+    private TextView lec2,tvacas11,tvacas22,tvacas33,vtinsumo;
 
     DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     Date date = new Date();
@@ -32,6 +32,7 @@ public class infoFina extends AppCompatActivity {
         tvacas22 = (TextView) findViewById(R.id.tvacas22);
         tvacas33 = (TextView) findViewById(R.id.tvacas33);
         lec2 = (TextView) findViewById(R.id.lec2);
+        vtinsumo = (TextView) findViewById(R.id.lc);
 
         String fc = dateFormat.format(date.getTime());
         //FIN.setText(fc);
@@ -117,6 +118,26 @@ public class infoFina extends AppCompatActivity {
                 db33.close();
                 numero N = new numero();
                 lec2.setText((data.intValue())+"");
+
+                //-----------Valor total Insumos------------------
+                UsersSQLiteHelper admin3 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
+                SQLiteDatabase db23 = admin3.getWritableDatabase();
+                Cursor fila111 = db23.rawQuery("SELECT TOTAL, FECHA  FROM HORNAL", null);
+                ssd1="";
+                data = 0.0;
+
+                while (fila111.moveToNext()) {
+                    String PRUBE =fila111.getString(1) ;
+                    Date IPRUBE = sdt.parse(PRUBE);
+                    //System.out.println("ee:"+ PRUBE);
+
+                    Boolean p = iini.before(IPRUBE);
+                    Boolean q =  ifin.after(IPRUBE);
+                    if(p && q){
+                        data  += Double.parseDouble(fila111.getString(0));
+                    }                }
+                db23.close();
+                vtinsumo.setText(N.douTopes(data.toString()));
 
                 //-----------Conteo medicamentos------------------
                 UsersSQLiteHelper admine3 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
