@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context="domain.fincas.com.fincas.infoFina"
     android:gravity="center"
     >
@@ -11,20 +11,21 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical"
+            android:padding="5dp"
             android:weightSum="1">
 
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="match_parent"
-                android:layout_height="71dp"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="RESUMEN FINANCIERO \n FILTRO POR FECHAS"
                 android:textColor="@android:color/background_dark"
@@ -34,12 +35,12 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="1">
                 <TextView
                     android:id="@+id/textView666"
-                    android:layout_width="188dp"
+                    android:layout_width="118dp"
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="Fecha inicial:"
@@ -71,7 +72,7 @@
                 android:weightSum="1">
                 <TextView
                     android:id="@+id/textView6663"
-                    android:layout_width="188dp"
+                    android:layout_width="118dp"
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="Fecha final:"
@@ -110,6 +111,8 @@
                 android:layout_height="66dp"
                 android:gravity="center"
                 android:text="Resultados:"
+                android:background="@drawable/borde"
+                android:padding="10dp"
                 android:textColor="@android:color/background_dark"
                 android:textSize="24dp" />
 
@@ -120,22 +123,25 @@
 
                 <TextView
                     android:id="@+id/tvacas1"
-                    android:layout_width="117dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.32"
-                    android:text="Total Compras [$]:"
+                    android:layout_weight="1"
+                    android:text="T.Compras"
                     android:textColor="@android:color/background_dark"
-                    android:textSize="24dp" />
+                    android:textSize="24dp"
+                    android:background="@drawable/borde"/>
 
+                <TextView
+                    android:id="@+id/tvacas11"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="24dp"
+                    android:background="@drawable/borde"/>
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvacas11"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.28"
-                android:textColor="@android:color/background_dark"
-                android:textSize="24dp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -143,83 +149,85 @@
 
                 <TextView
                     android:id="@+id/tvacas222"
-                    android:layout_width="117dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.32"
-                    android:text="Total ventas [$]:"
+                    android:layout_weight="1"
+                    android:text="T. Ventas"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="24dp"
+                    android:background="@drawable/borde"/>
+
+                <TextView
+                    android:id="@+id/tvacas22"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/borde"
                     android:textColor="@android:color/background_dark"
                     android:textSize="24dp" />
-
-
             </LinearLayout>
-            <TextView
-                android:id="@+id/tvacas22"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.28"
-                android:textColor="@android:color/background_dark"
-                android:textSize="24dp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/tvacas3"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Total Medicamentos [$]:"
+                    android:text="T. Medica"
+                    android:layout_weight="1"
                     android:textColor="@android:color/background_dark"
-                    android:textSize="24dp" />
-
+                    android:textSize="24dp"
+                    android:background="@drawable/borde"/>
+                <TextView
+                    android:id="@+id/tvacas33"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="24dp"
+                    android:background="@drawable/borde"/>
 
             </LinearLayout>
-            <TextView
-                android:id="@+id/tvacas33"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/background_dark"
-                android:textSize="24dp" />
-            <TextView
-                android:id="@+id/textView26"
-                android:layout_width="match_parent"
-                android:layout_height="47dp"
-                android:gravity="center"
-                android:text="Total leche producida"
-                android:textColor="@android:color/background_dark"
-                android:textSize="24dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/lec2"
-                    android:layout_width="117dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.34"
-                    android:text="Total leche [Lts]:"
+                    android:layout_weight="1"
+                    android:text="T. Leche [Lts]"
                     android:textColor="@android:color/background_dark"
-                    android:textSize="24dp" />
+                    android:textSize="24dp"
+                    android:background="@drawable/borde"/>
 
+                <TextView
+                    android:id="@+id/tvaca3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="24dp"
+                    android:background="@drawable/borde"/>
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvaca3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/background_dark"
-                android:textSize="24dp" />
+
             <TextView
                 android:id="@+id/textVi26"
                 android:layout_width="match_parent"
                 android:layout_height="47dp"
                 android:gravity="center"
-                android:text="Valor Total de Insumos"
+                android:text="Gastos y Egresos"
                 android:textColor="@android:color/background_dark"
-                android:textSize="24dp" />
+                android:textSize="24dp"
+                android:background="@drawable/borde"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -227,23 +235,74 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/lc"
-                    android:layout_width="117dp"
-                    android:layout_height="42dp"
-                    android:text="Valor Total[$]:"
+                    android:id="@+id/insumos"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="T. Insumos:"
                     android:textColor="@android:color/background_dark"
                     android:textSize="24dp"
-                    android:layout_weight="0.34" />
+                    android:layout_weight="1"
+                    android:background="@drawable/borde"/>
+                <TextView
+                    android:id="@+id/insumoss"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="24dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/borde"/>
 
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/jornal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="T. Jornales:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="24dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/borde"/>
+                <TextView
+                    android:id="@+id/jornall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="24dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/borde"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/total"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Total:"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="24dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/borde"
+                    />
+                <TextView
+                    android:id="@+id/totall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="24dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/borde"/>
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/l2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textColor="@android:color/background_dark"
-                android:textSize="24dp" />
 
         </LinearLayout>
     </ScrollView>

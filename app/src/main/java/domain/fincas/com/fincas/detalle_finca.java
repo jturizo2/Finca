@@ -168,15 +168,15 @@ public class detalle_finca extends AppCompatActivity {
         text12.setText(s8);
         tvacas.setText(s9);
 
-        tv1.setText(Integer.toString(Integer.parseInt(s10)-1)+"");
-        tv2.setText(s11);
-        tv3.setText(s12);
-        tv4.setText(s13);
-        tv5.setText(s14);
-        tv6.setText(s15);
-        tv7.setText(s16);
-        tv8.setText(s17);
-        tv9.setText(s18);
+        tv1.setText(Integer.toString(Integer.parseInt(s1)-1 +Integer.parseInt(S19))+"");
+        tv2.setText(Integer.toString( Integer.parseInt(s2)+Integer.parseInt(s20)));
+        tv3.setText(Integer.toString( Integer.parseInt(s3)+Integer.parseInt(s21)));
+        tv4.setText(Integer.toString( Integer.parseInt(s4)+Integer.parseInt(s22)));
+        tv5.setText(Integer.toString( Integer.parseInt(s5)+Integer.parseInt(s23)));
+        tv6.setText(Integer.toString( Integer.parseInt(s6)+Integer.parseInt(s24)));
+        tv7.setText(Integer.toString( Integer.parseInt(s7)+Integer.parseInt(s25)));
+        tv8.setText(Integer.toString( Integer.parseInt(s8)+Integer.parseInt(s26)));
+        tv9.setText(Integer.toString( Integer.parseInt(s9)+Integer.parseInt(s27)));
 
         ap1.setText(S19);
         ap2.setText(s20);

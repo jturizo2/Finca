@@ -19,7 +19,7 @@ import java.util.Date;
 public class infoFina extends AppCompatActivity {
 
     private EditText INI,FIN;
-    private TextView lec2,tvacas11,tvacas22,tvacas33,vtinsumo;
+    private TextView lec2,tvacas11,tvacas22,tvacas33,vtinsumo,jornal,total;
 
     DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     Date date = new Date();
@@ -31,8 +31,10 @@ public class infoFina extends AppCompatActivity {
         tvacas11 = (TextView) findViewById(R.id.tvacas11);
         tvacas22 = (TextView) findViewById(R.id.tvacas22);
         tvacas33 = (TextView) findViewById(R.id.tvacas33);
-        lec2 = (TextView) findViewById(R.id.lec2);
-        vtinsumo = (TextView) findViewById(R.id.lc);
+        lec2 = (TextView) findViewById(R.id.tvaca3);
+        vtinsumo = (TextView) findViewById(R.id.insumoss);
+        jornal = (TextView) findViewById(R.id.jornall);
+        total = (TextView) findViewById(R.id.totall);
 
         String fc = dateFormat.format(date.getTime());
         //FIN.setText(fc);
@@ -122,9 +124,11 @@ public class infoFina extends AppCompatActivity {
                 //-----------Valor total Insumos------------------
                 UsersSQLiteHelper admin3 = new UsersSQLiteHelper(this, "FINCAS", null, 1);
                 SQLiteDatabase db23 = admin3.getWritableDatabase();
-                Cursor fila111 = db23.rawQuery("SELECT TOTAL, FECHA  FROM HORNAL", null);
+                Cursor fila111 = db23.rawQuery("SELECT TOTAL, FECHA ,SUBTOINS,SUBTOJOR FROM HORNAL", null);
                 ssd1="";
-                data = 0.0;
+                Double ins,jorg;
+                data = 0.0;ins=0.0;jorg=0.0;
+
 
                 while (fila111.moveToNext()) {
                     String PRUBE =fila111.getString(1) ;
@@ -135,9 +139,13 @@ public class infoFina extends AppCompatActivity {
                     Boolean q =  ifin.after(IPRUBE);
                     if(p && q){
                         data  += Double.parseDouble(fila111.getString(0));
+                        ins  += Double.parseDouble(fila111.getString(2));
+                        jorg  += Double.parseDouble(fila111.getString(3));
                     }                }
                 db23.close();
-                vtinsumo.setText(N.douTopes(data.toString()));
+                total.setText(N.douTopes(data.toString()));
+                vtinsumo.setText(N.douTopes(ins.toString()));
+                jornal.setText(N.douTopes(jorg.toString()));
 
                 //-----------Conteo medicamentos------------------
                 UsersSQLiteHelper admine3 = new UsersSQLiteHelper(this, "FINCAS", null, 1);

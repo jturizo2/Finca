@@ -22,11 +22,11 @@
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Listado De Jornales"
                 android:gravity="center"
+                android:padding="10dp"
+                android:text="Lista de gastos y egresos"
                 android:textColor="@android:color/background_dark"
-                android:textSize="24dp"
-                android:padding="10dp" />
+                android:textSize="24dp" />
 
             <TextView
                 android:id="@+id/textView958"

@@ -101,7 +101,7 @@
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:onClick="jornales"
-                android:text="insumos" />
+                android:text="gastos y egresos" />
 
         </LinearLayout>
     </ScrollView>

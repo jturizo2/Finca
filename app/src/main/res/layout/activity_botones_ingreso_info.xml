@@ -78,7 +78,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:onClick="jornales"
-                android:text="INSUMOS" />
+                android:text="gastos y egresos" />
 
 
             <Button

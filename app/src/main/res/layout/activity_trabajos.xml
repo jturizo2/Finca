@@ -14,23 +14,24 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:padding="10dp">
 
 
             <TextView
                 android:id="@+id/animal"
-                android:layout_width="280dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/borde"
                 android:gravity="center"
-                android:text="REGISTO DE INSUMOS"
+                android:text="GASTOS Y EGRESOS"
                 android:textColor="@android:color/background_dark"
                 android:textSize="24dp" />
 
             <TextView
                 android:id="@+id/ani"
-                android:layout_width="360dp"
+                android:layout_width="match_parent"
                 android:layout_height="9dp"
                 android:layout_gravity="center"
                 android:gravity="center"
@@ -38,15 +39,12 @@
                 android:textSize="24dp" />
 
             <LinearLayout
-                android:layout_width="280dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:background="@drawable/borde"
                 android:gravity="center"
                 android:layout_gravity="center">
-
-
-
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/tilPlannedDate"
@@ -75,9 +73,10 @@
                 android:textColor="@android:color/background_dark"
                 android:textSize="24dp" />
 
+
             <LinearLayout
-                android:layout_width="280dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/borde"
                 android:orientation="vertical">
@@ -92,7 +91,7 @@
                     <TextView
                         android:id="@+id/cod12"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:gravity="center"
                         android:layout_gravity="center"
                         android:text="JORNALES"
@@ -106,13 +105,13 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
 
                     <TextView
                         android:id="@+id/peso"
-                        android:layout_width="150dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="Trabajo:"
@@ -120,27 +119,27 @@
                         android:textColor="@android:color/background_dark"
                         android:textSize="18dp" />
 
-                    <EditText
-                        android:id="@+id/trabajo"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:ems="10"
-                        android:text="NINGUNO" />
+
 
                 </LinearLayout>
-
+                <EditText
+                    android:id="@+id/trabajo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:text=" "
+                    android:inputType="textMultiLine"
+                    />
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
-
-
                     <TextView
                         android:id="@+id/detalle"
                         android:layout_width="150dp"
-                        android:layout_height="41dp"
+                        android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Cantidad de jornaL [#]:"
+                        android:text="N° de jornal:"
 
                         android:textColor="@android:color/background_dark"
                         android:textSize="18dp" />
@@ -148,7 +147,7 @@
                     <EditText
                         android:id="@+id/cantJornal"
                         android:layout_width="match_parent"
-                        android:layout_height="56dp"
+                        android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="number|numberSigned|numberDecimal"
                         android:text="0" />
@@ -157,7 +156,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
 
@@ -173,7 +172,7 @@
                     <EditText
                         android:id="@+id/valoj"
                         android:layout_width="match_parent"
-                        android:layout_height="56dp"
+                        android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="number|numberSigned|numberDecimal"
                         android:text="0" />
@@ -185,7 +184,7 @@
 
             <TextView
                 android:id="@+id/a"
-                android:layout_width="360dp"
+                android:layout_width="match_parent"
                 android:layout_height="9dp"
                 android:layout_gravity="center"
                 android:gravity="center"
@@ -193,22 +192,22 @@
                 android:textSize="24dp" />
 
             <LinearLayout
-                android:layout_width="280dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@drawable/borde"
                 android:layout_gravity="center">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
 
                     <TextView
                         android:id="@+id/cod122"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:gravity="center"
                         android:layout_gravity="center"
                         android:text="INSUMOS"
@@ -221,13 +220,13 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
 
                     <TextView
                         android:id="@+id/pso"
-                        android:layout_width="150dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="Detalle:"
@@ -235,15 +234,16 @@
                         android:textColor="@android:color/background_dark"
                         android:textSize="18dp" />
 
-                    <EditText
-                        android:id="@+id/trabjo"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:ems="10"
-                        android:text="NINGUNO" />
 
                 </LinearLayout>
-
+                <EditText
+                    android:id="@+id/trabjo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:text=" "
+                    android:inputType="textMultiLine"
+                    />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
